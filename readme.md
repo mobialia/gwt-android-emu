@@ -27,6 +27,6 @@ Usage:
 
 	<module ...>
 	...
-	<inherits name="com.mobialia.gwt.androidemu" />
+	<inherits name="androidemu" />
 
 It's released under the MIT License, so feel free to use it anywhere. 
