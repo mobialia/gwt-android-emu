@@ -86,7 +86,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		messageLabel = new Label(builder.message != null ? builder.message : "");
-		titleLabel.setStyleName("DialogMessage");
+		messageLabel.setStyleName("DialogMessage");
 		vp.add(messageLabel);
 		
 		if (builder.items != null) {
