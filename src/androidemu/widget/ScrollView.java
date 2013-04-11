@@ -1,22 +1,14 @@
 package androidemu.widget;
 
-import java.util.Iterator;
+import androidemu.view.View;
 
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.Element;
 
-public class ScrollView extends Panel {
+public class ScrollView extends View {
 
-	@Override
-	public Iterator<Widget> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+	public ScrollView(Element element) {
+		super(element);
 	}
 
-	@Override
-	public boolean remove(Widget child) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

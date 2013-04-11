@@ -6,6 +6,7 @@ import androidemu.os.Bundle;
 import androidemu.view.Menu;
 import androidemu.view.MenuItem;
 import androidemu.view.View;
+import androidemu.view.ViewFactory;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -15,7 +16,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class Activity extends Context implements EntryPoint {
 	
@@ -150,8 +150,8 @@ public class Activity extends Context implements EntryPoint {
 	public void onBackAction(View v) {
 	}
 
-	public Widget findViewById(String id) {
-		return RootPanel.get(id);
+	public View findViewById(String id) {
+		return ViewFactory.findViewById(id);
 	}
 
 	public Intent getIntent() {

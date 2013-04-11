@@ -12,6 +12,6 @@ public class LayoutInflater {
 	}
 	
 	public View inflate(TextResource layout, Context ctx) {
-		return new View(new HTML(layout.getText()));
+		return new View((new HTML(layout.getText())).getElement());
 	}
 }

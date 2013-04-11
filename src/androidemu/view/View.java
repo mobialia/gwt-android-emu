@@ -1,16 +1,21 @@
 package androidemu.view;
 
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Panel;
 
 public class View {
-	public Widget widget;
+	public Element element;
 	
-	public View(Widget widget) {
-		this.widget = widget; 
+	public View(Element element) {
+		this.element = element;
 	}
 	
-	public Widget findViewById(String id) {
-		return RootPanel.get(id);
+	public View findViewById(String id) {
+		return ViewFactory.findViewById(id);
+	}
+
+	public Panel asPanel() {
+		return new HTMLPanel(element.getInnerHTML());
 	}
 }

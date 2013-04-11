@@ -1,15 +1,23 @@
 package androidemu.widget;
 
-import com.google.gwt.user.client.ui.ListBox;
+import androidemu.view.View;
 
-public class Spinner extends ListBox {
+import com.google.gwt.user.client.Element;
+
+
+public class Spinner extends View {
+
+	public Spinner(Element element) {
+		super(element);
+	}
 
 	public void setSelection(int index) {
-		setSelectedIndex(index);
+		// TODO
 	}
 
 	public int getSelectedItemPosition() {
-		return getSelectedIndex();
+		// TODO
+		return 0;
 	}
 
 }

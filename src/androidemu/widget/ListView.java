@@ -1,18 +1,17 @@
 package androidemu.widget;
 
+import androidemu.view.View;
 import androidemu.widget.AdapterView.OnItemClickListener;
 
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.Element;
 
-public class ListView extends Widget {
+public class ListView extends View {
 
-	RootPanel panel;
 	Adapter adapter;
 	OnItemClickListener listener;
 
-	public ListView(RootPanel panel) {
-		this.panel = panel;
+	public ListView(Element element) {
+		super(element);
 	}
 
 	public void setOnItemClickListener(OnItemClickListener listener) {
@@ -25,10 +24,5 @@ public class ListView extends Widget {
 
 	public void setSelection(int index) {
 		// TODO
-	}
-
-	// TODO wrap is a better method name
-	public static ListView createFromId(String id) {
-		return new ListView(RootPanel.get(id));
 	}
 }

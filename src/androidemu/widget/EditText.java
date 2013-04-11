@@ -1,7 +1,21 @@
 package androidemu.widget;
 
-import com.google.gwt.user.client.ui.TextBox;
+import androidemu.view.View;
 
-public class EditText extends TextBox {
+import com.google.gwt.user.client.Element;
 
+public class EditText extends View {
+
+	public EditText(Element element) {
+		super(element);
+	}
+
+	public void setText(String text) {
+		// TODO
+	}
+
+	public Object getText() {
+		// TODO
+		return null;
+	}
 }
