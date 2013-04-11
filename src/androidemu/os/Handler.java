@@ -25,7 +25,6 @@ public class Handler {
 	}
 
 	public void sendMessageAtTime(final Message msg, long uptimeMillis) {
-
 		Timer timer = new Timer() {
 			public void run() {
 				handleMessage(msg);
@@ -34,6 +33,10 @@ public class Handler {
 
 		// Execute the timer to expire 2 seconds in the future
 		timer.schedule((int) (uptimeMillis - SystemClock.uptimeMillis()));
+	}
+
+	public void removeMessages(int what) {
+		// TODO
 	}
 
 }
