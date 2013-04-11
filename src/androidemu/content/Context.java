@@ -8,10 +8,10 @@ import androidemu.content.res.Resources;
 public class Context {
 
 	static Application application = new Application();
+	Resources resources = new Resources();
 	
 	public Resources getResources() {
-		// TODO
-		return null;
+		return resources;
 	}
 	
 	public String getString(String in) {
