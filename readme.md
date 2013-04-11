@@ -12,6 +12,9 @@ This is a very simple library emulating some Android APIs over GWT:
 * Log
 * FloatMath
 * SystemClock
+* Views (findViewById)
+
+This is a work in progress in continuous evolution...
 
 At Mobialia we used this library to port some of our Android apps to GWT:
 
