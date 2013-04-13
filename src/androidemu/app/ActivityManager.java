@@ -20,7 +20,7 @@ public class ActivityManager {
 				if (activityStack.size() > 1) {
 					// If is back, must match the previous activity in the stack
 					if (event.getValue().equals(activityStack.get(activityStack.size() - 2).getClass().getName())) {
-						finish();
+						finishImpl();
 					}
 				}
 			}
@@ -44,6 +44,10 @@ public class ActivityManager {
 	}
 
 	public static void finish() {
+		History.back();
+	}
+
+	private static void finishImpl() {
 		Activity closingActivity = activityStack.pop();
 		closingActivity.hideMenu();
 		closingActivity.onPause();
