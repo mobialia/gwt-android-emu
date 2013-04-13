@@ -5,7 +5,7 @@ import androidemu.view.Gravity;
 
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.PopupPanel;
 
 public class Toast {
@@ -27,7 +27,8 @@ public class Toast {
 	public void show() {
 		final PopupPanel panel = new PopupPanel();
 
-		Label label = new Label(message);
+		HTML label = new HTML(message.replace("\n", "<br/>"));
+		label.setStyleName("Toast");
 		panel.setWidget(label);
 		panel.setPopupPositionAndShow(new PopupPanel.PositionCallback() {
 			public void setPosition(int offsetWidth, int offsetHeight) {
@@ -36,6 +37,7 @@ public class Toast {
 				switch (gravity) {
 					case Gravity.TOP:
 						top = (Window.getClientHeight() - offsetHeight) / 10;
+					break;
 					case Gravity.CENTER:
 						top = (Window.getClientHeight() - offsetHeight) / 2;
 					break;
@@ -51,8 +53,11 @@ public class Toast {
 			}
 		};
 
-		// Schedule the timer to run once in 5 seconds.
-		t.schedule(3000);
+		if (duration == LENGTH_SHORT) {
+			t.schedule(3000);
+		} else {
+			t.schedule(5000);
+		}
 	}
 
 	public String getMessage() {
