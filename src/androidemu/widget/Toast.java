@@ -1,5 +1,6 @@
 package androidemu.widget;
 
+import androidemu.Res;
 import androidemu.content.Context;
 import androidemu.view.Gravity;
 
@@ -26,9 +27,9 @@ public class Toast {
 
 	public void show() {
 		final PopupPanel panel = new PopupPanel();
+		panel.setStyleName(Res.R.style().toast());
 
 		HTML label = new HTML(message.replace("\n", "<br/>"));
-		label.setStyleName("Toast");
 		panel.setWidget(label);
 		panel.setPopupPositionAndShow(new PopupPanel.PositionCallback() {
 			public void setPosition(int offsetWidth, int offsetHeight) {
@@ -54,9 +55,9 @@ public class Toast {
 		};
 
 		if (duration == LENGTH_SHORT) {
-			t.schedule(3000);
+			t.schedule(1000);
 		} else {
-			t.schedule(5000);
+			t.schedule(2000);
 		}
 	}
 
