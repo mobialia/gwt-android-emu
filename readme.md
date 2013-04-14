@@ -1,7 +1,7 @@
 GWT Android Emu
 ===============
 
-This is a very simple library emulating some Android APIs over GWT:
+This library emulates some Android APIs over GWT.
 
 * Activities
 * Menu and MenuItems
@@ -24,7 +24,7 @@ At Mobialia we used this library to port some of our Android apps to GWT:
 
 It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
-This library doesn't respect the Android Package names, you need to make a "Source->Organize imports" in Eclipse.
+The "android." package names are renamed to "androidemu.", you need to make a "Source->Organize imports" in Eclipse.
 
 Usage:
 
