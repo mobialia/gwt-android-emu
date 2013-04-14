@@ -1,5 +1,6 @@
 package androidemu.app;
 
+import androidemu.Res;
 import androidemu.content.Context;
 import androidemu.content.Intent;
 import androidemu.os.Bundle;
@@ -32,7 +33,8 @@ public class Activity extends Context implements EntryPoint {
 	Intent resultData;
 
 	// TODO REMOVE ???
-	public void onModuleLoad() {		
+	public void onModuleLoad() {
+		Res.R.style().ensureInjected();
 		startActivity(new Intent(this, this));
 	}
 
@@ -75,7 +77,7 @@ public class Activity extends Context implements EntryPoint {
 			onCreateOptionsMenu(menu);
 
 			menuPanel = new FlowPanel();
-			menuPanel.setStyleName("Menu");
+			menuPanel.setStyleName(Res.R.style().menu());
 
 			// Label titleLabel = new Label(title);
 			// titleLabel.setStyleName("MenuTitle");
@@ -84,7 +86,7 @@ public class Activity extends Context implements EntryPoint {
 			for (final MenuItem item : menu.menuItems) {
 				Button b = new Button();
 				b.setText(item.getTitle());
-				b.setStyleName("MenuItem");
+				b.setStyleName(Res.R.style().menuItem());
 				b.addClickHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
