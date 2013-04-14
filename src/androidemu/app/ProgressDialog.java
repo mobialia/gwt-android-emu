@@ -1,10 +1,10 @@
 package androidemu.app;
 
+import androidemu.Res;
 import androidemu.content.Context;
 import androidemu.content.DialogInterface;
 
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ProgressDialog extends Dialog implements DialogInterface {
@@ -20,19 +20,19 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 	}
 
 	public ProgressDialog(String title, String message, boolean cancelable) {
-		popupPanel = new PopupPanel(cancelable);
+		super(cancelable);
 
 		VerticalPanel vp = new VerticalPanel();
 
 		if (title != null) {
 			titleLabel = new Label(title);
-			titleLabel.setStyleName("DialogTitle");
+			titleLabel.setStyleName(Res.R.style().dialogTitle());
 			vp.add(titleLabel);
 		}
 
 		if (message != null) {
 			messageLabel = new Label(message);
-			titleLabel.setStyleName("DialogMessage");
+			titleLabel.setStyleName(Res.R.style().dialogMessage());
 			vp.add(messageLabel);
 		}
 		

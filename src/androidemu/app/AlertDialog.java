@@ -1,5 +1,6 @@
 package androidemu.app;
 
+import androidemu.Res;
 import androidemu.content.Context;
 import androidemu.content.DialogInterface;
 import androidemu.view.View;
@@ -9,7 +10,6 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class AlertDialog extends Dialog implements DialogInterface {
@@ -73,7 +73,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	}
 
 	public AlertDialog(Builder builder) {
-		popupPanel = new PopupPanel(builder.cancelable);
+		super(builder.cancelable);
+
 		this.positiveListener = builder.positiveListener;
 		this.negativeListener = builder.negativeListener;
 
@@ -81,12 +82,12 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.title != null) {
 			titleLabel = new Label(builder.title);
-			titleLabel.setStyleName("DialogTitle");
+			titleLabel.setStyleName(Res.R.style().dialogTitle());
 			vp.add(titleLabel);
 		}
 
 		messageLabel = new Label(builder.message != null ? builder.message : "");
-		messageLabel.setStyleName("DialogMessage");
+		messageLabel.setStyleName(Res.R.style().dialogMessage());
 		vp.add(messageLabel);
 		
 		if (builder.items != null) {
@@ -103,7 +104,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.positiveLabel != null) {
 			okButton = new Button(builder.positiveLabel);
-			okButton.setStyleName("DialogButton");
+			okButton.setStyleName(Res.R.style().dialogButton());
 			okButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -117,7 +118,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.negativeLabel != null) {
 			cancelButton = new Button(builder.negativeLabel);
-			cancelButton.setStyleName("DialogButton");
+			cancelButton.setStyleName(Res.R.style().dialogButton());
 			cancelButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -131,7 +132,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		
 		if (builder.neutralLabel != null) {
 			cancelButton = new Button(builder.neutralLabel);
-			cancelButton.setStyleName("DialogButton");
+			cancelButton.setStyleName(Res.R.style().dialogButton());
 			cancelButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -145,7 +146,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (okButton != null || cancelButton != null || neutralButton != null) {
 			FlowPanel buttonsPanel = new FlowPanel();
-			buttonsPanel.setStyleName("DialogButtons");
+			buttonsPanel.setStyleName(Res.R.style().dialogButtons());
 			if (cancelButton != null) {
 				buttonsPanel.add(cancelButton);
 			}

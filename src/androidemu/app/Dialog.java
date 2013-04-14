@@ -1,5 +1,6 @@
 package androidemu.app;
 
+import androidemu.Res;
 import androidemu.content.DialogInterface;
 
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -8,8 +9,9 @@ public class Dialog implements DialogInterface {
 
 	PopupPanel popupPanel;
 	
-	public Dialog() {
-		
+	public Dialog(boolean cancelable) {
+		popupPanel = new PopupPanel(cancelable);
+		popupPanel.setStyleName(Res.R.style().dialog());
 	}
 
 	public boolean isShowing() {
