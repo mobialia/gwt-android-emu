@@ -10,9 +10,11 @@ import androidemu.view.View;
 import androidemu.view.ViewFactory;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -165,7 +167,13 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public View findViewById(String id) {
-		return ViewFactory.createViewFromElement(contentPanel.getElementById(id));
+		Element elementFound = contentPanel.getElementById(id);
+
+		if (elementFound == null) {
+			Window.alert("View not found: " + id);
+			return null;
+		}
+		return ViewFactory.createViewFromElement(elementFound);
 	}
 
 	public Intent getIntent() {
