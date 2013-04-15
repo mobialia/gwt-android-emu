@@ -3,6 +3,7 @@ package androidemu.widget;
 import androidemu.view.View;
 
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.TextBox;
 
 public class EditText extends View {
 
@@ -11,11 +12,10 @@ public class EditText extends View {
 	}
 
 	public void setText(String text) {
-		// TODO
+		TextBox.wrap(element).setText(text);
 	}
 
 	public Object getText() {
-		// TODO
-		return null;
+		return TextBox.wrap(element).getText();
 	}
 }
