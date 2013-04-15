@@ -10,18 +10,14 @@ import androidemu.widget.ScrollView;
 import androidemu.widget.Spinner;
 import androidemu.widget.TextView;
 
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Window;
 
 public class ViewFactory {
 
-	public static View findViewById(String id) {
-
-		Element element = DOM.getElementById(id);
-
+	public static View createViewFromElement(Element element) {
 		if (element == null) {
-			Window.alert("View not found: " + id);
+			Window.alert("View not found");
 			return null;
 		}
 

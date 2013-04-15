@@ -1,5 +1,6 @@
 package androidemu.view;
 
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Panel;
@@ -12,7 +13,7 @@ public class View {
 	}
 	
 	public View findViewById(String id) {
-		return ViewFactory.findViewById(id);
+		return ViewFactory.createViewFromElement(DOM.getElementById(id));
 	}
 
 	public Panel asPanel() {
