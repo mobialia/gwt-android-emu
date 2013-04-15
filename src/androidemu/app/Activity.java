@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class Activity extends Context implements EntryPoint {
 	
@@ -127,12 +128,23 @@ public class Activity extends Context implements EntryPoint {
 	public void finish() {
 		ActivityManager.finish();
 	}
-	
+
 	public void setContentView(TextResource content) {
 		contentPanel = new HTMLPanel(content.getText());
 		RootPanel.get("activity_div").add(contentPanel);
 	}
-	
+
+	public void setContentView(Widget widget) {
+		contentPanel = new HTMLPanel("");
+		contentPanel.getElement().appendChild(widget.getElement());
+		RootPanel.get("activity_div").add(contentPanel);
+	}
+
+	public void setContentView(HTMLPanel htmlPanel) {
+		contentPanel = htmlPanel;
+		RootPanel.get("activity_div").add(contentPanel);
+	}
+
 	protected void onSaveInstanceState(Bundle outState) {
 	}
 	
@@ -153,7 +165,7 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public View findViewById(String id) {
-		return ViewFactory.findViewById(id);
+		return ViewFactory.createViewFromElement(contentPanel.getElementById(id));
 	}
 
 	public Intent getIntent() {
