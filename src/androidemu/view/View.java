@@ -12,11 +12,19 @@ public class View {
 		this.element = element;
 	}
 	
+	public String getId() {
+		return element.getId();
+	}
+
 	public View findViewById(String id) {
 		return ViewFactory.createViewFromElement(DOM.getElementById(id));
 	}
 
 	public Panel asPanel() {
 		return new HTMLPanel(element.getInnerHTML());
+	}
+
+	public static interface OnClickListener {
+		abstract void onClick(View v);
 	}
 }
