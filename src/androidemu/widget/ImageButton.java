@@ -8,4 +8,8 @@ public class ImageButton extends Button {
 		super(element);
 	}
 
+	public void setImageResource(String image) {
+		element.setAttribute("src", image);
+	}
+
 }
