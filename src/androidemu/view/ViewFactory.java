@@ -10,16 +10,11 @@ import androidemu.widget.ScrollView;
 import androidemu.widget.Spinner;
 import androidemu.widget.TextView;
 
-import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.dom.client.Element;
 
 public class ViewFactory {
 
 	public static View createViewFromElement(Element element) {
-		if (element == null) {
-			Window.alert("View not found");
-			return null;
-		}
 
 		if (element.getNodeName() == "DIV") {
 			String className = element.getAttribute("class").toUpperCase();

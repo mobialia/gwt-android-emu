@@ -2,7 +2,7 @@ package androidemu.widget;
 
 import androidemu.view.View;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 public class RadioButton extends View {
 

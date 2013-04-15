@@ -2,9 +2,9 @@ package androidemu.widget;
 
 import androidemu.view.View;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Element;
 
 public class Button extends View {
 

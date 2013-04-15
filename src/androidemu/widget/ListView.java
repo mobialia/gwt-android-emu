@@ -3,7 +3,7 @@ package androidemu.widget;
 import androidemu.view.View;
 import androidemu.widget.AdapterView.OnItemClickListener;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 public class ListView extends View {
 
