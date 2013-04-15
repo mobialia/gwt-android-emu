@@ -2,7 +2,7 @@ package androidemu.widget;
 
 import androidemu.view.View;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class EditText extends View {
@@ -15,7 +15,7 @@ public class EditText extends View {
 		TextBox.wrap(element).setText(text);
 	}
 
-	public Object getText() {
+	public String getText() {
 		return TextBox.wrap(element).getText();
 	}
 }
