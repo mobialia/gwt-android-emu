@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -95,7 +96,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 		
 		if (builder.view != null) {
-			vp.add(builder.view.asPanel());
+			HTMLPanel panel = new HTMLPanel("");
+			panel.getElement().appendChild(builder.view.element);
+			vp.add(panel);
 		}
 
 		Button okButton = null;
