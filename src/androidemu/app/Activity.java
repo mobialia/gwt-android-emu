@@ -27,13 +27,22 @@ public class Activity extends Context implements EntryPoint {
 	public static final int RESULT_FIRST_USER = 1;
 	public static final int RESULT_OK = -1;
 
+	int status = 0;
+	int targetStatus = 0;
+
 	String title;
 	Menu menu;
 	HTMLPanel contentPanel;
 	FlowPanel menuPanel;
+
 	Integer requestCode;
 	int resultCode = RESULT_OK;
 	Intent resultData;
+
+	// Data when we return from another activity
+	Integer returnRequestCode;
+	int returnResultCode;
+	Intent returnResultData;
 
 	// TODO REMOVE ???
 	public void onModuleLoad() {
@@ -128,7 +137,7 @@ public class Activity extends Context implements EntryPoint {
 	}
 	
 	public void finish() {
-		ActivityManager.finish();
+		ActivityManager.finish(this);
 	}
 
 	public void setContentView(TextResource content) {
