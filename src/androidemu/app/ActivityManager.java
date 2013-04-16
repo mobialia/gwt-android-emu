@@ -3,12 +3,15 @@ package androidemu.app;
 import java.util.Stack;
 
 import androidemu.content.Intent;
+import androidemu.util.Log;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 
 public class ActivityManager {
 	public static Stack<Activity> activityStack = new Stack<Activity>();
+
+	public final static String TAG = "ActivityManager";
 
 	public final static int STATUS_NEW = 0;
 	public final static int STATUS_CREATED = 1;
@@ -33,12 +36,14 @@ public class ActivityManager {
 	// }
 
 	public static void startActivity(Intent intent, Integer requestCode) {
+		Log.d(TAG, "startActivity " + intent.activity.getClass().getName());
 		activityStack.push(intent.activity);
 		intent.activity.requestCode = requestCode;
 		checkActivityStackDeferred();
 	}
 
 	public static void finish(final Activity activity) {
+		Log.d(TAG, "finish " + activity.getClass().getName());
 		activity.targetStatus = STATUS_DESTROYED;
 		checkActivityStackDeferred();
 	}
@@ -87,7 +92,11 @@ public class ActivityManager {
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			@Override
 			public void execute() {
-				checkActivityStack();
+				try {
+					checkActivityStack();
+				} catch (Exception e) {
+					Log.e(TAG, e.getMessage());
+				}
 			}
 		});
 	}
