@@ -3,63 +3,129 @@ package androidemu.app;
 import java.util.Stack;
 
 import androidemu.content.Intent;
+import androidemu.util.Log;
 
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.History;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 
 public class ActivityManager {
 	public static Stack<Activity> activityStack = new Stack<Activity>();
 
-	static {
-		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+	public final static int STATUS_NEW = 0;
+	public final static int STATUS_CREATED = 1;
+	public final static int STATUS_RESUMED = 2;
+	public final static int STATUS_PAUSED = 3;
+	public final static int STATUS_DESTROYED = 4;
 
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
-				// We manage only back press
-				if (activityStack.size() > 1) {
-					// If is back, must match the previous activity in the stack
-					if (event.getValue().equals(activityStack.get(activityStack.size() - 2).getClass().getName())) {
-						finishImpl();
-					}
+	// static {
+	// History.addValueChangeHandler(new ValueChangeHandler<String>() {
+	// @Override
+	// public void onValueChange(ValueChangeEvent<String> event) {
+	// // TODO We manage only back press
+	// if (activityStack.size() > 1) {
+	// // If is back, must match the previous activity in the stack
+	// if (event.getValue().equals(activityStack.get(activityStack.size() -
+	// 2).getClass().getName())) {
+	// finish(activityStack.peek());
+	// }
+	// }
+	// }
+	// });
+	// }
+
+	public static void startActivity(Intent intent, Integer requestCode) {
+		Log.d("TAG", "startActivity " + intent.activity.getClass().getName());
+		activityStack.push(intent.activity);
+		intent.activity.requestCode = requestCode;
+		checkActivityStackDeferred();
+	}
+
+	public static void finish(final Activity activity) {
+		Log.d("TAG", "finish " + activity.getClass().getName());
+		activity.targetStatus = STATUS_DESTROYED;
+		checkActivityStackDeferred();
+	}
+
+	private static void advanceStatus(Activity activity) {
+		while (activity.status < activity.targetStatus) {
+			switch (activity.status) {
+			case STATUS_NEW:
+				activity.onCreate(null);
+				activity.status = STATUS_CREATED;
+				break;
+			case STATUS_CREATED:
+				// Add to browser history
+				// History.newItem(activity.getClass().getName());
+
+				activity.onResume();
+				activity.showMenu();
+				activity.status = STATUS_RESUMED;
+				break;
+			case STATUS_RESUMED:
+				activity.hideMenu();
+				activity.onPause();
+				activity.status = STATUS_PAUSED;
+				break;
+			case STATUS_PAUSED:
+				activity.onDestroy();
+				activity.status = STATUS_DESTROYED;
+				activityStack.remove(activity);
+			}
+		}
+		while (activity.status > activity.targetStatus) {
+			switch (activity.status) {
+			case STATUS_PAUSED:
+				if (activity.returnRequestCode != null) {
+					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 				}
+				activity.onResume();
+				activity.showMenu();
+				activity.status = STATUS_RESUMED;
+				break;
+			}
+		}
+	}
+
+	private static void checkActivityStackDeferred() {
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			@Override
+			public void execute() {
+				checkActivityStack();
 			}
 		});
 	}
 
-	public static void startActivity(Intent intent, Integer requestCode) {
-		if (!activityStack.empty()) {
-			Activity currentActivity = activityStack.peek();
-			currentActivity.hideMenu();
-			currentActivity.onPause();
+	private static void checkActivityStack() {
+		// Finish Activities (and store result codes in caller activities)
+		for (int i = 0; i < activityStack.size(); i++) {
+			Activity act = activityStack.get(i);
+			if (act.targetStatus == STATUS_DESTROYED) {
+				if (i - 1 >= 0) {
+					// Save return data in caller activity
+					Activity callerActivity = activityStack.get(i - 1);
+					callerActivity.returnRequestCode = act.requestCode;
+					callerActivity.returnResultCode = act.resultCode;
+					callerActivity.returnResultData = act.resultData;
+				}
+				// TODO deleted element while transversing the list
+				advanceStatus(act);
+			}
 		}
 
-		// Save browser history
-		History.newItem(intent.activity.getClass().getName());
-		activityStack.push(intent.activity);
-		intent.activity.requestCode = requestCode;
-		intent.activity.onCreate(null);
-		intent.activity.onResume();
-		intent.activity.showMenu();
-	}
-
-	public static void finish() {
-		History.back();
-	}
-
-	private static void finishImpl() {
-		Activity closingActivity = activityStack.pop();
-		closingActivity.hideMenu();
-		closingActivity.onPause();
-		closingActivity.onDestroy();
-		Integer requestCode = closingActivity.requestCode;
-
-		Activity resumedActivity = activityStack.peek();
-		if (requestCode != null) {
-			resumedActivity.onActivityResult(requestCode, closingActivity.resultCode, closingActivity.resultData);
+		// Pause all activities not shown
+		for (int i = 0; i < activityStack.size() - 1; i++) {
+			Activity act = activityStack.get(i);
+			if (act.status != STATUS_PAUSED) {
+				act.targetStatus = STATUS_PAUSED;
+				advanceStatus(act);
+			}
 		}
-		resumedActivity.onResume();
-		resumedActivity.showMenu();
-	}
 
+		// Start activity to show
+		Activity activityToShow = activityStack.peek();
+		if (activityToShow.status != STATUS_RESUMED) {
+			activityToShow.targetStatus = STATUS_RESUMED;
+			advanceStatus(activityToShow);
+		}
+	}
 }
