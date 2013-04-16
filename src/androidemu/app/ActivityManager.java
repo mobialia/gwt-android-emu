@@ -48,6 +48,17 @@ public class ActivityManager {
 		checkActivityStackDeferred();
 	}
 
+	public static void back() {
+		activityStack.peek().onBackPressed();
+		if (activityStack.size() > 1) {
+			finish(activityStack.peek());
+		}
+	}
+
+	public static void openOptionsMenu() {
+		activityStack.peek().openOptionsMenu();
+	}
+
 	private static void advanceStatus(Activity activity) {
 		while (activity.status < activity.targetStatus) {
 			switch (activity.status) {
@@ -60,7 +71,7 @@ public class ActivityManager {
 				// History.newItem(activity.getClass().getName());
 
 				activity.onResume();
-				activity.showMenu();
+				activity.createMenu();
 				activity.status = STATUS_RESUMED;
 				break;
 			case STATUS_RESUMED:
@@ -81,7 +92,6 @@ public class ActivityManager {
 					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 				}
 				activity.onResume();
-				activity.showMenu();
 				activity.status = STATUS_RESUMED;
 				break;
 			}
@@ -134,4 +144,5 @@ public class ActivityManager {
 			advanceStatus(activityToShow);
 		}
 	}
+
 }
