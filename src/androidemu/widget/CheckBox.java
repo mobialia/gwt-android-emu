@@ -3,6 +3,7 @@ package androidemu.widget;
 import androidemu.view.View;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.InputElement;
 
 public class CheckBox extends View {
 
@@ -11,12 +12,10 @@ public class CheckBox extends View {
 	}
 
 	public boolean isChecked() {
-		// TODO
-		return false;
+		return InputElement.as(element).isChecked();
 	}
 
-	public void setChecked(boolean value) {
-		// TODO
+	public void setChecked(boolean checked) {
+		InputElement.as(element).setChecked(checked);
 	}
-
 }
