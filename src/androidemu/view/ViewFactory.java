@@ -1,5 +1,6 @@
 package androidemu.view;
 
+import androidemu.util.Log;
 import androidemu.widget.Button;
 import androidemu.widget.CheckBox;
 import androidemu.widget.EditText;
@@ -13,6 +14,8 @@ import androidemu.widget.TextView;
 import com.google.gwt.dom.client.Element;
 
 public class ViewFactory {
+
+	static final String TAG = "ViewFactory";
 
 	public static View createViewFromElement(Element element) {
 
@@ -30,6 +33,8 @@ public class ViewFactory {
 			String type = element.getAttribute("type").toUpperCase();
 			if (type.equals("TEXT")) {
 				return new EditText(element);
+			} else if (type.equals("PASSWORD")) {
+				return new EditText(element);
 			} else if (type.equals("BUTTON")) {
 				return new Button(element);
 			} else if (type.equals("RADIO")) {
@@ -44,6 +49,37 @@ public class ViewFactory {
 		}
 
 		return new View(element);
+	}
+
+	public static Element getElementById(Element element, String id) {
+		if (id.equals(element.getId())) {
+			return element;
+		}
+		Element child = element.getFirstChildElement();
+		if (child != null) {
+			Element out = getElementById(child, id);
+			if (out != null) {
+				return out;
+			}
+		}
+		Element next = element.getNextSiblingElement();
+		if (next != null) {
+			Element out = getElementById(next, id);
+			if (out != null) {
+				return out;
+			}
+		}
+		return null;
+	}
+
+	public static View findViewById(Element element, String id) {
+		Element elementFound = ViewFactory.getElementById(element, id);
+
+		if (elementFound == null) {
+			Log.e(TAG, "View not found: " + id);
+			return null;
+		}
+		return ViewFactory.createViewFromElement(elementFound);
 	}
 
 }

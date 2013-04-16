@@ -10,11 +10,9 @@ import androidemu.view.View;
 import androidemu.view.ViewFactory;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -22,7 +20,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Activity extends Context implements EntryPoint {
-	
+
+	public static final String TAG = "Activity";
+
 	public static final int RESULT_CANCELED = 0;
 	public static final int RESULT_FIRST_USER = 1;
 	public static final int RESULT_OK = -1;
@@ -176,13 +176,7 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public View findViewById(String id) {
-		Element elementFound = contentPanel.getElementById(id);
-
-		if (elementFound == null) {
-			Window.alert("View not found: " + id);
-			return null;
-		}
-		return ViewFactory.createViewFromElement(elementFound);
+		return ViewFactory.findViewById(contentPanel.getElement(), id);
 	}
 
 	public Intent getIntent() {
