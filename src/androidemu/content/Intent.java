@@ -17,10 +17,11 @@ public class Intent {
 
 	}
 	
-	public Intent(Context ctx, Class<?> intentClass) {
-		this.ctx = ctx;
-		this.intentClass = intentClass;
-	}
+	// public Intent(Context ctx, final Class<?> intentClass) {
+	// this.ctx = ctx;
+	// this.intentClass = intentClass;
+	// this.activity = (Activity) GWT.create(intentClass);
+	// }
 
 	public Intent(Context ctx, Object activity) {
 		this.ctx = ctx;
