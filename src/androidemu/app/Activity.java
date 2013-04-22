@@ -173,9 +173,7 @@ public class Activity extends Context implements EntryPoint {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	}
 
-	// TODO Call this method on Browser Back Press
 	public void onBackPressed() {
-
 	}
 
 	public View findViewById(String id) {
