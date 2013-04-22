@@ -79,3 +79,21 @@
 .dialogButton:active {
 	background-color: rgba(255, 255, 255, 0.8);	
 }
+
+.preferencesActivity {
+	overflow: auto; 
+	
+	color: #ffffff;
+	font-size: 19px;
+	font-weight: bold;
+	
+	border: none;
+	border-radius: 1em;
+	margin: 0;
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.8);	
+}
+
+.preferencesActivityContent {
+	margin: 0 auto;
+}

@@ -16,4 +16,8 @@ public interface Style extends CssResource {
 	String dialogButtons();
 
 	String dialogButton();
+
+	String preferencesActivity();
+
+	String preferencesActivityContent();
 }
