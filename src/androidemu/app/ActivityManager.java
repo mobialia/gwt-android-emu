@@ -7,10 +7,12 @@ import androidemu.util.Log;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class ActivityManager {
-	public static Stack<Activity> activityStack = new Stack<Activity>();
-
 	public final static String TAG = "ActivityManager";
 
 	public final static int STATUS_NEW = 0;
@@ -18,6 +20,9 @@ public class ActivityManager {
 	public final static int STATUS_RESUMED = 2;
 	public final static int STATUS_PAUSED = 3;
 	public final static int STATUS_DESTROYED = 4;
+
+	public static Stack<Activity> activityStack = new Stack<Activity>();
+	static Button backButton, menuButton;
 
 	// static {
 	// History.addValueChangeHandler(new ValueChangeHandler<String>() {
@@ -34,6 +39,27 @@ public class ActivityManager {
 	// }
 	// });
 	// }
+
+	public static void setup() {
+		if (RootPanel.get("BackButton") != null) {
+			backButton = Button.wrap(RootPanel.get("BackButton").getElement());
+			backButton.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					ActivityManager.back();
+				}
+			});
+		}
+		if (RootPanel.get("MenuButton") != null) {
+			menuButton = Button.wrap(RootPanel.get("MenuButton").getElement());
+			menuButton.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					ActivityManager.openOptionsMenu();
+				}
+			});
+		}
+	}
 
 	public static void startActivity(Intent intent, Integer requestCode) {
 		Log.d(TAG, "startActivity " + intent.activity.getClass().getName());
@@ -72,6 +98,7 @@ public class ActivityManager {
 
 				activity.onResume();
 				activity.createMenu();
+				checkButtonsVisibility(activity);
 				activity.status = STATUS_RESUMED;
 				break;
 			case STATUS_RESUMED:
@@ -92,9 +119,16 @@ public class ActivityManager {
 					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 				}
 				activity.onResume();
+				checkButtonsVisibility(activity);
 				activity.status = STATUS_RESUMED;
 				break;
 			}
+		}
+	}
+
+	private static void checkButtonsVisibility(Activity activity) {
+		if (menuButton != null) {
+			menuButton.setVisible(activity.menu != null && activity.menu.menuItems.size() > 0);
 		}
 	}
 
