@@ -4,7 +4,6 @@ import androidemu.Res;
 import androidemu.content.Context;
 import androidemu.content.Intent;
 import androidemu.os.Bundle;
-import androidemu.util.Log;
 import androidemu.view.Menu;
 import androidemu.view.MenuItem;
 import androidemu.view.View;
@@ -29,6 +28,8 @@ public class Activity extends Context implements EntryPoint {
 	public static final int RESULT_FIRST_USER = 1;
 	public static final int RESULT_OK = -1;
 
+	public static final String ACTIVITY_ID = "activity";
+
 	int status = 0;
 	int targetStatus = 0;
 
@@ -47,23 +48,9 @@ public class Activity extends Context implements EntryPoint {
 	Intent returnResultData;
 
 	public void onModuleLoad() {
-		if (RootPanel.get("BackButton") != null) {
-			Button.wrap(RootPanel.get("BackButton").getElement()).addClickHandler(new ClickHandler() {
-				@Override
-				public void onClick(ClickEvent event) {
-					ActivityManager.back();
-				}
-			});
-		}
-		if (RootPanel.get("MenuButton") != null) {
-			Button.wrap(RootPanel.get("MenuButton").getElement()).addClickHandler(new ClickHandler() {
-				@Override
-				public void onClick(ClickEvent event) {
-					ActivityManager.openOptionsMenu();
-				}
-			});
-		}
 		Res.R.style().ensureInjected();
+
+		ActivityManager.setup();
 		startActivity(new Intent(this, this));
 	}
 
@@ -85,7 +72,7 @@ public class Activity extends Context implements EntryPoint {
 
 	protected void onDestroy() {
 		if (contentPanel != null) {
-			RootPanel.get("activity_div").remove(contentPanel);
+			RootPanel.get(ACTIVITY_ID).remove(contentPanel);
 		}
 	}
 
@@ -157,18 +144,18 @@ public class Activity extends Context implements EntryPoint {
 
 	public void setContentView(TextResource content) {
 		contentPanel = new HTMLPanel(content.getText());
-		RootPanel.get("activity_div").add(contentPanel);
+		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
 
 	public void setContentView(Widget widget) {
 		contentPanel = new HTMLPanel("");
 		contentPanel.getElement().appendChild(widget.getElement());
-		RootPanel.get("activity_div").add(contentPanel);
+		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
 
 	public void setContentView(HTMLPanel htmlPanel) {
 		contentPanel = htmlPanel;
-		RootPanel.get("activity_div").add(contentPanel);
+		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
 
 	protected void onSaveInstanceState(Bundle outState) {
