@@ -127,6 +127,9 @@ public class ActivityManager {
 	}
 
 	private static void checkButtonsVisibility(Activity activity) {
+		if (backButton != null) {
+			backButton.setVisible(activityStack.size() > 1);
+		}
 		if (menuButton != null) {
 			menuButton.setVisible(activity.menu != null && activity.menu.menuItems.size() > 0);
 		}
