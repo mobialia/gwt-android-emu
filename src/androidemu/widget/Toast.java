@@ -15,7 +15,7 @@ public class Toast {
 	public final static int LENGTH_SHORT = 0;
 
 	String message;
-	int gravity;
+	int gravity = Gravity.BOTTOM;
 	int duration;
 
 	public static Toast makeText(Context context, String message, int duration) {
@@ -36,11 +36,14 @@ public class Toast {
 				int left = (Window.getClientWidth() - offsetWidth) / 2;
 				int top = 0;
 				switch (gravity) {
-					case Gravity.TOP:
-						top = (Window.getClientHeight() - offsetHeight) / 10;
+				case Gravity.TOP:
+					top = (Window.getClientHeight() - offsetHeight) / 10;
 					break;
-					case Gravity.CENTER:
-						top = (Window.getClientHeight() - offsetHeight) / 2;
+				case Gravity.CENTER:
+					top = (Window.getClientHeight() - offsetHeight) / 2;
+					break;
+				case Gravity.BOTTOM:
+					top = 9 * (Window.getClientHeight() - offsetHeight) / 10;
 					break;
 				}
 				panel.setPopupPosition(left, top);
