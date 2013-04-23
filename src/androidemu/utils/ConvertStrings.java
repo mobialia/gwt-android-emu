@@ -110,10 +110,9 @@ public class ConvertStrings {
 	public static void main(String args[]) {
 
 		ConvertStrings cs = new ConvertStrings();
-		cs.processFile("/home/rui/workspace/android_chess_common/res/values/strings.xml");
-		cs.processFile("/home/rui/workspace/android_chess_common/res/values/arrays.xml");
-		cs.processFile("/home/rui/workspace/android_chess/res/values/strings.xml");
-		cs.processFile("/home/rui/workspace/android_chess/res/values/arrays.xml");
+		for (int i = 1; i < args.length; i++) {
+			cs.processFile(args[i]);
+		}
 
 		cs.output();
 	}
