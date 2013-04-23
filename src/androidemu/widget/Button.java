@@ -3,8 +3,8 @@ package androidemu.widget;
 import androidemu.view.View;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 public class Button extends View {
 
@@ -13,13 +13,13 @@ public class Button extends View {
 	}
 
 	public void setOnClickListener(final OnClickListener listener) {
-		com.google.gwt.user.client.ui.Button.wrap(element).addClickHandler(new ClickHandler() {
-
+		Event.setEventListener(element, new EventListener() {
 			@Override
-			public void onClick(ClickEvent event) {
+			public void onBrowserEvent(Event event) {
 				listener.onClick(Button.this);
 			}
 		});
+		Event.sinkEvents(element, Event.ONCLICK);
 	}
 
 }
