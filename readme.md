@@ -3,6 +3,8 @@ GWT Android Emu
 
 This library emulates some Android APIs over GWT. The idea is to allow porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
 
+The main difficult is that all the app interface must be redesigned with the GWT UiBinder (or HTML), but we can keep a lot of Java code in common between the Android App and the HTML5 App.
+
 The components that this library emulates are:
 
 * Activities
