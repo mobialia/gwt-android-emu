@@ -29,6 +29,8 @@ public class ViewFactory {
 				}
 				return new TextView(element);
 			}
+		} else if (element.getNodeName() == "BUTTON") {
+			return new Button(element);
 		} else if (element.getNodeName() == "INPUT") {
 			String type = element.getAttribute("type").toUpperCase();
 			if (type.equals("TEXT")) {
@@ -48,6 +50,7 @@ public class ViewFactory {
 			return new Spinner(element);
 		}
 
+		Log.d(TAG, "Not found an specific view: " + element.getNodeName());
 		return new View(element);
 	}
 
