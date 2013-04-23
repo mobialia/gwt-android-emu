@@ -1,11 +1,13 @@
 GWT Android Emu
 ===============
 
-This library emulates some Android APIs over GWT.
+This library emulates some Android APIs over GWT. The idea is to allow porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
+
+The components that this library emulates are:
 
 * Activities
 * Menu and MenuItems
-* AlertDialogs (partial)
+* AlertDialogs
 * Toasts
 * SharedPreferences
 * Handlers and Messages
@@ -14,22 +16,12 @@ This library emulates some Android APIs over GWT.
 * SystemClock
 * Views (findViewById)
 
-This is a work in progress in continuous evolution...
-
-At Mobialia we used this library to port some of our Android apps to GWT:
-
-* Chess: http://chess.mobialia.com
-* Connect4: http://connect4.mobialia.com
-* Slot Racing: http://slot.mobialia.com
-
-It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
-
 The "android." package names are renamed to "androidemu.", you need to make a "Source->Organize imports" in Eclipse.
 
-Usage:
+This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT. It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
-	<module ...>
-	...
-	<inherits name="androidemu" />
+Check the Demo project at http://github.com/albertoruibal/gwt_android_emu_demo to see some usage examples.
+
+We also include a tool ConvertStrings (in the package utils) to convert from ant Android XML file to GWT Class + Key-properties files
 
 It's released under the MIT License, so feel free to use it anywhere. 
