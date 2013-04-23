@@ -62,14 +62,14 @@ public class ActivityManager {
 	}
 
 	public static void startActivity(Intent intent, Integer requestCode) {
-		Log.d(TAG, "startActivity " + intent.activity.getClass().getName());
+		Log.d(TAG, "Start activity " + intent.activity.getClass().getName());
 		activityStack.push(intent.activity);
 		intent.activity.requestCode = requestCode;
 		checkActivityStackDeferred();
 	}
 
 	public static void finish(final Activity activity) {
-		Log.d(TAG, "finish " + activity.getClass().getName());
+		Log.d(TAG, "Finish activity " + activity.getClass().getName());
 		activity.targetStatus = STATUS_DESTROYED;
 		checkActivityStackDeferred();
 	}
