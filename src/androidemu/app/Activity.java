@@ -35,7 +35,7 @@ public class Activity extends Context implements EntryPoint {
 
 	String title;
 	Menu menu;
-	HTMLPanel contentPanel;
+	Widget contentPanel;
 	private PopupPanel menuPanel;
 
 	Integer requestCode;
@@ -147,13 +147,7 @@ public class Activity extends Context implements EntryPoint {
 		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
 
-	public void setContentView(Widget widget) {
-		contentPanel = new HTMLPanel("");
-		contentPanel.getElement().appendChild(widget.getElement());
-		RootPanel.get(ACTIVITY_ID).add(contentPanel);
-	}
-
-	public void setContentView(HTMLPanel htmlPanel) {
+	public void setContentView(Widget htmlPanel) {
 		contentPanel = htmlPanel;
 		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
