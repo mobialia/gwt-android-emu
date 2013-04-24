@@ -135,7 +135,9 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public Context getApplicationContext() {
-		return null;
+		// not very correct, but it's a context and at the moment we do not
+		// differentiate among contexts
+		return this;
 	}
 
 	public void finish() {
