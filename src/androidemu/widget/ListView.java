@@ -1,5 +1,7 @@
 package androidemu.widget;
 
+import androidemu.database.DataSetObserver;
+import androidemu.util.Log;
 import androidemu.view.View;
 import androidemu.widget.AdapterView.OnItemClickListener;
 
@@ -7,11 +9,24 @@ import com.google.gwt.dom.client.Element;
 
 public class ListView extends View {
 
-	Adapter adapter;
+	Adapter mAdapter;
 	OnItemClickListener listener;
+	DataSetObserver mDataSetObserver;
 
 	public ListView(Element element) {
 		super(element);
+
+		mDataSetObserver = new DataSetObserver() {
+			@Override
+			public void onChanged() {
+				ListView.this.draw();
+			}
+
+			@Override
+			public void onInvalidated() {
+				ListView.this.draw();
+			}
+		};
 	}
 
 	public void setOnItemClickListener(OnItemClickListener listener) {
@@ -19,10 +34,29 @@ public class ListView extends View {
 	}
 
 	public void setAdapter(Adapter adapter) {
-		this.adapter = adapter;
+
+		if (mAdapter != null && mDataSetObserver != null) {
+			mAdapter.unregisterDataSetObserver(mDataSetObserver);
+		}
+
+		this.mAdapter = adapter;
+		mAdapter.registerDataSetObserver(mDataSetObserver);
 	}
 
 	public void setSelection(int index) {
 		// TODO
+	}
+
+	private void draw() {
+		Log.d("ListView", "draw");
+
+		while (element.getFirstChild() != null) {
+			element.removeChild(element.getFirstChild());
+		}
+
+		for (int i = 0; i < mAdapter.getCount(); i++) {
+			View v = mAdapter.getView(i, null, null);
+			element.appendChild(v.element);
+		}
 	}
 }
