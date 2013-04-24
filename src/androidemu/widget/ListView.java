@@ -6,6 +6,8 @@ import androidemu.view.View;
 import androidemu.widget.AdapterView.OnItemClickListener;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 public class ListView extends View {
 
@@ -55,7 +57,20 @@ public class ListView extends View {
 		}
 
 		for (int i = 0; i < mAdapter.getCount(); i++) {
-			View v = mAdapter.getView(i, null, null);
+			final View v = mAdapter.getView(i, null, null);
+			final int index = i;
+			final long id = mAdapter.getItemId(i);
+
+			Event.setEventListener(element, new EventListener() {
+				@Override
+				public void onBrowserEvent(Event event) {
+					if (listener != null) {
+						listener.onItemClick(null, v, index, id);
+					}
+				}
+			});
+			Event.sinkEvents(v.element, Event.ONCLICK);
+
 			element.appendChild(v.element);
 		}
 	}
