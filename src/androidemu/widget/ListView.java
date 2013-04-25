@@ -1,7 +1,6 @@
 package androidemu.widget;
 
 import androidemu.database.DataSetObserver;
-import androidemu.util.Log;
 import androidemu.view.View;
 import androidemu.widget.AdapterView.OnItemClickListener;
 
@@ -50,8 +49,6 @@ public class ListView extends View {
 	}
 
 	private void draw() {
-		Log.d("ListView", "draw");
-
 		while (element.getFirstChild() != null) {
 			element.removeChild(element.getFirstChild());
 		}
