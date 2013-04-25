@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class AlertDialog extends Dialog implements DialogInterface {
 
 	private Label titleLabel, messageLabel;
-	DialogInterface.OnClickListener positiveListener, negativeListener, neutralListener;
+	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
 		View view;
@@ -76,6 +76,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	public AlertDialog(Builder builder) {
 		super(builder.cancelable);
 
+		this.itemsListener = builder.itemsListener;
 		this.positiveListener = builder.positiveListener;
 		this.negativeListener = builder.negativeListener;
 
@@ -92,7 +93,25 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		vp.add(messageLabel);
 		
 		if (builder.items != null) {
-			// TODO
+			int count = 0;
+			for (CharSequence item : builder.items) {
+				final int countFinal = count;
+				count++;
+
+				Button button = new Button(item.toString());
+				button.setStyleName(Res.R.style().dialogItem());
+				button.addClickHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+						AlertDialog.this.dismiss();
+						if (itemsListener != null) {
+							itemsListener.onClick(AlertDialog.this, countFinal);
+						}
+					}
+				});
+				vp.add(button);
+			}
 		}
 		
 		if (builder.view != null) {
