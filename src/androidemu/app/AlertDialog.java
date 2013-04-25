@@ -11,10 +11,12 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 
+	VerticalPanel contentPanel;
 	private Label titleLabel, messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
@@ -88,9 +90,14 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			vp.add(titleLabel);
 		}
 
-		messageLabel = new Label(builder.message != null ? builder.message : "");
-		messageLabel.setStyleName(Res.R.style().dialogMessage());
-		vp.add(messageLabel);
+		contentPanel = new VerticalPanel();
+		vp.add(contentPanel);
+
+		if (builder.message != null) {
+			messageLabel = new Label(builder.message);
+			messageLabel.setStyleName(Res.R.style().dialogMessage());
+			contentPanel.add(messageLabel);
+		}
 		
 		if (builder.items != null) {
 			int count = 0;
@@ -110,14 +117,14 @@ public class AlertDialog extends Dialog implements DialogInterface {
 						}
 					}
 				});
-				vp.add(button);
+				contentPanel.add(button);
 			}
 		}
 		
 		if (builder.view != null) {
-			HTMLPanel panel = new HTMLPanel("");
-			panel.getElement().appendChild(builder.view.element);
-			vp.add(panel);
+			HTMLPanel htmlPanel = new HTMLPanel("");
+			htmlPanel.getElement().appendChild(builder.view.element);
+			contentPanel.add(htmlPanel);
 		}
 
 		Button okButton = null;
@@ -170,13 +177,22 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			FlowPanel buttonsPanel = new FlowPanel();
 			buttonsPanel.setStyleName(Res.R.style().dialogButtons());
 			if (cancelButton != null) {
-				buttonsPanel.add(cancelButton);
+				SimplePanel panel = new SimplePanel();
+				panel.setStyleName(Res.R.style().dialogButtonContainer());
+				panel.add(cancelButton);
+				buttonsPanel.add(panel);
 			}
 			if (neutralButton != null) {
-				buttonsPanel.add(neutralButton);
+				SimplePanel panel = new SimplePanel();
+				panel.setStyleName(Res.R.style().dialogButtonContainer());
+				panel.add(neutralButton);
+				buttonsPanel.add(panel);
 			}
 			if (okButton != null) {
-				buttonsPanel.add(okButton);
+				SimplePanel panel = new SimplePanel();
+				panel.setStyleName(Res.R.style().dialogButtonContainer());
+				panel.add(okButton);
+				buttonsPanel.add(panel);
 			}
 			vp.add(buttonsPanel);
 		}
@@ -191,7 +207,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	}
 	
 	public void setMessage(String message) {
-		if (messageLabel != null) {
+		if (messageLabel == null) {
+			messageLabel = new Label(message);
+			messageLabel.setStyleName(Res.R.style().dialogMessage());
+			contentPanel.add(messageLabel);
+		} else {
 			messageLabel.setText(message);
 		}
 	}

@@ -71,7 +71,7 @@
 	color: #ffffff;
 	font-size: 19px;
 	font-weight: normal;
-	margin: 10px;
+	padding: 2em;
 	text-align: center;
 }
 
@@ -101,37 +101,41 @@
 }
 
 .dialogButtons {
-	text-align: center;
-	padding-top: 15px;
+	display: table;
+	width: 100%;
+	padding-top: 5px;
+}
+
+.dialogButtonContainer {
+	display: table-cell;
+}
+
+.dialogButtonContainer+.dialogButtonContainer {
+	border-left: 1px #474747 solid;
 }
 
 .dialogButton {
+	color: white;
+	text-align: center;
 	font-size: 17px;
-	margin: 0px auto;
+	margin: 0;
 	padding: 12px 40px;
+	min-width: 150px;
+	width: 100%;
 
 	border-top: 1px solid #474747;
 	border-right: 0px;
 	border-bottom: 0px;
 	border-left: 0px;
 	border-radius: 0px;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.25);
-
-	min-width: 150px;
 
 	background: rgba(50, 50, 50, 1);
-	color: white;
-	text-align: center;
 }
 
 .dialogButton:focus,
 .dialogButton:hover
 {
 	background: #33b5e5;
-}
-
-.dialogButton+.dialogButton {
-	border-left: 1px #474747 solid;
 }
 
 .button {
