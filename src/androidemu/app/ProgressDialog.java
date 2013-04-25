@@ -24,7 +24,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 
 		VerticalPanel vp = new VerticalPanel();
 
-		if (title != null) {
+		if (title != null && !"".equals(title)) {
 			titleLabel = new Label(title);
 			titleLabel.setStyleName(Res.R.style().dialogTitle());
 			vp.add(titleLabel);
@@ -32,7 +32,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 
 		if (message != null) {
 			messageLabel = new Label(message);
-			titleLabel.setStyleName(Res.R.style().dialogMessage());
+			messageLabel.setStyleName(Res.R.style().dialogMessage());
 			vp.add(messageLabel);
 		}
 		
