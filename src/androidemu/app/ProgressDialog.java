@@ -5,10 +5,12 @@ import androidemu.content.Context;
 import androidemu.content.DialogInterface;
 
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ProgressDialog extends Dialog implements DialogInterface {
 
+	private SimplePanel titleLabelContainer, messageLabelContainer;
 	private Label titleLabel, messageLabel;
 
 	public static ProgressDialog show(Context context, String title, String message, boolean indeterminate) {
@@ -24,28 +26,35 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 
 		VerticalPanel vp = new VerticalPanel();
 
-		if (title != null && !"".equals(title)) {
-			titleLabel = new Label(title);
-			titleLabel.setStyleName(Res.R.style().dialogTitle());
-			vp.add(titleLabel);
-		}
+		titleLabelContainer = new SimplePanel();
+		messageLabelContainer = new SimplePanel();
 
-		if (message != null) {
-			messageLabel = new Label(message);
-			messageLabel.setStyleName(Res.R.style().dialogMessage());
-			vp.add(messageLabel);
-		}
+		vp.add(titleLabelContainer);
+		vp.add(messageLabelContainer);
+
+		setTitle(title);
+		setMessage(message);
 		
 		popupPanel.add(vp);
 	}
 
 	public void setTitle(String title) {
-		if (messageLabel != null) {
-			messageLabel.setText(title);
+		if (titleLabel == null && title != null && !"".equals(title)) {
+			titleLabel = new Label();
+			titleLabel.setStyleName(Res.R.style().dialogTitle());
+			titleLabelContainer.add(titleLabel);
+		}
+		if (titleLabel != null) {
+			titleLabel.setText(title);
 		}
 	}
 	
 	public void setMessage(String message) {
+		if (messageLabel == null && message != null && !"".equals(message)) {
+			messageLabel = new Label();
+			messageLabel.setStyleName(Res.R.style().dialogMessage());
+			messageLabelContainer.add(messageLabel);
+		}
 		if (messageLabel != null) {
 			messageLabel.setText(message);
 		}

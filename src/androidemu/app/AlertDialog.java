@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 
+	SimplePanel titleLabelContainer;
 	VerticalPanel contentPanel;
 	private Label titleLabel, messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
@@ -84,20 +85,14 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		VerticalPanel vp = new VerticalPanel();
 
-		if (builder.title != null) {
-			titleLabel = new Label(builder.title);
-			titleLabel.setStyleName(Res.R.style().dialogTitle());
-			vp.add(titleLabel);
-		}
+		titleLabelContainer = new SimplePanel();
+		vp.add(titleLabelContainer);
 
 		contentPanel = new VerticalPanel();
 		vp.add(contentPanel);
 
-		if (builder.message != null) {
-			messageLabel = new Label(builder.message);
-			messageLabel.setStyleName(Res.R.style().dialogMessage());
-			contentPanel.add(messageLabel);
-		}
+		setTitle(builder.title);
+		setMessage(builder.message);
 		
 		if (builder.items != null) {
 			int count = 0;
@@ -201,17 +196,23 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	}
 
 	public void setTitle(String title) {
+		if (titleLabel == null && title != null && !"".equals(title)) {
+			titleLabel = new Label();
+			titleLabel.setStyleName(Res.R.style().dialogTitle());
+			titleLabelContainer.add(titleLabel);
+		}
 		if (titleLabel != null) {
 			titleLabel.setText(title);
 		}
 	}
 	
 	public void setMessage(String message) {
-		if (messageLabel == null) {
-			messageLabel = new Label(message);
+		if (messageLabel == null && message != null && !"".equals(message)) {
+			messageLabel = new Label();
 			messageLabel.setStyleName(Res.R.style().dialogMessage());
 			contentPanel.add(messageLabel);
-		} else {
+		}
+		if (messageLabel != null) {
 			messageLabel.setText(message);
 		}
 	}
