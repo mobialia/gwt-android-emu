@@ -1,60 +1,103 @@
+@external .menuitem;
+
 .menuItem {
 	display: block;
-	background-color: rgba(0, 0, 0, 0.8);
-	border: 2px solid #FFF;
-	border-radius: 1em;
+	background: rgba(40, 40, 40, 1);	
+
 	color: #FFF;
-	font-size: 19px;
-	font-weight: bold;
-	padding: 0.3em;
-	margin: 0.3em;
+	font-size: 21px;
+	font-weight: normal;
+	margin: 0px auto;
+	padding: 0.5em;
 	min-width: 300px;
-	width: 100%;
 	text-align: center;
-}
-
-.menuItem:active {
-	background-color: rgba(255, 255, 255, 0.8);	
-}
-
-.dialog {
-	color: #ffffff;
-	font-size: 19px;
-	font-weight: bold;
 	
-	border: none;
-	border-radius: 1em;
-	margin: 5px;
-	padding: 1em;
-	background: rgba(0, 0, 0, 0.8);	
+	border-top: 1px solid rgba(255,255,255,0.34);
+	border-right: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	box-shadow: 0;
+	border-radius: 0px;
+}
+
+.menuItem:focus,
+.menuItem:hover
+{
+	background: rgba(12, 45, 57, 1);
 }
 
 .toast {
 	color: #ffffff;
 	font-size: 19px;
-	font-weight: bold;
+	font-weight: normal;
 	
 	border: none;
-	border-radius: 1em;
-	margin: 5px;
+	border-radius: 0;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+	
+	margin: 1em;
 	padding: 1em;
-	background: rgba(0, 0, 0, 0.8);	
+	background: rgba(40, 40, 40, 1);	
+}
+
+.dialog {
+	color: #ffffff;
+	font-size: 19px;
+	font-weight: normal;
+	
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+	
+	margin: 1em;
+	padding: 0;
+	background: rgba(40, 40, 40, 1);	
 }
 
 .dialogTitle {
-	color: #ffffff;
+	color: #33b5e5;
 	font-size: 21px;
-	font-weight: bold;
-	margin: 10px;
-	text-decoration: underline;
-	text-align: center;
+	font-weight: normal;
+	text-align: left;
+	margin: 0px auto;
+	padding: 0.7em;
+	
+	border-bottom-color: #33b5e5;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
 }
 
 .dialogMessage {
 	color: #ffffff;
 	font-size: 19px;
+	font-weight: normal;
 	margin: 10px;
 	text-align: center;
+}
+
+.dialogItem {
+	display: block;
+	background: rgba(40, 40, 40, 1);	
+
+	color: #FFF;
+	font-size: 19px;
+	margin: 0px auto;
+	padding: 0.5em;
+	min-width: 300px;
+	text-align: center;
+	
+	border-top: 1px solid rgba(255,255,255,0.34);
+	border-right: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	border-radius: 0px;
+	box-shadow: 0;
+}
+
+.dialogItem:focus,
+.dialogItem:hover
+{
+	background: rgba(12, 45, 57, 1);
 }
 
 .dialogButtons {
@@ -63,21 +106,58 @@
 }
 
 .dialogButton {
-	background-color: rgba(0, 0, 0, 0.8);
-	border: 2px solid #FFF;
-	border-radius: 1em;
-	color: #FFF;
-	font-size: 19px;
-	font-weight: bold;
-	padding: 0.3em;
-	margin: 0.3em;
+	font-size: 17px;
+	margin: 0px auto;
+	padding: 12px 40px;
+
+	border-top: 1px solid #474747;
+	border-right: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	border-radius: 0px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+
 	min-width: 150px;
-	width: 160px;
+
+	background: rgba(50, 50, 50, 1);
+	color: white;
 	text-align: center;
 }
 
-.dialogButton:active {
-	background-color: rgba(255, 255, 255, 0.8);	
+.dialogButton:focus,
+.dialogButton:hover
+{
+	background: #33b5e5;
+}
+
+.dialogButton+.dialogButton {
+	border-left: 1px #474747 solid;
+}
+
+.button {
+	font-size: 16px;
+	margin: 5px;
+	padding: 12px 40px;
+	border-top: 1px solid rgba(255,255,255,0.34);
+	border-right: 1px solid rgba(0,0,0,0.04);
+	border-bottom: 1px solid rgba(0,0,0,0.43);
+	border-left: 1px solid rgba(0,0,0,0.04);
+	border-radius: 1px;
+
+	min-width: 150px;
+
+	box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+	background: rgba(50, 50, 50, 1);
+	color: white;
+	text-decoration: none;
+	text-align: center;
+}
+
+.button:focus,
+.button:hover
+{
+	box-shadow: 0 0 0 4px rgba(50,165,207,0.5);
+	outline:0;
 }
 
 .preferencesActivity {
@@ -85,7 +165,7 @@
 	
 	color: #ffffff;
 	font-size: 19px;
-	font-weight: bold;
+	font-weight: normal;
 	
 	border: none;
 	border-radius: 1em;
