@@ -13,16 +13,19 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 
-	SimplePanel titleLabelContainer;
-	VerticalPanel contentPanel;
+	private SimplePanel titleLabelContainer;
+	private VerticalPanel contentPanel;
 	private Label titleLabel, messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
 		View view;
+		Widget widget;
+
 		boolean cancelable = true;
 		String title;
 		String message;
@@ -68,6 +71,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		public void setView(View view) {
 			this.view = view;
+		}
+
+		public void setView(Widget widget) {
+			this.widget = widget;
 		}
 
 		public AlertDialog create() {
@@ -120,6 +127,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			HTMLPanel htmlPanel = new HTMLPanel("");
 			htmlPanel.getElement().appendChild(builder.view.element);
 			contentPanel.add(htmlPanel);
+		}
+
+		if (builder.widget != null) {
+			contentPanel.add(builder.widget);
 		}
 
 		Button okButton = null;
