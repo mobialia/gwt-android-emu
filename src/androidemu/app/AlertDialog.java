@@ -12,19 +12,16 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 
 	private SimplePanel titleLabelContainer;
-	private VerticalPanel contentPanel;
+	private FlowPanel contentPanel;
 	private Label titleLabel, messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
 		View view;
-		Widget widget;
 
 		boolean cancelable = true;
 		String title;
@@ -73,10 +70,6 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.view = view;
 		}
 
-		public void setView(Widget widget) {
-			this.widget = widget;
-		}
-
 		public AlertDialog create() {
 			AlertDialog dialog = new AlertDialog(this);
 			return dialog;
@@ -90,13 +83,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		this.positiveListener = builder.positiveListener;
 		this.negativeListener = builder.negativeListener;
 
-		VerticalPanel vp = new VerticalPanel();
+		FlowPanel fp = new FlowPanel();
 
 		titleLabelContainer = new SimplePanel();
-		vp.add(titleLabelContainer);
+		fp.add(titleLabelContainer);
 
-		contentPanel = new VerticalPanel();
-		vp.add(contentPanel);
+		contentPanel = new FlowPanel();
+		fp.add(contentPanel);
 
 		setTitle(builder.title);
 		setMessage(builder.message);
@@ -124,13 +117,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 		
 		if (builder.view != null) {
-			HTMLPanel htmlPanel = new HTMLPanel("");
-			htmlPanel.getElement().appendChild(builder.view.element);
-			contentPanel.add(htmlPanel);
-		}
-
-		if (builder.widget != null) {
-			contentPanel.add(builder.widget);
+			if (builder.view.widget != null) {
+				contentPanel.add(builder.view.widget);
+			} else if (builder.view.element != null) {
+				HTMLPanel htmlPanel = new HTMLPanel("");
+				htmlPanel.getElement().appendChild(builder.view.element);
+				contentPanel.add(htmlPanel);
+			}
 		}
 
 		Button okButton = null;
@@ -200,10 +193,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				panel.add(okButton);
 				buttonsPanel.add(panel);
 			}
-			vp.add(buttonsPanel);
+			fp.add(buttonsPanel);
 		}
 		
-		popupPanel.add(vp);
+		popupPanel.add(fp);
 	}
 
 	public void setTitle(String title) {
@@ -215,6 +208,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		if (titleLabel != null) {
 			titleLabel.setText(title);
 		}
+		if (popupPanel.isShowing()) {
+			popupPanel.center();
+		}
 	}
 	
 	public void setMessage(String message) {
@@ -225,6 +221,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 		if (messageLabel != null) {
 			messageLabel.setText(message);
+		}
+		if (popupPanel.isShowing()) {
+			popupPanel.center();
 		}
 	}
 }
