@@ -58,7 +58,7 @@ public class ListView extends View {
 			final int index = i;
 			final long id = mAdapter.getItemId(i);
 
-			Event.setEventListener(element, new EventListener() {
+			Event.setEventListener(v.getElement(), new EventListener() {
 				@Override
 				public void onBrowserEvent(Event event) {
 					if (listener != null) {
@@ -66,9 +66,9 @@ public class ListView extends View {
 					}
 				}
 			});
-			Event.sinkEvents(v.element, Event.ONCLICK);
+			Event.sinkEvents(v.getElement(), Event.ONCLICK);
 
-			element.appendChild(v.element);
+			element.appendChild(v.getElement());
 		}
 	}
 }
