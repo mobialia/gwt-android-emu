@@ -17,6 +17,6 @@ public class LayoutInflater {
 	}
 
 	public View inflate(Widget widget, Context ctx) {
-		return new View(widget.getElement());
+		return new View(widget);
 	}
 }
