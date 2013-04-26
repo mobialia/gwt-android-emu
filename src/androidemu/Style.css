@@ -5,11 +5,12 @@
 	background: rgba(40, 40, 40, 1);	
 
 	color: #FFF;
-	font-size: 21px;
+	font-size: 19px;
 	font-weight: normal;
 	margin: 0px auto;
 	padding: 0.5em;
 	min-width: 300px;
+	width: 100%;
 	text-align: center;
 	
 	border-top: 1px solid rgba(255,255,255,0.34);
@@ -84,6 +85,7 @@
 	margin: 0px auto;
 	padding: 0.5em;
 	min-width: 300px;
+	width: 100%;
 	text-align: center;
 	
 	border-top: 1px solid rgba(255,255,255,0.34);
@@ -135,7 +137,7 @@
 .dialogButton:focus,
 .dialogButton:hover
 {
-	background: #33b5e5;
+	background: rgba(12, 45, 57, 1);
 }
 
 .button {
