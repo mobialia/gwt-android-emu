@@ -47,6 +47,9 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 		if (titleLabel != null) {
 			titleLabel.setText(title);
 		}
+		if (popupPanel.isShowing()) {
+			popupPanel.center();
+		}
 	}
 	
 	public void setMessage(String message) {
@@ -57,6 +60,9 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 		}
 		if (messageLabel != null) {
 			messageLabel.setText(message);
+		}
+		if (popupPanel.isShowing()) {
+			popupPanel.center();
 		}
 	}
 }
