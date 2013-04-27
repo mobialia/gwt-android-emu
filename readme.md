@@ -7,22 +7,23 @@ The main difficult is that all the app interface must be redesigned with the GWT
 
 The components that this library emulates are:
 
-* Activities
+* Activities: supports onCreate(), onResume(), onPause(), onDestroy()
+* Intents: you can pass data in a Bundle, launch another activities, etc.
+* Views (you cannot create them from code, must be searched with findViewById, each HTML element is mapped to a View type; ListViews start to work with custom adapters)
 * Menu and MenuItems
-* AlertDialogs
+* AlertDialogs and ProgressDialogs
 * Toasts
-* SharedPreferences
+* SharedPreferences: implemented using LocalStorage
 * Handlers and Messages
 * Log
 * FloatMath
 * SystemClock
-* Views (findViewById)
 
 The "android." package names are renamed to "androidemu.", you need to make a "Source->Organize imports" in Eclipse.
 
 This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT. It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
-Check the Demo project at http://github.com/albertoruibal/gwt_android_emu_demo to see some usage examples.
+Check the demo project at http://github.com/albertoruibal/gwt_android_emu_demo to see some usage examples.
 
 We also include a tool ConvertStrings (in the package utils) to convert from ant Android XML file to GWT Class + Key-properties files
 
