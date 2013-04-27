@@ -3,23 +3,28 @@ package androidemu.util;
 
 public class Log {
 
-	private static native void log(String message) /*-{
-		console.log(message);
+	public static native void d(String tag, String message) /*-{
+		console.debug(tag + ": " + message);
 	}-*/;
 
-	private static native void error(String message) /*-{
-		console.error(message);
+	public static native void e(String tag, String message) /*-{
+		console.error(tag + ": " + message);
 	}-*/;
-	
-	public static void d(String tag, String message) {
-		log(tag + ": " + message);
-	}
-	
-	public static void i(String tag, String message) {
-		log(tag + ": " + message);
-	}
-	
-	public static void e(String tag, String message) {
-		error(tag + ": " + message);
-	}
+
+	public static native void i(String tag, String message) /*-{
+		console.info(tag + ": " + message);
+	}-*/;
+
+	public static native void v(String tag, String message) /*-{
+		console.trace(tag + ": " + message);
+	}-*/;
+
+	public static native void w(String tag, String message) /*-{
+		console.warn(tag + ": " + message);
+	}-*/;
+
+	public static native void wtf(String tag, String message) /*-{
+		console.error(tag + ": " + message);
+	}-*/;
+
 }
