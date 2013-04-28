@@ -17,9 +17,17 @@ public class ViewFactory {
 
 	static final String TAG = "ViewFactory";
 
+	/**
+	 * From a DOM element creates the right Android-emulated Widget
+	 * 
+	 * @param element
+	 * @return
+	 */
 	public static View createViewFromElement(Element element) {
 
-		if (element.getNodeName() == "DIV") {
+		if (element.getNodeName() == "LABEL") {
+			return new TextView(element);
+		} else if (element.getNodeName() == "DIV") {
 			String className = element.getAttribute("class").toUpperCase();
 			if (className != null) {
 				if (className.indexOf("LISTVIEW") >= 0) {
@@ -27,6 +35,7 @@ public class ViewFactory {
 				} else if (className.indexOf("SCROLLVIEW") >= 0) {
 					return new ScrollView(element);
 				}
+				// DIV fallbacks to TextView
 				return new TextView(element);
 			}
 		} else if (element.getNodeName() == "BUTTON") {
@@ -84,5 +93,4 @@ public class ViewFactory {
 		}
 		return ViewFactory.createViewFromElement(elementFound);
 	}
-
 }
