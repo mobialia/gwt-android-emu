@@ -3,6 +3,7 @@ package androidemu.widget;
 import androidemu.view.View;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SelectElement;
 
 
 public class Spinner extends View {
@@ -12,12 +13,11 @@ public class Spinner extends View {
 	}
 
 	public void setSelection(int index) {
-		// TODO
+		SelectElement.as(element).setSelectedIndex(index);
 	}
 
 	public int getSelectedItemPosition() {
-		// TODO
-		return 0;
+		return SelectElement.as(element).getSelectedIndex();
 	}
 
 }
