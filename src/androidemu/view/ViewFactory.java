@@ -44,6 +44,8 @@ public class ViewFactory {
 			String type = element.getAttribute("type").toUpperCase();
 			if (type.equals("TEXT")) {
 				return new EditText(element);
+			} else if (type.equals("NUMBER")) {
+				return new EditText(element);
 			} else if (type.equals("PASSWORD")) {
 				return new EditText(element);
 			} else if (type.equals("BUTTON")) {
@@ -54,12 +56,15 @@ public class ViewFactory {
 				return new CheckBox(element);
 			} else if (type.equals("IMAGE")) {
 				return new ImageButton(element);
+			} else {
+				Log.d(TAG, "Not found an specific view for input type " + type);
 			}
 		} else if (element.getNodeName() == "SELECT") {
 			return new Spinner(element);
+		} else {
+			Log.d(TAG, "Not found an specific view: " + element.getNodeName());
 		}
 
-		Log.d(TAG, "Not found an specific view: " + element.getNodeName());
 		return new View(element);
 	}
 
