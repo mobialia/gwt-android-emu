@@ -1,5 +1,3 @@
-@external .menuitem;
-
 .menuItem {
 	display: block;
 	background: rgba(40, 40, 40, 1);	
@@ -50,7 +48,7 @@
 	border-radius: 0;
 	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
 	
-	margin: 1em;
+	margin: 0;
 	padding: 0;
 	background: rgba(40, 40, 40, 1);	
 }
