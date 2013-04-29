@@ -22,7 +22,7 @@
 .menuItem:focus,
 .menuItem:hover
 {
-	background: rgba(12, 45, 57, 1);
+	background: #33b5e5;
 }
 
 .toast {
@@ -97,7 +97,7 @@
 .dialogItem:focus,
 .dialogItem:hover
 {
-	background: rgba(12, 45, 57, 1);
+	background: #33b5e5;
 }
 
 .dialogButtons {
@@ -135,7 +135,7 @@
 .dialogButton:focus,
 .dialogButton:hover
 {
-	background: rgba(12, 45, 57, 1);
+	background: #33b5e5;
 }
 
 .button {
