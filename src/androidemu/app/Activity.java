@@ -107,7 +107,7 @@ public class Activity extends Context implements EntryPoint {
 					});
 					fp.add(b);
 				}
-				menuPanel.add(fp);
+				menuPanel.setWidget(fp);
 				menuPanel.setAutoHideEnabled(true);
 			}
 		}
