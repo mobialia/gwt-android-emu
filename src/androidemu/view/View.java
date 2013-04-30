@@ -19,6 +19,14 @@ public class View {
 		return getElement().getId();
 	}
 
+	public int getHeight() {
+		return element.getClientHeight();
+	}
+
+	public int getWidth() {
+		return element.getClientWidth();
+	}
+
 	public View findViewById(String id) {
 		return ViewFactory.findViewById(getElement(), id);
 	}
