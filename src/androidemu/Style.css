@@ -3,20 +3,19 @@
 	background: rgba(40, 40, 40, 1);	
 
 	color: #FFF;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0px auto;
+	font-size: 1.1em;
+	margin: 0 auto;
 	padding: 0.5em;
 	min-width: 300px;
 	width: 100%;
 	text-align: center;
 	
 	border-top: 1px solid rgba(255,255,255,0.34);
-	border-right: 0px;
-	border-bottom: 0px;
-	border-left: 0px;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
 	box-shadow: 0;
-	border-radius: 0px;
+	border-radius: 0;
 }
 
 .menuItem:focus,
@@ -27,26 +26,23 @@
 
 .toast {
 	color: #ffffff;
-	font-size: 19px;
-	font-weight: normal;
+	font-size: 1.2em;
 	
 	border: none;
 	border-radius: 0;
 	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
 	
-	margin: 1em;
+	margin: 0;
 	padding: 1em;
 	background: rgba(40, 40, 40, 1);	
 }
 
 .dialog {
 	color: #ffffff;
-	font-size: 19px;
-	font-weight: normal;
 	
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0.5em 1em rgba(0,0,0,0.5);
 	
 	margin: 0;
 	padding: 0;
@@ -55,10 +51,8 @@
 
 .dialogTitle {
 	color: #33b5e5;
-	font-size: 21px;
-	font-weight: normal;
-	text-align: left;
-	margin: 0px auto;
+	font-size: 1.3em;
+	margin: 0 auto;
 	padding: 0.7em;
 	
 	border-bottom-color: #33b5e5;
@@ -68,9 +62,8 @@
 
 .dialogMessage {
 	color: #ffffff;
-	font-size: 19px;
-	font-weight: normal;
-	padding: 1.5em;
+	font-size: 1.2em;
+	padding: 1em;
 	text-align: center;
 }
 
@@ -79,18 +72,18 @@
 	background: rgba(40, 40, 40, 1);	
 
 	color: #FFF;
-	font-size: 19px;
-	margin: 0px auto;
+	font-size: 1.1em;
+	margin: 0 auto;
 	padding: 0.5em;
-	min-width: 300px;
+	min-width: 19em;
 	width: 100%;
 	text-align: center;
 	
 	border-top: 1px solid rgba(255,255,255,0.34);
-	border-right: 0px;
-	border-bottom: 0px;
-	border-left: 0px;
-	border-radius: 0px;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+	border-radius: 0;
 	box-shadow: 0;
 }
 
@@ -103,7 +96,6 @@
 .dialogButtons {
 	display: table;
 	width: 100%;
-	padding-top: 5px;
 }
 
 .dialogButtonContainer {
@@ -117,17 +109,17 @@
 .dialogButton {
 	color: white;
 	text-align: center;
-	font-size: 17px;
+	font-size: 1.1em;
 	margin: 0;
-	padding: 12px 40px;
-	min-width: 150px;
+	padding: 0.5em 1.5em;
+	min-width: 9em;
 	width: 100%;
 
 	border-top: 1px solid #474747;
-	border-right: 0px;
-	border-bottom: 0px;
-	border-left: 0px;
-	border-radius: 0px;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+	border-radius: 0;
 
 	background: rgba(50, 50, 50, 1);
 }
@@ -139,16 +131,16 @@
 }
 
 .button {
-	font-size: 16px;
-	margin: 5px;
-	padding: 12px 40px;
+	font-size: 1.1em;
+	margin: 0.3em;
+	padding: 0.5em 1.5em;
 	border-top: 1px solid rgba(255,255,255,0.34);
 	border-right: 1px solid rgba(0,0,0,0.04);
 	border-bottom: 1px solid rgba(0,0,0,0.43);
 	border-left: 1px solid rgba(0,0,0,0.04);
 	border-radius: 1px;
 
-	min-width: 150px;
+	min-width: 9em;
 
 	box-shadow: 0 1px 1px rgba(0,0,0,0.25);
 	background: rgba(50, 50, 50, 1);
@@ -160,7 +152,7 @@
 .button:focus,
 .button:hover
 {
-	box-shadow: 0 0 0 4px rgba(50,165,207,0.5);
+	box-shadow: 0 0 0 0.25em rgba(50,165,207,0.5);
 	outline:0;
 }
 
@@ -168,8 +160,7 @@
 	overflow: auto; 
 	
 	color: #ffffff;
-	font-size: 19px;
-	font-weight: normal;
+	font-size: 1.2em;
 	
 	border: none;
 	border-radius: 1em;
