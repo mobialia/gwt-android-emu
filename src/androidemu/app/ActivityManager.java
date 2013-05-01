@@ -9,8 +9,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class ActivityManager {
 	public final static String TAG = "ActivityManager";
@@ -41,8 +41,8 @@ public class ActivityManager {
 	// }
 
 	public static void setup() {
-		if (RootPanel.get("BackButton") != null) {
-			backButton = Button.wrap(RootPanel.get("BackButton").getElement());
+		if (DOM.getElementById("BackButton") != null) {
+			backButton = Button.wrap(DOM.getElementById("BackButton"));
 			backButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -50,8 +50,8 @@ public class ActivityManager {
 				}
 			});
 		}
-		if (RootPanel.get("MenuButton") != null) {
-			menuButton = Button.wrap(RootPanel.get("MenuButton").getElement());
+		if (DOM.getElementById("MenuButton") != null) {
+			menuButton = Button.wrap(DOM.getElementById("MenuButton"));
 			menuButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
