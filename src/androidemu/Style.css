@@ -14,7 +14,6 @@
 	border-right: 0;
 	border-bottom: 0;
 	border-left: 0;
-	box-shadow: 0;
 	border-radius: 0;
 }
 
@@ -30,7 +29,7 @@
 	
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0.5em 1em rgba(0,0,0,0.5);
 	
 	margin: 0;
 	padding: 1em;
@@ -84,7 +83,6 @@
 	border-bottom: 0;
 	border-left: 0;
 	border-radius: 0;
-	box-shadow: 0;
 }
 
 .dialogItem:focus,
