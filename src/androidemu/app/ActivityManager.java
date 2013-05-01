@@ -141,7 +141,7 @@ public class ActivityManager {
 			public void execute() {
 				try {
 					checkActivityStack();
-				} catch (Error e) {
+				} catch (Throwable e) {
 					Log.e(TAG, e.getMessage());
 				}
 			}
