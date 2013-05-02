@@ -38,6 +38,7 @@ public class Activity extends Context implements EntryPoint {
 	Widget contentPanel;
 	private PopupPanel menuPanel;
 
+	Intent intent;
 	Integer requestCode;
 	int resultCode = RESULT_OK;
 	Intent resultData;
@@ -177,6 +178,6 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public Intent getIntent() {
-		return null;
+		return intent;
 	}
 }
