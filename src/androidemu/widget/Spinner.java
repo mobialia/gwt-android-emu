@@ -5,7 +5,6 @@ import androidemu.view.View;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SelectElement;
 
-
 public class Spinner extends View {
 
 	public Spinner(Element element) {

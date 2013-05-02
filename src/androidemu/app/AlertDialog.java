@@ -28,7 +28,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		String message;
 		CharSequence items[];
 		String positiveLabel, negativeLabel, neutralLabel;
-		DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;	
+		DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 		public Builder(Context ctx) {
 
@@ -41,7 +41,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		public void setMessage(String message) {
 			this.message = message;
 		}
-		
+
 		public void setCancelable(boolean cancelable) {
 			this.cancelable = cancelable;
 		}
@@ -60,7 +60,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.neutralLabel = label;
 			this.neutralListener = listener;
 		}
-		
+
 		public void setItems(CharSequence items[], DialogInterface.OnClickListener listener) {
 			this.items = items;
 			this.itemsListener = listener;
@@ -93,7 +93,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		setTitle(builder.title);
 		setMessage(builder.message);
-		
+
 		if (builder.items != null) {
 			int count = 0;
 			for (CharSequence item : builder.items) {
@@ -115,7 +115,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				contentPanel.add(button);
 			}
 		}
-		
+
 		if (builder.view != null) {
 			if (builder.view.widget != null) {
 				contentPanel.add(builder.view.widget);
@@ -157,7 +157,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				}
 			});
 		}
-		
+
 		if (builder.neutralLabel != null) {
 			cancelButton = new Button(builder.neutralLabel);
 			cancelButton.setStyleName(Res.R.style().dialogButton());
@@ -195,7 +195,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			}
 			fp.add(buttonsPanel);
 		}
-		
+
 		popupPanel.add(fp);
 	}
 
@@ -212,7 +212,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			popupPanel.center();
 		}
 	}
-	
+
 	public void setMessage(String message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
 			messageLabel = new Label();

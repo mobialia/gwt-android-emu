@@ -84,4 +84,3 @@ public abstract class Observable<T> {
 		}
 	}
 }
-

@@ -13,7 +13,7 @@ public class View {
 
 	public Element element = null;
 	public Widget widget = null;
-	
+
 	public View(Element element) {
 		this.element = element;
 	}
@@ -21,7 +21,7 @@ public class View {
 	public View(Widget widget) {
 		this.widget = widget;
 	}
-	
+
 	public String getId() {
 		return getElement().getId();
 	}

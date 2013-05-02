@@ -16,7 +16,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 	public static ProgressDialog show(Context context, String title, String message, boolean indeterminate) {
 		return new ProgressDialog(title, message, false);
 	}
-	
+
 	public static ProgressDialog show(Context context, String title, String message, boolean indeterminate, boolean cancelable) {
 		return new ProgressDialog(title, message, cancelable);
 	}
@@ -34,7 +34,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 
 		setTitle(title);
 		setMessage(message);
-		
+
 		popupPanel.add(vp);
 	}
 
@@ -51,7 +51,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 			popupPanel.center();
 		}
 	}
-	
+
 	public void setMessage(String message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
 			messageLabel = new Label();

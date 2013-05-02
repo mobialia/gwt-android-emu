@@ -23,9 +23,9 @@ public class ConvertStrings {
 
 	StringBuffer arrayPropertiesSB = new StringBuffer();
 	StringBuffer arrayClassSB = new StringBuffer();
-	
+
 	public ConvertStrings() {
-		stringClassSB.append("import com.google.gwt.i18n.client.Constants;\npublic interface Strings extends Constants {\n");		
+		stringClassSB.append("import com.google.gwt.i18n.client.Constants;\npublic interface Strings extends Constants {\n");
 		arrayClassSB.append("import com.google.gwt.i18n.client.Constants;\npublic interface Arrays extends Constants {\n");
 	}
 
@@ -47,7 +47,7 @@ public class ConvertStrings {
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					
+
 					stringPropertiesSB.append(eElement.getAttribute("name") + " = " + eElement.getTextContent() + "\n");
 					stringClassSB.append("\tString " + eElement.getAttribute("name") + "();\n");
 				}
@@ -56,7 +56,7 @@ public class ConvertStrings {
 			NodeList stringArrays = doc.getElementsByTagName("string-array");
 
 			for (int i = 0; i < stringArrays.getLength(); i++) {
-				
+
 				if (stringArrays.item(i).getNodeType() == Node.ELEMENT_NODE) {
 					StringBuffer sb = new StringBuffer();
 
@@ -70,7 +70,7 @@ public class ConvertStrings {
 							sb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,"));
 						}
 					}
-					
+
 					arrayPropertiesSB.append(((Element) stringArrays.item(i)).getAttribute("name") + " = " + sb.toString() + "\n");
 					arrayClassSB.append("\tString[] " + ((Element) stringArrays.item(i)).getAttribute("name") + "();\n");
 				}
@@ -98,14 +98,14 @@ public class ConvertStrings {
 	public void output() {
 		stringClassSB.append("}\n");
 		arrayClassSB.append("}\n");
-		
+
 		writeFile("Strings.java", stringClassSB);
 		writeFile("Strings.properties", stringPropertiesSB);
 
 		writeFile("Arrays.java", arrayClassSB);
 		writeFile("Arrays.properties", arrayPropertiesSB);
 	}
-	
+
 	public static void main(String args[]) {
 
 		ConvertStrings cs = new ConvertStrings();

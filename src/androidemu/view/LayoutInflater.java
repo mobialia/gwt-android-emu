@@ -7,11 +7,11 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 public class LayoutInflater {
-	
+
 	public static LayoutInflater from(Context context) {
 		return new LayoutInflater();
 	}
-	
+
 	public View inflate(TextResource layout, Context ctx) {
 		return new View((new HTML(layout.getText())).getElement());
 	}

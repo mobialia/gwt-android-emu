@@ -16,7 +16,7 @@ public class Intent {
 	public Intent(String action, Uri uri) {
 
 	}
-	
+
 	// public Intent(Context ctx, final Class<?> intentClass) {
 	// this.ctx = ctx;
 	// this.intentClass = intentClass;
@@ -27,7 +27,7 @@ public class Intent {
 		this.ctx = ctx;
 		this.activity = (Activity) activity;
 	}
-	
+
 	public Class<?> getIntentClass() {
 		return intentClass;
 	}
