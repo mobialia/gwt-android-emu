@@ -82,6 +82,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		this.itemsListener = builder.itemsListener;
 		this.positiveListener = builder.positiveListener;
 		this.negativeListener = builder.negativeListener;
+		this.neutralListener = builder.neutralListener;
 
 		FlowPanel fp = new FlowPanel();
 
@@ -159,9 +160,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		if (builder.neutralLabel != null) {
-			cancelButton = new Button(builder.neutralLabel);
-			cancelButton.setStyleName(Res.R.style().dialogButton());
-			cancelButton.addClickHandler(new ClickHandler() {
+			neutralButton = new Button(builder.neutralLabel);
+			neutralButton.setStyleName(Res.R.style().dialogButton());
+			neutralButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
 					AlertDialog.this.dismiss();
