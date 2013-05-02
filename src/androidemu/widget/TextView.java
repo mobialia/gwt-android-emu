@@ -15,7 +15,10 @@ public class TextView extends View {
 	}
 
 	public void setText(String string) {
-		element.setInnerHTML(string.replace("\n", "<br/>"));
+		element.setInnerHTML(string != null ? string.replace("\n", "<br/>") : "");
 	}
 
+	public void setTextColor(String color) {
+		element.setAttribute("style", "color: " + color + ";");
+	}
 }
