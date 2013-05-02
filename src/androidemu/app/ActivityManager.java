@@ -4,13 +4,14 @@ import java.util.Stack;
 
 import androidemu.content.Intent;
 import androidemu.util.Log;
+import androidemu.view.View;
+import androidemu.view.View.OnClickListener;
+import androidemu.view.ViewFactory;
+import androidemu.widget.Button;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.Button;
 
 public class ActivityManager {
 	public final static String TAG = "ActivityManager";
@@ -24,37 +25,21 @@ public class ActivityManager {
 	public static Stack<Activity> activityStack = new Stack<Activity>();
 	static Button backButton, menuButton;
 
-	// static {
-	// History.addValueChangeHandler(new ValueChangeHandler<String>() {
-	// @Override
-	// public void onValueChange(ValueChangeEvent<String> event) {
-	// // TODO We manage only back press
-	// if (activityStack.size() > 1) {
-	// // If is back, must match the previous activity in the stack
-	// if (event.getValue().equals(activityStack.get(activityStack.size() -
-	// 2).getClass().getName())) {
-	// finish(activityStack.peek());
-	// }
-	// }
-	// }
-	// });
-	// }
-
 	public static void setup() {
 		if (DOM.getElementById("BackButton") != null) {
-			backButton = Button.wrap(DOM.getElementById("BackButton"));
-			backButton.addClickHandler(new ClickHandler() {
+			backButton = (Button) ViewFactory.createViewFromElement(DOM.getElementById("BackButton")); 
+			backButton.setOnClickListener(new OnClickListener() {
 				@Override
-				public void onClick(ClickEvent event) {
+				public void onClick(View v) {
 					ActivityManager.back();
 				}
 			});
 		}
 		if (DOM.getElementById("MenuButton") != null) {
-			menuButton = Button.wrap(DOM.getElementById("MenuButton"));
-			menuButton.addClickHandler(new ClickHandler() {
+			menuButton = (Button) ViewFactory.createViewFromElement(DOM.getElementById("MenuButton"));
+			menuButton.setOnClickListener(new OnClickListener() {
 				@Override
-				public void onClick(ClickEvent event) {
+				public void onClick(View v) {
 					ActivityManager.openOptionsMenu();
 				}
 			});
@@ -94,9 +79,6 @@ public class ActivityManager {
 				activity.status = STATUS_CREATED;
 				break;
 			case STATUS_CREATED:
-				// Add to browser history
-				// History.newItem(activity.getClass().getName());
-
 				activity.onResume();
 				activity.createMenu();
 				checkButtonsVisibility(activity);
@@ -129,10 +111,10 @@ public class ActivityManager {
 
 	private static void checkButtonsVisibility(Activity activity) {
 		if (backButton != null) {
-			backButton.setVisible(activityStack.size() > 1);
+			backButton.setVisibility(activityStack.size() > 1 ? View.VISIBLE : View.GONE);
 		}
 		if (menuButton != null) {
-			menuButton.setVisible(activity.menu != null && activity.menu.menuItems.size() > 0);
+			menuButton.setVisibility(activity.menu != null && activity.menu.menuItems.size() > 0 ? View.VISIBLE : View.GONE);
 		}
 	}
 
