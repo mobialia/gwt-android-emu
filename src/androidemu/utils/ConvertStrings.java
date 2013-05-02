@@ -30,7 +30,7 @@ public class ConvertStrings {
 	}
 
 	public void processFile(String fileName) {
-		
+		System.out.println("Precssing file " + fileName + "...");
 		try {
 
 			File xmlFile = new File(fileName);
@@ -67,7 +67,7 @@ public class ConvertStrings {
 							if (sb.length() != 0) {
 								sb.append(", ");
 							}
-							sb.append(stringArraysItems.item(j).getTextContent());
+							sb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,"));
 						}
 					}
 					
@@ -78,7 +78,6 @@ public class ConvertStrings {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private void writeFile(String fileName, StringBuffer sb) {
@@ -110,7 +109,7 @@ public class ConvertStrings {
 	public static void main(String args[]) {
 
 		ConvertStrings cs = new ConvertStrings();
-		for (int i = 1; i < args.length; i++) {
+		for (int i = 0; i < args.length; i++) {
 			cs.processFile(args[i]);
 		}
 
