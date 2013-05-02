@@ -63,6 +63,7 @@ public class ActivityManager {
 
 	public static void startActivity(Intent intent, Integer requestCode) {
 		Log.d(TAG, "Start activity " + intent.activity.getClass().getName());
+		intent.activity.intent = intent;
 		activityStack.push(intent.activity);
 		intent.activity.requestCode = requestCode;
 		checkActivityStackDeferred();
@@ -143,6 +144,13 @@ public class ActivityManager {
 					checkActivityStack();
 				} catch (Throwable e) {
 					Log.e(TAG, e.getMessage());
+
+					StringBuffer stb = new StringBuffer();
+					stb.append(e.getMessage() + "\n\nStack trace:\n");
+					for (int i = 0; i < e.getStackTrace().length; i++) {
+						stb.append(e.getStackTrace()[i].toString() + "\n");
+					}
+					Log.e(TAG, stb.toString());
 				}
 			}
 		});
