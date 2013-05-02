@@ -26,4 +26,8 @@ public interface Style extends CssResource {
 	String preferencesActivity();
 
 	String preferencesActivityContent();
+
+	String invisible();
+
+	String gone();
 }

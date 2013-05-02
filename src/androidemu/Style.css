@@ -170,3 +170,11 @@
 .preferencesActivityContent {
 	margin: 0 auto;
 }
+
+.invisible {
+	visibility: hidden;
+}
+
+.gone {
+	display: none;
+}

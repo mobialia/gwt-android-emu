@@ -1,9 +1,16 @@
 package androidemu.view;
 
+import androidemu.Res;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
 public class View {
+
+	public static final int VISIBLE = 0;
+	public static final int INVISIBLE = 4;
+	public static final int GONE = 8;
+
 	public Element element = null;
 	public Widget widget = null;
 	
@@ -29,6 +36,20 @@ public class View {
 
 	public View findViewById(String id) {
 		return ViewFactory.findViewById(getElement(), id);
+	}
+
+	public void setVisibility(int visibility) {
+		if ((visibility & View.INVISIBLE) != 0) {
+			element.addClassName(Res.R.style().invisible());
+		} else {
+			element.removeClassName(Res.R.style().invisible());
+		}
+
+		if ((visibility & View.GONE) != 0) {
+			element.addClassName(Res.R.style().gone());
+		} else {
+			element.removeClassName(Res.R.style().gone());
+		}
 	}
 
 	public static interface OnClickListener {
