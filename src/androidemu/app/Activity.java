@@ -109,7 +109,6 @@ public class Activity extends Context implements EntryPoint {
 					fp.add(b);
 				}
 				menuPanel.setWidget(fp);
-				menuPanel.setAutoHideEnabled(true);
 			}
 		}
 	}
@@ -120,10 +119,32 @@ public class Activity extends Context implements EntryPoint {
 		}
 	}
 
+	/**
+	 * Used only by the system menu button
+	 */
+	void toggleOptionsMenu(View view) {
+		if (menuPanel != null) {
+			if (!menuPanel.isShowing()) {
+				menuPanel.setAutoHideEnabled(false);
+				menuPanel.setPopupPosition(view.getLeft(), view.getTop() + view.getHeight());
+				menuPanel.show();
+			} else {
+				menuPanel.hide();
+			}
+		}
+	}
+
 	public void openOptionsMenu() {
 		if (menuPanel != null) {
+			menuPanel.setAutoHideEnabled(true);
 			menuPanel.center();
 			menuPanel.show();
+		}
+	}
+
+	public void closeOptionsMenu() {
+		if (menuPanel != null) {
+			menuPanel.hide();
 		}
 	}
 

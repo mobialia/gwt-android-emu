@@ -40,7 +40,7 @@ public class ActivityManager {
 			menuButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					ActivityManager.openOptionsMenu();
+					ActivityManager.toggleOptionsMenu(v);
 				}
 			});
 		}
@@ -67,8 +67,8 @@ public class ActivityManager {
 		}
 	}
 
-	public static void openOptionsMenu() {
-		activityStack.peek().openOptionsMenu();
+	public static void toggleOptionsMenu(View v) {
+		activityStack.peek().toggleOptionsMenu(v);
 	}
 
 	private static void advanceStatus(Activity activity) {
