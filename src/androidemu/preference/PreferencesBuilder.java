@@ -8,6 +8,7 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
@@ -20,11 +21,12 @@ public class PreferencesBuilder {
 		panel.add(label);
 	}
 
-	public static void addListPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, final String[] values,
-			String[] labels, String defaultValue) {
+	public static void addListPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
+			final String[] values, String[] labels, String defaultValue) {
 		String value = sharedPrefs.getString(key, defaultValue);
 
-		panel.add(new Label(label));
+		FlowPanel fp = new FlowPanel();
+		
 		ListBox listBox = new ListBox();
 		for (String text : labels) {
 			listBox.addItem(text);
@@ -39,13 +41,26 @@ public class PreferencesBuilder {
 				editor.commit();
 			}
 		});
-		panel.add(listBox);
+		listBox.setStyleName(Res.R.style().preferencesListBox());
+		fp.add(listBox);
+
+		Label labelG = new Label(label);
+		labelG.setStyleName(Res.R.style().preferencesLabel());
+		fp.add(labelG);
+		Label summaryG = new Label(summary);
+		summaryG.setStyleName(Res.R.style().preferencesSummary());
+		fp.add(summaryG);
+
+		panel.add(fp);
 	}
 
-	public static void addBooleanPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, boolean defaultValue) {
+	public static void addBooleanPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
+			boolean defaultValue) {
 		Boolean value = sharedPrefs.getBoolean(key, defaultValue);
 
-		CheckBox checkBox = new CheckBox(label);
+		FlowPanel fp = new FlowPanel();
+
+		CheckBox checkBox = new CheckBox();
 		checkBox.setValue(value);
 		checkBox.addClickHandler(new ClickHandler() {
 			@Override
@@ -55,6 +70,16 @@ public class PreferencesBuilder {
 				editor.commit();
 			}
 		});
-		panel.add(checkBox);
+		checkBox.setStyleName(Res.R.style().preferencesCheckBox());
+		fp.add(checkBox);
+
+		Label labelG = new Label(label);
+		labelG.setStyleName(Res.R.style().preferencesLabel());
+		fp.add(labelG);
+		Label summaryG = new Label(summary);
+		summaryG.setStyleName(Res.R.style().preferencesSummary());
+		fp.add(summaryG);
+
+		panel.add(fp);
 	}
 }
