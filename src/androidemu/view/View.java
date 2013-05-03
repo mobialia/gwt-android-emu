@@ -26,6 +26,22 @@ public class View {
 		return getElement().getId();
 	}
 
+	/**
+	 * In Android is relative, but here we implement it against the root of the
+	 * document
+	 */
+	public int getTop() {
+		return element.getAbsoluteTop();
+	}
+
+	/**
+	 * In Android is relative, but here we implement it against the root of the
+	 * document
+	 */
+	public int getLeft() {
+		return element.getAbsoluteLeft();
+	}
+
 	public int getHeight() {
 		return element.getClientHeight();
 	}
