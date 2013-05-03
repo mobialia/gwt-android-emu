@@ -158,10 +158,9 @@
 	overflow: auto; 
 	
 	color: #ffffff;
-	font-size: 1.2em;
 	
 	border: none;
-	border-radius: 1em;
+	border-radius: 0;
 	margin: 0;
 	padding: 1em;
 	background: rgba(0, 0, 0, 0.8);	
@@ -169,6 +168,24 @@
 
 .preferencesActivityContent {
 	margin: 0 auto;
+}
+
+.preferencesLabel {
+	font-size: 1.3em;
+}
+
+.preferencesSummary {
+	font-size: 0.9em;
+}
+
+.preferencesListBox {
+	float: right;
+	font-size: 1em;
+}
+
+.preferencesCheckBox {
+	float: right;
+	font-size: 1.3em;
 }
 
 .invisible {

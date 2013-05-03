@@ -27,6 +27,14 @@ public interface Style extends CssResource {
 
 	String preferencesActivityContent();
 
+	String preferencesLabel();
+
+	String preferencesSummary();
+
+	String preferencesListBox();
+
+	String preferencesCheckBox();
+
 	String invisible();
 
 	String gone();
