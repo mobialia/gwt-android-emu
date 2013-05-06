@@ -11,4 +11,8 @@ public class Uri {
 	public static Uri parse(String uri) {
 		return new Uri(uri);
 	}
+
+	public String toString() {
+		return data;
+	}
 }
