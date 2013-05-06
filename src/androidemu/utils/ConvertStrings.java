@@ -3,6 +3,9 @@ package androidemu.utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,11 +20,12 @@ import org.w3c.dom.NodeList;
  * 
  */
 public class ConvertStrings {
+	private Pattern langPattern = Pattern.compile(".*/values-([a-zA-Z]{2})/.*");
 
-	StringBuffer stringPropertiesSB = new StringBuffer();
+	HashMap<String, StringBuffer> stringPropertiesSBMap = new HashMap<String, StringBuffer>();
 	StringBuffer stringClassSB = new StringBuffer();
 
-	StringBuffer arrayPropertiesSB = new StringBuffer();
+	HashMap<String, StringBuffer> arrayPropertiesSBMap = new HashMap<String, StringBuffer>();
 	StringBuffer arrayClassSB = new StringBuffer();
 
 	public ConvertStrings() {
@@ -30,7 +34,25 @@ public class ConvertStrings {
 	}
 
 	public void processFile(String fileName) {
-		System.out.println("Precssing file " + fileName + "...");
+		Matcher matcher = langPattern.matcher(fileName);
+		String lang = null;
+
+		if (matcher.find()) {
+			lang = matcher.group(1);
+		}
+
+		System.out.println("Processing file " + fileName + "(lang " + lang + ")...");
+
+		if (!stringPropertiesSBMap.containsKey(lang)) {
+			stringPropertiesSBMap.put(lang, new StringBuffer());
+		}
+		StringBuffer stringPropertiesSB = stringPropertiesSBMap.get(lang);
+
+		if (!arrayPropertiesSBMap.containsKey(lang)) {
+			arrayPropertiesSBMap.put(lang, new StringBuffer());
+		}
+		StringBuffer arrayPropertiesSB = arrayPropertiesSBMap.get(lang);
+
 		try {
 
 			File xmlFile = new File(fileName);
@@ -100,17 +122,40 @@ public class ConvertStrings {
 		arrayClassSB.append("}\n");
 
 		writeFile("Strings.java", stringClassSB);
-		writeFile("Strings.properties", stringPropertiesSB);
-
 		writeFile("Arrays.java", arrayClassSB);
-		writeFile("Arrays.properties", arrayPropertiesSB);
+
+		for (String lang : stringPropertiesSBMap.keySet()) {
+			if (lang == null) {
+				writeFile("Strings.properties", stringPropertiesSBMap.get(lang));
+				writeFile("Arrays.properties", arrayPropertiesSBMap.get(lang));
+			} else {
+				writeFile("Strings_" + lang + ".properties", stringPropertiesSBMap.get(lang));
+				writeFile("Arrays_" + lang + ".properties", arrayPropertiesSBMap.get(lang));
+			}
+		}
+	}
+
+	public void crawl(String dir) {
+		File file = new File(dir);
+		if (file.isDirectory()) {
+			for (String f : file.list()) {
+				crawl(dir + "/" + f);
+			}
+		} else {
+			if (dir.endsWith(".xml")) {
+				processFile(dir);
+			}
+		}
 	}
 
 	public static void main(String args[]) {
-
+		/**
+		 * Crawl the Android resource directory looking for string and array
+		 * resources and processing the locales
+		 */
 		ConvertStrings cs = new ConvertStrings();
 		for (int i = 0; i < args.length; i++) {
-			cs.processFile(args[i]);
+			cs.crawl(args[i]);
 		}
 
 		cs.output();
