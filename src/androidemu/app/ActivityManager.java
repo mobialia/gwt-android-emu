@@ -45,6 +45,10 @@ public class ActivityManager {
 				}
 			});
 		}
+
+		if (DOM.getElementById("loading") != null) {
+			DOM.getElementById("loading").setAttribute("style", "display: none");
+		}
 	}
 
 	public static void startActivity(Intent intent, Integer requestCode) {
