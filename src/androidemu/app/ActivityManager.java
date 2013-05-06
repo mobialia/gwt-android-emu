@@ -12,6 +12,7 @@ import androidemu.widget.Button;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
 
 public class ActivityManager {
 	public final static String TAG = "ActivityManager";
@@ -47,11 +48,16 @@ public class ActivityManager {
 	}
 
 	public static void startActivity(Intent intent, Integer requestCode) {
-		Log.d(TAG, "Start activity " + intent.activity.getClass().getName());
-		intent.activity.intent = intent;
-		activityStack.push(intent.activity);
-		intent.activity.requestCode = requestCode;
-		checkActivityStackDeferred();
+		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+			// Open URL
+			Window.Location.assign(intent.getData().toString());
+		} else {
+			Log.d(TAG, "Start activity " + intent.activity.getClass().getName());
+			intent.activity.intent = intent;
+			activityStack.push(intent.activity);
+			intent.activity.requestCode = requestCode;
+			checkActivityStackDeferred();
+		}
 	}
 
 	public static void finish(final Activity activity) {
