@@ -46,8 +46,8 @@ public class ActivityManager {
 			});
 		}
 
-		if (DOM.getElementById("loading") != null) {
-			DOM.getElementById("loading").setAttribute("style", "display: none");
+		if (DOM.getElementById("show-while-loading") != null) {
+			DOM.getElementById("show-while-loading").setAttribute("style", "display: none");
 		}
 	}
 
@@ -121,9 +121,11 @@ public class ActivityManager {
 
 	private static void checkButtonsVisibility(Activity activity) {
 		if (backButton != null) {
+			backButton.getElement().removeClassName("hide-while-loading");
 			backButton.setVisibility(activityStack.size() > 1 ? View.VISIBLE : View.GONE);
 		}
 		if (menuButton != null) {
+			menuButton.getElement().removeClassName("hide-while-loading");
 			menuButton.setVisibility(activity.menu != null && activity.menu.menuItems.size() > 0 ? View.VISIBLE : View.GONE);
 		}
 	}
