@@ -3,6 +3,7 @@ package androidemu.utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,9 +24,11 @@ public class ConvertStrings {
 	private Pattern langPattern = Pattern.compile(".*/values-([a-zA-Z]{2})/.*");
 
 	HashMap<String, StringBuffer> stringPropertiesSBMap = new HashMap<String, StringBuffer>();
+	ArrayList<String> stringsInClass = new ArrayList<String>();
 	StringBuffer stringClassSB = new StringBuffer();
 
 	HashMap<String, StringBuffer> arrayPropertiesSBMap = new HashMap<String, StringBuffer>();
+	ArrayList<String> arraysInClass = new ArrayList<String>();
 	StringBuffer arrayClassSB = new StringBuffer();
 
 	public ConvertStrings() {
@@ -70,8 +73,14 @@ public class ConvertStrings {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 
-					stringPropertiesSB.append(eElement.getAttribute("name") + " = " + eElement.getTextContent() + "\n");
-					stringClassSB.append("\tString " + eElement.getAttribute("name") + "();\n");
+					String key = eElement.getAttribute("name");
+					String value = eElement.getTextContent();
+					stringPropertiesSB.append(key + " = " + value + "\n");
+					// Avoids duplicated class methods in multi-language
+					if (!stringsInClass.contains(key)) {
+						stringClassSB.append("\tString " + key + "();\n");
+						stringsInClass.add(key);
+					}
 				}
 			}
 
@@ -80,21 +89,26 @@ public class ConvertStrings {
 			for (int i = 0; i < stringArrays.getLength(); i++) {
 
 				if (stringArrays.item(i).getNodeType() == Node.ELEMENT_NODE) {
-					StringBuffer sb = new StringBuffer();
+					String key = ((Element) stringArrays.item(i)).getAttribute("name");
+					StringBuffer valueSb = new StringBuffer();
 
 					NodeList stringArraysItems = stringArrays.item(i).getChildNodes();
 
 					for (int j = 0; j < stringArraysItems.getLength(); j++) {
 						if (stringArraysItems.item(j).getNodeType() == Node.ELEMENT_NODE) {
-							if (sb.length() != 0) {
-								sb.append(", ");
+							if (valueSb.length() != 0) {
+								valueSb.append(", ");
 							}
-							sb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,"));
+							valueSb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,"));
 						}
 					}
 
-					arrayPropertiesSB.append(((Element) stringArrays.item(i)).getAttribute("name") + " = " + sb.toString() + "\n");
-					arrayClassSB.append("\tString[] " + ((Element) stringArrays.item(i)).getAttribute("name") + "();\n");
+					arrayPropertiesSB.append(key + " = " + valueSb.toString() + "\n");
+					// Avoids duplicated class methods in multi-language
+					if (!arraysInClass.contains(key)) {
+						arrayClassSB.append("\tString[] " + key + "();\n");
+						arraysInClass.add(key);
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -151,7 +165,7 @@ public class ConvertStrings {
 	public static void main(String args[]) {
 		/**
 		 * Crawl the Android resource directory looking for string and array
-		 * resources and processing the locales
+		 * resources processing the locales
 		 */
 		ConvertStrings cs = new ConvertStrings();
 		for (int i = 0; i < args.length; i++) {
