@@ -11,7 +11,7 @@ public class Handler {
 	}
 
 	public void sendEmptyMessage(int what) {
-		sendMessage(new Message(what));
+		sendMessage(Message.obtain(this, what));
 	}
 
 	public void sendMessage(final Message msg) {
@@ -35,8 +35,23 @@ public class Handler {
 		timer.schedule((int) (uptimeMillis - SystemClock.uptimeMillis()));
 	}
 
+	public Message obtainMessage() {
+		return new Message();
+	}
+
+	public Message obtainMessage(int what, Object obj) {
+		return Message.obtain(this, what, obj);
+	}
+
+	public Message obtainMessage(int what, int arg1, int arg2) {
+		return Message.obtain(this, what, arg1, arg2);
+	}
+
+	public Message obtainMessage(int what, int arg1, int arg2, Object obj) {
+		return Message.obtain(this, what, arg1, arg2, obj);
+	}
+
 	public void removeMessages(int what) {
 		// TODO
 	}
-
 }
