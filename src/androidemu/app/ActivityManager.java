@@ -7,7 +7,7 @@ import androidemu.util.Log;
 import androidemu.view.View;
 import androidemu.view.View.OnClickListener;
 import androidemu.view.ViewFactory;
-import androidemu.widget.Button;
+import androidemu.widget.ImageButton;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -24,11 +24,11 @@ public class ActivityManager {
 	public final static int STATUS_DESTROYED = 4;
 
 	public static Stack<Activity> activityStack = new Stack<Activity>();
-	static Button backButton, menuButton;
+	static ImageButton backButton, menuButton;
 
 	public static void setup() {
 		if (DOM.getElementById("BackButton") != null) {
-			backButton = (Button) ViewFactory.createViewFromElement(DOM.getElementById("BackButton")); 
+			backButton = (ImageButton) ViewFactory.createViewFromElement(DOM.getElementById("BackButton"));
 			backButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -37,7 +37,7 @@ public class ActivityManager {
 			});
 		}
 		if (DOM.getElementById("MenuButton") != null) {
-			menuButton = (Button) ViewFactory.createViewFromElement(DOM.getElementById("MenuButton"));
+			menuButton = (ImageButton) ViewFactory.createViewFromElement(DOM.getElementById("MenuButton"));
 			menuButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
