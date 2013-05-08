@@ -32,4 +32,8 @@ public class Dialog implements DialogInterface {
 		popupPanel.center();
 		popupPanel.show();
 	}
+
+	public void hide() {
+		popupPanel.hide();
+	}
 }
