@@ -5,6 +5,7 @@ import androidemu.widget.Button;
 import androidemu.widget.CheckBox;
 import androidemu.widget.EditText;
 import androidemu.widget.ImageButton;
+import androidemu.widget.ImageView;
 import androidemu.widget.ListView;
 import androidemu.widget.RadioButton;
 import androidemu.widget.ScrollView;
@@ -61,6 +62,8 @@ public class ViewFactory {
 			}
 		} else if (element.getNodeName() == "SELECT") {
 			return new Spinner(element);
+		} else if (element.getNodeName() == "IMG") {
+			return new ImageView(element);
 		} else {
 			Log.d(TAG, "Not found an specific view: " + element.getNodeName());
 		}
