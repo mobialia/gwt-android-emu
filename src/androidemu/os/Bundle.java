@@ -10,6 +10,10 @@ public class Bundle {
 		values.put(key, value);
 	}
 
+	public void putString(String key, String value) {
+		values.put(key, value);
+	}
+
 	public void putBoolean(String key, boolean value) {
 		values.put(key, String.valueOf(value));
 	}
@@ -19,6 +23,10 @@ public class Bundle {
 	}
 
 	public String get(String key) {
+		return values.get(key);
+	}
+
+	public String getString(String key) {
 		return values.get(key);
 	}
 
