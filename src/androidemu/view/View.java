@@ -3,6 +3,8 @@ package androidemu.view;
 import androidemu.Res;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Widget;
 
 public class View {
@@ -66,6 +68,16 @@ public class View {
 		} else {
 			element.removeClassName(Res.R.style().gone());
 		}
+	}
+
+	public void setOnClickListener(final OnClickListener listener) {
+		Event.setEventListener(element, new EventListener() {
+			@Override
+			public void onBrowserEvent(Event event) {
+				listener.onClick(View.this);
+			}
+		});
+		Event.sinkEvents(element, Event.ONCLICK);
 	}
 
 	public static interface OnClickListener {
