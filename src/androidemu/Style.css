@@ -3,10 +3,10 @@
 	background: rgba(40, 40, 40, 1);	
 
 	color: #FFF;
-	font-size: 1.1em;
+	font-size: 1.2rem;
 	margin: 0 auto;
-	padding: 0.5em;
-	min-width: 20em;
+	padding: 0.6rem;
+	min-width: 22rem;
 	width: 100%;
 	text-align: center;
 	
@@ -25,14 +25,14 @@
 
 .toast {
 	color: #ffffff;
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 0.5em 3em rgba(0,0,0,0.5);
+	box-shadow: 0 1rem 4rem rgba(0,0,0,0.5);
 	
 	margin: 0;
-	padding: 1em;
+	padding: 1rem;
 	background: rgba(40, 40, 40, 1);	
 }
 
@@ -41,7 +41,7 @@
 	
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 0.5em 3em rgba(0,0,0,0.5);
+	box-shadow: 0 1rem 4rem rgba(0,0,0,0.5);
 	
 	margin: 0;
 	padding: 0;
@@ -50,9 +50,9 @@
 
 .dialogTitle {
 	color: #33b5e5;
-	font-size: 1.3em;
+	font-size: 1.3rem;
 	margin: 0 auto;
-	padding: 0.7em;
+	padding: 0.7rem;
 	
 	border-bottom-color: #33b5e5;
 	border-bottom-style: solid;
@@ -61,8 +61,8 @@
 
 .dialogMessage {
 	color: #ffffff;
-	font-size: 1.2em;
-	padding: 1em;
+	font-size: 1.2rem;
+	padding: 1rem;
 	text-align: center;
 }
 
@@ -71,10 +71,10 @@
 	background: rgba(40, 40, 40, 1);	
 
 	color: #FFF;
-	font-size: 1.1em;
+	font-size: 1.1rem;
 	margin: 0 auto;
-	padding: 0.5em;
-	min-width: 19em;
+	padding: 0.6rem;
+	min-width: 22rem;
 	width: 100%;
 	text-align: center;
 	
@@ -107,10 +107,10 @@
 .dialogButton {
 	color: white;
 	text-align: center;
-	font-size: 1.1em;
+	font-size: 1.2rem;
 	margin: 0;
-	padding: 0.5em 1.5em;
-	min-width: 9em;
+	padding: 0.8rem 1.5rem;
+	min-width: 9rem;
 	width: 100%;
 
 	border-top: 1px solid #474747;
@@ -136,7 +136,7 @@
 	border: none;
 	border-radius: 0;
 	margin: 0;
-	padding: 1em;
+	padding: 1rem;
 	background: rgba(0, 0, 0, 0.8);	
 }
 
@@ -145,21 +145,21 @@
 }
 
 .preferencesLabel {
-	font-size: 1.3em;
+	font-size: 1.3rem;
 }
 
 .preferencesSummary {
-	font-size: 0.9em;
+	font-size: 1rem;
 }
 
 .preferencesListBox {
 	float: right;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
 .preferencesCheckBox {
 	float: right;
-	font-size: 1.3em;
+	font-size: 1.3rem;
 }
 
 .invisible {
