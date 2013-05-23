@@ -31,9 +31,9 @@ public class ViewFactory {
 		} else if (element.getNodeName() == "DIV") {
 			String className = element.getAttribute("class").toUpperCase();
 			if (className != null) {
-				if (className.indexOf("LISTVIEW") >= 0) {
+				if (className.contains("LISTVIEW")) {
 					return new ListView(element);
-				} else if (className.indexOf("SCROLLVIEW") >= 0) {
+				} else if (className.contains("SCROLLVIEW")) {
 					return new ScrollView(element);
 				}
 				// DIV fallbacks to TextView

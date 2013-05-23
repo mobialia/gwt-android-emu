@@ -75,10 +75,10 @@ public class ConvertStrings {
 
 					String key = eElement.getAttribute("name");
 					String value = eElement.getTextContent();
-					stringPropertiesSB.append(key + " = " + value + "\n");
+					stringPropertiesSB.append(key).append(" = ").append(value).append("\n");
 					// Avoids duplicated class methods in multi-language
 					if (!stringsInClass.contains(key)) {
-						stringClassSB.append("\tString " + key + "();\n");
+						stringClassSB.append("\tString ").append(key).append("();\n");
 						stringsInClass.add(key);
 					}
 				}
@@ -103,10 +103,10 @@ public class ConvertStrings {
 						}
 					}
 
-					arrayPropertiesSB.append(key + " = " + valueSb.toString() + "\n");
+					arrayPropertiesSB.append(key).append(" = ").append(valueSb.toString()).append("\n");
 					// Avoids duplicated class methods in multi-language
 					if (!arraysInClass.contains(key)) {
-						arrayClassSB.append("\tString[] " + key + "();\n");
+						arrayClassSB.append("\tString[] ").append(key).append("();\n");
 						arraysInClass.add(key);
 					}
 				}
@@ -168,9 +168,9 @@ public class ConvertStrings {
 		 * resources processing the locales
 		 */
 		ConvertStrings cs = new ConvertStrings();
-		for (int i = 0; i < args.length; i++) {
-			cs.crawl(args[i]);
-		}
+        for (String arg : args) {
+            cs.crawl(arg);
+        }
 
 		cs.output();
 	}

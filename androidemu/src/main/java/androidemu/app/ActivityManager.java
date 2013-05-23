@@ -140,9 +140,9 @@ public class ActivityManager {
 					Log.e(TAG, e.getMessage());
 
 					StringBuffer stb = new StringBuffer();
-					stb.append(e.getMessage() + "\n\nStack trace:\n");
+					stb.append(e.getMessage()).append("\n\nStack trace:\n");
 					for (int i = 0; i < e.getStackTrace().length; i++) {
-						stb.append(e.getStackTrace()[i].toString() + "\n");
+						stb.append(e.getStackTrace()[i].toString()).append("\n");
 					}
 					Log.e(TAG, stb.toString());
 				}

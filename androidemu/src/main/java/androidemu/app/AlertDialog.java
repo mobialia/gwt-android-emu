@@ -71,8 +71,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public AlertDialog create() {
-			AlertDialog dialog = new AlertDialog(this);
-			return dialog;
+			return new AlertDialog(this);
 		}
 	}
 

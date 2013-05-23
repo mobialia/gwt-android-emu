@@ -28,4 +28,8 @@ public class Context {
 	public void setApplication(Application application) {
 		Context.application = application;
 	}
+
+    public String getPackageName() {
+        return ""; // TODO
+    }
 }
