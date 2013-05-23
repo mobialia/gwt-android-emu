@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>GWT Android Emu Demo</title>
+<script type="text/javascript" language="javascript"
+	src="demo/demo.nocache.js"></script>
+</head>
+<body>
+<style>
+body {
+	background: black;
+	color: white;
+}
+.hide-while-loading {
+	display: none;
+}
+.actionbar-button {
+	margin: 0;
+	padding: 0.2em;
+	width: 2em;
+	height: 2em;
+}
+
+.actionbar-button:focus,
+.actionbar-button:hover
+{
+	background: rgba(50,165,207,0.5);
+}
+</style>
+<body>
+	<div id="actionbar">
+		<!-- Back and Menu Buttons are optional, they are hidden when not needed -->
+		<input id="BackButton" type="image" class="actionbar-button hide-while-loading" src="img/actionbar_left.png" />
+		<input id="MenuButton" type="image" class="actionbar-button hide-while-loading" src="img/actionbar_menu.png" />
+	</div>
+	<div id="activity"></div>
+	<div id="show-while-loading">Loading...</div>
+</body>
+</html>

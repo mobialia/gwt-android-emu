@@ -26,6 +26,7 @@ public class PreferencesBuilder {
 		String value = sharedPrefs.getString(key, defaultValue);
 
 		FlowPanel fp = new FlowPanel();
+		fp.setStyleName(Res.R.style().preferencesElement());
 		
 		ListBox listBox = new ListBox();
 		for (String text : labels) {
@@ -59,6 +60,7 @@ public class PreferencesBuilder {
 		Boolean value = sharedPrefs.getBoolean(key, defaultValue);
 
 		FlowPanel fp = new FlowPanel();
+		fp.setStyleName(Res.R.style().preferencesElement());
 
 		CheckBox checkBox = new CheckBox();
 		checkBox.setValue(value);

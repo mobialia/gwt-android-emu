@@ -1,5 +1,2 @@
-/.gwt
-/.settings
-/bin
-/.classpath
-/.project
+/.gradle
+/.idea

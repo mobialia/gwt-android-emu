@@ -1,6 +1,7 @@
 package androidemu.app;
 
 import androidemu.Res;
+import androidemu.content.ComponentName;
 import androidemu.content.Context;
 import androidemu.content.Intent;
 import androidemu.os.Bundle;
