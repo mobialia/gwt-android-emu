@@ -1,0 +1,28 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field="string" type="androidemu.demo.res.Strings"></ui:with>
+
+	<g:HTMLPanel>
+		<!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
+		<div>
+			<h1><ui:text from="{string.hello}" /></h1>
+			
+			<ul>
+			<li><a href="http://github.com/albertoruibal/gwt_android_emu">http://github.com/albertoruibal/gwt_android_emu</a></li>
+			<li><a href="http://github.com/albertoruibal/gwt_android_emu_demo">http://github.com/albertoruibal/gwt_android_emu_demo</a></li>
+			</ul>
+		
+			<!-- String Properties can be accessed with ui:text -->
+			<br/>
+			<button id="AlertButton"><ui:text from="{string.alert_dialog}" /></button>
+			<br/>
+			<button id="ToastButton"><ui:text from="{string.toast}" /></button>
+			<br/>
+			<button id="HandlerButton"><ui:text from="{string.handler}" /></button>
+			<br/>
+			<button id="ActivityButton"><ui:text from="{string.activity}" /></button>
+
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

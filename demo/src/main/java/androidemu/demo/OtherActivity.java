@@ -19,12 +19,12 @@ public class OtherActivity extends Activity {
 	protected void onResume() {
 		Log.d(TAG, "onResume");
 		super.onResume();
-	};
+	}
 
-	@Override
+    @Override
 	protected void onPause() {
 		Log.d(TAG, "onPause");
 		super.onPause();
-	};
+	}
 
 }

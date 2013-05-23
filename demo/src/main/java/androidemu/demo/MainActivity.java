@@ -69,13 +69,13 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 		// Androidemu simulates the Activity life cycle
 		Log.d(TAG, "onResume");
 		super.onResume();
-	};
+	}
 
 	@Override
 	protected void onPause() {
 		Log.d(TAG, "onPause");
 		super.onPause();
-	};
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
