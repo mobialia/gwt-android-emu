@@ -23,8 +23,22 @@ The "android." package names are renamed to "androidemu.", you need to make a "S
 
 This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT. It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
-Check the demo project at http://github.com/albertoruibal/gwt_android_emu_demo to see some usage examples.
+It's released under the MIT License, so feel free to use it anywhere.
+
+Demo Project
+============
+
+We include a demo project to see some usage examples. You can view this demo at:
+
+http://gwt-android-emu.appspot.com/
+
+It's a GWT app coded like an Android App, you can see the MainActivity class and find the differences:
+
+https://github.com/albertoruibal/gwt_android_emu/blob/master/demo/src/main/java/androidemu/demo/MainActivity.java
+
+It includes two Activities with Strings and Layouts as resources and shows the usage of Menus, Toasts, AlertDialogs, etc.
+
+Tools
+=====
 
 We also include a tool ConvertStrings (in the package utils) to convert from ant Android XML file to GWT Class + Key-properties files
-
-It's released under the MIT License, so feel free to use it anywhere. 
