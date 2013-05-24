@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'war'
 
 archivesBaseName = 'androidemu_demo'
 
@@ -11,7 +10,7 @@ dependencies {
 }
 
 task compileGwt (dependsOn: classes, type: JavaExec) {
-    ext.buildDir = "${project.buildDir}/gwt"
+    ext.buildDir = "${project.buildDir}/src/main/webapp"
     ext.extraDir = "${project.buildDir}/extra"
 
     inputs.source sourceSets.main.java.srcDirs
@@ -53,10 +52,4 @@ task compileGwt (dependsOn: classes, type: JavaExec) {
     maxHeapSize = '256M'
 }
 
-war.dependsOn compileGwt
-war {
-    from compileGwt.buildDir
-}
-war.doLast {
-    ant.unzip(src: war.archivePath, dest: "./war")
-}
+jar.dependsOn compileGwt
