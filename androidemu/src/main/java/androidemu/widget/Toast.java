@@ -58,9 +58,9 @@ public class Toast {
 		};
 
 		if (duration == LENGTH_SHORT) {
-			t.schedule(1000);
+			t.schedule(2500);
 		} else {
-			t.schedule(2000);
+			t.schedule(4000);
 		}
 	}
 
