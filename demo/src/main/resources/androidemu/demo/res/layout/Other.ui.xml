@@ -9,11 +9,12 @@
             <!-- Back and Menu Buttons are optional if present, the ActivityManager will assign their functions -->
             <input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" />
             <input id="MenuButton" type="image" class="actionbar-button" src="img/actionbar_menu.png" />
+
+            <ui:text from="{string.activity2}" />
         </div>
-        <div>
+        <div class="content">
 			<!-- String Properties can be accessed with ui:text -->
 			<h1><ui:text from="{string.other}" /></h1>
-
 		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -7,15 +7,16 @@
 		<!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
         <div class="actionbar">
             <!-- Back and Menu Buttons are optional if present, the ActivityManager will assign their functions -->
-            <input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" />
+            <!--input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" /-->
             <input id="MenuButton" type="image" class="actionbar-button" src="img/actionbar_menu.png" />
+
+            <ui:text from="{string.activity1}" />
         </div>
-        <div>
+        <div class="content">
 			<h1><ui:text from="{string.hello}" /></h1>
 			
 			<ul>
 			<li><a href="http://github.com/albertoruibal/gwt_android_emu">http://github.com/albertoruibal/gwt_android_emu</a></li>
-			<li><a href="http://github.com/albertoruibal/gwt_android_emu_demo">http://github.com/albertoruibal/gwt_android_emu_demo</a></li>
 			</ul>
 		
 			<!-- String Properties can be accessed with ui:text -->
@@ -27,7 +28,6 @@
 			<button id="HandlerButton"><ui:text from="{string.handler}" /></button>
 			<br/>
 			<button id="ActivityButton"><ui:text from="{string.activity}" /></button>
-
 		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 

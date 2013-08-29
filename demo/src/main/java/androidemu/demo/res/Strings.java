@@ -4,6 +4,10 @@ import com.google.gwt.i18n.client.Constants;
 
 public interface Strings extends Constants {
 
+	String activity1();
+
+	String activity2();
+
 	String hello();
 
 	String menu1();

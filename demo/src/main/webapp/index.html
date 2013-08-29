@@ -12,19 +12,35 @@ body {
     margin: 0;
 }
 .actionbar {
+    position: fixed;
+    top: 0px;
     width: 100%;
-    background: #555555;
+    height: 3rem;
+    line-height: 3rem;
+
+    font-size: 1.5rem;
+    text-align: center;
+
+    color: white;
+    background: rgba(40,40,40,0.9);
 }
+
 .actionbar-button {
-	margin: 0;
-	padding: 0.2em;
-	width: 2em;
-	height: 2em;
+    margin: 0;
+    padding: 0.3rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    float:left;
 }
+
 .actionbar-button:focus,
 .actionbar-button:hover
 {
-	background: rgba(50,165,207,0.5);
+    background: rgba(50,165,207,0.5);
+}
+
+.content {
+    padding-top: 3rem;
 }
 </style>
 </head>
