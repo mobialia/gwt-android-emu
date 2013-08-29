@@ -24,28 +24,8 @@ public class ActivityManager {
 	public final static int STATUS_DESTROYED = 4;
 
 	public static Stack<Activity> activityStack = new Stack<Activity>();
-	static ImageButton backButton, menuButton;
 
 	public static void setup() {
-		if (DOM.getElementById("BackButton") != null) {
-			backButton = (ImageButton) ViewFactory.createViewFromElement(DOM.getElementById("BackButton"));
-			backButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					ActivityManager.back();
-				}
-			});
-		}
-		if (DOM.getElementById("MenuButton") != null) {
-			menuButton = (ImageButton) ViewFactory.createViewFromElement(DOM.getElementById("MenuButton"));
-			menuButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					ActivityManager.toggleOptionsMenu(v);
-				}
-			});
-		}
-
 		if (DOM.getElementById("show-while-loading") != null) {
 			DOM.getElementById("show-while-loading").setAttribute("style", "display: none");
 		}
@@ -91,7 +71,6 @@ public class ActivityManager {
 			case STATUS_CREATED:
 				activity.onResume();
 				activity.createMenu();
-				checkButtonsVisibility(activity);
 				activity.status = STATUS_RESUMED;
 				break;
 			case STATUS_RESUMED:
@@ -112,21 +91,9 @@ public class ActivityManager {
 					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 				}
 				activity.onResume();
-				checkButtonsVisibility(activity);
 				activity.status = STATUS_RESUMED;
 				break;
 			}
-		}
-	}
-
-	private static void checkButtonsVisibility(Activity activity) {
-		if (backButton != null) {
-			backButton.getElement().removeClassName("hide-while-loading");
-			backButton.setVisibility(activityStack.size() > 1 ? View.VISIBLE : View.GONE);
-		}
-		if (menuButton != null) {
-			menuButton.getElement().removeClassName("hide-while-loading");
-			menuButton.setVisibility(activity.menu != null && activity.menu.menuItems.size() > 0 ? View.VISIBLE : View.GONE);
 		}
 	}
 

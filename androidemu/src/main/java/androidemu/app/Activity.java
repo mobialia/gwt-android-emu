@@ -1,7 +1,6 @@
 package androidemu.app;
 
 import androidemu.Res;
-import androidemu.content.ComponentName;
 import androidemu.content.Context;
 import androidemu.content.Intent;
 import androidemu.os.Bundle;
@@ -9,8 +8,10 @@ import androidemu.view.Menu;
 import androidemu.view.MenuItem;
 import androidemu.view.View;
 import androidemu.view.ViewFactory;
+import androidemu.widget.ImageButton;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.TextResource;
@@ -175,6 +176,27 @@ public class Activity extends Context implements EntryPoint {
 	public void setContentView(Widget htmlPanel) {
 		contentPanel = htmlPanel;
 		RootPanel.get(ACTIVITY_ID).add(contentPanel);
+
+		Element backElement = ViewFactory.getElementById(contentPanel.getElement(), "BackButton");
+		if (backElement != null) {
+			ImageButton backButton = (ImageButton) ViewFactory.createViewFromElement(backElement);
+			backButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ActivityManager.back();
+				}
+			});
+		}
+		Element menuElement = ViewFactory.getElementById(contentPanel.getElement(), "MenuButton");
+		if (menuElement != null) {
+			ImageButton menuButton = (ImageButton) ViewFactory.createViewFromElement(menuElement);
+			menuButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ActivityManager.toggleOptionsMenu(v);
+				}
+			});
+		}
 	}
 
 	protected void onSaveInstanceState(Bundle outState) {
