@@ -9,9 +9,11 @@
 body {
 	background: black;
 	color: white;
+    margin: 0;
 }
-.hide-while-loading {
-	display: none;
+.actionbar {
+    width: 100%;
+    background: #555555;
 }
 .actionbar-button {
 	margin: 0;
@@ -19,7 +21,6 @@ body {
 	width: 2em;
 	height: 2em;
 }
-
 .actionbar-button:focus,
 .actionbar-button:hover
 {
@@ -28,11 +29,6 @@ body {
 </style>
 </head>
 <body>
-	<div id="actionbar">
-		<!-- Back and Menu Buttons are optional, they are hidden when not needed -->
-		<input id="BackButton" type="image" class="actionbar-button hide-while-loading" src="img/actionbar_left.png" />
-		<input id="MenuButton" type="image" class="actionbar-button hide-while-loading" src="img/actionbar_menu.png" />
-	</div>
 	<div id="activity"></div>
 	<div id="show-while-loading">Loading...</div>
 </body>
