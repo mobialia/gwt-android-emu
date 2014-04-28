@@ -42,3 +42,24 @@ Tools
 =====
 
 We also include a tool ConvertStrings (in the package utils) to convert from ant Android XML file to GWT Class + Key-properties files
+
+HTML Elements to Android Widgets Mappings
+=========================================
+
+Those HTML elements are supported and converted to Android widgets: (see also the ViewFactory class)
+
+| HTML Element             | Android Widget |
+| -------------------------|----------------|
+| <div class="ListView">   | ListView       |
+| <div class="ScrollView"> | ScrollView     |
+| <div>                    | TextView       |
+| <input type="text">      | EditText       |
+| <input type="number">    | EditText       |
+| <input type="password">  | EditText       |
+| <input type="button">    | Button         |
+| <input type="radio">     | RadioButton    |
+| <input type="checkbox">  | CheckBox       |
+| <input type="image">     | ImageButton    |
+| <select>                 | Spinner        |
+| <img>                    | ImageView      |
+
