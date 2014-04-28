@@ -19,11 +19,4 @@ public class EditText extends View {
 		return InputElement.as(element).getValue();
 	}
 
-	public void setEnabled(boolean enabled) {
-		if (enabled) {
-			element.removeAttribute("disabled");
-		} else {
-			element.setAttribute("disabled", "disabled");
-		}
-	}
 }

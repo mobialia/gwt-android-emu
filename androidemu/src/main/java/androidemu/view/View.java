@@ -70,6 +70,14 @@ public class View {
 		}
 	}
 
+	public void setEnabled(boolean enabled) {
+		if (enabled) {
+			element.removeAttribute("disabled");
+		} else {
+			element.setAttribute("disabled", "disabled");
+		}
+	}
+
 	public void setOnClickListener(final OnClickListener listener) {
 		Event.setEventListener(element, new EventListener() {
 			@Override
