@@ -1,10 +1,10 @@
 package androidemu.view;
 
-import androidemu.content.Context;
-
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
+
+import androidemu.content.Context;
 
 public class LayoutInflater {
 
@@ -19,4 +19,9 @@ public class LayoutInflater {
 	public View inflate(Widget widget, Context ctx) {
 		return new View(widget);
 	}
+
+	public View inflate(Widget widget, ViewGroup container, boolean something) {
+		return new View(widget);
+	}
+
 }
