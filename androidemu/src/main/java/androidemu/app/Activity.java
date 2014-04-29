@@ -135,8 +135,8 @@ public class Activity extends Context implements EntryPoint {
 		if (menuPanel != null) {
 			if (!menuPanel.isShowing()) {
 				menuPanel.setAutoHideEnabled(false);
-				menuPanel.setPopupPosition(view.getLeft(), view.getTop() + view.getHeight());
 				menuPanel.show();
+				menuPanel.setPopupPosition(view.getLeft() + view.getWidth() - menuPanel.getOffsetWidth(), view.getTop() + view.getHeight());
 			} else {
 				menuPanel.hide();
 			}
