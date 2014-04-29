@@ -1,12 +1,12 @@
 package androidemu.app;
 
-import androidemu.Res;
-import androidemu.content.Context;
-import androidemu.content.DialogInterface;
-
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+import androidemu.Res;
+import androidemu.content.Context;
+import androidemu.content.DialogInterface;
 
 public class ProgressDialog extends Dialog implements DialogInterface {
 

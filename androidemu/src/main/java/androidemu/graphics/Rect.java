@@ -45,15 +45,11 @@ public final class Rect {
 	 * Create a new rectangle with the specified coordinates. Note: no range
 	 * checking is performed, so the caller must ensure that left <= right and
 	 * top <= bottom.
-	 * 
-	 * @param left
-	 *            The X coordinate of the left side of the rectagle
-	 * @param top
-	 *            The Y coordinate of the top of the rectangle
-	 * @param right
-	 *            The X coordinate of the right side of the rectagle
-	 * @param bottom
-	 *            The Y coordinate of the bottom of the rectangle
+	 *
+	 * @param left   The X coordinate of the left side of the rectagle
+	 * @param top    The Y coordinate of the top of the rectangle
+	 * @param right  The X coordinate of the right side of the rectagle
+	 * @param bottom The Y coordinate of the bottom of the rectangle
 	 */
 	public Rect(int left, int top, int right, int bottom) {
 		this.left = left;
@@ -65,10 +61,9 @@ public final class Rect {
 	/**
 	 * Create a new rectangle, initialized with the values in the specified
 	 * rectangle (which is left unmodified).
-	 * 
-	 * @param r
-	 *            The rectangle whose coordinates are copied into the new
-	 *            rectangle.
+	 *
+	 * @param r The rectangle whose coordinates are copied into the new
+	 *          rectangle.
 	 */
 	public Rect(Rect r) {
 		left = r.left;
@@ -108,7 +103,7 @@ public final class Rect {
 
 	/**
 	 * Return a string representation of the rectangle in a compact form.
-	 * 
+	 *
 	 * @hide
 	 */
 	public String toShortString(StringBuilder sb) {
@@ -127,11 +122,11 @@ public final class Rect {
 
 	/**
 	 * Return a string representation of the rectangle in a well-defined format.
-	 * 
-	 * <p>
+	 * <p/>
+	 * <p/>
 	 * You can later recover the Rect from this string through
 	 * {@link #unflattenFromString(String)}.
-	 * 
+	 *
 	 * @return Returns a new String of the form "left top right bottom"
 	 */
 	public String flattenToString() {
@@ -163,7 +158,7 @@ public final class Rect {
 
 	/**
 	 * Print short representation to given writer.
-	 * 
+	 *
 	 * @hide
 	 */
 	public void printShortString(PrintWriter pw) {
@@ -187,7 +182,7 @@ public final class Rect {
 
 	/**
 	 * @return the rectangle's width. This does not check for a valid rectangle
-	 *         (i.e. left <= right) so the result may be negative.
+	 * (i.e. left <= right) so the result may be negative.
 	 */
 	public final int width() {
 		return right - left;
@@ -195,7 +190,7 @@ public final class Rect {
 
 	/**
 	 * @return the rectangle's height. This does not check for a valid rectangle
-	 *         (i.e. top <= bottom) so the result may be negative.
+	 * (i.e. top <= bottom) so the result may be negative.
 	 */
 	public final int height() {
 		return bottom - top;
@@ -203,8 +198,8 @@ public final class Rect {
 
 	/**
 	 * @return the horizontal center of the rectangle. If the computed value is
-	 *         fractional, this method returns the largest integer that is less
-	 *         than the computed value.
+	 * fractional, this method returns the largest integer that is less
+	 * than the computed value.
 	 */
 	public final int centerX() {
 		return (left + right) >> 1;
@@ -212,8 +207,8 @@ public final class Rect {
 
 	/**
 	 * @return the vertical center of the rectangle. If the computed value is
-	 *         fractional, this method returns the largest integer that is less
-	 *         than the computed value.
+	 * fractional, this method returns the largest integer that is less
+	 * than the computed value.
 	 */
 	public final int centerY() {
 		return (top + bottom) >> 1;
@@ -244,15 +239,11 @@ public final class Rect {
 	 * Set the rectangle's coordinates to the specified values. Note: no range
 	 * checking is performed, so it is up to the caller to ensure that left <=
 	 * right and top <= bottom.
-	 * 
-	 * @param left
-	 *            The X coordinate of the left side of the rectagle
-	 * @param top
-	 *            The Y coordinate of the top of the rectangle
-	 * @param right
-	 *            The X coordinate of the right side of the rectagle
-	 * @param bottom
-	 *            The Y coordinate of the bottom of the rectangle
+	 *
+	 * @param left   The X coordinate of the left side of the rectagle
+	 * @param top    The Y coordinate of the top of the rectangle
+	 * @param right  The X coordinate of the right side of the rectagle
+	 * @param bottom The Y coordinate of the bottom of the rectangle
 	 */
 	public void set(int left, int top, int right, int bottom) {
 		this.left = left;
@@ -263,9 +254,8 @@ public final class Rect {
 
 	/**
 	 * Copy the coordinates from src into this rectangle.
-	 * 
-	 * @param src
-	 *            The rectangle whose coordinates are copied into this
+	 *
+	 * @param src The rectangle whose coordinates are copied into this
 	 *            rectangle.
 	 */
 	public void set(Rect src) {
@@ -278,13 +268,11 @@ public final class Rect {
 	/**
 	 * Offset the rectangle by adding dx to its left and right coordinates, and
 	 * adding dy to its top and bottom coordinates.
-	 * 
-	 * @param dx
-	 *            The amount to add to the rectangle's left and right
-	 *            coordinates
-	 * @param dy
-	 *            The amount to add to the rectangle's top and bottom
-	 *            coordinates
+	 *
+	 * @param dx The amount to add to the rectangle's left and right
+	 *           coordinates
+	 * @param dy The amount to add to the rectangle's top and bottom
+	 *           coordinates
 	 */
 	public void offset(int dx, int dy) {
 		left += dx;
@@ -296,11 +284,9 @@ public final class Rect {
 	/**
 	 * Offset the rectangle to a specific (left, top) position, keeping its
 	 * width and height the same.
-	 * 
-	 * @param newLeft
-	 *            The new "left" coordinate for the rectangle
-	 * @param newTop
-	 *            The new "top" coordinate for the rectangle
+	 *
+	 * @param newLeft The new "left" coordinate for the rectangle
+	 * @param newTop  The new "top" coordinate for the rectangle
 	 */
 	public void offsetTo(int newLeft, int newTop) {
 		right += newLeft - left;
@@ -314,11 +300,9 @@ public final class Rect {
 	 * moved inwards, making the rectangle narrower. If dx is negative, then the
 	 * sides are moved outwards, making the rectangle wider. The same holds true
 	 * for dy and the top and bottom.
-	 * 
-	 * @param dx
-	 *            The amount to add(subtract) from the rectangle's left(right)
-	 * @param dy
-	 *            The amount to add(subtract) from the rectangle's top(bottom)
+	 *
+	 * @param dx The amount to add(subtract) from the rectangle's left(right)
+	 * @param dy The amount to add(subtract) from the rectangle's top(bottom)
 	 */
 	public void inset(int dx, int dy) {
 		left += dx;
@@ -332,13 +316,11 @@ public final class Rect {
 	 * considered to be inside, while the right and bottom are not. This means
 	 * that for a x,y to be contained: left <= x < right and top <= y < bottom.
 	 * An empty rectangle never contains any point.
-	 * 
-	 * @param x
-	 *            The X coordinate of the point being tested for containment
-	 * @param y
-	 *            The Y coordinate of the point being tested for containment
+	 *
+	 * @param x The X coordinate of the point being tested for containment
+	 * @param y The Y coordinate of the point being tested for containment
 	 * @return true iff (x,y) are contained by the rectangle, where containment
-	 *         means left <= x < right and top <= y < bottom
+	 * means left <= x < right and top <= y < bottom
 	 */
 	public boolean contains(int x, int y) {
 		return left < right && top < bottom // check for empty first
@@ -349,38 +331,33 @@ public final class Rect {
 	 * Returns true iff the 4 specified sides of a rectangle are inside or equal
 	 * to this rectangle. i.e. is this rectangle a superset of the specified
 	 * rectangle. An empty rectangle never contains another rectangle.
-	 * 
-	 * @param left
-	 *            The left side of the rectangle being tested for containment
-	 * @param top
-	 *            The top of the rectangle being tested for containment
-	 * @param right
-	 *            The right side of the rectangle being tested for containment
-	 * @param bottom
-	 *            The bottom of the rectangle being tested for containment
+	 *
+	 * @param left   The left side of the rectangle being tested for containment
+	 * @param top    The top of the rectangle being tested for containment
+	 * @param right  The right side of the rectangle being tested for containment
+	 * @param bottom The bottom of the rectangle being tested for containment
 	 * @return true iff the the 4 specified sides of a rectangle are inside or
-	 *         equal to this rectangle
+	 * equal to this rectangle
 	 */
 	public boolean contains(int left, int top, int right, int bottom) {
 		// check for empty first
 		return this.left < this.right && this.top < this.bottom
-		// now check for containment
+				// now check for containment
 				&& this.left <= left && this.top <= top && this.right >= right && this.bottom >= bottom;
 	}
 
 	/**
 	 * Returns true iff the specified rectangle r is inside or equal to this
 	 * rectangle. An empty rectangle never contains another rectangle.
-	 * 
-	 * @param r
-	 *            The rectangle being tested for containment.
+	 *
+	 * @param r The rectangle being tested for containment.
 	 * @return true iff the specified rectangle r is inside or equal to this
-	 *         rectangle
+	 * rectangle
 	 */
 	public boolean contains(Rect r) {
 		// check for empty first
 		return this.left < this.right && this.top < this.bottom
-		// now check for containment
+				// now check for containment
 				&& left <= r.left && top <= r.top && right >= r.right && bottom >= r.bottom;
 	}
 
@@ -390,21 +367,17 @@ public final class Rect {
 	 * otherwise return false and do not change this rectangle. No check is
 	 * performed to see if either rectangle is empty. Note: To just test for
 	 * intersection, use intersects()
-	 * 
-	 * @param left
-	 *            The left side of the rectangle being intersected with this
-	 *            rectangle
-	 * @param top
-	 *            The top of the rectangle being intersected with this rectangle
-	 * @param right
-	 *            The right side of the rectangle being intersected with this
-	 *            rectangle.
-	 * @param bottom
-	 *            The bottom of the rectangle being intersected with this
-	 *            rectangle.
+	 *
+	 * @param left   The left side of the rectangle being intersected with this
+	 *               rectangle
+	 * @param top    The top of the rectangle being intersected with this rectangle
+	 * @param right  The right side of the rectangle being intersected with this
+	 *               rectangle.
+	 * @param bottom The bottom of the rectangle being intersected with this
+	 *               rectangle.
 	 * @return true if the specified rectangle and this rectangle intersect (and
-	 *         this rectangle is then set to that intersection) else return
-	 *         false and do not change this rectangle.
+	 * this rectangle is then set to that intersection) else return
+	 * false and do not change this rectangle.
 	 */
 	public boolean intersect(int left, int top, int right, int bottom) {
 		if (this.left < right && left < this.right && this.top < bottom && top < this.bottom) {
@@ -430,12 +403,11 @@ public final class Rect {
 	 * this rectangle to that intersection, otherwise return false and do not
 	 * change this rectangle. No check is performed to see if either rectangle
 	 * is empty. To just test for intersection, use intersects()
-	 * 
-	 * @param r
-	 *            The rectangle being intersected with this rectangle.
+	 *
+	 * @param r The rectangle being intersected with this rectangle.
 	 * @return true if the specified rectangle and this rectangle intersect (and
-	 *         this rectangle is then set to that intersection) else return
-	 *         false and do not change this rectangle.
+	 * this rectangle is then set to that intersection) else return
+	 * false and do not change this rectangle.
 	 */
 	public boolean intersect(Rect r) {
 		return intersect(r.left, r.top, r.right, r.bottom);
@@ -446,14 +418,12 @@ public final class Rect {
 	 * that intersection, otherwise return false and do not change this
 	 * rectangle. No check is performed to see if either rectangle is empty. To
 	 * just test for intersection, use intersects()
-	 * 
-	 * @param a
-	 *            The first rectangle being intersected with
-	 * @param b
-	 *            The second rectangle being intersected with
+	 *
+	 * @param a The first rectangle being intersected with
+	 * @param b The second rectangle being intersected with
 	 * @return true iff the two specified rectangles intersect. If they do, set
-	 *         this rectangle to that intersection. If they do not, return false
-	 *         and do not change this rectangle.
+	 * this rectangle to that intersection. If they do not, return false
+	 * and do not change this rectangle.
 	 */
 	public boolean setIntersect(Rect a, Rect b) {
 		if (a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom) {
@@ -471,17 +441,13 @@ public final class Rect {
 	 * event is this rectangle modified. No check is performed to see if either
 	 * rectangle is empty. To record the intersection, use intersect() or
 	 * setIntersect().
-	 * 
-	 * @param left
-	 *            The left side of the rectangle being tested for intersection
-	 * @param top
-	 *            The top of the rectangle being tested for intersection
-	 * @param right
-	 *            The right side of the rectangle being tested for intersection
-	 * @param bottom
-	 *            The bottom of the rectangle being tested for intersection
+	 *
+	 * @param left   The left side of the rectangle being tested for intersection
+	 * @param top    The top of the rectangle being tested for intersection
+	 * @param right  The right side of the rectangle being tested for intersection
+	 * @param bottom The bottom of the rectangle being tested for intersection
 	 * @return true iff the specified rectangle intersects this rectangle. In no
-	 *         event is this rectangle modified.
+	 * event is this rectangle modified.
 	 */
 	public boolean intersects(int left, int top, int right, int bottom) {
 		return this.left < right && left < this.right && this.top < bottom && top < this.bottom;
@@ -491,13 +457,11 @@ public final class Rect {
 	 * Returns true iff the two specified rectangles intersect. In no event are
 	 * either of the rectangles modified. To record the intersection, use
 	 * intersect() or setIntersect().
-	 * 
-	 * @param a
-	 *            The first rectangle being tested for intersection
-	 * @param b
-	 *            The second rectangle being tested for intersection
+	 *
+	 * @param a The first rectangle being tested for intersection
+	 * @param b The second rectangle being tested for intersection
 	 * @return true iff the two specified rectangles intersect. In no event are
-	 *         either of the rectangles modified.
+	 * either of the rectangles modified.
 	 */
 	public static boolean intersects(Rect a, Rect b) {
 		return a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
@@ -507,15 +471,11 @@ public final class Rect {
 	 * Update this Rect to enclose itself and the specified rectangle. If the
 	 * specified rectangle is empty, nothing is done. If this rectangle is empty
 	 * it is set to the specified rectangle.
-	 * 
-	 * @param left
-	 *            The left edge being unioned with this rectangle
-	 * @param top
-	 *            The top edge being unioned with this rectangle
-	 * @param right
-	 *            The right edge being unioned with this rectangle
-	 * @param bottom
-	 *            The bottom edge being unioned with this rectangle
+	 *
+	 * @param left   The left edge being unioned with this rectangle
+	 * @param top    The top edge being unioned with this rectangle
+	 * @param right  The right edge being unioned with this rectangle
+	 * @param bottom The bottom edge being unioned with this rectangle
 	 */
 	public void union(int left, int top, int right, int bottom) {
 		if ((left < right) && (top < bottom)) {
@@ -541,9 +501,8 @@ public final class Rect {
 	 * Update this Rect to enclose itself and the specified rectangle. If the
 	 * specified rectangle is empty, nothing is done. If this rectangle is empty
 	 * it is set to the specified rectangle.
-	 * 
-	 * @param r
-	 *            The rectangle being unioned with this rectangle
+	 *
+	 * @param r The rectangle being unioned with this rectangle
 	 */
 	public void union(Rect r) {
 		union(r.left, r.top, r.right, r.bottom);
@@ -552,11 +511,9 @@ public final class Rect {
 	/**
 	 * Update this Rect to enclose itself and the [x,y] coordinate. There is no
 	 * check to see that this rectangle is non-empty.
-	 * 
-	 * @param x
-	 *            The x coordinate of the point to add to the rectangle
-	 * @param y
-	 *            The y coordinate of the point to add to the rectangle
+	 *
+	 * @param x The x coordinate of the point to add to the rectangle
+	 * @param y The y coordinate of the point to add to the rectangle
 	 */
 	public void union(int x, int y) {
 		if (x < left) {

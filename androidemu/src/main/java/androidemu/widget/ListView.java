@@ -1,12 +1,12 @@
 package androidemu.widget;
 
-import androidemu.database.DataSetObserver;
-import androidemu.view.View;
-import androidemu.widget.AdapterView.OnItemClickListener;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
+
+import androidemu.database.DataSetObserver;
+import androidemu.view.View;
+import androidemu.widget.AdapterView.OnItemClickListener;
 
 public class ListView extends View {
 

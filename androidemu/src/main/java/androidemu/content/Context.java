@@ -29,7 +29,7 @@ public class Context {
 		Context.application = application;
 	}
 
-    public String getPackageName() {
-        return ""; // TODO
-    }
+	public String getPackageName() {
+		return ""; // TODO
+	}
 }

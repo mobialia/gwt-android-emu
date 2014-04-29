@@ -1,11 +1,11 @@
 package androidemu.view;
 
-import androidemu.Res;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Widget;
+
+import androidemu.Res;
 
 public class View {
 

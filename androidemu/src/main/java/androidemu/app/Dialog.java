@@ -1,9 +1,9 @@
 package androidemu.app;
 
+import com.google.gwt.user.client.ui.PopupPanel;
+
 import androidemu.Res;
 import androidemu.content.DialogInterface;
-
-import com.google.gwt.user.client.ui.PopupPanel;
 
 public class Dialog implements DialogInterface {
 

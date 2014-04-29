@@ -1,8 +1,8 @@
 package androidemu.widget;
 
-import androidemu.view.ViewGroup;
-
 import com.google.gwt.user.client.Element;
+
+import androidemu.view.ViewGroup;
 
 public class LinearLayout extends ViewGroup {
 

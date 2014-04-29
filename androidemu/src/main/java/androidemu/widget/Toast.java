@@ -1,13 +1,13 @@
 package androidemu.widget;
 
-import androidemu.Res;
-import androidemu.content.Context;
-import androidemu.view.Gravity;
-
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.PopupPanel;
+
+import androidemu.Res;
+import androidemu.content.Context;
+import androidemu.view.Gravity;
 
 public class Toast {
 
@@ -36,15 +36,15 @@ public class Toast {
 				int left = (Window.getClientWidth() - offsetWidth) / 2;
 				int top = 0;
 				switch (gravity) {
-				case Gravity.TOP:
-					top = (Window.getClientHeight() - offsetHeight) / 10;
-					break;
-				case Gravity.CENTER:
-					top = (Window.getClientHeight() - offsetHeight) / 2;
-					break;
-				case Gravity.BOTTOM:
-					top = 9 * (Window.getClientHeight() - offsetHeight) / 10;
-					break;
+					case Gravity.TOP:
+						top = (Window.getClientHeight() - offsetHeight) / 10;
+						break;
+					case Gravity.CENTER:
+						top = (Window.getClientHeight() - offsetHeight) / 2;
+						break;
+					case Gravity.BOTTOM:
+						top = 9 * (Window.getClientHeight() - offsetHeight) / 10;
+						break;
 				}
 				panel.setPopupPosition(left, top);
 			}

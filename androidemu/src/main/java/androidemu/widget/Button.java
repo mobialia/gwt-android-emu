@@ -1,8 +1,8 @@
 package androidemu.widget;
 
-import androidemu.view.View;
-
 import com.google.gwt.dom.client.Element;
+
+import androidemu.view.View;
 
 public class Button extends View {
 

@@ -1,8 +1,5 @@
 package androidemu.preference;
 
-import androidemu.MobialiaUtil;
-import androidemu.Res;
-
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,6 +10,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 
+import androidemu.MobialiaUtil;
+import androidemu.Res;
+
 public class PreferencesBuilder {
 
 	public static void addGroupLabel(Panel panel, String labelText) {
@@ -22,12 +22,12 @@ public class PreferencesBuilder {
 	}
 
 	public static void addListPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
-			final String[] values, String[] labels, String defaultValue) {
+										 final String[] values, String[] labels, String defaultValue) {
 		String value = sharedPrefs.getString(key, defaultValue);
 
 		FlowPanel fp = new FlowPanel();
 		fp.setStyleName(Res.R.style().preferencesElement());
-		
+
 		ListBox listBox = new ListBox();
 		for (String text : labels) {
 			listBox.addItem(text);
@@ -56,7 +56,7 @@ public class PreferencesBuilder {
 	}
 
 	public static void addBooleanPreference(Panel panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
-			boolean defaultValue) {
+											boolean defaultValue) {
 		Boolean value = sharedPrefs.getBoolean(key, defaultValue);
 
 		FlowPanel fp = new FlowPanel();

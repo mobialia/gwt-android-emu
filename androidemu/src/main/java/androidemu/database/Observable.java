@@ -31,13 +31,10 @@ public abstract class Observable<T> {
 	/**
 	 * Adds an observer to the list. The observer cannot be null and it must not
 	 * already be registered.
-	 * 
-	 * @param observer
-	 *            the observer to register
-	 * @throws IllegalArgumentException
-	 *             the observer is null
-	 * @throws IllegalStateException
-	 *             the observer is already registered
+	 *
+	 * @param observer the observer to register
+	 * @throws IllegalArgumentException the observer is null
+	 * @throws IllegalStateException    the observer is already registered
 	 */
 	public void registerObserver(T observer) {
 		if (observer == null) {
@@ -54,13 +51,10 @@ public abstract class Observable<T> {
 	/**
 	 * Removes a previously registered observer. The observer must not be null
 	 * and it must already have been registered.
-	 * 
-	 * @param observer
-	 *            the observer to unregister
-	 * @throws IllegalArgumentException
-	 *             the observer is null
-	 * @throws IllegalStateException
-	 *             the observer is not yet registered
+	 *
+	 * @param observer the observer to unregister
+	 * @throws IllegalArgumentException the observer is null
+	 * @throws IllegalStateException    the observer is not yet registered
 	 */
 	public void unregisterObserver(T observer) {
 		if (observer == null) {

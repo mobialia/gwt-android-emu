@@ -1,5 +1,7 @@
 package androidemu.view;
 
+import com.google.gwt.dom.client.Element;
+
 import androidemu.util.Log;
 import androidemu.widget.Button;
 import androidemu.widget.CheckBox;
@@ -12,15 +14,13 @@ import androidemu.widget.ScrollView;
 import androidemu.widget.Spinner;
 import androidemu.widget.TextView;
 
-import com.google.gwt.dom.client.Element;
-
 public class ViewFactory {
 
 	static final String TAG = "ViewFactory";
 
 	/**
 	 * From a DOM element creates the right Android-emulated Widget
-	 * 
+	 *
 	 * @param element
 	 * @return
 	 */

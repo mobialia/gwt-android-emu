@@ -1,10 +1,5 @@
 package androidemu.app;
 
-import androidemu.Res;
-import androidemu.content.Context;
-import androidemu.content.DialogInterface;
-import androidemu.view.View;
-
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -12,6 +7,11 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
+
+import androidemu.Res;
+import androidemu.content.Context;
+import androidemu.content.DialogInterface;
+import androidemu.view.View;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 
