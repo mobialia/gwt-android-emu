@@ -46,9 +46,9 @@ We also include a tool ConvertStrings (in the package utils) to convert from ant
 HTML Elements to Android Widgets
 ================================
 
-Those HTML elements are supported and converted to Android widgets: (see also the ViewFactory class)
+Those HTML elements are supported and mapped to Android widgets: (see also the ViewFactory class)
 
-| HTML Element                | Android Widget |
+| HTML Element               | Android Widget |
 | ---------------------------|----------------|
 | `<div class="ListView">`   | ListView       |
 | `<div class="ScrollView">` | ScrollView     |
