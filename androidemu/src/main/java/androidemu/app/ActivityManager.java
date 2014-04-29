@@ -1,18 +1,15 @@
 package androidemu.app;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
+
 import java.util.Stack;
 
 import androidemu.content.Intent;
 import androidemu.util.Log;
 import androidemu.view.View;
-import androidemu.view.View.OnClickListener;
-import androidemu.view.ViewFactory;
-import androidemu.widget.ImageButton;
-
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Window;
 
 public class ActivityManager {
 	public final static String TAG = "ActivityManager";
@@ -64,35 +61,37 @@ public class ActivityManager {
 	private static void advanceStatus(Activity activity) {
 		while (activity.status < activity.targetStatus) {
 			switch (activity.status) {
-			case STATUS_NEW:
-				activity.onCreate(null);
-				activity.status = STATUS_CREATED;
-				break;
-			case STATUS_CREATED:
-				activity.onResume();
-				activity.createMenu();
-				activity.status = STATUS_RESUMED;
-				break;
-			case STATUS_RESUMED:
-				activity.hideMenu();
-				activity.onPause();
-				activity.status = STATUS_PAUSED;
-				break;
-			case STATUS_PAUSED:
-				activity.onDestroy();
-				activity.status = STATUS_DESTROYED;
-				activityStack.remove(activity);
+				case STATUS_NEW:
+					activity.onCreate(null);
+					activity.onPostCreate(null);
+					activity.status = STATUS_CREATED;
+					break;
+				case STATUS_CREATED:
+					activity.onResume();
+					activity.createMenu();
+					activity.onPostResume();
+					activity.status = STATUS_RESUMED;
+					break;
+				case STATUS_RESUMED:
+					activity.hideMenu();
+					activity.onPause();
+					activity.status = STATUS_PAUSED;
+					break;
+				case STATUS_PAUSED:
+					activity.onDestroy();
+					activity.status = STATUS_DESTROYED;
+					activityStack.remove(activity);
 			}
 		}
 		while (activity.status > activity.targetStatus) {
 			switch (activity.status) {
-			case STATUS_PAUSED:
-				if (activity.returnRequestCode != null) {
-					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
-				}
-				activity.onResume();
-				activity.status = STATUS_RESUMED;
-				break;
+				case STATUS_PAUSED:
+					if (activity.returnRequestCode != null) {
+						activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
+					}
+					activity.onResume();
+					activity.status = STATUS_RESUMED;
+					break;
 			}
 		}
 	}

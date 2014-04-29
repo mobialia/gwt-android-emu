@@ -1,15 +1,5 @@
 package androidemu.app;
 
-import androidemu.Res;
-import androidemu.content.Context;
-import androidemu.content.Intent;
-import androidemu.os.Bundle;
-import androidemu.view.Menu;
-import androidemu.view.MenuItem;
-import androidemu.view.View;
-import androidemu.view.ViewFactory;
-import androidemu.widget.ImageButton;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -21,6 +11,17 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import androidemu.Res;
+import androidemu.content.Context;
+import androidemu.content.Intent;
+import androidemu.os.Bundle;
+import androidemu.support.v4.app.Fragment;
+import androidemu.view.Menu;
+import androidemu.view.MenuItem;
+import androidemu.view.View;
+import androidemu.view.ViewFactory;
+import androidemu.widget.ImageButton;
 
 public class Activity extends Context implements EntryPoint {
 
@@ -61,10 +62,16 @@ public class Activity extends Context implements EntryPoint {
 
 	}
 
+	protected void onPostCreate(Bundle savedInstanceState) {
+	}
+
 	protected void onResume() {
 		if (contentPanel != null) {
 			contentPanel.setVisible(true);
 		}
+	}
+
+	protected void onPostResume() {
 	}
 
 	protected void onPause() {
@@ -203,6 +210,10 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public void startActivityForResult(Intent intent, int requestCode) {
+		ActivityManager.startActivity(intent, requestCode);
+	}
+
+	public void startActivityFromFragment(Fragment fragment, Intent intent, int requestCode) {
 		ActivityManager.startActivity(intent, requestCode);
 	}
 
