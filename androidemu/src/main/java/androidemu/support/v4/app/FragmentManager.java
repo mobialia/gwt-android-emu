@@ -1,28 +1,36 @@
 package androidemu.support.v4.app;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Stack;
 
-import androidemu.util.Log;
 import androidemu.view.LayoutInflater;
 import androidemu.view.View;
 import androidemu.view.ViewGroup;
 
 public class FragmentManager {
-
 	static final String TAG = "FragmentManager";
+	static final int STATUS_NOT_INITIALIZED = 0;
+	static final int STATUS_CREATED = 1;
+	static final int STATUS_CREATED_VIEW = 2;
+	static final int STATUS_RESUMED = 3;
+	static final int STATUS_PAUSED = 4;
+	static final int STATUS_DESTROYED = 5;
+
 
 	FragmentActivity activity;
-	ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+	LinkedList<Fragment> fragments = new LinkedList<Fragment>();
 
 	Stack<BackStackEntry> backStack = new Stack<BackStackEntry>();
 
 	public class BackStackEntry {
 		String id;
 		String name;
+
+		Fragment fragment;
 
 		BackStackEntry(String id, String name) {
 			this.id = id;
@@ -62,54 +70,120 @@ public class FragmentManager {
 		return null;
 	}
 
-	void addToBackStack(String name, FragmentTransaction transaction) {
-		Log.d(TAG, "addToBackStack()");
-		BackStackEntry entry = new BackStackEntry(null, name);
-		backStack.push(entry);
-	}
-
 	void commit(FragmentTransaction transaction) {
-		Log.d(TAG, "commit()");
-		Element el = DOM.getElementById(transaction.containerViewId);
+		Fragment fragment = transaction.fragment;
 
-		transaction.fragment.containerViewId = transaction.containerViewId;
-		Log.d(TAG, "Stopping fragments...");
-		// Stop any fragment with the same view ID
-		for (int i=0; i < fragments.size(); i++) {
-			if (transaction.containerViewId.equals(fragments.get(i).containerViewId)) {
-				Log.d(TAG, "Calling onPause");
-				fragments.get(i).onPause();
-				Log.d(TAG, "Hiding");
-				fragments.get(i).mView.setVisibility(View.GONE);
-				Log.d(TAG, "OK");
+		fragment.containerViewId = transaction.containerViewId;
+		fragment.visible = true;
+		fragment.mActivity = activity;
+		fragment.status = STATUS_NOT_INITIALIZED;
+		if (activity.resumed) {
+			fragment.targetStatus = STATUS_RESUMED;
+		} else {
+			fragment.targetStatus = STATUS_CREATED_VIEW;
+		}
+
+		// Hide any fragment with the same view ID
+		if (transaction.replace) {
+			for (Fragment otherFragment : fragments) {
+				if (transaction.containerViewId.equals(otherFragment.containerViewId)) {
+					otherFragment.visible = false;
+					if (otherFragment.targetStatus == STATUS_RESUMED) {
+						otherFragment.targetStatus = STATUS_PAUSED;
+					}
+				}
 			}
 		}
-		Log.d(TAG, "Adding...");
 		fragments.add(transaction.fragment);
 
-		transaction.fragment.mActivity = activity;
-		ViewGroup viewGroup = new ViewGroup(el);
-
-		transaction.fragment.onCreate(null);
-		transaction.fragment.mView = transaction.fragment.onCreateView(new LayoutInflater(), viewGroup, null);
-		Log.d(TAG, "Appending...");
-		el.appendChild(transaction.fragment.mView.getElement());
-		if (activity.resumed) {
-			Log.d(TAG, "Resuming...");
-			transaction.fragment.onResume();
+		if (transaction.addToBackStack) {
+			BackStackEntry entry = new BackStackEntry(null, transaction.name);
+			entry.fragment = fragment;
+			backStack.push(entry);
 		}
+
+		checkFragmentsStatus();
 	}
 
-	void resumeFragments() {
-		// RESUME only the lastest for each view ID...
-		for (int i = 0; i < fragments.size(); i++) {
-			if (!fragments.get(i).resumed) {
-				fragments.get(i).onResume();
+	void onActivityPostCreate() {
+		for (Fragment fragment : fragments) {
+			if (fragment.targetStatus == STATUS_CREATED_VIEW) {
+				fragment.targetStatus = STATUS_PAUSED;
+			}
+		}
+		checkFragmentsStatus();
+	}
+
+	void onActivityPostResume() {
+		for (Fragment fragment : fragments) {
+			if (fragment.targetStatus == STATUS_PAUSED && fragment.visible) {
+				fragment.targetStatus = STATUS_RESUMED;
+			}
+		}
+		checkFragmentsStatus();
+	}
+
+	private void checkFragmentsStatus() {
+		for (Fragment fragment : fragments) {
+			while (fragment.status < fragment.targetStatus) {
+				switch (fragment.status) {
+					case STATUS_NOT_INITIALIZED:
+						fragment.onCreate(null);
+						fragment.status = STATUS_CREATED;
+						break;
+					case STATUS_CREATED:
+						Element el = DOM.getElementById(fragment.containerViewId);
+						ViewGroup viewGroup = new ViewGroup(el);
+						fragment.mView = fragment.onCreateView(new LayoutInflater(), viewGroup, null);
+						el.appendChild(fragment.mView.getElement());
+						fragment.status = STATUS_CREATED_VIEW;
+						break;
+					case STATUS_CREATED_VIEW:
+						fragment.onActivityCreated(null);
+						fragment.status = STATUS_PAUSED; // DO NOT resume if we are destroying or pausing
+						break;
+					case STATUS_RESUMED:
+						fragment.onPause();
+						fragment.mView.setVisibility(View.GONE);
+						fragment.status = STATUS_PAUSED;
+						break;
+					case STATUS_PAUSED:
+						fragment.onDestroy();
+						fragment.mView.getElement().removeFromParent();
+						fragment.mView = null;
+						fragment.status = STATUS_DESTROYED;
+						break;
+				}
+			}
+
+			if (fragment.status == STATUS_PAUSED && fragment.targetStatus == STATUS_RESUMED) {
+				fragment.onResume();
+				fragment.mView.setVisibility(View.VISIBLE);
+				fragment.status = STATUS_RESUMED;
 			}
 		}
 	}
 
 	public void popBackStack() {
+		if (backStack.size() > 0) {
+			BackStackEntry backStackEntry = backStack.pop();
+			Fragment fragment = backStackEntry.fragment;
+			fragment.targetStatus = STATUS_DESTROYED;
 
+			// Iterate in reverse to set visible the fragment under this one (with the same view id)
+			ListIterator<Fragment> li = fragments.listIterator(fragments.size());
+			while (li.hasPrevious()) {
+				Fragment previousFragment = li.previous();
+				if (previousFragment != fragment && previousFragment.containerViewId.equals(fragment.containerViewId)) {
+					previousFragment.visible = true;
+					if (previousFragment.targetStatus == STATUS_PAUSED) {
+						previousFragment.targetStatus = STATUS_RESUMED;
+					}
+					break;
+				}
+			}
+			checkFragmentsStatus();
+			fragments.remove(fragment);
+		}
 	}
 }

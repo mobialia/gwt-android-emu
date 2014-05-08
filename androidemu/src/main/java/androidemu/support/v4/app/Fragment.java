@@ -16,9 +16,10 @@ public class Fragment {
 
 	Bundle args;
 	FragmentActivity mActivity;
-	boolean resumed;
+	int status, targetStatus;
 	String containerViewId;
 	View mView;
+	boolean visible = false;
 
 	public void setArguments(Bundle args) {
 		this.args = args;
@@ -33,7 +34,6 @@ public class Fragment {
 	}
 
 	public void onCreate(Bundle savedInstanceState) {
-
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,15 +47,12 @@ public class Fragment {
 	}
 
 	public void onResume() {
-		resumed = true;
 	}
 
 	public void onPause() {
-		resumed = false;
 	}
 
 	public void onDestroy() {
-
 	}
 
 	public void setHasOptionsMenu(boolean hasMenu) {

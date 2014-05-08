@@ -7,12 +7,16 @@ public class FragmentTransaction {
 	String containerViewId;
 	Fragment fragment;
 	String tag;
+	String name;
+	boolean replace = true;
+	boolean addToBackStack = false;
 
 	public FragmentTransaction(FragmentManager fragmentManager) {
 		this.fragmentManager = fragmentManager;
 	}
 
 	public FragmentTransaction replace(String containerViewId, Fragment fragment, String tag) {
+		this.replace = true;
 		this.containerViewId = containerViewId;
 		this.fragment = fragment;
 		this.tag = tag;
@@ -20,7 +24,8 @@ public class FragmentTransaction {
 	}
 
 	public FragmentTransaction addToBackStack(String name) {
-		fragmentManager.addToBackStack(name, this);
+		this.addToBackStack = true;
+		this.name = name;
 		return this;
 	}
 

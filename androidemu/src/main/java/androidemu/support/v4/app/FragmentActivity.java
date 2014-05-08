@@ -1,6 +1,7 @@
 package androidemu.support.v4.app;
 
 import androidemu.app.Activity;
+import androidemu.os.Bundle;
 
 public class FragmentActivity extends Activity {
 
@@ -13,6 +14,12 @@ public class FragmentActivity extends Activity {
 	boolean resumed = false;
 
 	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		fragmentManager.onActivityPostCreate();
+	}
+
+	@Override
 	protected void onResume() {
 		super.onResume();
 		resumed = true;
@@ -21,7 +28,7 @@ public class FragmentActivity extends Activity {
 	@Override
 	protected void onPostResume() {
 		super.onResume();
-		fragmentManager.resumeFragments();
+		fragmentManager.onActivityPostResume();
 	}
 
 	@Override
