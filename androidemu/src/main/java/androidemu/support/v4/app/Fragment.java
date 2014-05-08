@@ -15,7 +15,10 @@ public class Fragment {
 	static final String TAG = "Fragment";
 
 	Bundle args;
-	Activity mActivity;
+	FragmentActivity mActivity;
+	boolean resumed;
+	String containerViewId;
+	View mView;
 
 	public void setArguments(Bundle args) {
 		this.args = args;
@@ -28,7 +31,6 @@ public class Fragment {
 	public Activity getActivity() {
 		return mActivity;
 	}
-
 
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -45,10 +47,11 @@ public class Fragment {
 	}
 
 	public void onResume() {
+		resumed = true;
 	}
 
 	public void onPause() {
-
+		resumed = false;
 	}
 
 	public void onDestroy() {
@@ -58,7 +61,6 @@ public class Fragment {
 	public void setHasOptionsMenu(boolean hasMenu) {
 
 	}
-
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		return false;
