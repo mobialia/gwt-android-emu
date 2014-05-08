@@ -49,9 +49,6 @@ public class ActivityManager {
 
 	public static void back() {
 		activityStack.peek().onBackPressed();
-		if (activityStack.size() > 1) {
-			finish(activityStack.peek());
-		}
 	}
 
 	public static void toggleOptionsMenu(View v) {

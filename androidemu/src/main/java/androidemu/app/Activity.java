@@ -226,6 +226,7 @@ public class Activity extends Context implements EntryPoint {
 	}
 
 	public void onBackPressed() {
+		finish();
 	}
 
 	public View findViewById(String id) {
