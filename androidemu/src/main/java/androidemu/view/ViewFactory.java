@@ -25,7 +25,6 @@ public class ViewFactory {
 	 * @return
 	 */
 	public static View createViewFromElement(Element element) {
-
 		if (element.getNodeName() == "LABEL") {
 			return new TextView(element);
 		} else if (element.getNodeName() == "DIV") {
