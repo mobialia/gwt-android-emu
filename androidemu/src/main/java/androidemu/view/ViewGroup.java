@@ -1,6 +1,6 @@
 package androidemu.view;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 public class ViewGroup extends View {
 
