@@ -35,7 +35,7 @@ task compileGwt (dependsOn: classes, type: JavaExec) {
 
     args =
         [
-                'androidemu.demo',
+                'android.demo',
                 '-war', buildDir,
                 '-extra', extraDir,
                 '-logLevel', 'INFO',
