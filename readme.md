@@ -22,7 +22,6 @@ The components that this library emulates are:
 * FloatMath
 * SystemClock
 
-
 This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT. It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
 It's released under the MIT License, so feel free to use it anywhere.
@@ -47,7 +46,6 @@ We included some tools in the package "utils":
 
 * ConvertStrings: to convert from ant Android XML file to GWT Class + Key-properties files
 * GenerateIds: to generate the Ids class (with all the ids as Strings) from the Android java source files. Emulated ids are Strings, not numbers.
-
 
 HTML Elements to Android Widgets
 ================================
