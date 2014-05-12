@@ -22,7 +22,11 @@ public class Bundle {
 		values.put(key, String.valueOf(value));
 	}
 
-	public String get(String key) {
+    public void putLong(String key, long value) {
+        values.put(key, String.valueOf(value));
+    }
+
+    public String get(String key) {
 		return values.get(key);
 	}
 
@@ -38,7 +42,11 @@ public class Bundle {
 		return Integer.valueOf(values.get(key));
 	}
 
-	public boolean containsKey(String key) {
+    public long getLong(String key) {
+        return Long.valueOf(values.get(key));
+    }
+
+    public boolean containsKey(String key) {
 		return values.containsKey(key);
 	}
 }
