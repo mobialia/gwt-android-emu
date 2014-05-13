@@ -1,18 +1,19 @@
 GWT Android Emu
 ===============
 
-GWT is the perfect framework to migrate your Android Apps to the web, why? because it compiles Java into Javascript.
+GWT is the perfect framework to migrate your Android Apps to the web because it compiles Java into Javascript.
 
-This library emulates some Android APIs over GWT. The idea is to help you porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
+This library emulates some Android APIs over GWT.
 
-The main difficult is that all the app interface must be redesigned with the GWT UiBinder (or HTML), but we can keep a lot of Java code in common between the Android App and the HTML5 App.
+The idea is to help you porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
+keeping a lot of Java code in common.
 
-The components that this library emulates are:
+This library emulates:
 
 * Activities: supports onCreate(), onResume(), onPause(), onDestroy()
 * Intents: you can pass data in a Bundle, launch another activities, etc.
-* Fragments (in preliminary support) with transactions, etc.
-* Views (you cannot create them from code, must be searched with findViewById, each HTML element is mapped to a View type, see table below; ListViews start to work with custom adapters)
+* Fragments with transactions, etc.
+* Views (you cannot create them from code, must be searched with findViewById, each HTML element is mapped to a View type, see table below; ListViews work with custom adapters)
 * Menu and MenuItems
 * AlertDialogs and ProgressDialogs
 * Toasts
@@ -22,7 +23,8 @@ The components that this library emulates are:
 * FloatMath
 * SystemClock
 
-This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT. It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
+This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT (mainly http://chess.mobialia.com).
+It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
 It's released under the MIT License, so feel free to use it anywhere.
 
@@ -39,18 +41,31 @@ https://github.com/albertoruibal/gwt_android_emu/blob/master/demo/src/main/java/
 
 It includes two Activities with Strings and Layouts as resources and shows the usage of Menus, Toasts, AlertDialogs, etc.
 
-Tools
-=====
+Emulating Resources
+===================
 
-We included some tools in the package "utils":
+The emulated resources are a bit different, they aren't numeric IDs:
 
-* ConvertStrings: to convert from ant Android XML file to GWT Class + Key-properties files
-* GenerateIds: to generate the Ids class (with all the ids as Strings) from the Android java source files. Emulated ids are Strings, not numbers.
+* R.id contains String IDs (and, as a consequence, menu IDs are also String)
+* R.string and R.array contains methods that return Strings or String[]
+* R.menu contains methods that return a Menu object
+* R.layout contains methods that return GWT Widgets, read the next section
+
+We included some tools in the package "utils" to help with resource emulation:
+
+* ConvertStrings: to convert from ant Android XML file to GWT Class + Key-properties files.
+* ConvertMenus: to convert from ant Android XML menu to a Menus class with methods to retrieve them.
+* GenerateIds: to generate the Ids class (with all the ids as Strings) from the Android java source files.
+
+Migrating Layouts
+=================
+
+Layouts must be redesigned in HTML with the GWT UiBinder (or HTML). In the demo project we show a sample.
 
 HTML Elements to Android Widgets
 ================================
 
-Those HTML elements are supported and mapped to Android widgets: (see also the ViewFactory class)
+This is how this library maps the HTML elements to Android widgets: (see also the ViewFactory class)
 
 | HTML Element               | Android Widget |
 | ---------------------------|----------------|
@@ -66,4 +81,5 @@ Those HTML elements are supported and mapped to Android widgets: (see also the V
 | `<input type="image">`     | ImageButton    |
 | `<select>`                 | Spinner        |
 | `<img>`                    | ImageView      |
+
 
