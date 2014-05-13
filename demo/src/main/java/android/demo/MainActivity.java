@@ -22,8 +22,8 @@ import com.google.gwt.core.client.GWT;
 public class MainActivity extends Activity implements OnClickListener, DialogInterface.OnClickListener {
 	public final static String TAG = "IntroActivity";
 
-	public final static int MENU1 = 1;
-	public final static int MENU2 = 2;
+	public final static String MENU1 = "1";
+	public final static String MENU2 = "2";
 
 	// Android Widgets are mapped from HTML elements, we cannot create Android
 	// Widgets from code, but we can access them via findViewById
@@ -89,13 +89,12 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case MENU1:
-			Toast.makeText(getApplicationContext(), R.string.menu1(), Toast.LENGTH_SHORT).show();
-			return true;
-		case MENU2:
+		if (MENU1.equals(item.getItemId())) {
+            Toast.makeText(getApplicationContext(), R.string.menu1(), Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (MENU2.equals(item.getItemId())) {
 			Toast.makeText(getApplicationContext(), R.string.menu2(), Toast.LENGTH_SHORT).show();
-			return true;
+            return true;
 		}
 		return false;
 	}
