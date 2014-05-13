@@ -16,4 +16,17 @@ public class Menu {
         return item;
 	}
 
+    public MenuItem add(int groupId, String itemId, int order, String title) {
+        MenuItem item = new MenuItem();
+        item.setGroupId(groupId);
+        item.setItemId(itemId);
+        item.setOrder(order);
+        item.setTitle(title);
+        menuItems.add(item);
+        return item;
+    }
+
+    void add(MenuItem item) {
+        menuItems.add(item);
+    }
 }

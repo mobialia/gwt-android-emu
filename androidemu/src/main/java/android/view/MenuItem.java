@@ -3,7 +3,7 @@ package android.view;
 public class MenuItem {
 
 	int groupId;
-	int itemId;
+	String itemId;
 	int order;
 	String title;
 
@@ -15,15 +15,19 @@ public class MenuItem {
 		this.groupId = groupId;
 	}
 
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+    public void setItemId(int itemId) {
+        this.itemId = String.valueOf(itemId);
+    }
+
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 
-	public int getOrder() {
+    public int getOrder() {
 		return order;
 	}
 
