@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * Gets all the R.id.xxxxx occurrences in all the java classes and writes it to a Ids class file
  */
 public class GenerateIds {
-	private Pattern idsPattern = Pattern.compile(".*R"+Pattern.quote(".")+"id"+Pattern.quote(".")+"([a-zA-Z0-9]+).*");
+	private Pattern idsPattern = Pattern.compile(".*R"+Pattern.quote(".")+"id"+Pattern.quote(".")+"([a-zA-Z0-9_]+).*");
 
 	ArrayList<String> idsInClass = new ArrayList<String>();
 	StringBuffer idsClassSB = new StringBuffer();
