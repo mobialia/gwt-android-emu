@@ -1,5 +1,6 @@
 package android.app;
 
+import android.view.*;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -17,10 +18,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewFactory;
 import android.widget.ImageButton;
 
 public class Activity extends Context implements EntryPoint {
@@ -236,4 +233,8 @@ public class Activity extends Context implements EntryPoint {
 	public Intent getIntent() {
 		return intent;
 	}
+
+    public MenuInflater getMenuInflater() {
+        return new MenuInflater();
+    }
 }
