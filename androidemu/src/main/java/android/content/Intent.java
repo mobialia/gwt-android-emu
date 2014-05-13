@@ -50,4 +50,11 @@ public class Intent {
 	public Bundle getExtras() {
 		return extras;
 	}
+
+    public void putExtra(String key, String value) {
+        if (extras == null) {
+            extras = new Bundle();
+        }
+        extras.put(key, value);
+    }
 }
