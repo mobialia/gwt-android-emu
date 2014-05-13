@@ -29,7 +29,7 @@ public class Fragment {
 		return args;
 	}
 
-	public Activity getActivity() {
+	public FragmentActivity getActivity() {
 		return mActivity;
 	}
 
