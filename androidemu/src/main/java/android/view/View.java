@@ -1,5 +1,6 @@
 package android.view;
 
+import android.content.res.Resources;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
@@ -52,7 +53,11 @@ public class View {
 		return element.getClientWidth();
 	}
 
-	public View findViewById(String id) {
+    public View findViewById(int id) {
+        return ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
+    }
+
+    public View findViewById(String id) {
 		return ViewFactory.findViewById(getElement(), id);
 	}
 

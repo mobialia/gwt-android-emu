@@ -44,18 +44,17 @@ It includes two Activities with Strings and Layouts as resources and shows the u
 Emulating Resources
 ===================
 
-The emulated resources are a bit different, they aren't numeric IDs:
+We included a tool "GenerateResources" in the package "utils" to help with resource emulation generation.
+There is a usage sample in the demo project: the generate_reources.sh script convert the resources from the source_android_project/res/ folder.
 
-* R.id contains String IDs (and, as a consequence, menu IDs are also String)
-* R.string and R.array contains methods that return Strings or String[]
-* R.menu contains methods that return a Menu object
-* R.layout contains methods that return GWT Widgets, read the next section
+The emulated resources generated automatically are:
 
-We included some tools in the package "utils" to help with resource emulation:
+* R.id (searching for @+id/ in the xml files)
+* R.string supports multiple languages, generates multiple GWT properties file, one for each language  
+* R.array (also with i18n)
+* R.menu
 
-* ConvertStrings: to convert from ant Android XML file to GWT Class + Key-properties files.
-* ConvertMenus: to convert from ant Android XML menu to a Menus class with methods to retrieve them.
-* GenerateIds: to generate the Ids class (with all the ids as Strings) from the Android java source files.
+R.layout must be generated manually with methods that return GWT Widgets, read the next section
 
 Migrating Layouts
 =================

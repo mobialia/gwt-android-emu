@@ -1,5 +1,6 @@
 package android.widget;
 
+import android.content.res.Resources;
 import com.google.gwt.dom.client.Element;
 
 import android.view.View;
@@ -14,7 +15,11 @@ public class TextView extends View {
 		return element.getInnerText();
 	}
 
-	public void setText(String string) {
+    public void setText(int stringId) {
+        setText(Resources.getResourceResolver().getString(stringId));
+    }
+
+    public void setText(String string) {
 		element.setInnerHTML(string != null ? string.replace("\n", "<br/>") : "");
 	}
 

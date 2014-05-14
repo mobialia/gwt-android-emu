@@ -1,5 +1,6 @@
 package android.app;
 
+import android.content.res.Resources;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -38,6 +39,14 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.title = title;
 		}
 
+        public void setTitle(int title) {
+            setTitle(Resources.getResourceResolver().getString(title));
+        }
+
+        public void setMessage(int message) {
+            setMessage(Resources.getResourceResolver().getString(message));
+        }
+
 		public void setMessage(String message) {
 			this.message = message;
 		}
@@ -46,25 +55,42 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.cancelable = cancelable;
 		}
 
-		public void setPositiveButton(String label, DialogInterface.OnClickListener listener) {
+        public void setPositiveButton(int label, DialogInterface.OnClickListener listener) {
+            setPositiveButton(Resources.getResourceResolver().getString(label), listener);
+        }
+
+        public void setPositiveButton(String label, DialogInterface.OnClickListener listener) {
 			this.positiveLabel = label;
 			this.positiveListener = listener;
 		}
 
-		public void setNegativeButton(String label, DialogInterface.OnClickListener listener) {
+        public void setNegativeButton(int label, DialogInterface.OnClickListener listener) {
+            setNegativeButton(Resources.getResourceResolver().getString(label), listener);
+        }
+
+        public void setNegativeButton(String label, DialogInterface.OnClickListener listener) {
 			this.negativeLabel = label;
 			this.negativeListener = listener;
 		}
+
+        public void setNeutralButton(int label, DialogInterface.OnClickListener listener) {
+            setNeutralButton(Resources.getResourceResolver().getString(label), listener);
+        }
 
 		public void setNeutralButton(String label, DialogInterface.OnClickListener listener) {
 			this.neutralLabel = label;
 			this.neutralListener = listener;
 		}
 
-		public void setItems(CharSequence items[], DialogInterface.OnClickListener listener) {
-			this.items = items;
+		public void setItems(int items, DialogInterface.OnClickListener listener) {
+			this.items = Resources.getResourceResolver().getStringArray(items);
 			this.itemsListener = listener;
 		}
+
+        public void setItems(String items[], DialogInterface.OnClickListener listener) {
+            this.items = items;
+            this.itemsListener = listener;
+        }
 
 		public void setView(View view) {
 			this.view = view;
@@ -199,7 +225,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		popupPanel.add(fp);
 	}
 
-	public void setTitle(String title) {
+    public void setTitle(int title) {
+        setTitle(Resources.getResourceResolver().getString(title));
+    }
+
+    public void setTitle(String title) {
 		if (titleLabel == null && title != null && !"".equals(title)) {
 			titleLabel = new Label();
 			titleLabel.setStyleName(Res.R.style().dialogTitle());
@@ -213,7 +243,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 	}
 
-	public void setMessage(String message) {
+    public void setMessage(int message) {
+        setMessage(Resources.getResourceResolver().getString(message));
+    }
+
+    public void setMessage(String message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
 			messageLabel = new Label();
 			messageLabel.setStyleName(Res.R.style().dialogMessage());

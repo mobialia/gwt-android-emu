@@ -13,8 +13,8 @@ public class Context {
 		return resources;
 	}
 
-	public String getString(String in) {
-		return in;
+	public String getString(int in) {
+		return Resources.getResourceResolver().getString(in);
 	}
 
 	public void startActivity(Intent intent) {

@@ -1,5 +1,6 @@
 package android.app;
 
+import android.content.res.Resources;
 import android.view.*;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
@@ -103,7 +104,7 @@ public class Activity extends Context implements EntryPoint {
 
 				for (final MenuItem item : menu.menuItems) {
 					Button b = new Button();
-					b.setText(item.getTitle());
+					b.setText(Resources.getResourceResolver().getString(item.getTitle()));
 					b.setStyleName(Res.R.style().menuItem());
 					b.addClickHandler(new ClickHandler() {
 						@Override

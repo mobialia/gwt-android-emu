@@ -3,9 +3,9 @@ package android.view;
 public class MenuItem {
 
 	int groupId;
-	String itemId;
+	int itemId;
 	int order;
-	String title;
+	int title;
 
 	public int getGroupId() {
 		return groupId;
@@ -15,15 +15,11 @@ public class MenuItem {
 		this.groupId = groupId;
 	}
 
-	public String getItemId() {
+	public int getItemId() {
 		return itemId;
 	}
 
-    public void setItemId(int itemId) {
-        this.itemId = String.valueOf(itemId);
-    }
-
-	public void setItemId(String itemId) {
+	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
 
@@ -35,11 +31,11 @@ public class MenuItem {
 		this.order = order;
 	}
 
-	public String getTitle() {
+	public int getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(int title) {
 		this.title = title;
 	}
 }

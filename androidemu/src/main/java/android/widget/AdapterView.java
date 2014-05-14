@@ -27,4 +27,11 @@ public abstract class AdapterView<T extends Adapter> {
 		 */
 		void onItemClick(AdapterView<?> parent, View view, int position, long id);
 	}
+
+    public static interface OnItemSelectedListener {
+        abstract void onItemSelected(AdapterView<?> parent, View view, int position, long id);
+
+        abstract void onNothingSelected(AdapterView<?> parent);
+    }
+
 }

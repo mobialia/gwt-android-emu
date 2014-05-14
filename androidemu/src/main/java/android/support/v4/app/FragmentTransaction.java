@@ -1,5 +1,7 @@
 package android.support.v4.app;
 
+import android.content.res.Resources;
+
 public class FragmentTransaction {
 
 	FragmentManager fragmentManager;
@@ -15,9 +17,9 @@ public class FragmentTransaction {
 		this.fragmentManager = fragmentManager;
 	}
 
-	public FragmentTransaction replace(String containerViewId, Fragment fragment, String tag) {
+	public FragmentTransaction replace(int containerViewId, Fragment fragment, String tag) {
 		this.replace = true;
-		this.containerViewId = containerViewId;
+		this.containerViewId = Resources.getResourceResolver().getIdAsString(containerViewId);
 		this.fragment = fragment;
 		this.tag = tag;
 		return this;

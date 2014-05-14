@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="activity1">Activity 1</string>
+    <string name="activity2">Activity 2</string>
+    <string name="hello">Demo of the GWT_Android_Emu Library</string>
+    <string name="menu1">Menu Option 1</string>
+    <string name="menu2">Menu Option 2</string>
+    <string name="alert_dialog">Alert Dialog</string>
+    <string name="dialog_title">Title</string>
+    <string name="dialog_message">Message</string>
+    <string name="dialog_yes">Accept</string>
+    <string name="dialog_no">Cancel</string>
+    <string name="toast">Toast</string>
+    <string name="toast_text">Toast Text</string>
+    <string name="handler">Handler</string>
+    <string name="handler_message_received">Handler message received!</string>
+    <string name="activity">Launch another Activity</string>
+    <string name="other">This is another Activity</string>
+
+    <string-array name="array1">
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+</resources>
