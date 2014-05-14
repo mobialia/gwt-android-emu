@@ -7,7 +7,7 @@ DIR=$(pwd)
 cd src/main/java/android/demo/res
 
 # Generate files
-java -cp ~/.m2/repository/com/mobialia/androidemu/0.1/androidemu-0.1.jar android.utils.GenerateResources android.demo.res $DIR/origin_android_project/res
+java -cp ~/.m2/repository/com/mobialia/androidemu/0.1/androidemu-0.1.jar android.utils.GenerateResources android.demo.res $DIR/source_android_project/res
 
 cd $DIR
 
