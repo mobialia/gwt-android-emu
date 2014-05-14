@@ -1,6 +1,6 @@
 package android.widget;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 import android.view.ViewGroup;
 
