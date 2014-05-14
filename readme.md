@@ -23,6 +23,8 @@ This library emulates:
 * FloatMath
 * SystemClock
 
+The GWT entry point is a "AndroidManifest" class extending android.BaseAndroidManifest in this class contains the default Activity and the ResourceResolver (specific for this library).
+
 This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT (mainly http://chess.mobialia.com).
 It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
@@ -45,7 +47,7 @@ Emulating Resources
 ===================
 
 We included a tool "GenerateResources" in the package "utils" to help with resource emulation generation.
-There is a usage sample in the demo project: the generate_reources.sh script convert the resources from the source_android_project/res/ folder.
+There is a usage sample in the demo project: the generate_resources.sh script convert the resources from the source_android_project/res/ folder.
 
 The emulated resources generated automatically are:
 
@@ -53,13 +55,18 @@ The emulated resources generated automatically are:
 * R.string supports multiple languages, generates multiple GWT properties file, one for each language  
 * R.array (also with i18n)
 * R.menu
+* R.layout from the "Layouts" class, see next section
 
-R.layout must be generated manually with methods that return GWT Widgets, read the next section
+This tools also generates the ResourceResolver to convert from numeric ids to strings, layouts, etc.
 
 Migrating Layouts
 =================
 
-Layouts must be redesigned in HTML with the GWT UiBinder (or HTML). In the demo project we show a sample.
+Layouts must be redesigned in HTML with the GWT UiBinder (or HTML).
+You must create a "Layouts.java" class in the resource directory with a method to get each one of the GWT widgets.
+The GenerateResources tool creates a R.layout.xxx entry for each one of the methods in the Layouts class.
+
+There is a Layouts.java demo file in the demo project.
 
 HTML Elements to Android Widgets
 ================================

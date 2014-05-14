@@ -3,14 +3,12 @@ package android.demo.res;
 import android.demo.res.layout.Main;
 import android.demo.res.layout.Other;
 
+/**
+ * Simulate the Android layouts with the UiBinder, each screens needs a class and a XML
+ * For each method in this class GenerateResources will create a R.layout.XXX entry
+ */
 public class Layouts {
 
-    /**
-     * We simluate the Andorid layouts with the UiBinder, each screens needs a
-     * class and a XML
-     *
-     * @return
-     */
     public Main main() {
         return new Main();
     }

@@ -1,3 +1,4 @@
+/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo.res;
 
 import android.view.Menu;
@@ -10,5 +11,4 @@ public class Menus {
 		MenuItem item1 = menu.add(0, R.id.menu2, 0, R.string.menu2);
 		return menu;
 	}
-
 }

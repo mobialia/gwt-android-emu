@@ -12,7 +12,7 @@ public class OtherActivity extends Activity {
         Log.d(TAG, "onCreate");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.other());
+        setContentView(R.layout.other);
     }
 
     @Override

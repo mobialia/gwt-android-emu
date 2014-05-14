@@ -1,38 +1,19 @@
 package android.content.res;
 
 import android.view.Menu;
+import com.google.gwt.user.client.ui.Widget;
 
 public class Resources {
 
-    public static ResourceResolver resourceResolver;
+    public static BaseResourceResolver resourceResolver;
 
-    public static void setResourceResolver(ResourceResolver resourceResolver) {
+    public static void setResourceResolver(BaseResourceResolver resourceResolver) {
         Resources.resourceResolver = resourceResolver;
     }
 
-    public static ResourceResolver getResourceResolver() {
+    public static BaseResourceResolver getResourceResolver() {
         if (Resources.resourceResolver == null) {
-            Resources.resourceResolver = new ResourceResolver() {
-                @Override
-                public String getIdAsString(int id) {
-                    return null;
-                }
-
-                @Override
-                public String getString(int id) {
-                    return null;
-                }
-
-                @Override
-                public String[] getStringArray(int id) {
-                    return new String[0];
-                }
-
-                @Override
-                public Menu getMenu(int id) {
-                    return null;
-                }
-            };
+            Resources.resourceResolver = new BaseResourceResolver();
         }
         return Resources.resourceResolver;
     }

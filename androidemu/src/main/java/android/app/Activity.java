@@ -21,7 +21,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.ImageButton;
 
-public class Activity extends Context implements EntryPoint {
+public class Activity extends Context {
 
 	public static final String TAG = "Activity";
 
@@ -48,13 +48,6 @@ public class Activity extends Context implements EntryPoint {
 	Integer returnRequestCode;
 	int returnResultCode;
 	Intent returnResultData;
-
-	public void onModuleLoad() {
-		Res.R.style().ensureInjected();
-
-		ActivityManager.setup();
-		startActivity(new Intent(this, this));
-	}
 
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -177,6 +170,10 @@ public class Activity extends Context implements EntryPoint {
 		contentPanel = new HTMLPanel(content.getText());
 		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
+
+    public void setContentView(int layoutId) {
+        setContentView(Resources.getResourceResolver().getLayout(layoutId));
+    }
 
 	public void setContentView(Widget htmlPanel) {
 		contentPanel = htmlPanel;

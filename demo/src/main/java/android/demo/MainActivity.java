@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 
         // We can use setContentView with HTMLPanels, textResources or widgets,
         // we recomment to use the UiBinder
-        setContentView(R.layout.main());
+        setContentView(R.layout.main);
 
         // ID (numeric or String) must match the id element in the HTML
         alertButton = ((Button) findViewById("AlertButton"));

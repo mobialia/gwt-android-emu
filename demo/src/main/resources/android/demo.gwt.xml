@@ -9,7 +9,7 @@
 	<source path="demo" />
 
 	<!-- Specify an Activity as entry point -->
-	<entry-point class="android.demo.MainActivity" />
+	<entry-point class="android.demo.AndroidManifest" />
 	
 	<!-- For the Super Dev Mode -->
 	<add-linker name="xsiframe"/>
