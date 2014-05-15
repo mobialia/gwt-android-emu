@@ -363,35 +363,35 @@ public class GenerateResources {
         contentResolverSB.append("\tpublic static final Arrays arrays = GWT.create(Arrays.class);\n");
         contentResolverSB.append("\tpublic static final Layouts layouts = new Layouts();\n"); // Layout and Raw must be created by user...
         contentResolverSB.append("\n");
-        contentResolverSB.append("\tpublic String getIdAsString(int id) {\n");
+        contentResolverSB.append("\tpublic static String getIdAsString(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
         contentResolverSB.append(idResolverSB);
         contentResolverSB.append("\t\t}\n");
         contentResolverSB.append("\t\treturn null;\n");
         contentResolverSB.append("\t}\n");
 
-        contentResolverSB.append("\tpublic String getString(int id) {\n");
+        contentResolverSB.append("\tpublic static String getString(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
         contentResolverSB.append(stringIdResolverSB);
         contentResolverSB.append("\t\t}\n");
         contentResolverSB.append("\t\treturn null;\n");
         contentResolverSB.append("\t}\n");
 
-        contentResolverSB.append("\tpublic String[] getStringArray(int id) {\n");
+        contentResolverSB.append("\tpublic static String[] getStringArray(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
         contentResolverSB.append(arrayIdResolverSB);
         contentResolverSB.append("\t\t}\n");
         contentResolverSB.append("\t\treturn null;\n");
         contentResolverSB.append("\t}\n");
 
-        contentResolverSB.append("\tpublic Menu getMenu(int id) {\n");
+        contentResolverSB.append("\tpublic static Menu getMenu(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
         contentResolverSB.append(menuIdResolverSB);
         contentResolverSB.append("\t\t}\n");
         contentResolverSB.append("\t\treturn null;\n");
         contentResolverSB.append("\t}\n");
 
-        contentResolverSB.append("\tpublic Widget getLayout(int id) {\n");
+        contentResolverSB.append("\tpublic static Widget getLayout(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
         contentResolverSB.append(layoutIdResolverSB);
         contentResolverSB.append("\t\t}\n");
