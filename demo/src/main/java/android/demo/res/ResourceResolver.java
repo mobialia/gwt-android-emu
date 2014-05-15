@@ -6,13 +6,13 @@ import android.view.Menu;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ResourceResolver extends BaseResourceResolver {
+public class ResourceResolver implements BaseResourceResolver {
 
 	public static final Strings strings = GWT.create(Strings.class);
 	public static final Arrays arrays = GWT.create(Arrays.class);
 	public static final Layouts layouts = new Layouts();
 
-	public static String getIdAsString(int id) {
+	public String getIdAsString(int id) {
 		switch(id) {
 			case R.id.menu1:
 					return "menu1";
@@ -21,7 +21,7 @@ public class ResourceResolver extends BaseResourceResolver {
 		}
 		return null;
 	}
-	public static String getString(int id) {
+	public String getString(int id) {
 		switch(id) {
 			case R.string.activity1:
 				return strings.activity1();
@@ -58,21 +58,21 @@ public class ResourceResolver extends BaseResourceResolver {
 		}
 		return null;
 	}
-	public static String[] getStringArray(int id) {
+	public String[] getStringArray(int id) {
 		switch(id) {
 			case R.array.array1:
 				return arrays.array1();
 		}
 		return null;
 	}
-	public static Menu getMenu(int id) {
+	public Menu getMenu(int id) {
 		switch(id) {
 			case R.menu.demo_menu:
 					return Menus.demo_menu();
 		}
 		return null;
 	}
-	public static Widget getLayout(int id) {
+	public Widget getLayout(int id) {
 		switch(id) {
 			case R.layout.main:
 				return layouts.main();
