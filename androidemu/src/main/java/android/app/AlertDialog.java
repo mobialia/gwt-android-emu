@@ -87,7 +87,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.itemsListener = listener;
 		}
 
-        public void setItems(String items[], DialogInterface.OnClickListener listener) {
+        public void setItems(CharSequence items[], DialogInterface.OnClickListener listener) {
             this.items = items;
             this.itemsListener = listener;
         }
