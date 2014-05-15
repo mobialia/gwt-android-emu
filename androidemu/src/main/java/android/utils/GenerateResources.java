@@ -48,7 +48,7 @@ public class GenerateResources {
 
     public void getIdsFromFile(String fileName) {
 
-        System.out.println("Getting Ids from file " + fileName + ")...");
+        System.out.println("Getting Ids from file " + fileName + "...");
 
         try {
             File file = new File(fileName);
@@ -213,7 +213,7 @@ public class GenerateResources {
     }
 
     public void getLayoutsFromJavaFile(String fileName) {
-        System.out.println("Getting Ids from file " + fileName + ")...");
+        System.out.println("Getting Layouts from file " + fileName + "...");
 
         try {
             File javaFile = new File(fileName);
