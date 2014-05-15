@@ -11,7 +11,6 @@ public class ResourceResolver extends BaseResourceResolver {
 	public static final Strings strings = GWT.create(Strings.class);
 	public static final Arrays arrays = GWT.create(Arrays.class);
 	public static final Layouts layouts = new Layouts();
-	public static final Raw raw = GWT.create(Raw.class);
 
 	public String getIdAsString(int id) {
 		switch(id) {

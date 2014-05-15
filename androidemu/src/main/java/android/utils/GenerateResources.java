@@ -363,7 +363,6 @@ public class GenerateResources {
         contentResolverSB.append("\tpublic static final Strings strings = GWT.create(Strings.class);\n");
         contentResolverSB.append("\tpublic static final Arrays arrays = GWT.create(Arrays.class);\n");
         contentResolverSB.append("\tpublic static final Layouts layouts = new Layouts();\n"); // Layout and Raw must be created by user...
-        contentResolverSB.append("\tpublic static final Raw raw = GWT.create(Raw.class);\n");
         contentResolverSB.append("\n");
         contentResolverSB.append("\tpublic String getIdAsString(int id) {\n");
         contentResolverSB.append("\t\tswitch(id) {\n");
