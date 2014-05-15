@@ -1,4 +1,4 @@
-package android.support.v4.app;
+package android.support.v7.app;
 
 import android.content.res.Resources;
 import com.google.gwt.user.client.DOM;
