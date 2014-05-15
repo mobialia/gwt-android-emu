@@ -323,7 +323,6 @@ public class GenerateResources {
         StringBuffer RSB = new StringBuffer();
         RSB.append(FILE_HEADER);
         RSB.append("package " + packageName + ";\n\n");
-        RSB.append("import android.content.res.Resources;\n");
         RSB.append("\n");
         RSB.append("public class R {\n");
 

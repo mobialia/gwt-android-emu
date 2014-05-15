@@ -1,7 +1,6 @@
 /** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo.res;
 
-import android.content.res.Resources;
 
 public class R {
 	public static final class id {
