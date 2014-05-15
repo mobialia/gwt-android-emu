@@ -5,11 +5,11 @@ import com.google.gwt.user.client.DOM;
 
 public class ActionBar {
 
-    public void setTitle(int title) {
-        setTitle(Resources.getResourceResolver().getString(title));
-    }
+	public void setTitle(int title) {
+		setTitle(Resources.getResourceResolver().getString(title));
+	}
 
-    public void setTitle(String title) {
+	public void setTitle(String title) {
 		DOM.getElementById("ActionBarTitle").setInnerHTML(title);
 	}
 

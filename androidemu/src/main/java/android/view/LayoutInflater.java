@@ -21,15 +21,15 @@ public class LayoutInflater {
 		return new View(Resources.getResourceResolver().getLayout(resId));
 	}
 
-    public View inflate(Widget widget, Context ctx) {
-        return new View(widget);
-    }
+	public View inflate(Widget widget, Context ctx) {
+		return new View(widget);
+	}
 
 	public View inflate(int resId, ViewGroup container, boolean something) {
 		return new View(Resources.getResourceResolver().getLayout(resId));
 	}
 
-    public View inflate(Widget widget, ViewGroup container, boolean something) {
-        return new View(widget);
-    }
+	public View inflate(Widget widget, ViewGroup container, boolean something) {
+		return new View(widget);
+	}
 }

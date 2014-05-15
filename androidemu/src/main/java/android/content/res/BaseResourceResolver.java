@@ -8,24 +8,24 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class BaseResourceResolver {
 
-    public static String getIdAsString(int id) {
-        return null;
-    }
+	public static String getIdAsString(int id) {
+		return null;
+	}
 
-    public static String getString(int id) {
-        return null;
-    }
+	public static String getString(int id) {
+		return null;
+	}
 
-    public static String[] getStringArray(int id) {
-        return null;
-    }
+	public static String[] getStringArray(int id) {
+		return null;
+	}
 
-    public static Menu getMenu(int id) {
-        return null;
-    }
+	public static Menu getMenu(int id) {
+		return null;
+	}
 
-    public static Widget getLayout(int id) {
-        return null;
-    }
+	public static Widget getLayout(int id) {
+		return null;
+	}
 
 }

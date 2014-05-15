@@ -53,11 +53,11 @@ public class View {
 		return element.getClientWidth();
 	}
 
-    public View findViewById(int id) {
-        return ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
-    }
+	public View findViewById(int id) {
+		return ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
+	}
 
-    public View findViewById(String id) {
+	public View findViewById(String id) {
 		return ViewFactory.findViewById(getElement(), id);
 	}
 

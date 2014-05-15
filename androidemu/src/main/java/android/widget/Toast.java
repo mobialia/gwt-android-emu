@@ -19,11 +19,11 @@ public class Toast {
 	int gravity = Gravity.BOTTOM;
 	int duration;
 
-    public static Toast makeText(Context context, int message, int duration) {
-        return makeText(context, Resources.getResourceResolver().getString(message), duration);
-    }
+	public static Toast makeText(Context context, int message, int duration) {
+		return makeText(context, Resources.getResourceResolver().getString(message), duration);
+	}
 
-    public static Toast makeText(Context context, String message, int duration) {
+	public static Toast makeText(Context context, String message, int duration) {
 		Toast toast = new Toast();
 		toast.setMessage(message);
 		toast.setDuration(duration);

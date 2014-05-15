@@ -23,7 +23,7 @@ public class MenuItem {
 		this.itemId = itemId;
 	}
 
-    public int getOrder() {
+	public int getOrder() {
 		return order;
 	}
 

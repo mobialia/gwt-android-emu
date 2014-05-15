@@ -12,11 +12,11 @@ public class EditText extends View {
 		super(element);
 	}
 
-    public void setText(int stringId) {
-        setText(Resources.getResourceResolver().getString(stringId));
-    }
+	public void setText(int stringId) {
+		setText(Resources.getResourceResolver().getString(stringId));
+	}
 
-    public void setText(String text) {
+	public void setText(String text) {
 		InputElement.as(element).setValue(text);
 	}
 

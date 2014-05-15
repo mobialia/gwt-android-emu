@@ -9,18 +9,18 @@ import com.google.gwt.core.client.EntryPoint;
 
 public abstract class BaseAndroidManifest implements EntryPoint {
 
-    public void onModuleLoad() {
-        Res.R.style().ensureInjected();
+	public void onModuleLoad() {
+		Res.R.style().ensureInjected();
 
-        Resources.setResourceResolver(getResourceResolver());
+		Resources.setResourceResolver(getResourceResolver());
 
-        ActivityManager.setup();
+		ActivityManager.setup();
 
-        Activity act = getDefaultActivity();
-        ActivityManager.startActivity(new Intent(act, act), null);
-    }
+		Activity act = getDefaultActivity();
+		ActivityManager.startActivity(new Intent(act, act), null);
+	}
 
-    public abstract BaseResourceResolver getResourceResolver();
+	public abstract BaseResourceResolver getResourceResolver();
 
-    public abstract Activity getDefaultActivity();
+	public abstract Activity getDefaultActivity();
 }

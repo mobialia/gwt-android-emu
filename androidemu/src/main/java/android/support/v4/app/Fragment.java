@@ -91,10 +91,10 @@ public class Fragment {
 		return mActivity.getResources();
 	}
 
-    final public String getString(int resId) {
-        if (mActivity == null) {
-            throw new IllegalStateException("Fragment " + this + " not attached to Activity");
-        }
-        return mActivity.getString(resId);
-    }
+	final public String getString(int resId) {
+		if (mActivity == null) {
+			throw new IllegalStateException("Fragment " + this + " not attached to Activity");
+		}
+		return mActivity.getString(resId);
+	}
 }

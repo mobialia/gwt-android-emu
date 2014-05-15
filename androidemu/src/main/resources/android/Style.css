@@ -1,6 +1,6 @@
 .menuItem {
 	display: block;
-	background: rgba(40, 40, 40, 1);	
+	background: rgba(40, 40, 40, 1);
 
 	color: #FFF;
 	font-size: 1.2rem;
@@ -9,8 +9,8 @@
 	min-width: 22rem;
 	width: 100%;
 	text-align: center;
-	
-	border-top: 1px solid rgba(255,255,255,0.34);
+
+	border-top: 1px solid rgba(255, 255, 255, 0.34);
 	border-right: 0;
 	border-bottom: 0;
 	border-left: 0;
@@ -18,34 +18,33 @@
 }
 
 .menuItem:focus,
-.menuItem:hover
-{
-	background: rgba(50,165,207,0.5);
+.menuItem:hover {
+	background: rgba(50, 165, 207, 0.5);
 }
 
 .toast {
 	color: #ffffff;
 	font-size: 1.2rem;
-	
+
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 1rem 5rem rgba(0,0,0,1);
-	
+	box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
+
 	margin: 0;
 	padding: 1rem;
-	background: rgba(40, 40, 40, 1);	
+	background: rgba(40, 40, 40, 1);
 }
 
 .dialog {
 	color: #ffffff;
-	
+
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 1rem 5rem rgba(0,0,0,1);
-	
+	box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
+
 	margin: 0;
 	padding: 0;
-	background: rgba(40, 40, 40, 1);	
+	background: rgba(40, 40, 40, 1);
 }
 
 .dialogTitle {
@@ -53,7 +52,7 @@
 	font-size: 1.3rem;
 	margin: 0 auto;
 	padding: 0.7rem;
-	
+
 	border-bottom-color: #33b5e5;
 	border-bottom-style: solid;
 	border-bottom-width: 2px;
@@ -68,7 +67,7 @@
 
 .dialogItem {
 	display: block;
-	background: rgba(40, 40, 40, 1);	
+	background: rgba(40, 40, 40, 1);
 
 	color: #FFF;
 	font-size: 1.1rem;
@@ -77,8 +76,8 @@
 	min-width: 22rem;
 	width: 100%;
 	text-align: center;
-	
-	border-top: 1px solid rgba(255,255,255,0.34);
+
+	border-top: 1px solid rgba(255, 255, 255, 0.34);
 	border-right: 0;
 	border-bottom: 0;
 	border-left: 0;
@@ -86,9 +85,8 @@
 }
 
 .dialogItem:focus,
-.dialogItem:hover
-{
-	background: rgba(50,165,207,0.5);
+.dialogItem:hover {
+	background: rgba(50, 165, 207, 0.5);
 }
 
 .dialogButtons {
@@ -100,7 +98,7 @@
 	display: table-cell;
 }
 
-.dialogButtonContainer+.dialogButtonContainer {
+.dialogButtonContainer + .dialogButtonContainer {
 	border-left: 1px #474747 solid;
 }
 
@@ -123,21 +121,20 @@
 }
 
 .dialogButton:focus,
-.dialogButton:hover
-{
-	background: rgba(50,165,207,0.5);
+.dialogButton:hover {
+	background: rgba(50, 165, 207, 0.5);
 }
 
 .preferencesActivity {
-	overflow: auto; 
-	
+	overflow: auto;
+
 	color: #ffffff;
-	
+
 	border: none;
 	border-radius: 0;
 	margin: 0;
 	padding: 1rem;
-	background: rgba(0, 0, 0, 0.8);	
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .preferencesActivityContent {
@@ -147,7 +144,7 @@
 .preferencesElement {
 	border-top: 0;
 	border-right: 0;
-	border-bottom: 1px solid rgba(255,255,255,0.34);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.34);
 	border-left: 0;
 	border-radius: 0;
 }

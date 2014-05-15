@@ -171,9 +171,9 @@ public class Activity extends Context {
 		RootPanel.get(ACTIVITY_ID).add(contentPanel);
 	}
 
-    public void setContentView(int layoutId) {
-        setContentView(Resources.getResourceResolver().getLayout(layoutId));
-    }
+	public void setContentView(int layoutId) {
+		setContentView(Resources.getResourceResolver().getLayout(layoutId));
+	}
 
 	public void setContentView(Widget htmlPanel) {
 		contentPanel = htmlPanel;
@@ -232,7 +232,7 @@ public class Activity extends Context {
 		return intent;
 	}
 
-    public MenuInflater getMenuInflater() {
-        return new MenuInflater();
-    }
+	public MenuInflater getMenuInflater() {
+		return new MenuInflater();
+	}
 }

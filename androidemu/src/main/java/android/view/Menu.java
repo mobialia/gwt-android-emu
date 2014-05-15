@@ -13,10 +13,10 @@ public class Menu {
 		item.setOrder(order);
 		item.setTitle(title);
 		menuItems.add(item);
-        return item;
+		return item;
 	}
 
-    void add(MenuItem item) {
-        menuItems.add(item);
-    }
+	void add(MenuItem item) {
+		menuItems.add(item);
+	}
 }
