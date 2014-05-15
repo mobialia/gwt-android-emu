@@ -3,8 +3,8 @@ apply plugin: 'java'
 archivesBaseName = 'androidemu_demo'
 
 dependencies {
-    compile 'com.google.gwt:gwt-user:2.6.0'
-    compile 'com.google.gwt:gwt-dev:2.6.0'
+    compile 'com.google.gwt:gwt-user:2.6.'
+    compile 'com.google.gwt:gwt-dev:2.6.1'
     compile project(':androidemu')
     compile project(path: ':androidemu', configuration: 'archives')
 }
