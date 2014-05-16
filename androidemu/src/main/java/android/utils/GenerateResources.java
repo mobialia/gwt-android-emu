@@ -5,7 +5,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -354,8 +358,8 @@ public class GenerateResources {
 		contentResolverSB.append(FILE_HEADER);
 		contentResolverSB.append("package " + packageName + ";\n\n");
 		contentResolverSB.append("import android.content.res.BaseResourceResolver;\n");
-        contentResolverSB.append("import android.view.Menu;\n\n");
-        contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
+		contentResolverSB.append("import android.view.Menu;\n\n");
+		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
 		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n\n");
 
 		contentResolverSB.append("public class ResourceResolver implements BaseResourceResolver {\n\n");

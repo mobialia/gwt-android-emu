@@ -1,12 +1,12 @@
 package android.view;
 
+import android.Res;
 import android.content.res.Resources;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Widget;
-
-import android.Res;
 
 public class View {
 	static final String TAG = "View";

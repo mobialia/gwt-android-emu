@@ -4,12 +4,12 @@ public class Log {
 
 	public static native void d(String tag, String message)
 	/*-{
-        console.debug(tag + ": " + message);
+		console.debug(tag + ": " + message);
     }-*/;
 
 	public static native void e(String tag, String message)
 	/*-{
-        console.error(tag + ": " + message);
+		console.error(tag + ": " + message);
     }-*/;
 
 	public static native void i(String tag, String message)

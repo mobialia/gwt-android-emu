@@ -1,12 +1,12 @@
 package android.app;
 
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-
 import android.Res;
 import android.content.Context;
 import android.content.DialogInterface;
+
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class ProgressDialog extends Dialog implements DialogInterface {
 

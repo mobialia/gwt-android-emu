@@ -1,15 +1,15 @@
 package android.app;
 
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 
 import java.util.Stack;
-
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
 
 public class ActivityManager {
 	public final static String TAG = "ActivityManager";

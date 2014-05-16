@@ -1,14 +1,14 @@
 package android.widget;
 
+import android.Res;
+import android.content.Context;
 import android.content.res.Resources;
+import android.view.Gravity;
+
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.PopupPanel;
-
-import android.Res;
-import android.content.Context;
-import android.view.Gravity;
 
 public class Toast {
 

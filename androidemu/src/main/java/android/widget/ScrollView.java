@@ -1,9 +1,9 @@
 package android.widget;
 
+import android.view.View;
+
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Element;
-
-import android.view.View;
 
 public class ScrollView extends View {
 

@@ -1,12 +1,12 @@
 package android.widget;
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
-
 import android.database.DataSetObserver;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
+
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 public class ListView extends View {
 

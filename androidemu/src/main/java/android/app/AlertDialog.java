@@ -1,6 +1,11 @@
 package android.app;
 
+import android.Res;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.view.View;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -8,11 +13,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
-
-import android.Res;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.view.View;
 
 public class AlertDialog extends Dialog implements DialogInterface {
 

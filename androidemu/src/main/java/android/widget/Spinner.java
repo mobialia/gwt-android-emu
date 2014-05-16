@@ -1,9 +1,9 @@
 package android.widget;
 
+import android.view.View;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SelectElement;
-
-import android.view.View;
 
 public class Spinner extends View {
 
@@ -17,6 +17,9 @@ public class Spinner extends View {
 
 	public int getSelectedItemPosition() {
 		return SelectElement.as(element).getSelectedIndex();
+	}
+
+	public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener listener) {
 	}
 
 }

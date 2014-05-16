@@ -1,9 +1,9 @@
 package android.widget;
 
 import android.content.res.Resources;
-import com.google.gwt.dom.client.Element;
-
 import android.view.View;
+
+import com.google.gwt.dom.client.Element;
 
 public class TextView extends View {
 

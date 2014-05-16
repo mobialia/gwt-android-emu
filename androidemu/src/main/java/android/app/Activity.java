@@ -1,8 +1,18 @@
 package android.app;
 
+import android.Res;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.view.*;
-import com.google.gwt.core.client.EntryPoint;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewFactory;
+import android.widget.ImageButton;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -13,13 +23,6 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-
-import android.Res;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.widget.ImageButton;
 
 public class Activity extends Context {
 

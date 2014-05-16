@@ -1,8 +1,8 @@
 package android.widget;
 
-import com.google.gwt.dom.client.Element;
-
 import android.view.View;
+
+import com.google.gwt.dom.client.Element;
 
 public class ImageView extends View {
 

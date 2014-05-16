@@ -1,10 +1,10 @@
 package android.widget;
 
 import android.content.res.Resources;
+import android.view.View;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
-
-import android.view.View;
 
 public class EditText extends View {
 

@@ -1,7 +1,5 @@
 package android.view;
 
-import com.google.gwt.dom.client.Element;
-
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.google.gwt.dom.client.Element;
 
 public class ViewFactory {
 

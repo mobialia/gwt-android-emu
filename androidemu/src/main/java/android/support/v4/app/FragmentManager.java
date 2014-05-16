@@ -1,6 +1,9 @@
 package android.support.v4.app;
 
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
@@ -8,10 +11,6 @@ import com.google.gwt.user.client.DOM;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Stack;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class FragmentManager {
 	static final String TAG = "FragmentManager";
@@ -135,10 +134,10 @@ public class FragmentManager {
 						break;
 					case STATUS_CREATED:
 						Element el = DOM.getElementById(fragment.containerViewId);
-                        if (el == null) {
-                            Log.e(TAG, "View " + fragment.containerViewId + " not found");
-                        }
-                        ViewGroup viewGroup = new ViewGroup(el);
+						if (el == null) {
+							Log.e(TAG, "View " + fragment.containerViewId + " not found");
+						}
+						ViewGroup viewGroup = new ViewGroup(el);
 						fragment.mView = fragment.onCreateView(new LayoutInflater(), viewGroup, null);
 						el.appendChild(fragment.mView.getElement());
 						fragment.status = STATUS_CREATED_VIEW;

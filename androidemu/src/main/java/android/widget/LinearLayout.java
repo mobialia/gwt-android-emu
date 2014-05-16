@@ -1,8 +1,8 @@
 package android.widget;
 
-import com.google.gwt.dom.client.Element;
-
 import android.view.ViewGroup;
+
+import com.google.gwt.dom.client.Element;
 
 public class LinearLayout extends ViewGroup {
 
