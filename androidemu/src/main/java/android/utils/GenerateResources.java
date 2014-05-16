@@ -354,8 +354,8 @@ public class GenerateResources {
 		contentResolverSB.append(FILE_HEADER);
 		contentResolverSB.append("package " + packageName + ";\n\n");
 		contentResolverSB.append("import android.content.res.BaseResourceResolver;\n");
-		contentResolverSB.append("import android.view.Menu;\n");
-		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
+        contentResolverSB.append("import android.view.Menu;\n\n");
+        contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
 		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n\n");
 
 		contentResolverSB.append("public class ResourceResolver implements BaseResourceResolver {\n\n");

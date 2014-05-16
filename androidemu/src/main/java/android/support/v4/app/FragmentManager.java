@@ -1,5 +1,7 @@
 package android.support.v4.app;
 
+import android.util.Log;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 
@@ -133,7 +135,10 @@ public class FragmentManager {
 						break;
 					case STATUS_CREATED:
 						Element el = DOM.getElementById(fragment.containerViewId);
-						ViewGroup viewGroup = new ViewGroup(el);
+                        if (el == null) {
+                            Log.e(TAG, "View " + fragment.containerViewId + " not found");
+                        }
+                        ViewGroup viewGroup = new ViewGroup(el);
 						fragment.mView = fragment.onCreateView(new LayoutInflater(), viewGroup, null);
 						el.appendChild(fragment.mView.getElement());
 						fragment.status = STATUS_CREATED_VIEW;
