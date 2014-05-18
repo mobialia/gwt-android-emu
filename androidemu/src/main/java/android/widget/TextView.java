@@ -26,4 +26,9 @@ public class TextView extends View {
 	public void setTextColor(String color) {
 		element.setAttribute("style", "color: " + color + ";");
 	}
+
+	public native int getLineHeight()
+	/*-{
+		return parseInt(document.defaultView.getComputedStyle(this.@android.view.View::element,null).getPropertyValue("line-height"));
+    }-*/;
 }
