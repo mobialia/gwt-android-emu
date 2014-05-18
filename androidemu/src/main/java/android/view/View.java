@@ -14,6 +14,9 @@ public class View {
 	public static final int INVISIBLE = 4;
 	public static final int GONE = 8;
 
+	public static final int FOCUS_DOWN = 130;
+	public static final int FOCUS_UP = 33;
+
 	public Element element = null;
 	public Widget widget = null;
 
@@ -34,15 +37,19 @@ public class View {
 	 * document
 	 */
 	public int getTop() {
-		return element.getAbsoluteTop();
+		return element.getOffsetTop();
 	}
 
-	/**
-	 * In Android is relative, but here we implement it against the root of the
-	 * document
-	 */
 	public int getLeft() {
-		return element.getAbsoluteLeft();
+		return element.getOffsetLeft();
+	}
+
+	public int getRight() {
+		return element.getOffsetLeft() + element.getClientWidth();
+	}
+
+	public int getBottom() {
+		return element.getOffsetTop() + element.getClientHeight();
 	}
 
 	public int getHeight() {
@@ -99,5 +106,23 @@ public class View {
 
 	public Element getElement() {
 		return (element != null ? element : widget.getElement());
+	}
+
+	/**
+	 * No JS Threads, so run now
+	 *
+	 * @param action
+	 * @return
+	 */
+	public boolean post(Runnable action) {
+		action.run();
+		return true;
+	}
+
+	/**
+	 * View is allways redrawed, no invalidate at the moment
+	 */
+	public void invalidate() {
+
 	}
 }
