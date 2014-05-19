@@ -135,6 +135,12 @@
 	margin: 0;
 	padding: 1rem;
 	background: rgba(0, 0, 0, 0.8);
+	text-align: center;
+}
+
+.preferencesFragmentContent {
+	display: inline-block;
+	text-align: left;
 }
 
 .preferencesElement {

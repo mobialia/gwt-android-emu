@@ -23,6 +23,8 @@ public interface Style extends CssResource {
 
 	String preferencesFragment();
 
+	String preferencesFragmentContent();
+
 	String preferencesElement();
 
 	String preferencesLabel();
