@@ -18,7 +18,6 @@ public class View {
 	public static final int FOCUS_UP = 33;
 
 	public Element element = null;
-	public Widget widget = null;
 
 	public View(Element element) {
 		this.element = element;
@@ -105,7 +104,7 @@ public class View {
 	}
 
 	public Element getElement() {
-		return (element != null ? element : widget.getElement());
+		return element;
 	}
 
 	/**

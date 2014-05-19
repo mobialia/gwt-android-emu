@@ -143,11 +143,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		if (builder.view != null) {
-			if (builder.view.widget != null) {
-				contentPanel.add(builder.view.widget);
-			} else if (builder.view.element != null) {
+			if (builder.view.getElement() != null) {
 				HTMLPanel htmlPanel = new HTMLPanel("");
-				htmlPanel.getElement().appendChild(builder.view.element);
+				htmlPanel.getElement().appendChild(builder.view.getElement());
 				contentPanel.add(htmlPanel);
 			}
 		}
