@@ -125,7 +125,7 @@
 	background: rgba(50, 165, 207, 0.5);
 }
 
-.preferencesActivity {
+.preferencesFragment {
 	overflow: auto;
 
 	color: #ffffff;
@@ -135,10 +135,6 @@
 	margin: 0;
 	padding: 1rem;
 	background: rgba(0, 0, 0, 0.8);
-}
-
-.preferencesActivityContent {
-	margin: 0 auto;
 }
 
 .preferencesElement {
