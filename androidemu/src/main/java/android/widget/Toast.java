@@ -55,7 +55,7 @@ public class Toast {
 			}
 		});
 
-		// Create a new timer that calls Window.alert().
+		// Create a new timer that calls hide().
 		Timer t = new Timer() {
 			public void run() {
 				panel.hide();
