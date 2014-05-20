@@ -2,8 +2,8 @@ package android.app;
 
 import android.content.Intent;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
-
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
@@ -65,12 +65,14 @@ public class ActivityManager {
 					break;
 				case STATUS_CREATED:
 					activity.onResume();
-					activity.createMenu();
+					Menu menu = new Menu();
+					activity.onCreateOptionsMenu(menu);
+					activity.showMenu(menu);
 					activity.onPostResume();
 					activity.status = STATUS_RESUMED;
 					break;
 				case STATUS_RESUMED:
-					activity.hideMenu();
+					activity.closeOptionsMenu();
 					activity.onPause();
 					activity.status = STATUS_PAUSED;
 					break;

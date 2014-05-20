@@ -6,21 +6,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewFactory;
+import android.view.*;
 import android.widget.ImageButton;
-
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -38,9 +31,8 @@ public class Activity extends Context {
 	int targetStatus = 0;
 
 	String title;
-	Menu menu;
 	Widget contentPanel;
-	private PopupPanel menuPanel;
+	private Element menuPanel;
 
 	Intent intent;
 	Integer requestCode;
@@ -88,37 +80,31 @@ public class Activity extends Context {
 		return true;
 	}
 
-	void createMenu() {
-		if (menu == null) {
-			menu = new Menu();
-			onCreateOptionsMenu(menu);
+	public void showMenu(Menu menu) {
+		if (menu.menuItems.size() > 0) {
+			menuPanel = DOM.createDiv();
+			menuPanel.addClassName(Res.R.style().dialog());
+			menuPanel.addClassName(Res.R.style().invisible());
 
-			if (menu.menuItems.size() > 0) {
-				menuPanel = new PopupPanel();
-				menuPanel.setStyleName(Res.R.style().dialog());
-				FlowPanel fp = new FlowPanel();
+			for (final MenuItem item : menu.menuItems) {
+				if (item.getIcon() != null) {
 
-				for (final MenuItem item : menu.menuItems) {
-					Button b = new Button();
-					b.setText(Resources.getResourceResolver().getString(item.getTitle()));
-					b.setStyleName(Res.R.style().menuItem());
-					b.addClickHandler(new ClickHandler() {
-						@Override
-						public void onClick(ClickEvent event) {
-							hideMenu();
-							onOptionsItemSelected(item);
-						}
-					});
-					fp.add(b);
 				}
-				menuPanel.setWidget(fp);
-			}
-		}
-	}
+				Element b = DOM.createButton();
+				b.addClassName(Res.R.style().menuItem());
+				b.setInnerHTML(getString(item.getTitle()));
+				Event.setEventListener(b, new EventListener() {
+					@Override
+					public void onBrowserEvent(Event event) {
+						closeOptionsMenu();
+						onOptionsItemSelected(item);
+					}
+				});
+				Event.sinkEvents(b, Event.ONCLICK);
 
-	void hideMenu() {
-		if (menuPanel != null && menuPanel.isShowing()) {
-			menuPanel.hide();
+				menuPanel.appendChild(b);
+			}
+			contentPanel.getElement().appendChild(menuPanel);
 		}
 	}
 
@@ -127,27 +113,26 @@ public class Activity extends Context {
 	 */
 	void toggleOptionsMenu(View view) {
 		if (menuPanel != null) {
-			if (!menuPanel.isShowing()) {
-				menuPanel.setAutoHideEnabled(false);
-				menuPanel.show();
-				menuPanel.setPopupPosition(view.getLeft() + view.getWidth() - menuPanel.getOffsetWidth(), view.getTop() + view.getHeight());
+			if (menuPanel.hasClassName(Res.R.style().invisible())) {
+				menuPanel.getStyle().setProperty("position", "fixed");
+				menuPanel.getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuPanel.getOffsetWidth());
+				menuPanel.getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
+				openOptionsMenu();
 			} else {
-				menuPanel.hide();
+				closeOptionsMenu();
 			}
 		}
 	}
 
 	public void openOptionsMenu() {
-		if (menuPanel != null) {
-			menuPanel.setAutoHideEnabled(true);
-			menuPanel.center();
-			menuPanel.show();
+		if (menuPanel != null && menuPanel.hasClassName(Res.R.style().invisible())) {
+			menuPanel.removeClassName(Res.R.style().invisible());
 		}
 	}
 
 	public void closeOptionsMenu() {
-		if (menuPanel != null) {
-			menuPanel.hide();
+		if (menuPanel != null && !menuPanel.hasClassName(Res.R.style().invisible())) {
+			menuPanel.addClassName(Res.R.style().invisible());
 		}
 	}
 

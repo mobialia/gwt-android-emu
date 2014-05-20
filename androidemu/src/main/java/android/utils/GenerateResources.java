@@ -1,22 +1,18 @@
 package android.utils;
 
+import android.view.MenuItem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GenerateResources {
 	private static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
@@ -206,6 +202,26 @@ public class GenerateResources {
 						title = "R.string." + eElement.getAttribute("android:title").replace("@string/", "");
 					}
 					menuClassSB.append("\t\tMenuItem item" + temp + " = menu.add(" + groupId + ", " + itemId + ", " + order + ", " + title + ");\n");
+
+					if (eElement.hasAttribute("android:icon")) {
+						String icon = eElement.getAttribute("android:icon").replace("@drawable/", "");
+						menuClassSB.append("\t\titem" + temp + ".setIcon(\"" + icon + "\");\n");
+					}
+
+					// TODO NS PREFIX
+					if (eElement.hasAttribute("mobialia:showAsAction")) {
+						int showAsAction = 0;
+						String showAsActionString = eElement.getAttribute("mobialia:showAsAction");
+						if ("always".equals(showAsActionString)) {
+							showAsAction = MenuItem.SHOW_AS_ACTION_ALWAYS;
+						} else if ("never".equals(showAsActionString)) {
+							showAsAction = MenuItem.SHOW_AS_ACTION_NEVER;
+						} else if ("if_room".equals(showAsActionString)) {
+							showAsAction = MenuItem.SHOW_AS_ACTION_IF_ROOM;
+						}
+
+						menuClassSB.append("\t\titem" + temp + ".setShowAsAction(" + showAsAction + ");\n");
+					}
 				}
 			}
 
@@ -272,7 +288,7 @@ public class GenerateResources {
 		// IDS
 		counter = 1;
 		for (String str : idsInClass) {
-			idResolverSB.append("\t\t\tcase R.id." + str + ":\n\t\t\t\t\treturn \"" + str + "\";\n");
+			idResolverSB.append("\t\t\tcase R.id." + str + ":\n\t\t\t\treturn \"" + str + "\";\n");
 			idsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
