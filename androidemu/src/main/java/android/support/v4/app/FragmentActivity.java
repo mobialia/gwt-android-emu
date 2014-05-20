@@ -2,6 +2,7 @@ package android.support.v4.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class FragmentActivity extends Activity {
 
@@ -44,5 +45,13 @@ public class FragmentActivity extends Activity {
 		} else {
 			super.onBackPressed();
 		}
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		if (!fragmentManager.onOptionsItemSelected(item)) {
+			return super.onMenuItemSelected(featureId, item);
+		}
+		return true;
 	}
 }

@@ -32,7 +32,7 @@ public class Activity extends Context {
 
 	String title;
 	Widget contentPanel;
-	private Element menuPanel;
+	private Element menuElement;
 
 	Intent intent;
 	Integer requestCode;
@@ -67,6 +67,9 @@ public class Activity extends Context {
 	}
 
 	protected void onDestroy() {
+		if (menuElement != null) {
+			menuElement.removeFromParent();
+		}
 		if (contentPanel != null) {
 			RootPanel.get(ACTIVITY_ID).remove(contentPanel);
 		}
@@ -76,35 +79,48 @@ public class Activity extends Context {
 		return true;
 	}
 
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		return onOptionsItemSelected(item);
+	}
+
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return true;
+		return false;
 	}
 
 	public void showMenu(Menu menu) {
 		if (menu.menuItems.size() > 0) {
-			menuPanel = DOM.createDiv();
-			menuPanel.addClassName(Res.R.style().dialog());
-			menuPanel.addClassName(Res.R.style().invisible());
+			if (menuElement != null) {
+				menuElement.removeFromParent();
+			}
+			menuElement = DOM.createDiv();
+			menuElement.addClassName(Res.R.style().dialog());
+			menuElement.addClassName(Res.R.style().invisible());
 
 			for (final MenuItem item : menu.menuItems) {
-				if (item.getIcon() != null) {
-
-				}
-				Element b = DOM.createButton();
-				b.addClassName(Res.R.style().menuItem());
-				b.setInnerHTML(getString(item.getTitle()));
-				Event.setEventListener(b, new EventListener() {
-					@Override
-					public void onBrowserEvent(Event event) {
-						closeOptionsMenu();
-						onOptionsItemSelected(item);
+				if (item.getTitle() != 0 || item.getIcon() != null) {
+					Element b = DOM.createButton();
+					b.addClassName(Res.R.style().menuItem());
+					if (item.getIcon() != null) {
+						Element img = DOM.createImg();
+						img.setAttribute("src", "img/" + item.getIcon() + ".png");
+						b.appendChild(img);
 					}
-				});
-				Event.sinkEvents(b, Event.ONCLICK);
+					if (item.getTitle() != 0) {
+						b.setInnerHTML(getString(item.getTitle()));
+					}
+					Event.setEventListener(b, new EventListener() {
+						@Override
+						public void onBrowserEvent(Event event) {
+							closeOptionsMenu();
+							onMenuItemSelected(0, item);
+						}
+					});
+					Event.sinkEvents(b, Event.ONCLICK);
 
-				menuPanel.appendChild(b);
+					menuElement.appendChild(b);
+				}
 			}
-			contentPanel.getElement().appendChild(menuPanel);
+			contentPanel.getElement().appendChild(menuElement);
 		}
 	}
 
@@ -112,11 +128,11 @@ public class Activity extends Context {
 	 * Used only by the system menu button
 	 */
 	void toggleOptionsMenu(View view) {
-		if (menuPanel != null) {
-			if (menuPanel.hasClassName(Res.R.style().invisible())) {
-				menuPanel.getStyle().setProperty("position", "fixed");
-				menuPanel.getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuPanel.getOffsetWidth());
-				menuPanel.getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
+		if (menuElement != null) {
+			if (menuElement.hasClassName(Res.R.style().invisible())) {
+				menuElement.getStyle().setProperty("position", "fixed");
+				menuElement.getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuElement.getOffsetWidth());
+				menuElement.getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
 				openOptionsMenu();
 			} else {
 				closeOptionsMenu();
@@ -125,14 +141,14 @@ public class Activity extends Context {
 	}
 
 	public void openOptionsMenu() {
-		if (menuPanel != null && menuPanel.hasClassName(Res.R.style().invisible())) {
-			menuPanel.removeClassName(Res.R.style().invisible());
+		if (menuElement != null && menuElement.hasClassName(Res.R.style().invisible())) {
+			menuElement.removeClassName(Res.R.style().invisible());
 		}
 	}
 
 	public void closeOptionsMenu() {
-		if (menuPanel != null && !menuPanel.hasClassName(Res.R.style().invisible())) {
-			menuPanel.addClassName(Res.R.style().invisible());
+		if (menuElement != null && !menuElement.hasClassName(Res.R.style().invisible())) {
+			menuElement.addClassName(Res.R.style().invisible());
 		}
 	}
 

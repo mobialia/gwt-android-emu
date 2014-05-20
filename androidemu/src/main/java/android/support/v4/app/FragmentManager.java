@@ -2,9 +2,9 @@ package android.support.v4.app;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 
@@ -20,7 +20,6 @@ public class FragmentManager {
 	static final int STATUS_RESUMED = 3;
 	static final int STATUS_PAUSED = 4;
 	static final int STATUS_DESTROYED = 5;
-
 
 	FragmentActivity activity;
 	LinkedList<Fragment> fragments = new LinkedList<Fragment>();
@@ -189,5 +188,22 @@ public class FragmentManager {
 			checkFragmentsStatus();
 			fragments.remove(fragment);
 		}
+	}
+
+	/**
+	 * Invokes onOptionsItemSelected in all visible fragments
+	 *
+	 * @param item
+	 * @return
+	 */
+	boolean onOptionsItemSelected(MenuItem item) {
+		for (Fragment fragment : fragments) {
+			if (fragment.visible) {
+				if (fragment.onOptionsItemSelected(item)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
