@@ -78,6 +78,7 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 | `<div class="ListView">`   | ListView       |
 | `<div class="ScrollView">` | ScrollView     |
 | `<div>`                    | TextView       |
+| `<textarea>`               | EditText       |
 | `<input type="text">`      | EditText       |
 | `<input type="number">`    | EditText       |
 | `<input type="password">`  | EditText       |

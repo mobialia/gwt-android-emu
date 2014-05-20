@@ -1,17 +1,7 @@
 package android.view;
 
 import android.util.Log;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.*;
 import com.google.gwt.dom.client.Element;
 
 public class ViewFactory {
@@ -40,14 +30,16 @@ public class ViewFactory {
 			}
 		} else if (element.getNodeName() == "BUTTON") {
 			return new Button(element);
+		} else if (element.getNodeName() == "TEXTAREA") {
+			return new EditText(element, true);
 		} else if (element.getNodeName() == "INPUT") {
 			String type = element.getAttribute("type").toUpperCase();
 			if (type.equals("TEXT")) {
-				return new EditText(element);
+				return new EditText(element, false);
 			} else if (type.equals("NUMBER")) {
-				return new EditText(element);
+				return new EditText(element, false);
 			} else if (type.equals("PASSWORD")) {
-				return new EditText(element);
+				return new EditText(element, false);
 			} else if (type.equals("BUTTON")) {
 				return new Button(element);
 			} else if (type.equals("RADIO")) {
