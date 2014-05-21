@@ -111,7 +111,7 @@ public class Activity extends Context {
 
 	private void createMenu() {
 		LinearLayout actionsLayout = new LinearLayout(ViewFactory.getElementById(contentPanel.getElement(), "MenuActions"));
-		if (actionsLayout == null) {
+		if (actionsLayout.getElement() == null) {
 			Log.e(TAG, "MenuActions div not found");
 			return;
 		}
