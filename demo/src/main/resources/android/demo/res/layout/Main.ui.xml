@@ -10,16 +10,20 @@
             <!--input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" /-->
 
             <ui:text from="{string.activity1}" />
-            <input id="MenuButton" type="image" class="actionbar-button-right" src="img/actionbar_menu.png" />
+            <div id="MenuActions" style="float: right;"/>
         </div>
         <div class="content">
 			<h1><ui:text from="{string.hello}" /></h1>
-			
-			<ul>
-			<li><a href="http://github.com/albertoruibal/gwt_android_emu">http://github.com/albertoruibal/gwt_android_emu</a></li>
-			</ul>
-		
-			<!-- String Properties can be accessed with ui:text -->
+
+            <ul>
+                <li>
+                    <a href="http://github.com/albertoruibal/gwt_android_emu">
+                        http://github.com/albertoruibal/gwt_android_emu
+                    </a>
+                </li>
+            </ul>
+
+            <!-- String Properties can be accessed with ui:text -->
 			<br/>
 			<button id="AlertButton"><ui:text from="{string.alert_dialog}" /></button>
 			<br/>

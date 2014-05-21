@@ -10,7 +10,7 @@
             <input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" />
 
             <ui:text from="{string.activity2}" />
-            <input id="MenuButton" type="image" class="actionbar-button-right" src="img/actionbar_menu.png" />
+            <div id="MenuActions" style="float: right;"/>
         </div>
         <div class="content">
 			<!-- String Properties can be accessed with ui:text -->

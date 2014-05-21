@@ -3,6 +3,7 @@ package android.demo.res;
 
 import android.content.res.BaseResourceResolver;
 import android.view.Menu;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -13,22 +14,27 @@ public class ResourceResolver implements BaseResourceResolver {
 	public static final Layouts layouts = new Layouts();
 
 	public String getIdAsString(int id) {
-		switch(id) {
+		switch (id) {
+			case R.id.action1:
+				return "action1";
 			case R.id.menu1:
-					return "menu1";
+				return "menu1";
 			case R.id.menu2:
-					return "menu2";
+				return "menu2";
 		}
 		return null;
 	}
+
 	public String getString(int id) {
-		switch(id) {
+		switch (id) {
 			case R.string.activity1:
 				return strings.activity1();
 			case R.string.activity2:
 				return strings.activity2();
 			case R.string.hello:
 				return strings.hello();
+			case R.string.action1:
+				return strings.action1();
 			case R.string.menu1:
 				return strings.menu1();
 			case R.string.menu2:
@@ -58,22 +64,25 @@ public class ResourceResolver implements BaseResourceResolver {
 		}
 		return null;
 	}
+
 	public String[] getStringArray(int id) {
-		switch(id) {
+		switch (id) {
 			case R.array.array1:
 				return arrays.array1();
 		}
 		return null;
 	}
+
 	public Menu getMenu(int id) {
-		switch(id) {
+		switch (id) {
 			case R.menu.demo_menu:
-					return Menus.demo_menu();
+				return Menus.demo_menu();
 		}
 		return null;
 	}
+
 	public Widget getLayout(int id) {
-		switch(id) {
+		switch (id) {
 			case R.layout.main:
 				return layouts.main();
 			case R.layout.other:

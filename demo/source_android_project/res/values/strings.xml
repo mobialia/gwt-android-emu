@@ -3,6 +3,7 @@
     <string name="activity1">Activity 1</string>
     <string name="activity2">Activity 2</string>
     <string name="hello">Demo of the GWT_Android_Emu Library</string>
+    <string name="action1">Menu Action 1</string>
     <string name="menu1">Menu Option 1</string>
     <string name="menu2">Menu Option 2</string>
     <string name="alert_dialog">Alert Dialog</string>
