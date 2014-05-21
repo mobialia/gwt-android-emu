@@ -2,9 +2,11 @@ package android.support.v4.app;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 
@@ -103,6 +105,7 @@ public class FragmentManager {
 		}
 
 		checkFragmentsStatus();
+		activity.invalidateOptionsMenu();
 	}
 
 	void onActivityPostCreate() {
@@ -121,6 +124,7 @@ public class FragmentManager {
 			}
 		}
 		checkFragmentsStatus();
+		activity.invalidateOptionsMenu();
 	}
 
 	private void checkFragmentsStatus() {
@@ -187,6 +191,16 @@ public class FragmentManager {
 			}
 			checkFragmentsStatus();
 			fragments.remove(fragment);
+
+			activity.invalidateOptionsMenu();
+		}
+	}
+
+	void onCreateOptionsMenu(Menu menu) {
+		for (Fragment fragment : fragments) {
+			if (fragment.visible && fragment.hasMenu) {
+				fragment.onCreateOptionsMenu(menu, activity.getMenuInflater());
+			}
 		}
 	}
 

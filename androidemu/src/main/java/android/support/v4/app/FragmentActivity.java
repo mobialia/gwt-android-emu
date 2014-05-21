@@ -2,6 +2,7 @@ package android.support.v4.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class FragmentActivity extends Activity {
@@ -45,6 +46,13 @@ public class FragmentActivity extends Activity {
 		} else {
 			super.onBackPressed();
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		fragmentManager.onCreateOptionsMenu(menu);
+		return false;
 	}
 
 	@Override

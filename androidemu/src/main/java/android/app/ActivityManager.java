@@ -2,8 +2,7 @@ package android.app;
 
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
+
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
@@ -51,10 +50,6 @@ public class ActivityManager {
 		activityStack.peek().onBackPressed();
 	}
 
-	public static void toggleOptionsMenu(View v) {
-		activityStack.peek().toggleOptionsMenu(v);
-	}
-
 	private static void advanceStatus(Activity activity) {
 		while (activity.status < activity.targetStatus) {
 			switch (activity.status) {
@@ -65,9 +60,7 @@ public class ActivityManager {
 					break;
 				case STATUS_CREATED:
 					activity.onResume();
-					Menu menu = new Menu();
-					activity.onCreateOptionsMenu(menu);
-					activity.showMenu(menu);
+					activity.invalidateOptionsMenu();
 					activity.onPostResume();
 					activity.status = STATUS_RESUMED;
 					break;

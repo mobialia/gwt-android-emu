@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class Fragment {
 	static final String TAG = "Fragment";
@@ -15,6 +20,7 @@ public class Fragment {
 	String containerViewId;
 	View mView;
 	boolean visible = false;
+	boolean hasMenu = true;
 
 	public void setArguments(Bundle args) {
 		this.args = args;
@@ -51,12 +57,7 @@ public class Fragment {
 	}
 
 	public void setHasOptionsMenu(boolean hasMenu) {
-		if (hasMenu) {
-			Menu menu = new Menu();
-			onCreateOptionsMenu(menu, getActivity().getMenuInflater());
-			getActivity().onCreateOptionsMenu(menu);
-			getActivity().showMenu(menu);
-		}
+		this.hasMenu = hasMenu;
 	}
 
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
