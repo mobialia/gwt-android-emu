@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.ViewFactory;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -37,7 +37,7 @@ public class Activity extends Context {
 
 	String title;
 	Widget contentPanel;
-	private Element menuElement;
+	private LinearLayout menuLayout;
 
 	Intent intent;
 	Integer requestCode;
@@ -74,8 +74,8 @@ public class Activity extends Context {
 	}
 
 	protected void onDestroy() {
-		if (menuElement != null) {
-			menuElement.removeFromParent();
+		if (menuLayout != null) {
+			menuLayout.getElement().removeFromParent();
 		}
 		if (contentPanel != null) {
 			RootPanel.get(ACTIVITY_ID).remove(contentPanel);
@@ -91,9 +91,9 @@ public class Activity extends Context {
 	}
 
 	public void invalidateOptionsMenu() {
-		if (menuElement != null) {
-			menuElement.removeFromParent();
-			menuElement = null;
+		if (menuLayout != null) {
+			menuLayout.getElement().removeFromParent();
+			menuLayout = null;
 		}
 		menu = new Menu();
 		onCreateOptionsMenu(menu);
@@ -110,17 +110,19 @@ public class Activity extends Context {
 	}
 
 	private void createMenu() {
-		Element actionsElement = ViewFactory.getElementById(contentPanel.getElement(), "MenuActions");
-		if (actionsElement == null) {
+		LinearLayout actionsLayout = new LinearLayout(ViewFactory.getElementById(contentPanel.getElement(), "MenuActions"));
+		if (actionsLayout == null) {
 			Log.e(TAG, "MenuActions div not found");
 			return;
 		}
-		actionsElement.removeAllChildren();
+		actionsLayout.removeAllViews();
 
 		if (menu.menuItems.size() > 0) {
-			menuElement = DOM.createDiv();
-			menuElement.addClassName(Res.R.style().dialog());
-			menuElement.addClassName(Res.R.style().gone());
+			menuLayout = new LinearLayout();
+			menuLayout.getElement().addClassName(Res.R.style().dialog());
+			menuLayout.getElement().addClassName(Res.R.style().gone());
+
+			boolean hasMenuItems = false;
 
 			for (final MenuItem item : menu.menuItems) {
 				if (item.getTitle() != 0 || item.getIcon() != null) {
@@ -135,7 +137,7 @@ public class Activity extends Context {
 								}
 							});
 							b.getElement().addClassName(Res.R.style().actionbarButton());
-							actionsElement.appendChild(b.getElement());
+							actionsLayout.addView(b);
 						}
 					} else {
 						Button b = new Button();
@@ -150,12 +152,13 @@ public class Activity extends Context {
 							}
 						});
 						b.getElement().addClassName(Res.R.style().menuItem());
-						menuElement.appendChild(b.getElement());
+						menuLayout.addView(b);
+						hasMenuItems = true;
 					}
 				}
 			}
 			// Add menu and button only if it has elements
-			if (menuElement.hasChildNodes()) {
+			if (hasMenuItems) {
 				final ImageButton menuButton = new ImageButton();
 				menuButton.getElement().setClassName(Res.R.style().actionbarButton());
 				menuButton.setImageResource("img/actionbar_menu.png");
@@ -165,8 +168,8 @@ public class Activity extends Context {
 						toggleOptionsMenu(menuButton);
 					}
 				});
-				actionsElement.appendChild(menuButton.getElement());
-				actionsElement.appendChild(menuElement);
+				actionsLayout.addView(menuButton);
+				actionsLayout.addView(menuLayout);
 			}
 		}
 	}
@@ -175,25 +178,25 @@ public class Activity extends Context {
 	 * Used only by the system menu button
 	 */
 	void toggleOptionsMenu(View view) {
-		if (menuElement.hasClassName(Res.R.style().gone())) {
+		if (menuLayout.getElement().hasClassName(Res.R.style().gone())) {
 			openOptionsMenu();
-			menuElement.getStyle().setProperty("position", "fixed");
-			menuElement.getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuElement.getOffsetWidth());
-			menuElement.getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
+			menuLayout.getElement().getStyle().setProperty("position", "fixed");
+			menuLayout.getElement().getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuLayout.getWidth());
+			menuLayout.getElement().getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
 		} else {
 			closeOptionsMenu();
 		}
 	}
 
 	public void openOptionsMenu() {
-		if (menuElement != null && menuElement.hasClassName(Res.R.style().gone())) {
-			menuElement.removeClassName(Res.R.style().gone());
+		if (menuLayout != null && menuLayout.getElement().hasClassName(Res.R.style().gone())) {
+			menuLayout.getElement().removeClassName(Res.R.style().gone());
 		}
 	}
 
 	public void closeOptionsMenu() {
-		if (menuElement != null && !menuElement.hasClassName(Res.R.style().gone())) {
-			menuElement.addClassName(Res.R.style().gone());
+		if (menuLayout != null && !menuLayout.getElement().hasClassName(Res.R.style().gone())) {
+			menuLayout.getElement().addClassName(Res.R.style().gone());
 		}
 	}
 
