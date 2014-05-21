@@ -73,20 +73,21 @@ HTML Elements to Android Widgets
 
 This is how this library maps the HTML elements to Android widgets: (see also the ViewFactory class)
 
-| HTML Element               | Android Widget |
-| ---------------------------|----------------|
-| `<div class="ListView">`   | ListView       |
-| `<div class="ScrollView">` | ScrollView     |
-| `<div>`                    | TextView       |
-| `<textarea>`               | EditText       |
-| `<input type="text">`      | EditText       |
-| `<input type="number">`    | EditText       |
-| `<input type="password">`  | EditText       |
-| `<input type="button">`    | Button         |
-| `<input type="radio">`     | RadioButton    |
-| `<input type="checkbox">`  | CheckBox       |
-| `<input type="image">`     | ImageButton    |
-| `<select>`                 | Spinner        |
-| `<img>`                    | ImageView      |
+| HTML Element                | Android Widget |
+| ----------------------------|----------------|
+| `<div class="ListView">`    | ListView       |
+| `<div class="ScrollView">`  | ScrollView     |
+| `<div class="LinearLayout">`| LinearLayout   |
+| `<div>`                     | TextView       |
+| `<textarea>`                | EditText       |
+| `<input type="text">`       | EditText       |
+| `<input type="number">`     | EditText       |
+| `<input type="password">`   | EditText       |
+| `<input type="button">`     | Button         |
+| `<input type="radio">`      | RadioButton    |
+| `<input type="checkbox">`   | CheckBox       |
+| `<input type="image">`      | ImageButton    |
+| `<select>`                  | Spinner        |
+| `<img>`                     | ImageView      |
 
 

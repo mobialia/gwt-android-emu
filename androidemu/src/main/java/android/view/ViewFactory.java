@@ -1,7 +1,17 @@
 package android.view;
 
 import android.util.Log;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.google.gwt.dom.client.Element;
 
 public class ViewFactory {
@@ -23,6 +33,8 @@ public class ViewFactory {
 				if (className.contains("LISTVIEW")) {
 					return new ListView(element);
 				} else if (className.contains("SCROLLVIEW")) {
+					return new ScrollView(element);
+				} else if (className.contains("LINEARLAYOUT")) {
 					return new ScrollView(element);
 				}
 				// DIV fallbacks to TextView
