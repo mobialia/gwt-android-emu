@@ -119,7 +119,7 @@ public class View {
 	}
 
 	/**
-	 * View is allways redrawed, no invalidate at the moment
+	 * View is always redrawed, no invalidate at the moment
 	 */
 	public void invalidate() {
 
