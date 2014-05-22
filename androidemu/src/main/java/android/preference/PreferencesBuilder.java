@@ -2,6 +2,7 @@ package android.preference;
 
 import android.MobialiaUtil;
 import android.Res;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 
 import com.google.gwt.dom.client.Element;

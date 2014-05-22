@@ -1,4 +1,4 @@
-package android.preference;
+package android.content;
 
 import com.google.gwt.storage.client.Storage;
 
