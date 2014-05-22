@@ -5,6 +5,8 @@ import android.view.View;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SelectElement;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 public class Spinner extends View {
 
@@ -27,7 +29,15 @@ public class Spinner extends View {
 		return (i < 0 ? 0 : i);
 	}
 
-	public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener listener) {
+	public void setOnItemSelectedListener(final AdapterView.OnItemSelectedListener listener) {
+		Event.setEventListener(element, new EventListener() {
+			@Override
+			public void onBrowserEvent(Event event) {
+				int i = getSelectedItemPosition();
+				listener.onItemSelected(null, Spinner.this, i, i);
+			}
+		});
+		Event.sinkEvents(element, Event.ONCHANGE);
 	}
 
 	public void setAdapter(BaseAdapter adapter) {
