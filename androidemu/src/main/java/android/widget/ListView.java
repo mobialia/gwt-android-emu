@@ -35,13 +35,13 @@ public class ListView extends View {
 	}
 
 	public void setAdapter(Adapter adapter) {
-
 		if (mAdapter != null && mDataSetObserver != null) {
 			mAdapter.unregisterDataSetObserver(mDataSetObserver);
 		}
 
 		this.mAdapter = adapter;
 		mAdapter.registerDataSetObserver(mDataSetObserver);
+		mDataSetObserver.onInvalidated();
 	}
 
 	public Adapter getAdapter() {
