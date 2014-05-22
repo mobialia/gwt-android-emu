@@ -44,6 +44,10 @@ public class ListView extends View {
 		mAdapter.registerDataSetObserver(mDataSetObserver);
 	}
 
+	public Adapter getAdapter() {
+		return mAdapter;
+	}
+
 	public void setSelection(int index) {
 		// TODO
 	}
