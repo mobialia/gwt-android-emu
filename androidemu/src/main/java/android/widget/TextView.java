@@ -1,6 +1,7 @@
 package android.widget;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.View;
 
 import com.google.gwt.dom.client.Element;
@@ -23,8 +24,8 @@ public class TextView extends View {
 		element.setInnerHTML(string != null ? string.replace("\n", "<br/>") : "");
 	}
 
-	public void setTextColor(String color) {
-		element.setAttribute("style", "color: " + color + ";");
+	public void setTextColor(int color) {
+		element.getStyle().setProperty("color", Color.getHtmlColor(color));
 	}
 
 	public native int getLineHeight()

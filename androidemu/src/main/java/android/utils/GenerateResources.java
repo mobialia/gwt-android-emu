@@ -1,18 +1,24 @@
 package android.utils;
 
 import android.view.MenuItem;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GenerateResources {
 	private static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
@@ -37,6 +43,8 @@ public class GenerateResources {
 	StringBuffer arrayClassSB = new StringBuffer();
 
 	ArrayList<String> layouts = new ArrayList<String>();
+
+	HashMap<String, String> colors = new HashMap<String, String>();
 
 	public GenerateResources(String packageName) {
 		this.packageName = packageName;
@@ -156,6 +164,15 @@ public class GenerateResources {
 						arrayClassSB.append("\tString[] ").append(key).append("();\n");
 						arrayIdsInClass.add(key);
 					}
+				}
+			}
+
+			NodeList colorNodes = doc.getElementsByTagName("color");
+			for (int i = 0; i < colorNodes.getLength(); i++) {
+				Node node = colorNodes.item(i);
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					Element element = (Element) node;
+					colors.put(element.getAttribute("name"), element.getTextContent());
 				}
 			}
 		} catch (Exception e) {
@@ -283,6 +300,9 @@ public class GenerateResources {
 		StringBuffer arrayIdResolverSB = new StringBuffer();
 		StringBuffer layoutIdResolverSB = new StringBuffer();
 
+		StringBuffer colorIdsSB = new StringBuffer();
+		StringBuffer colorIdResolverSB = new StringBuffer();
+
 		int counter;
 
 		// IDS
@@ -332,6 +352,13 @@ public class GenerateResources {
 			}
 		}
 
+		// COLORS
+		counter = 1;
+		for (String colorName : colors.keySet()) {
+			colorIdResolverSB.append("\t\t\tcase R.color." + colorName + ":\n\t\t\t\t\treturn " + colors.get(colorName).replace("#", "0x") + ";\n");
+			colorIdsSB.append("\t\tpublic final static int " + colorName + " = " + counter++ + ";\n");
+		}
+
 		// LAYOUT IDS
 		counter = 1;
 		for (String str : layouts) {
@@ -348,6 +375,10 @@ public class GenerateResources {
 
 		RSB.append("\tpublic static final class id {\n");
 		RSB.append(idsSB);
+		RSB.append("\t}\n");
+
+		RSB.append("\tpublic static final class color {\n");
+		RSB.append(colorIdsSB);
 		RSB.append("\t}\n");
 
 		RSB.append("\tpublic static final class string {\n");
@@ -409,6 +440,13 @@ public class GenerateResources {
 		contentResolverSB.append(menuIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
 		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t}\n");
+
+		contentResolverSB.append("\tpublic int getColor(int id) {\n");
+		contentResolverSB.append("\t\tswitch(id) {\n");
+		contentResolverSB.append(colorIdResolverSB);
+		contentResolverSB.append("\t\t}\n");
+		contentResolverSB.append("\t\treturn 0;\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic Widget getLayout(int id) {\n");

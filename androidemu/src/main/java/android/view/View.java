@@ -2,6 +2,7 @@ package android.view;
 
 import android.Res;
 import android.content.res.Resources;
+import android.graphics.Color;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
@@ -123,5 +124,9 @@ public class View {
 	 */
 	public void invalidate() {
 
+	}
+
+	public void setBackgroundColor(int color) {
+		element.getStyle().setProperty("background", Color.getHtmlColor(color));
 	}
 }

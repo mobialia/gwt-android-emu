@@ -17,6 +17,8 @@ public interface BaseResourceResolver {
 
 	public Menu getMenu(int id);
 
+	public int getColor(int id);
+
 	public Widget getLayout(int id);
 
 }

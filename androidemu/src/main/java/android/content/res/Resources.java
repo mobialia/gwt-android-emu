@@ -30,4 +30,9 @@ public class Resources {
 	public String[] getStringArray(int id) {
 		return getResourceResolver().getStringArray(id);
 	}
+
+	public int getColor(int id) {
+		return getResourceResolver().getColor(id);
+	}
+
 }
