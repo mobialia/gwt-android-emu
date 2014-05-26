@@ -19,6 +19,7 @@ public class View {
 	public static final int FOCUS_UP = 33;
 
 	public Element element = null;
+	int id;
 
 	public View(Element element) {
 		this.element = element;
@@ -28,8 +29,12 @@ public class View {
 		this.element = widget.getElement();
 	}
 
-	public String getId() {
-		return getElement().getId();
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -61,7 +66,9 @@ public class View {
 	}
 
 	public View findViewById(int id) {
-		return ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
+		View view = ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
+		view.setId(id);
+		return view;
 	}
 
 	public View findViewById(String id) {
