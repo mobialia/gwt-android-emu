@@ -17,6 +17,22 @@ public class FragmentTransaction {
 		this.fragmentManager = fragmentManager;
 	}
 
+	public FragmentTransaction add(int containerViewId, Fragment fragment) {
+		return replace(containerViewId, fragment, null);
+	}
+
+	public FragmentTransaction add(int containerViewId, Fragment fragment, String tag) {
+		this.replace = false;
+		this.containerViewId = Resources.getResourceResolver().getIdAsString(containerViewId);
+		this.fragment = fragment;
+		this.tag = tag;
+		return this;
+	}
+
+	public FragmentTransaction replace(int containerViewId, Fragment fragment) {
+		return replace(containerViewId, fragment, null);
+	}
+
 	public FragmentTransaction replace(int containerViewId, Fragment fragment, String tag) {
 		this.replace = true;
 		this.containerViewId = Resources.getResourceResolver().getIdAsString(containerViewId);
