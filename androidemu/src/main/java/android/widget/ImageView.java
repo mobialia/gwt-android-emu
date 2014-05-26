@@ -1,5 +1,6 @@
 package android.widget;
 
+import android.content.res.Resources;
 import android.view.View;
 
 import com.google.gwt.dom.client.Element;
@@ -15,8 +16,8 @@ public class ImageView extends View {
 		super(element);
 	}
 
-	public void setImageResource(String image) {
-		element.setAttribute("src", image);
+	public void setImageResource(int imageId) {
+		element.setAttribute("src", "img/" + Resources.getResourceResolver().getDrawable(imageId) + ".png");
 	}
 
 }

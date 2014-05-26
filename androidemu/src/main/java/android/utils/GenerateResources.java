@@ -31,6 +31,8 @@ public class GenerateResources {
 
 	ArrayList<String> idsInClass = new ArrayList<String>();
 
+	ArrayList<String> drawableIdsInClass = new ArrayList<String>();
+
 	StringBuffer menuClassSB = new StringBuffer();
 	ArrayList<String> menuIdsInClass = new ArrayList<String>();
 
@@ -180,6 +182,14 @@ public class GenerateResources {
 		}
 	}
 
+	public void processDrawable(String fileName) {
+		File file = new File(fileName);
+		String str = file.getName().replace(".png", "");
+		if (!drawableIdsInClass.contains(str)) {
+			drawableIdsInClass.add(str);
+		}
+	}
+
 	public void processMenuFile(String fileName) {
 		try {
 			File xmlFile = new File(fileName);
@@ -222,7 +232,7 @@ public class GenerateResources {
 
 					if (eElement.hasAttribute("android:icon")) {
 						String icon = eElement.getAttribute("android:icon").replace("@drawable/", "");
-						menuClassSB.append("\t\titem" + temp + ".setIcon(\"" + icon + "\");\n");
+						menuClassSB.append("\t\titem" + temp + ".setIcon(R.drawable." + icon + ");\n");
 					}
 
 					// TODO NS PREFIX
@@ -289,12 +299,14 @@ public class GenerateResources {
 
 	public void output() {
 		StringBuffer idsSB = new StringBuffer();
+		StringBuffer drawableIdsSB = new StringBuffer();
 		StringBuffer menuIdsSB = new StringBuffer();
 		StringBuffer stringIdsSB = new StringBuffer();
 		StringBuffer arrayIdsSB = new StringBuffer();
 		StringBuffer layoutIdsSB = new StringBuffer();
 
 		StringBuffer idResolverSB = new StringBuffer();
+		StringBuffer drawableIdResolverSB = new StringBuffer();
 		StringBuffer menuIdResolverSB = new StringBuffer();
 		StringBuffer stringIdResolverSB = new StringBuffer();
 		StringBuffer arrayIdResolverSB = new StringBuffer();
@@ -312,7 +324,15 @@ public class GenerateResources {
 			idsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
+		// DRAWABLES
+		counter = 1;
+		for (String str : drawableIdsInClass) {
+			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + str + "\";\n");
+			drawableIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+		}
+
 		// MENUS
+		counter = 1;
 		for (String str : menuIdsInClass) {
 			menuIdResolverSB.append("\t\t\tcase R.menu." + str + ":\n\t\t\t\t\treturn Menus." + str + "();\n");
 			menuIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
@@ -381,6 +401,10 @@ public class GenerateResources {
 		RSB.append(colorIdsSB);
 		RSB.append("\t}\n");
 
+		RSB.append("\tpublic static final class drawable {\n");
+		RSB.append(drawableIdsSB);
+		RSB.append("\t}\n");
+
 		RSB.append("\tpublic static final class string {\n");
 		RSB.append(stringIdsSB);
 		RSB.append("\t}\n");
@@ -409,7 +433,7 @@ public class GenerateResources {
 		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
 		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n\n");
 
-		contentResolverSB.append("public class ResourceResolver implements BaseResourceResolver {\n\n");
+		contentResolverSB.append("public class ResourceResolver extends BaseResourceResolver {\n\n");
 		contentResolverSB.append("\tpublic static final Strings strings = GWT.create(Strings.class);\n");
 		contentResolverSB.append("\tpublic static final Arrays arrays = GWT.create(Arrays.class);\n");
 		contentResolverSB.append("\tpublic static final Layouts layouts = new Layouts();\n"); // Layout and Raw must be created by user...
@@ -418,42 +442,49 @@ public class GenerateResources {
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(idResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t\treturn super.getIdAsString(id);\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic String getString(int id) {\n");
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(stringIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t\treturn super.getString(id);\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic String[] getStringArray(int id) {\n");
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(arrayIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t\treturn super.getStringArray(id);\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic Menu getMenu(int id) {\n");
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(menuIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t\treturn super.getMenu(id);\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic int getColor(int id) {\n");
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(colorIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn 0;\n");
+		contentResolverSB.append("\t\treturn super.getColor(id);\n");
+		contentResolverSB.append("\t}\n");
+
+		contentResolverSB.append("\tpublic String getDrawable(int id) {\n");
+		contentResolverSB.append("\t\tswitch(id) {\n");
+		contentResolverSB.append(drawableIdResolverSB);
+		contentResolverSB.append("\t\t}\n");
+		contentResolverSB.append("\t\treturn super.getDrawable(id);\n");
 		contentResolverSB.append("\t}\n");
 
 		contentResolverSB.append("\tpublic Widget getLayout(int id) {\n");
 		contentResolverSB.append("\t\tswitch(id) {\n");
 		contentResolverSB.append(layoutIdResolverSB);
 		contentResolverSB.append("\t\t}\n");
-		contentResolverSB.append("\t\treturn null;\n");
+		contentResolverSB.append("\t\treturn super.getLayout(id);\n");
 		contentResolverSB.append("\t}\n");
 		contentResolverSB.append("}\n");
 
@@ -467,7 +498,9 @@ public class GenerateResources {
 				crawl(fileName + "/" + f);
 			}
 		} else {
-			if (fileName.endsWith(".xml")) {
+			if (fileName.endsWith(".png")) {
+				processDrawable(fileName);
+			} else if (fileName.endsWith(".xml")) {
 				if (fileName.contains("/menu/")) {
 					processMenuFile(fileName);
 				} else {

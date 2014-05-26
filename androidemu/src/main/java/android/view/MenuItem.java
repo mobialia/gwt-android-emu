@@ -12,7 +12,7 @@ public class MenuItem {
 	int order;
 	int title;
 	int showAsAction;
-	String icon;
+	int icon;
 
 	public int getGroupId() {
 		return groupId;
@@ -54,11 +54,11 @@ public class MenuItem {
 		this.showAsAction = showAsAction;
 	}
 
-	public String getIcon() {
+	public int getIcon() {
 		return icon;
 	}
 
-	public void setIcon(String icon) {
+	public void setIcon(int icon) {
 		this.icon = icon;
 	}
 }

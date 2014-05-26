@@ -125,11 +125,11 @@ public class Activity extends Context {
 			boolean hasMenuItems = false;
 
 			for (final MenuItem item : menu.menuItems) {
-				if (item.getTitle() != 0 || item.getIcon() != null) {
+				if (item.getTitle() != 0 || item.getIcon() != 0) {
 					if (item.getShowAsAction() == MenuItem.SHOW_AS_ACTION_ALWAYS) {
 						ImageButton b = new ImageButton();
-						if (item.getIcon() != null) {
-							b.setImageResource("img/" + item.getIcon() + ".png");
+						if (item.getIcon() != 0) {
+							b.setImageResource(item.getIcon());
 							b.setOnClickListener(new View.OnClickListener() {
 								@Override
 								public void onClick(View v) {
@@ -161,7 +161,7 @@ public class Activity extends Context {
 			if (hasMenuItems) {
 				final ImageButton menuButton = new ImageButton();
 				menuButton.getElement().setClassName(Res.R.style().actionbarButton());
-				menuButton.setImageResource("img/actionbar_menu.png");
+				menuButton.setImageResource(android.R.drawable.actionbar_menu);
 				menuButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {

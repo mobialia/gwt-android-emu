@@ -35,4 +35,8 @@ public class Resources {
 		return getResourceResolver().getColor(id);
 	}
 
+	public String getDrawable(int id) {
+		return getResourceResolver().getDrawable(id);
+	}
+
 }
