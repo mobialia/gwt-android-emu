@@ -1,6 +1,6 @@
 package android.widget;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 
@@ -17,7 +17,7 @@ public class TextView extends View {
 	}
 
 	public void setText(int stringId) {
-		setText(Resources.getResourceResolver().getString(stringId));
+		setText(Context.resources.getString(stringId));
 	}
 
 	public void setText(String string) {

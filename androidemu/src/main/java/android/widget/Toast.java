@@ -2,7 +2,6 @@ package android.widget;
 
 import android.Res;
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.Gravity;
 
 import com.google.gwt.user.client.Timer;
@@ -20,7 +19,7 @@ public class Toast {
 	int duration;
 
 	public static Toast makeText(Context context, int message, int duration) {
-		return makeText(context, Resources.getResourceResolver().getString(message), duration);
+		return makeText(context, Context.resources.getString(message), duration);
 	}
 
 	public static Toast makeText(Context context, String message, int duration) {

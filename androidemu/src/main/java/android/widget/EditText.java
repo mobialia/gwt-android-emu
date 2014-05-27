@@ -1,6 +1,7 @@
 package android.widget;
 
-import android.content.res.Resources;
+import android.content.Context;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.TextAreaElement;
@@ -15,7 +16,7 @@ public class EditText extends TextView {
 	}
 
 	public void setText(int stringId) {
-		setText(Resources.getResourceResolver().getString(stringId));
+		setText(Context.resources.getString(stringId));
 	}
 
 	public void setText(String text) {

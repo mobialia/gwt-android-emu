@@ -13,15 +13,15 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 	private SimplePanel titleLabelContainer, messageLabelContainer;
 	private Label titleLabel, messageLabel;
 
-	public static ProgressDialog show(Context context, String title, String message, boolean indeterminate) {
+	public static ProgressDialog show(Context context, CharSequence title, CharSequence message, boolean indeterminate) {
 		return new ProgressDialog(title, message, false);
 	}
 
-	public static ProgressDialog show(Context context, String title, String message, boolean indeterminate, boolean cancelable) {
+	public static ProgressDialog show(Context context, CharSequence title, CharSequence message, boolean indeterminate, boolean cancelable) {
 		return new ProgressDialog(title, message, cancelable);
 	}
 
-	public ProgressDialog(String title, String message, boolean cancelable) {
+	public ProgressDialog(CharSequence title, CharSequence message, boolean cancelable) {
 		super(cancelable);
 
 		VerticalPanel vp = new VerticalPanel();
@@ -38,28 +38,28 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 		popupPanel.add(vp);
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(CharSequence title) {
 		if (titleLabel == null && title != null && !"".equals(title)) {
 			titleLabel = new Label();
 			titleLabel.setStyleName(Res.R.style().dialogTitle());
 			titleLabelContainer.add(titleLabel);
 		}
 		if (titleLabel != null) {
-			titleLabel.setText(title);
+			titleLabel.setText(title.toString());
 		}
 		if (popupPanel.isShowing()) {
 			popupPanel.center();
 		}
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(CharSequence message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
 			messageLabel = new Label();
 			messageLabel.setStyleName(Res.R.style().dialogMessage());
 			messageLabelContainer.add(messageLabel);
 		}
 		if (messageLabel != null) {
-			messageLabel.setText(message);
+			messageLabel.setText(message.toString());
 		}
 		if (popupPanel.isShowing()) {
 			popupPanel.center();

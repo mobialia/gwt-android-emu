@@ -3,7 +3,6 @@ package android.app;
 import android.Res;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,9 +16,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Activity extends Context {
@@ -36,7 +33,7 @@ public class Activity extends Context {
 	int targetStatus = 0;
 
 	String title;
-	Widget contentPanel;
+	public View view;
 	private LinearLayout menuLayout;
 
 	Intent intent;
@@ -59,8 +56,8 @@ public class Activity extends Context {
 	}
 
 	protected void onResume() {
-		if (contentPanel != null) {
-			contentPanel.setVisible(true);
+		if (view != null) {
+			view.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -68,8 +65,8 @@ public class Activity extends Context {
 	}
 
 	protected void onPause() {
-		if (contentPanel != null) {
-			contentPanel.setVisible(false);
+		if (view != null) {
+			view.setVisibility(View.GONE);
 		}
 	}
 
@@ -77,8 +74,8 @@ public class Activity extends Context {
 		if (menuLayout != null) {
 			menuLayout.getElement().removeFromParent();
 		}
-		if (contentPanel != null) {
-			RootPanel.get(ACTIVITY_ID).remove(contentPanel);
+		if (view != null) {
+			view.getElement().removeFromParent();
 		}
 	}
 
@@ -110,7 +107,7 @@ public class Activity extends Context {
 	}
 
 	private void createMenu() {
-		LinearLayout actionsLayout = new LinearLayout(ViewFactory.getElementById(contentPanel.getElement(), "MenuActions"));
+		LinearLayout actionsLayout = new LinearLayout(ViewFactory.getElementById(view.getElement(), "MenuActions"));
 		if (actionsLayout.getElement() == null) {
 			Log.e(TAG, "MenuActions div not found");
 			return;
@@ -218,20 +215,15 @@ public class Activity extends Context {
 		ActivityManager.finish(this);
 	}
 
-	public void setContentView(TextResource content) {
-		contentPanel = new HTMLPanel(content.getText());
-		RootPanel.get(ACTIVITY_ID).add(contentPanel);
-	}
-
 	public void setContentView(int layoutId) {
-		setContentView(Resources.getResourceResolver().getLayout(layoutId));
+		setContentView(getResources().getLayout(layoutId));
 	}
 
 	public void setContentView(Widget htmlPanel) {
-		contentPanel = htmlPanel;
-		RootPanel.get(ACTIVITY_ID).add(contentPanel);
+		view = new View(htmlPanel);
+		DOM.getElementById(ACTIVITY_ID).appendChild(view.getElement());
 
-		Element backElement = ViewFactory.getElementById(contentPanel.getElement(), "BackButton");
+		Element backElement = ViewFactory.getElementById(view.getElement(), "BackButton");
 		if (backElement != null) {
 			ImageButton backButton = (ImageButton) ViewFactory.createViewFromElement(backElement);
 			backButton.setOnClickListener(new View.OnClickListener() {
@@ -266,8 +258,8 @@ public class Activity extends Context {
 		finish();
 	}
 
-	public View findViewById(String id) {
-		return ViewFactory.findViewById(contentPanel.getElement(), id);
+	public View findViewById(int id) {
+		return view.findViewById(id);
 	}
 
 	public Intent getIntent() {

@@ -1,7 +1,6 @@
 package android.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
@@ -9,8 +8,14 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class LayoutInflater {
 
+	Context context;
+
+	LayoutInflater(Context context) {
+		this.context = context;
+	}
+
 	public static LayoutInflater from(Context context) {
-		return new LayoutInflater();
+		return new LayoutInflater(context);
 	}
 
 	public View inflate(TextResource layout, Context ctx) {
@@ -18,7 +23,7 @@ public class LayoutInflater {
 	}
 
 	public View inflate(int resId, Context ctx) {
-		return new View(Resources.getResourceResolver().getLayout(resId));
+		return new View(context.getResources().getLayout(resId));
 	}
 
 	public View inflate(Widget widget, Context ctx) {
@@ -26,7 +31,7 @@ public class LayoutInflater {
 	}
 
 	public View inflate(int resId, ViewGroup container, boolean something) {
-		return new View(Resources.getResourceResolver().getLayout(resId));
+		return new View(context.getResources().getLayout(resId));
 	}
 
 	public View inflate(Widget widget, ViewGroup container, boolean something) {

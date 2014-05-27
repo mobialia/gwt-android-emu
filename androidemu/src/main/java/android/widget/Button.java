@@ -1,7 +1,8 @@
 package android.widget;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.view.View;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 
@@ -16,7 +17,7 @@ public class Button extends View {
 	}
 
 	public void setText(int stringId) {
-		setText(Resources.getResourceResolver().getString(stringId));
+		setText(Context.resources.getString(stringId));
 	}
 
 	public void setText(String string) {

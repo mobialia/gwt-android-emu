@@ -428,12 +428,11 @@ public class GenerateResources {
 		StringBuffer contentResolverSB = new StringBuffer();
 		contentResolverSB.append(FILE_HEADER);
 		contentResolverSB.append("package " + packageName + ";\n\n");
-		contentResolverSB.append("import android.content.res.BaseResourceResolver;\n");
 		contentResolverSB.append("import android.view.Menu;\n\n");
 		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
 		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n\n");
 
-		contentResolverSB.append("public class ResourceResolver extends BaseResourceResolver {\n\n");
+		contentResolverSB.append("public class Resources extends android.content.res.Resources {\n\n");
 		contentResolverSB.append("\tpublic static final Strings strings = GWT.create(Strings.class);\n");
 		contentResolverSB.append("\tpublic static final Arrays arrays = GWT.create(Arrays.class);\n");
 		contentResolverSB.append("\tpublic static final Layouts layouts = new Layouts();\n"); // Layout and Raw must be created by user...
@@ -488,7 +487,7 @@ public class GenerateResources {
 		contentResolverSB.append("\t}\n");
 		contentResolverSB.append("}\n");
 
-		writeFile("ResourceResolver.java", contentResolverSB);
+		writeFile("Resources.java", contentResolverSB);
 	}
 
 	public void crawl(String fileName) {

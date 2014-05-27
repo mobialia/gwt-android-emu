@@ -3,7 +3,6 @@ package android.app;
 import android.Res;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.view.View;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -22,6 +21,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
+		Context ctx;
 		View view;
 
 		boolean cancelable = true;
@@ -32,7 +32,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 		public Builder(Context ctx) {
-
+			this.ctx = ctx;
 		}
 
 		public void setTitle(String title) {
@@ -40,11 +40,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public void setTitle(int title) {
-			setTitle(Resources.getResourceResolver().getString(title));
+			setTitle(ctx.getString(title));
 		}
 
 		public void setMessage(int message) {
-			setMessage(Resources.getResourceResolver().getString(message));
+			setMessage(ctx.getString(message));
 		}
 
 		public void setMessage(String message) {
@@ -56,7 +56,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public void setPositiveButton(int label, DialogInterface.OnClickListener listener) {
-			setPositiveButton(Resources.getResourceResolver().getString(label), listener);
+			setPositiveButton(ctx.getString(label), listener);
 		}
 
 		public void setPositiveButton(String label, DialogInterface.OnClickListener listener) {
@@ -65,7 +65,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public void setNegativeButton(int label, DialogInterface.OnClickListener listener) {
-			setNegativeButton(Resources.getResourceResolver().getString(label), listener);
+			setNegativeButton(ctx.getString(label), listener);
 		}
 
 		public void setNegativeButton(String label, DialogInterface.OnClickListener listener) {
@@ -74,7 +74,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public void setNeutralButton(int label, DialogInterface.OnClickListener listener) {
-			setNeutralButton(Resources.getResourceResolver().getString(label), listener);
+			setNeutralButton(ctx.getString(label), listener);
 		}
 
 		public void setNeutralButton(String label, DialogInterface.OnClickListener listener) {
@@ -83,7 +83,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		public void setItems(int items, DialogInterface.OnClickListener listener) {
-			this.items = Resources.getResourceResolver().getStringArray(items);
+			this.items = ctx.getResources().getStringArray(items);
 			this.itemsListener = listener;
 		}
 
@@ -224,7 +224,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	}
 
 	public void setTitle(int title) {
-		setTitle(Resources.getResourceResolver().getString(title));
+		setTitle(Context.resources.getString(title));
 	}
 
 	public void setTitle(String title) {
@@ -242,7 +242,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	}
 
 	public void setMessage(int message) {
-		setMessage(Resources.getResourceResolver().getString(message));
+		setMessage(Context.resources.getString(message));
 	}
 
 	public void setMessage(String message) {

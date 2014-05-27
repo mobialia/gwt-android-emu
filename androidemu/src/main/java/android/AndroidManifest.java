@@ -2,25 +2,28 @@ package android;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.BaseResourceResolver;
 import android.content.res.Resources;
 import android.util.Log;
 
 import com.google.gwt.core.client.EntryPoint;
 
-public abstract class BaseAndroidManifest implements EntryPoint {
+public abstract class AndroidManifest implements EntryPoint {
 
 	static final String TAG = "BaseAndroidManifest";
 
 	public void onModuleLoad() {
 		Res.R.style().ensureInjected();
 
-		BaseResourceResolver rr = getResourceResolver();
-		if (rr != null) {
-			Resources.setResourceResolver(rr);
+		Context.application = getApplication();
+
+		Resources resources = getResources();
+		if (resources != null) {
+			Context.resources = resources;
 		} else {
-			Log.i(TAG, "No Resource Resolver defined");
+			Log.i(TAG, "No Resources defined");
 		}
 
 		ActivityManager.setup();
@@ -33,7 +36,9 @@ public abstract class BaseAndroidManifest implements EntryPoint {
 		}
 	}
 
-	public abstract BaseResourceResolver getResourceResolver();
+	public abstract Application getApplication();
+
+	public abstract Resources getResources();
 
 	public abstract Activity getDefaultActivity();
 }

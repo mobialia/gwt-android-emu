@@ -1,13 +1,13 @@
 package android.support.v7.app;
 
-import android.content.res.Resources;
+import android.content.Context;
 
 import com.google.gwt.user.client.DOM;
 
 public class ActionBar {
 
 	public void setTitle(int title) {
-		setTitle(Resources.getResourceResolver().getString(title));
+		setTitle(Context.resources.getString(title));
 	}
 
 	public void setTitle(String title) {

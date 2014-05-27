@@ -6,15 +6,18 @@ import android.content.res.Resources;
 
 public class Context {
 
-	static Application application = new Application();
-	Resources resources = new Resources();
+	/**
+	 * Initialized from AndroidManifest
+	 */
+	public static Application application;
+	public static Resources resources;
 
 	public Resources getResources() {
 		return resources;
 	}
 
 	public String getString(int in) {
-		return Resources.getResourceResolver().getString(in);
+		return resources.getString(in);
 	}
 
 	public void startActivity(Intent intent) {

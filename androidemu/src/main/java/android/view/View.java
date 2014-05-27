@@ -1,7 +1,8 @@
 package android.view;
 
 import android.Res;
-import android.content.res.Resources;
+import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 
 import com.google.gwt.dom.client.Element;
@@ -66,7 +67,7 @@ public class View {
 	}
 
 	public View findViewById(int id) {
-		View view = ViewFactory.findViewById(getElement(), Resources.getResourceResolver().getIdAsString(id));
+		View view = ViewFactory.findViewById(getElement(), Context.resources.getIdAsString(id));
 		view.setId(id);
 		return view;
 	}
@@ -126,10 +127,11 @@ public class View {
 		return true;
 	}
 
-	/**
-	 * View is always redrawed, no invalidate at the moment
-	 */
 	public void invalidate() {
+		onDraw(null);
+	}
+
+	protected void onDraw(Canvas canvas) {
 
 	}
 
