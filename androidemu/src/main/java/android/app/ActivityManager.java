@@ -41,6 +41,10 @@ public class ActivityManager {
 	}
 
 	public static void finish(final Activity activity) {
+		if (activityStack.size() <= 1) {
+			Log.d(TAG, "Not finishing activity " + activity.getClass().getName() + " because it's the last one");
+			return;
+		}
 		Log.d(TAG, "Finish activity " + activity.getClass().getName());
 		activity.targetStatus = STATUS_DESTROYED;
 		checkActivityStackDeferred();
