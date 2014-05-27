@@ -1,5 +1,6 @@
 package android.support.v4.app;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -75,10 +76,12 @@ public class FragmentManager {
 	void commit(FragmentTransaction transaction) {
 		Fragment fragment = transaction.fragment;
 		View viewGroup = activity.view.findViewById(transaction.containerViewId);
+		if (viewGroup == null) {
+			Log.e(TAG, "View not found to attach fragment: " + Context.resources.getIdAsString(transaction.containerViewId));
+		}
 		if (!(viewGroup instanceof ViewGroup)) {
 			Log.e(TAG, "Parent view is not a ViewGroup: " + viewGroup);
 		}
-
 		addFragment((ViewGroup) viewGroup, fragment);
 
 		if (transaction.addToBackStack) {
@@ -163,14 +166,6 @@ public class FragmentManager {
 							fragment.status = STATUS_CREATED;
 							break;
 						case STATUS_CREATED:
-//						View viewGroup = activity.view.findViewById(containerViewIdString);
-//						if (viewGroup == null) {
-//							Log.e(TAG, "View not found to attach fragment: " + containerViewIdString);
-//						}
-//						if (!(viewGroup instanceof ViewGroup)) {
-//							Log.e(TAG, "View is not a child of ViewGroup: " + containerViewIdString);
-//						}
-							Log.e(TAG, "onCreateView()");
 							fragment.view = fragment.onCreateView(LayoutInflater.from(activity), fragment.container, null);
 							fragment.container.addView(fragment.view);
 							fragment.status = STATUS_CREATED_VIEW;
