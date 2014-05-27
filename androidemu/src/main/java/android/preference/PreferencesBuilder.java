@@ -2,8 +2,8 @@ package android.preference;
 
 import android.MobialiaUtil;
 import android.Res;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
@@ -15,7 +15,7 @@ import com.google.gwt.user.client.EventListener;
 public class PreferencesBuilder {
 
 	public static void addGroupLabel(Element panel, int labelText) {
-		addGroupLabel(panel, Resources.getResourceResolver().getString(labelText));
+		addGroupLabel(panel, Context.resources.getString(labelText));
 	}
 
 	public static void addGroupLabel(Element panel, String labelText) {
@@ -27,8 +27,8 @@ public class PreferencesBuilder {
 
 	public static void addListPreference(Element panel, final SharedPreferences sharedPrefs, final String key, int label, int summary,
 										 final int values, int labels, String defaultValue) {
-		addListPreference(panel, sharedPrefs, key, Resources.getResourceResolver().getString(label), Resources.getResourceResolver().getString(summary),
-				Resources.getResourceResolver().getStringArray(values), Resources.getResourceResolver().getStringArray(labels), defaultValue);
+		addListPreference(panel, sharedPrefs, key, Context.resources.getString(label), Context.resources.getString(summary),
+				Context.resources.getStringArray(values), Context.resources.getStringArray(labels), defaultValue);
 	}
 
 	public static void addListPreference(Element panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
@@ -76,7 +76,7 @@ public class PreferencesBuilder {
 
 	public static void addBooleanPreference(Element panel, final SharedPreferences sharedPrefs, final String key, int label, int summary,
 											boolean defaultValue) {
-		addBooleanPreference(panel, sharedPrefs, key, Resources.getResourceResolver().getString(label), Resources.getResourceResolver().getString(summary),
+		addBooleanPreference(panel, sharedPrefs, key, Context.resources.getString(label), Context.resources.getString(summary),
 				defaultValue);
 	}
 
