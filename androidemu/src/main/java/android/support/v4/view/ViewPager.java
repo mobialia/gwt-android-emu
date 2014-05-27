@@ -9,9 +9,18 @@ import java.util.ArrayList;
 public class ViewPager extends ViewGroup {
 	static final String TAG = "ViewPager";
 
-	int currentItem = 0;
+	public static interface OnPageChangeListener {
+		abstract void onPageScrollStateChanged(int state);
+
+		abstract void onPageScrolled(int position, float positionOffset, int positionOffsetPixels);
+
+		abstract void onPageSelected(int position);
+	}
+
+	int currentItem = -1;
 	ArrayList<Object> pages = new ArrayList<Object>();
 	PagerAdapter adapter;
+	OnPageChangeListener listener;
 
 	public ViewPager(Element el) {
 		super(el);
@@ -26,6 +35,10 @@ public class ViewPager extends ViewGroup {
 		for (int i = 0; i < adapter.getCount(); i++) {
 			pages.add(adapter.instantiateItem(this, i));
 		}
+	}
+
+	public PagerAdapter getAdapter() {
+		return adapter;
 	}
 
 	public void setCurrentItem(int item) {
@@ -44,5 +57,9 @@ public class ViewPager extends ViewGroup {
 	 */
 	public void setOffscreenPageLimit(int limit) {
 
+	}
+
+	public void setOnPageChangeListener(OnPageChangeListener listener) {
+		this.listener = listener;
 	}
 }

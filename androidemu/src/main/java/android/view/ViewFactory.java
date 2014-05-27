@@ -1,6 +1,7 @@
 package android.view;
 
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gwt.dom.client.Element;
+import com.viewpagerindicator.TitlePageIndicator;
 
 public class ViewFactory {
 
@@ -38,8 +40,12 @@ public class ViewFactory {
 					return new ScrollView(element);
 				} else if (className.contains("LINEARLAYOUT")) {
 					return new LinearLayout(element);
+				} else if (className.contains("DRAWERLAYOUT")) {
+					return new DrawerLayout(element);
 				} else if (className.contains("VIEWPAGER")) {
 					return new ViewPager(element);
+				} else if (className.contains("TITLEPAGEINDICATOR")) {
+					return new TitlePageIndicator(element);
 				}
 				// DIV fallbacks to TextView
 				return new TextView(element);
