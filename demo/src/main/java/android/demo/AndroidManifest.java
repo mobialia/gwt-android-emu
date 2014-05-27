@@ -1,17 +1,20 @@
 package android.demo;
 
-import android.BaseAndroidManifest;
 import android.app.Activity;
-import android.content.res.BaseResourceResolver;
-import android.demo.res.ResourceResolver;
+import android.app.Application;
+import android.content.res.Resources;
 
-public class AndroidManifest extends BaseAndroidManifest {
+public class AndroidManifest extends android.AndroidManifest {
 
-    public BaseResourceResolver getResourceResolver() {
-        return new ResourceResolver();
-    }
+	public Application getApplication() {
+		return new Application();
+	}
 
-    public Activity getDefaultActivity() {
-        return new MainActivity();
-    }
+	public Resources getResources() {
+		return new android.demo.res.Resources();
+	}
+
+	public Activity getDefaultActivity() {
+		return new MainActivity();
+	}
 }

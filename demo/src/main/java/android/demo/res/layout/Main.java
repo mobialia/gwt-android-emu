@@ -8,12 +8,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class Main extends Composite {
 
-    private static IntroUiBinder uiBinder = GWT.create(IntroUiBinder.class);
+	private static IntroUiBinder uiBinder = GWT.create(IntroUiBinder.class);
 
-    interface IntroUiBinder extends UiBinder<Widget, Main> {
-    }
+	interface IntroUiBinder extends UiBinder<Widget, Main> {
+	}
 
-    public Main() {
-        initWidget(uiBinder.createAndBindUi(this));
-    }
+	public Main() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
 }

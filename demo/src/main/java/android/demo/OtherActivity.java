@@ -7,24 +7,24 @@ import android.util.Log;
 
 public class OtherActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate");
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		Log.d(TAG, "onCreate");
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.other);
-    }
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.other);
+	}
 
-    @Override
-    protected void onResume() {
-        Log.d(TAG, "onResume");
-        super.onResume();
-    }
+	@Override
+	protected void onResume() {
+		Log.d(TAG, "onResume");
+		super.onResume();
+	}
 
-    @Override
-    protected void onPause() {
-        Log.d(TAG, "onPause");
-        super.onPause();
-    }
+	@Override
+	protected void onPause() {
+		Log.d(TAG, "onPause");
+		super.onPause();
+	}
 
 }

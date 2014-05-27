@@ -46,16 +46,16 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 		setContentView(R.layout.main);
 
 		// ID (numeric or String) must match the id element in the HTML
-		alertButton = ((Button) findViewById("AlertButton"));
+		alertButton = ((Button) findViewById(R.id.AlertButton));
 		alertButton.setOnClickListener(this);
 
-		toastButton = ((Button) findViewById("ToastButton"));
+		toastButton = ((Button) findViewById(R.id.ToastButton));
 		toastButton.setOnClickListener(this);
 
-		handlerButton = ((Button) findViewById("HandlerButton"));
+		handlerButton = ((Button) findViewById(R.id.HandlerButton));
 		handlerButton.setOnClickListener(this);
 
-		activityButton = ((Button) findViewById("ActivityButton"));
+		activityButton = ((Button) findViewById(R.id.ActivityButton));
 		activityButton.setOnClickListener(this);
 	}
 

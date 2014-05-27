@@ -9,12 +9,12 @@ import android.demo.res.layout.Other;
  */
 public class Layouts {
 
-    public Main main() {
-        return new Main();
-    }
+	public Main main() {
+		return new Main();
+	}
 
-    public Other other() {
-        return new Other();
-    }
+	public Other other() {
+		return new Other();
+	}
 
 }

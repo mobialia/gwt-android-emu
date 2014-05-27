@@ -1,13 +1,12 @@
 /** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo.res;
 
-import android.content.res.BaseResourceResolver;
 import android.view.Menu;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ResourceResolver implements BaseResourceResolver {
+public class Resources extends android.content.res.Resources {
 
 	public static final Strings strings = GWT.create(Strings.class);
 	public static final Arrays arrays = GWT.create(Arrays.class);
@@ -21,8 +20,16 @@ public class ResourceResolver implements BaseResourceResolver {
 				return "menu1";
 			case R.id.menu2:
 				return "menu2";
+			case R.id.AlertButton:
+				return "AlertButton";
+			case R.id.ToastButton:
+				return "ToastButton";
+			case R.id.HandlerButton:
+				return "HandlerButton";
+			case R.id.ActivityButton:
+				return "ActivityButton";
 		}
-		return null;
+		return super.getIdAsString(id);
 	}
 
 	public String getString(int id) {
@@ -62,7 +69,7 @@ public class ResourceResolver implements BaseResourceResolver {
 			case R.string.other:
 				return strings.other();
 		}
-		return null;
+		return super.getString(id);
 	}
 
 	public String[] getStringArray(int id) {
@@ -70,7 +77,7 @@ public class ResourceResolver implements BaseResourceResolver {
 			case R.array.array1:
 				return arrays.array1();
 		}
-		return null;
+		return super.getStringArray(id);
 	}
 
 	public Menu getMenu(int id) {
@@ -78,7 +85,21 @@ public class ResourceResolver implements BaseResourceResolver {
 			case R.menu.demo_menu:
 				return Menus.demo_menu();
 		}
-		return null;
+		return super.getMenu(id);
+	}
+
+	public int getColor(int id) {
+		switch (id) {
+		}
+		return super.getColor(id);
+	}
+
+	public String getDrawable(int id) {
+		switch (id) {
+			case R.drawable.actionbar_add:
+				return "actionbar_add";
+		}
+		return super.getDrawable(id);
 	}
 
 	public Widget getLayout(int id) {
@@ -88,6 +109,6 @@ public class ResourceResolver implements BaseResourceResolver {
 			case R.layout.other:
 				return layouts.other();
 		}
-		return null;
+		return super.getLayout(id);
 	}
 }

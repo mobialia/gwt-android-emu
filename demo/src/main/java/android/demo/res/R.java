@@ -7,8 +7,18 @@ public class R {
 		public final static int action1 = 1;
 		public final static int menu1 = 2;
 		public final static int menu2 = 3;
+		public final static int AlertButton = 4;
+		public final static int ToastButton = 5;
+		public final static int HandlerButton = 6;
+		public final static int ActivityButton = 7;
 	}
 
+	public static final class color {
+	}
+
+	public static final class drawable {
+		public final static int actionbar_add = 1;
+	}
 	public static final class string {
 		public final static int activity1 = 1;
 		public final static int activity2 = 2;
@@ -28,15 +38,12 @@ public class R {
 		public final static int activity = 16;
 		public final static int other = 17;
 	}
-
 	public static final class array {
 		public final static int array1 = 1;
 	}
-
 	public static final class menu {
-		public final static int demo_menu = 4;
+		public final static int demo_menu = 1;
 	}
-
 	public static final class layout {
 		public final static int main = 1;
 		public final static int other = 2;
