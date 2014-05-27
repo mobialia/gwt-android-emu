@@ -4,7 +4,12 @@ import android.support.v4.app.FragmentActivity;
 
 public class ActionBarActivity extends FragmentActivity {
 
-	ActionBar actionBar = new ActionBar();
+	ActionBar actionBar;
+
+	public ActionBarActivity() {
+		actionBar = new ActionBar(this);
+	}
+
 
 	public ActionBar getSupportActionBar() {
 		return actionBar;
