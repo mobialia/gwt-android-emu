@@ -136,4 +136,12 @@ public class View {
 	public void setBackgroundColor(int color) {
 		element.getStyle().setProperty("background", Color.getHtmlColor(color));
 	}
+
+	@Override
+	public boolean equals(Object v) {
+		if (!(v instanceof View)) {
+			return false;
+		}
+		return ((View) v).id == id;
+	}
 }

@@ -55,6 +55,8 @@ The emulated resources generated automatically are:
 * R.string supports multiple languages, generates multiple GWT properties file, one for each language  
 * R.array (also with i18n)
 * R.menu
+* R.color
+* R.drawable from the pgn files in the specified /img/ directory
 * R.layout from the "Layouts" class, see next section
 
 This tools also generates the ResourceResolver to convert from numeric ids to strings, layouts, etc.
@@ -78,6 +80,7 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 | `<div class="ListView">`    | ListView       |
 | `<div class="ScrollView">`  | ScrollView     |
 | `<div class="LinearLayout">`| LinearLayout   |
+| `<div class="ViewPager">`   | ViewPager      |
 | `<div>`                     | TextView       |
 | `<textarea>`                | EditText       |
 | `<input type="text">`       | EditText       |
