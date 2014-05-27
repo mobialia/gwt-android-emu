@@ -1,11 +1,13 @@
 package android.view;
 
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
@@ -35,7 +37,9 @@ public class ViewFactory {
 				} else if (className.contains("SCROLLVIEW")) {
 					return new ScrollView(element);
 				} else if (className.contains("LINEARLAYOUT")) {
-					return new ScrollView(element);
+					return new LinearLayout(element);
+				} else if (className.contains("VIEWPAGER")) {
+					return new ViewPager(element);
 				}
 				// DIV fallbacks to TextView
 				return new TextView(element);
