@@ -1,12 +1,10 @@
 package android.support.v4.app;
 
-import android.content.res.Resources;
-
 public class FragmentTransaction {
 
 	FragmentManager fragmentManager;
 
-	String containerViewId;
+	int containerViewId;
 	Fragment fragment;
 	String tag;
 	String name;
@@ -23,7 +21,7 @@ public class FragmentTransaction {
 
 	public FragmentTransaction add(int containerViewId, Fragment fragment, String tag) {
 		this.replace = false;
-		this.containerViewId = Resources.getResourceResolver().getIdAsString(containerViewId);
+		this.containerViewId = containerViewId;
 		this.fragment = fragment;
 		this.tag = tag;
 		return this;
@@ -35,7 +33,7 @@ public class FragmentTransaction {
 
 	public FragmentTransaction replace(int containerViewId, Fragment fragment, String tag) {
 		this.replace = true;
-		this.containerViewId = Resources.getResourceResolver().getIdAsString(containerViewId);
+		this.containerViewId = containerViewId;
 		this.fragment = fragment;
 		this.tag = tag;
 		return this;

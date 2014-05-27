@@ -17,8 +17,8 @@ public class Fragment {
 	Bundle args;
 	FragmentActivity mActivity;
 	int status, targetStatus;
-	String containerViewId;
-	View mView;
+	ViewGroup container;
+	View view;
 	boolean visible = false;
 	boolean hasMenu = true;
 

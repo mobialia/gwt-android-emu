@@ -18,7 +18,7 @@ public class ListFragment extends Fragment {
 
 	public void setListAdapter(BaseAdapter adapter) {
 		this.adapter = adapter;
-		listView = ((ListView) mView.findViewById(android.R.id.list));
+		listView = ((ListView) view.findViewById(android.R.id.list));
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
