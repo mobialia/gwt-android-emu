@@ -3,27 +3,25 @@ GWT Android Emu
 
 GWT is the perfect framework to migrate your Android Apps to the web because it compiles Java into Javascript.
 
-This library emulates some Android APIs over GWT.
-
-The idea is to help you porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
+GWT Android Emu helps you porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
 keeping a lot of Java code in common.
 
-This library emulates:
+This library emulates some Android APIs over GWT:
 
-* Activities: supports onCreate(), onResume(), onPause(), onDestroy()
+* Activities with their life cycle
 * Intents: you can pass data in a Bundle, launch another activities, etc.
-* Fragments with transactions, etc.
-* Views (you cannot create them from code, must be searched with findViewById, each HTML element is mapped to a View type, see table below; ListViews work with custom adapters)
-* Menu and MenuItems
-* AlertDialogs and ProgressDialogs
-* Toasts
-* SharedPreferences: implemented using HTML5's LocalStorage
 * Handlers and Messages
-* Log
-* FloatMath
-* SystemClock
+* AlertDialogs, ProgressDialogs, Toasts...
+* Views: each HTML element is mapped to a View type, see table below
+* ListViews with custom adapters
+* Menu and MenuItems (inflating menus from xml or from code)
+* Fragments with transactions, etc. (emulating the v4 support library)
+* ActionBar, ActionBarActivity (emulating the v7 support library)
+* SharedPreferences: implemented using HTML5's LocalStorage
+* Other utility classes: Log, FloatMath, SystemClock
 
-The GWT entry point is a "AndroidManifest" class extending android.BaseAndroidManifest in this class contains the default Activity and the ResourceResolver (specific for this library).
+The GWT entry point is an "AndroidManifest" class extending android.AndroidManifest.
+This class specifies the default Activity and creates the Resources and the Application objects.
 
 This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT (mainly http://chess.mobialia.com).
 It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
@@ -47,7 +45,7 @@ Emulating Resources
 ===================
 
 We included a tool "GenerateResources" in the package "utils" to help with resource emulation generation.
-There is a usage sample in the demo project: the generate_resources.sh script convert the resources from the source_android_project/res/ folder.
+There is a usage sample in the demo project: the generate_resources.sh script convert the resources from the source android project /res/ folder.
 
 The emulated resources generated automatically are:
 
@@ -56,10 +54,10 @@ The emulated resources generated automatically are:
 * R.array (also with i18n)
 * R.menu
 * R.color
-* R.drawable from the pgn files in the specified /img/ directory
+* R.drawable from the pgn files found in the /res/ directory
 * R.layout from the "Layouts" class, see next section
 
-This tools also generates the ResourceResolver to convert from numeric ids to strings, layouts, etc.
+This tools also generates the Resources class to convert from numeric ids to strings, layouts, etc.
 
 Migrating Layouts
 =================
