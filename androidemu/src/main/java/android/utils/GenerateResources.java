@@ -131,7 +131,7 @@ public class GenerateResources {
 					Element eElement = (Element) nNode;
 
 					String key = eElement.getAttribute("name");
-					String value = eElement.getTextContent();
+					String value = eElement.getTextContent().replace("\n", "");
 					stringPropertiesSB.append(key).append(" = ").append(value).append("\n");
 					// Avoids duplicated class methods in multi-language
 					if (!stringIdsInClass.contains(key)) {
@@ -156,7 +156,7 @@ public class GenerateResources {
 							if (valueSb.length() != 0) {
 								valueSb.append(", ");
 							}
-							valueSb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,"));
+							valueSb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,").replace("\n", ""));
 						}
 					}
 
