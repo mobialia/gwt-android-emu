@@ -6,11 +6,12 @@
 	<g:HTMLPanel>
 		<!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
         <div class="actionbar">
-            <!-- Back and Menu Buttons are optional if present, the ActivityManager will assign their functions -->
+            <div id="ActionBarLeft" style="float: left;"/>
+            <!-- Back Button is optional if present, the ActivityManager will assign its function -->
             <input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" />
 
             <ui:text from="{string.activity2}" />
-            <div id="MenuActions" style="float: right;"/>
+            <div id="ActionBarRight" style="float: right;"/>
         </div>
         <div class="content">
 			<!-- String Properties can be accessed with ui:text -->

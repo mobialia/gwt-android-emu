@@ -17,6 +17,7 @@ public abstract class AndroidManifest implements EntryPoint {
 	public void onModuleLoad() {
 		Res.R.style().ensureInjected();
 
+		Context.icon = getIcon();
 		Context.application = getApplication();
 
 		Resources resources = getResources();
@@ -35,6 +36,8 @@ public abstract class AndroidManifest implements EntryPoint {
 			Log.e(TAG, "No default activity defined");
 		}
 	}
+
+	public abstract int getIcon();
 
 	public abstract Application getApplication();
 

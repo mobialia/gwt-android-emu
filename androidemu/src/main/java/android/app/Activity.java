@@ -107,12 +107,34 @@ public class Activity extends Context {
 	}
 
 	private void createMenu() {
-		LinearLayout actionsLayout = new LinearLayout(ViewFactory.getElementById(view.getElement(), "MenuActions"));
-		if (actionsLayout.getElement() == null) {
-			Log.e(TAG, "MenuActions div not found");
+		LinearLayout actionBarLeft = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarLeft"));
+		if (actionBarLeft.getElement() == null) {
+			Log.e(TAG, "ActionBarLeft div not found");
 			return;
 		}
-		actionsLayout.removeAllViews();
+		actionBarLeft.removeAllViews();
+
+		final MenuItem homeItem = new MenuItem();
+		homeItem.setIcon(Context.icon);
+		homeItem.setItemId(android.R.id.home);
+
+		ImageButton b1 = new ImageButton();
+		b1.setImageResource(homeItem.getIcon());
+		b1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onMenuItemSelected(0, homeItem);
+			}
+		});
+		b1.getElement().addClassName(Res.R.style().actionbarButton());
+		actionBarLeft.addView(b1);
+
+		LinearLayout actionBarRight = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarRight"));
+		if (actionBarRight.getElement() == null) {
+			Log.e(TAG, "ActionBarRight div not found");
+			return;
+		}
+		actionBarRight.removeAllViews();
 
 		if (menu.menuItems.size() > 0) {
 			menuLayout = new LinearLayout();
@@ -134,7 +156,7 @@ public class Activity extends Context {
 								}
 							});
 							b.getElement().addClassName(Res.R.style().actionbarButton());
-							actionsLayout.addView(b);
+							actionBarRight.addView(b);
 						}
 					} else {
 						Button b = new Button();
@@ -165,8 +187,8 @@ public class Activity extends Context {
 						toggleOptionsMenu(menuButton);
 					}
 				});
-				actionsLayout.addView(menuButton);
-				actionsLayout.addView(menuLayout);
+				actionBarRight.addView(menuButton);
+				actionBarRight.addView(menuLayout);
 			}
 		}
 	}

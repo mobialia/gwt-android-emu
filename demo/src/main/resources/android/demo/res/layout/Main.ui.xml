@@ -1,19 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:with field="string" type="android.demo.res.Strings"></ui:with>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
-	<g:HTMLPanel>
-		<!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
+    <g:HTMLPanel>
+        <!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
         <div class="actionbar">
-            <!-- Back and Menu Buttons are optional if present, the ActivityManager will assign their functions -->
+            <div id="ActionBarLeft" style="float: left;"/>
+            <!-- Back Button is optional if present, the ActivityManager will assign its function -->
             <!--input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png" /-->
 
-            <ui:text from="{string.activity1}" />
-            <div id="MenuActions" style="float: right;"/>
+            <ui:text from="{string.activity1}"/>
+            <div id="ActionBarRight" style="float: right;"/>
         </div>
         <div class="content">
-			<h1><ui:text from="{string.hello}" /></h1>
+            <h1>
+                <ui:text from="{string.hello}"/>
+            </h1>
 
             <ul>
                 <li>
@@ -24,14 +27,22 @@
             </ul>
 
             <!-- String Properties can be accessed with ui:text -->
-			<br/>
-			<button id="AlertButton"><ui:text from="{string.alert_dialog}" /></button>
-			<br/>
-			<button id="ToastButton"><ui:text from="{string.toast}" /></button>
-			<br/>
-			<button id="HandlerButton"><ui:text from="{string.handler}" /></button>
-			<br/>
-			<button id="ActivityButton"><ui:text from="{string.activity}" /></button>
-		</div>
-	</g:HTMLPanel>
+            <br/>
+            <button id="AlertButton">
+                <ui:text from="{string.alert_dialog}"/>
+            </button>
+            <br/>
+            <button id="ToastButton">
+                <ui:text from="{string.toast}"/>
+            </button>
+            <br/>
+            <button id="HandlerButton">
+                <ui:text from="{string.handler}"/>
+            </button>
+            <br/>
+            <button id="ActivityButton">
+                <ui:text from="{string.activity}"/>
+            </button>
+        </div>
+    </g:HTMLPanel>
 </ui:UiBinder> 

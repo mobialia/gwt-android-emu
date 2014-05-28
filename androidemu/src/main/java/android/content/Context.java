@@ -9,6 +9,7 @@ public class Context {
 	/**
 	 * Initialized from AndroidManifest
 	 */
+	public static int icon;
 	public static Application application;
 	public static Resources resources;
 

@@ -98,6 +98,8 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.drawable.actionbar_add:
 				return "actionbar_add";
+			case R.drawable.icon:
+				return "icon";
 		}
 		return super.getDrawable(id);
 	}

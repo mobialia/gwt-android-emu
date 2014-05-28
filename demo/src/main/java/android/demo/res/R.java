@@ -18,7 +18,9 @@ public class R {
 
 	public static final class drawable {
 		public final static int actionbar_add = 1;
+		public final static int icon = 2;
 	}
+
 	public static final class string {
 		public final static int activity1 = 1;
 		public final static int activity2 = 2;
@@ -38,12 +40,15 @@ public class R {
 		public final static int activity = 16;
 		public final static int other = 17;
 	}
+
 	public static final class array {
 		public final static int array1 = 1;
 	}
+
 	public static final class menu {
 		public final static int demo_menu = 1;
 	}
+
 	public static final class layout {
 		public final static int main = 1;
 		public final static int other = 2;
