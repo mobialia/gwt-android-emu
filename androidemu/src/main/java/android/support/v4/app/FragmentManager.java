@@ -185,7 +185,9 @@ public class FragmentManager {
 					break;
 				case STATUS_RESUMED:
 					fragment.onPause();
-					fragment.view.setVisibility(View.GONE);
+					if (!isChild) {
+						fragment.view.setVisibility(View.GONE);
+					}
 					fragment.status = STATUS_PAUSED;
 					break;
 				case STATUS_PAUSED:
