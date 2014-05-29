@@ -64,6 +64,24 @@
 	background: rgba(50, 165, 207, 0.5);
 }
 
+.titlePager {
+    display: table;
+    width: 100%;
+}
+
+.titlePagerElement {
+   display: table-cell;
+   height: 2.4rem;
+   text-align: center;
+   vertical-align: middle;
+   cursor: pointer;
+   background: rgba(255, 255, 255, 0.7);
+}
+
+.titlePagerElementSelected {
+   border-bottom: thick solid rgb(50, 165, 207);
+}
+
 .toast {
 	color: #ffffff;
 	font-size: 1.2rem;

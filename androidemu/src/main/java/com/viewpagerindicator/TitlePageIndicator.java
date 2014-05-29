@@ -1,13 +1,16 @@
 package com.viewpagerindicator;
 
+import android.Res;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.DOM;
 
-public class TitlePageIndicator extends View implements PageIndicator {
+public class TitlePageIndicator extends ViewGroup implements PageIndicator {
 
 	ViewPager mViewPager;
 
@@ -48,7 +51,13 @@ public class TitlePageIndicator extends View implements PageIndicator {
 	}
 
 	public void onPageSelected(int position) {
-
+		for (int i = 0; i < getChildCount(); i++) {
+			if (i == position) {
+				getChildAt(i).element.addClassName(Res.R.style().titlePagerElementSelected());
+			} else {
+				getChildAt(i).element.removeClassName(Res.R.style().titlePagerElementSelected());
+			}
+		}
 	}
 
 	public void setViewPager(ViewPager view, int initialPosition) {
@@ -69,11 +78,24 @@ public class TitlePageIndicator extends View implements PageIndicator {
 
 	@Override
 	protected void onDraw(Canvas c) {
+		element.addClassName(Res.R.style().titlePager());
 		element.removeAllChildren();
 		for (int i = 0; i < mViewPager.getAdapter().getCount(); i++) {
-			Element e = DOM.createDiv();
-			e.setInnerHTML(mViewPager.getAdapter().getPageTitle(i).toString());
-			element.appendChild(e);
+			TextView b = new TextView((Context) null);
+			b.element.addClassName(Res.R.style().titlePagerElement());
+			if (i == mViewPager.getCurrentItem()) {
+				b.element.addClassName(Res.R.style().titlePagerElementSelected());
+			}
+			b.setText(mViewPager.getAdapter().getPageTitle(i).toString());
+			addView(b);
+
+			final int position = i;
+			b.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					mViewPager.setCurrentItem(position, true);
+				}
+			});
 		}
 	}
 

@@ -12,6 +12,12 @@ public interface Style extends CssResource {
 
 	String menuItem();
 
+	String titlePager();
+
+	String titlePagerElement();
+
+	String titlePagerElementSelected();
+
 	String dialog();
 
 	String toast();
