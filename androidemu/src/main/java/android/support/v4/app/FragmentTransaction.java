@@ -3,10 +3,7 @@ package android.support.v4.app;
 public class FragmentTransaction {
 
 	FragmentManager fragmentManager;
-
-	int containerViewId;
 	Fragment fragment;
-	String tag;
 	String name;
 	boolean replace = true;
 	boolean addToBackStack = false;
@@ -16,14 +13,14 @@ public class FragmentTransaction {
 	}
 
 	public FragmentTransaction add(int containerViewId, Fragment fragment) {
-		return replace(containerViewId, fragment, null);
+		return add(containerViewId, fragment, null);
 	}
 
 	public FragmentTransaction add(int containerViewId, Fragment fragment, String tag) {
 		this.replace = false;
-		this.containerViewId = containerViewId;
 		this.fragment = fragment;
-		this.tag = tag;
+		fragment.containerViewId = containerViewId;
+		fragment.tag = tag;
 		return this;
 	}
 
@@ -33,9 +30,9 @@ public class FragmentTransaction {
 
 	public FragmentTransaction replace(int containerViewId, Fragment fragment, String tag) {
 		this.replace = true;
-		this.containerViewId = containerViewId;
 		this.fragment = fragment;
-		this.tag = tag;
+		fragment.containerViewId = containerViewId;
+		fragment.tag = tag;
 		return this;
 	}
 

@@ -11,16 +11,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 public class Fragment {
 	static final String TAG = "Fragment";
 
 	Bundle args;
 	FragmentActivity mActivity;
 	int status, targetStatus;
+	int containerViewId;
+	String tag;
 	ViewGroup container;
 	View view;
-	boolean visible = false;
+	boolean visible = true;
 	boolean hasMenu = true;
+
+	ArrayList<Fragment> childFragments = new ArrayList<Fragment>();
 
 	public void setArguments(Bundle args) {
 		this.args = args;
@@ -41,7 +47,6 @@ public class Fragment {
 							 Bundle savedInstanceState) {
 		return null;
 	}
-
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 

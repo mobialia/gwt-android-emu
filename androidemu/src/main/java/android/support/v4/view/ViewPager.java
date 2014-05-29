@@ -1,5 +1,6 @@
 package android.support.v4.view;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gwt.dom.client.Element;
@@ -18,7 +19,7 @@ public class ViewPager extends ViewGroup {
 	}
 
 	int currentItem = -1;
-	ArrayList<Object> pages = new ArrayList<Object>();
+	public ArrayList<Object> pages = new ArrayList<Object>();
 	PagerAdapter adapter;
 	OnPageChangeListener listener;
 
@@ -37,14 +38,25 @@ public class ViewPager extends ViewGroup {
 		}
 	}
 
+	public void addView(View v) {
+		if (currentItem != getChildCount()) {
+			v.setVisibility(View.GONE);
+		}
+		super.addView(v);
+	}
+
 	public PagerAdapter getAdapter() {
 		return adapter;
 	}
 
-	public void setCurrentItem(int item) {
-		if (currentItem != item) {
-			this.currentItem = item;
-			adapter.setPrimaryItem(this, item, pages.get(item));
+	public void setCurrentItem(int position) {
+		if (currentItem != position) {
+			this.currentItem = position;
+			adapter.setPrimaryItem(this, position, pages.get(position));
+
+			if (listener != null) {
+				listener.onPageSelected(position);
+			}
 		}
 	}
 

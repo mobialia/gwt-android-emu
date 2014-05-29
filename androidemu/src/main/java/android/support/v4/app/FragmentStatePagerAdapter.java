@@ -2,7 +2,7 @@ package android.support.v4.app;
 
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class FragmentStatePagerAdapter extends PagerAdapter {
@@ -25,14 +25,22 @@ public abstract class FragmentStatePagerAdapter extends PagerAdapter {
 	}
 
 	public Object instantiateItem(ViewGroup container, int position) {
-		Log.d(TAG, "instantiateItem");
 		Fragment fragment = getItem(position);
-		fragmentManager.addFragment(container, fragment);
+		fragment.mActivity = fragmentManager.creatingViewForFragment.mActivity;
+		fragment.containerViewId = container.getId();
+		fragment.container = container;
+		fragment.targetStatus = FragmentManager.STATUS_CREATED_VIEW;
+		fragmentManager.checkFragmentStatus(fragment, true);
+		fragmentManager.creatingViewForFragment.childFragments.add(fragment);
 		return fragment;
 	}
 
 	public void setPrimaryItem(ViewGroup container, int position, Object object) {
-		Log.d(TAG, "setPrimaryItem");
-		fragmentManager.showAndHideOtherFragments((Fragment) object);
+		((Fragment) object).view.setVisibility(View.VISIBLE);
+		for (int i = 0; i < container.getChildCount(); i++) {
+			if (container.getChildAt(i) != null) {
+				container.getChildAt(i).setVisibility(i == position ? View.VISIBLE : View.GONE);
+			}
+		}
 	}
 }
