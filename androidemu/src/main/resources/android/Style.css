@@ -1,3 +1,32 @@
+.actionbarDrawer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-right: 1.6rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    pointer-events: none;
+}
+
+.actionbarHome {
+    margin: 0;
+    padding-left: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-right: 0.4rem;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.actionbarHome:active,
+.actionbarHome:hover
+{
+    background: rgba(50,165,207,0.5);
+}
+
 .actionbarButton {
     margin: 0;
     padding: 0.3rem;

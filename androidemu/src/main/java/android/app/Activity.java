@@ -126,7 +126,7 @@ public class Activity extends Context {
 				onMenuItemSelected(0, homeItem);
 			}
 		});
-		b1.getElement().addClassName(Res.R.style().actionbarButton());
+		b1.getElement().addClassName(Res.R.style().actionbarHome());
 		actionBarLeft.addView(b1);
 
 		LinearLayout actionBarRight = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarRight"));
