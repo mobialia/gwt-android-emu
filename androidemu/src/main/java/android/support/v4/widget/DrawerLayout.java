@@ -35,6 +35,7 @@ public class DrawerLayout extends ViewGroup {
 				}
 			}
 		}
+		closeDrawer(0);
 	}
 
 	public void setDrawerListener(DrawerLayout.DrawerListener listener) {
