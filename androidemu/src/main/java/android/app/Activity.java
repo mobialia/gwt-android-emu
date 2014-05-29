@@ -118,7 +118,7 @@ public class Activity extends Context {
 		homeItem.setIcon(Context.icon);
 		homeItem.setItemId(android.R.id.home);
 
-		ImageButton b1 = new ImageButton();
+		ImageButton b1 = new ImageButton(this);
 		b1.setImageResource(homeItem.getIcon());
 		b1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -137,7 +137,7 @@ public class Activity extends Context {
 		actionBarRight.removeAllViews();
 
 		if (menu.menuItems.size() > 0) {
-			menuLayout = new LinearLayout();
+			menuLayout = new LinearLayout(this);
 			menuLayout.getElement().addClassName(Res.R.style().dialog());
 			menuLayout.getElement().addClassName(Res.R.style().gone());
 
@@ -146,7 +146,7 @@ public class Activity extends Context {
 			for (final MenuItem item : menu.menuItems) {
 				if (item.getTitle() != 0 || item.getIcon() != 0) {
 					if (item.getShowAsAction() == MenuItem.SHOW_AS_ACTION_ALWAYS) {
-						ImageButton b = new ImageButton();
+						ImageButton b = new ImageButton(this);
 						if (item.getIcon() != 0) {
 							b.setImageResource(item.getIcon());
 							b.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +159,7 @@ public class Activity extends Context {
 							actionBarRight.addView(b);
 						}
 					} else {
-						Button b = new Button();
+						Button b = new Button(this);
 						if (item.getTitle() != 0) {
 							b.setText(getString(item.getTitle()));
 						}
@@ -178,7 +178,7 @@ public class Activity extends Context {
 			}
 			// Add menu and button only if it has elements
 			if (hasMenuItems) {
-				final ImageButton menuButton = new ImageButton();
+				final ImageButton menuButton = new ImageButton(this);
 				menuButton.getElement().setClassName(Res.R.style().actionbarButton());
 				menuButton.setImageResource(android.R.drawable.actionbar_menu);
 				menuButton.setOnClickListener(new View.OnClickListener() {

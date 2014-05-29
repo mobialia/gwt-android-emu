@@ -5,8 +5,13 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
 
 public class TextView extends View {
+
+	public TextView(Context context) {
+		super(DOM.createDiv());
+	}
 
 	public TextView(Element element) {
 		super(element);

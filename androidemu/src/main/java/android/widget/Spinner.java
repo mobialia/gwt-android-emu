@@ -1,5 +1,6 @@
 package android.widget;
 
+import android.content.Context;
 import android.view.View;
 
 import com.google.gwt.dom.client.Element;
@@ -12,7 +13,7 @@ public class Spinner extends View {
 
 	BaseAdapter adapter;
 
-	public Spinner() {
+	public Spinner(Context ctx) {
 		super(DOM.createSelect());
 	}
 

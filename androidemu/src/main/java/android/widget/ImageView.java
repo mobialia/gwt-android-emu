@@ -8,7 +8,7 @@ import com.google.gwt.user.client.DOM;
 
 public class ImageView extends View {
 
-	public ImageView() {
+	public ImageView(Context context) {
 		super(DOM.createImg());
 	}
 

@@ -8,7 +8,7 @@ import com.google.gwt.user.client.DOM;
 
 public class Button extends View {
 
-	public Button() {
+	public Button(Context context) {
 		super(DOM.createButton());
 	}
 
