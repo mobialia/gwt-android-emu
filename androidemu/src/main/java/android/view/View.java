@@ -38,10 +38,6 @@ public class View {
 		this.id = id;
 	}
 
-	/**
-	 * In Android is relative, but here we implement it against the root of the
-	 * document
-	 */
 	public int getTop() {
 		return element.getOffsetTop();
 	}
