@@ -47,7 +47,8 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void openDrawer(int gravity) {
-		drawer.setVisibility(View.VISIBLE);
+		drawer.getElement().addClassName("sidebar-show");
+		drawer.getElement().removeClassName("sidebar-hide");
 		if (listener != null) {
 			listener.onDrawerOpened(drawer);
 		}
@@ -55,7 +56,8 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void closeDrawer(int gravity) {
-		drawer.setVisibility(View.GONE);
+		drawer.getElement().removeClassName("sidebar-show");
+		drawer.getElement().addClassName("sidebar-hide");
 		if (listener != null) {
 			listener.onDrawerClosed(drawer);
 		}
