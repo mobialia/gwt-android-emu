@@ -116,7 +116,7 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 		} else if (v == activityButton) {
 			// A small difference, as GWT does not has runtime reflection, we
 			// must pass a created class to the intent (we can use GWT.create())
-			Intent intent = new Intent(getApplicationContext(), GWT.create(OtherActivity.class));
+			Intent intent = new Intent(getApplicationContext(), GWT.create(DemoFragmentActivity.class));
 			startActivity(intent);
 		}
 	}

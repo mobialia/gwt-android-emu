@@ -1,7 +1,8 @@
 package android.demo.res;
 
+import android.demo.res.layout.DemoFragment;
+import android.demo.res.layout.DemoFragmentActivity;
 import android.demo.res.layout.Main;
-import android.demo.res.layout.Other;
 
 /**
  * Simulate the Android layouts with the UiBinder, each screens needs a class and a XML
@@ -13,8 +14,12 @@ public class Layouts {
 		return new Main();
 	}
 
-	public Other other() {
-		return new Other();
+	public DemoFragmentActivity demo_fragment_activity() {
+		return new DemoFragmentActivity();
+	}
+
+	public DemoFragment demo_fragment() {
+		return new DemoFragment();
 	}
 
 }

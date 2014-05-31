@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:with field="string" type="android.demo.res.Strings"></ui:with>
+
+    <g:HTMLPanel>
+        <!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
+        <div class="actionbar">
+            <div id="ActionBarLeft" style="float: left;"/>
+            <!-- Back Button is optional if present, the ActivityManager will assign its function -->
+            <input id="BackButton" type="image" class="actionbar-button" src="img/actionbar_left.png"/>
+
+            <ui:text from="{string.activity2}"/>
+            <div id="ActionBarRight" style="float: right;"/>
+        </div>
+        <div class="content">
+            <div class="LinearLayout" id="Fragment"/>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder> 

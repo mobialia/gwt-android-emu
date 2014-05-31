@@ -20,6 +20,8 @@ public class Resources extends android.content.res.Resources {
 				return "menu1";
 			case R.id.menu2:
 				return "menu2";
+			case R.id.Fragment:
+				return "Fragment";
 			case R.id.AlertButton:
 				return "AlertButton";
 			case R.id.ToastButton:
@@ -66,8 +68,8 @@ public class Resources extends android.content.res.Resources {
 				return strings.handler_message_received();
 			case R.string.activity:
 				return strings.activity();
-			case R.string.other:
-				return strings.other();
+			case R.string.demo_fragment:
+				return strings.demo_fragment();
 		}
 		return super.getString(id);
 	}
@@ -108,8 +110,10 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.layout.main:
 				return layouts.main();
-			case R.layout.other:
-				return layouts.other();
+			case R.layout.demo_fragment_activity:
+				return layouts.demo_fragment_activity();
+			case R.layout.demo_fragment:
+				return layouts.demo_fragment();
 		}
 		return super.getLayout(id);
 	}

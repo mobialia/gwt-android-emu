@@ -7,10 +7,11 @@ public class R {
 		public final static int action1 = 1;
 		public final static int menu1 = 2;
 		public final static int menu2 = 3;
-		public final static int AlertButton = 4;
-		public final static int ToastButton = 5;
-		public final static int HandlerButton = 6;
-		public final static int ActivityButton = 7;
+		public final static int Fragment = 4;
+		public final static int AlertButton = 5;
+		public final static int ToastButton = 6;
+		public final static int HandlerButton = 7;
+		public final static int ActivityButton = 8;
 	}
 
 	public static final class color {
@@ -38,7 +39,7 @@ public class R {
 		public final static int handler = 14;
 		public final static int handler_message_received = 15;
 		public final static int activity = 16;
-		public final static int other = 17;
+		public final static int demo_fragment = 17;
 	}
 
 	public static final class array {
@@ -51,6 +52,7 @@ public class R {
 
 	public static final class layout {
 		public final static int main = 1;
-		public final static int other = 2;
+		public final static int demo_fragment_activity = 2;
+		public final static int demo_fragment = 3;
 	}
 }

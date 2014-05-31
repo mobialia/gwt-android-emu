@@ -16,7 +16,7 @@
     <string name="handler">Handler</string>
     <string name="handler_message_received">Handler message received!</string>
     <string name="activity">Launch another Activity</string>
-    <string name="other">This is another Activity</string>
+    <string name="demo_fragment">This is a demo fragment</string>
 
     <string-array name="array1">
         <item>Option 1</item>

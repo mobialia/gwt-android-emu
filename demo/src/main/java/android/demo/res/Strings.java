@@ -36,5 +36,5 @@ public interface Strings extends Constants {
 
 	String activity();
 
-	String other();
+	String demo_fragment();
 }
