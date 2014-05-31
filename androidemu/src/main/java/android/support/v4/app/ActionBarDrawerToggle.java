@@ -41,11 +41,9 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 	}
 
 	public void onDrawerClosed(View drawerView) {
-
 	}
 
 	public void onDrawerOpened(View drawerView) {
-
 	}
 
 	public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -60,8 +58,10 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 		if (item.getItemId() == android.R.id.home) {
 			if (drawerLayout.isDrawerOpen(drawerLayout)) {
 				drawerLayout.closeDrawer(0);
+				drawerImageView.getElement().removeClassName("drawer-toggle-opened");
 			} else {
 				drawerLayout.openDrawer(0);
+				drawerImageView.getElement().addClassName("drawer-toggle-opened");
 			}
 		}
 
