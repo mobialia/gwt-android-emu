@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Activity extends Context {
@@ -242,8 +244,11 @@ public class Activity extends Context {
 	}
 
 	public void setContentView(Widget htmlPanel) {
-		view = new View(htmlPanel);
+		String id = HTMLPanel.createUniqueId();
+		view = new LinearLayout(this);
 		DOM.getElementById(ACTIVITY_ID).appendChild(view.getElement());
+		view.getElement().setId(id);
+		RootPanel.get(id).add(htmlPanel);
 
 		Element backElement = ViewFactory.getElementById(view.getElement(), "BackButton");
 		if (backElement != null) {
