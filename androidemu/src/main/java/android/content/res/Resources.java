@@ -40,6 +40,8 @@ public class Resources {
 		switch (id) {
 			case android.R.drawable.actionbar_menu:
 				return "actionbar_menu";
+			case android.R.drawable.actionbar_indicator_back:
+				return "actionbar_indicator_back";
 		}
 		return null;
 	}

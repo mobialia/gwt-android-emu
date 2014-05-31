@@ -6,7 +6,7 @@ public interface Style extends CssResource {
 
 	String actionbarHome();
 
-	String actionbarDrawer();
+	String actionbarHomeAsUp();
 
 	String actionbarButton();
 
