@@ -188,7 +188,7 @@ public class Activity extends Context {
 					}
 				});
 				actionBarRight.addView(menuButton);
-				actionBarRight.addView(menuLayout);
+				view.getElement().appendChild(menuLayout.getElement());
 			}
 		}
 	}
