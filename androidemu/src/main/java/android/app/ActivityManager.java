@@ -5,7 +5,10 @@ import android.util.Log;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 
 import java.util.Stack;
@@ -21,10 +24,27 @@ public class ActivityManager {
 
 	public static Stack<Activity> activityStack = new Stack<Activity>();
 
+	final static String id1 = "start";
+	final static String id2 = "run";
+
 	public static void setup() {
+		Log.d(TAG, "setup()");
 		if (DOM.getElementById("show-while-loading") != null) {
 			DOM.getElementById("show-while-loading").setAttribute("style", "display: none");
 		}
+
+		History.newItem(id1);
+		History.newItem(id2);
+		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<String> stringValueChangeEvent) {
+				Log.d(TAG, "onValueChange() = " + stringValueChangeEvent + ", " + stringValueChangeEvent.getValue());
+				if (id1.equals(stringValueChangeEvent.getValue())) {
+					History.newItem(id2);
+					ActivityManager.back();
+				}
+			}
+		});
 	}
 
 	public static void startActivity(Intent intent, Integer requestCode) {
