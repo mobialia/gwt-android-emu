@@ -38,7 +38,6 @@ public class ActivityManager {
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> stringValueChangeEvent) {
-				Log.d(TAG, "onValueChange() = " + stringValueChangeEvent + ", " + stringValueChangeEvent.getValue());
 				if (id1.equals(stringValueChangeEvent.getValue())) {
 					History.newItem(id2);
 					ActivityManager.back();
