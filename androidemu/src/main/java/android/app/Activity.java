@@ -11,11 +11,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewFactory;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -35,7 +35,7 @@ public class Activity extends Context {
 	int targetStatus = 0;
 
 	String title;
-	public View view;
+	public ViewGroup view;
 	private LinearLayout menuLayout;
 
 	Intent intent;
@@ -109,28 +109,6 @@ public class Activity extends Context {
 	}
 
 	private void createMenu() {
-		LinearLayout actionBarLeft = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarLeft"));
-		if (actionBarLeft.getElement() == null) {
-			Log.e(TAG, "ActionBarLeft div not found");
-			return;
-		}
-		actionBarLeft.removeAllViews();
-
-		final MenuItem homeItem = new MenuItem();
-		homeItem.setIcon(Context.icon);
-		homeItem.setItemId(android.R.id.home);
-
-		ImageButton b1 = new ImageButton(this);
-		b1.setImageResource(homeItem.getIcon());
-		b1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				onMenuItemSelected(0, homeItem);
-			}
-		});
-		b1.getElement().addClassName(Res.R.style().actionbarHome());
-		actionBarLeft.addView(b1);
-
 		LinearLayout actionBarRight = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarRight"));
 		if (actionBarRight.getElement() == null) {
 			Log.e(TAG, "ActionBarRight div not found");
@@ -162,6 +140,9 @@ public class Activity extends Context {
 						}
 					} else {
 						Button b = new Button(this);
+						if (item.getItemId() != 0) {
+							b.getElement().setId(getResources().getIdAsString(item.getItemId()));
+						}
 						if (item.getTitle() != 0) {
 							b.setText(getString(item.getTitle()));
 						}
@@ -249,17 +230,6 @@ public class Activity extends Context {
 		DOM.getElementById(ACTIVITY_ID).appendChild(view.getElement());
 		view.getElement().setId(id);
 		RootPanel.get(id).add(htmlPanel);
-
-		Element backElement = ViewFactory.getElementById(view.getElement(), "BackButton");
-		if (backElement != null) {
-			ImageButton backButton = (ImageButton) ViewFactory.createViewFromElement(backElement);
-			backButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					ActivityManager.back();
-				}
-			});
-		}
 	}
 
 	protected void onSaveInstanceState(Bundle outState) {

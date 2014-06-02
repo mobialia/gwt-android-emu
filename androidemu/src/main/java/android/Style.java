@@ -4,7 +4,13 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface Style extends CssResource {
 
+	String actionbar();
+
 	String actionbarHome();
+
+	String actionbarIcon();
+
+	String actionbarTitle();
 
 	String actionbarHomeAsUp();
 

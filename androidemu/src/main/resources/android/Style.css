@@ -1,18 +1,41 @@
 
+.actionbar {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+
+    font-size: 1.5rem;
+
+    color: white;
+    background: rgba(40,40,40,0.9);
+}
+
 .actionbarHome {
-    margin: 0;
-    padding-left: 1rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    padding-right: 0.4rem;
-    width: 2.2rem;
-    height: 2.2rem;
+    float: left;
 }
 
 .actionbarHome:active,
 .actionbarHome:hover
 {
     background: rgba(50,165,207,0.5);
+}
+
+.actionbarIcon {
+    float: left;
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 0.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.actionbarTitle {
+    float: left;
+    padding-right: 0.4rem;
 }
 
 .actionbarHomeAsUp {
