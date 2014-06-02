@@ -109,9 +109,9 @@ public class Activity extends Context {
 	}
 
 	private void createMenu() {
-		LinearLayout actionBarRight = new LinearLayout(ViewFactory.getElementById(view.getElement(), "ActionBarRight"));
+		LinearLayout actionBarRight = new LinearLayout(ViewFactory.getElementById(view.getElement(), "MenuItems"));
 		if (actionBarRight.getElement() == null) {
-			Log.e(TAG, "ActionBarRight div not found");
+			Log.e(TAG, "MenuItems div not found");
 			return;
 		}
 		actionBarRight.removeAllViews();

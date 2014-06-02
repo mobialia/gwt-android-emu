@@ -21,7 +21,7 @@ public class ActionBar {
 
 	LinearLayout view;
 	LinearLayout actionBarHome;
-	LinearLayout actionBarRight;
+	LinearLayout menuItems;
 
 	TextView titleView;
 
@@ -37,10 +37,10 @@ public class ActionBar {
 		actionBarHome = new LinearLayout(activity);
 		view.addView(actionBarHome);
 
-		actionBarRight = new LinearLayout(activity);
-		actionBarRight.getElement().setId("ActionBarRight");
-		actionBarRight.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		view.addView(actionBarRight);
+		menuItems = new LinearLayout(activity);
+		menuItems.getElement().setId("MenuItems");
+		menuItems.getElement().getStyle().setFloat(Style.Float.RIGHT);
+		view.addView(menuItems);
 
 		homeItem = new MenuItem();
 		homeItem.setIcon(Context.icon);
