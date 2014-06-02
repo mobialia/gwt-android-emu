@@ -15,7 +15,7 @@ This library emulates some Android APIs over GWT:
 * Views: each HTML element is mapped to a View type, see table below
 * ListViews with custom adapters
 * Menu and MenuItems (inflating menus from xml or from code)
-* Fragments with transactions, etc. (emulating the v4 support library)
+* Fragments with transactions, ViewPager, DrawerLayout, etc. (emulating the v4 support library)
 * ActionBar, ActionBarActivity (emulating the v7 support library)
 * SharedPreferences: implemented using HTML5's LocalStorage
 * Other utility classes: Log, FloatMath, SystemClock
