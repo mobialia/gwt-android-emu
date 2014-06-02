@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="activity1">Activity 1</string>
-    <string name="activity2">Activity 2</string>
+    <string name="activity1">Main Activity</string>
+    <string name="activity2">Fragment Activity</string>
     <string name="hello">Demo of the GWT_Android_Emu Library</string>
     <string name="action1">Menu Action 1</string>
     <string name="menu1">Menu Option 1</string>

@@ -3,11 +3,12 @@ package android.demo;
 import android.demo.res.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.MenuItem;
 
-public class DemoFragmentActivity extends FragmentActivity {
+public class DemoFragmentActivity extends ActionBarActivity {
 
 	public static final String TAG = "FragmentActivity";
 
@@ -17,6 +18,8 @@ public class DemoFragmentActivity extends FragmentActivity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.demo_fragment_activity);
+		getSupportActionBar().setTitle(R.string.activity2);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -36,4 +39,13 @@ public class DemoFragmentActivity extends FragmentActivity {
 		super.onPause();
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				onBackPressed();
+				return true;
+		}
+		return (super.onOptionsItemSelected(item));
+	}
 }

@@ -1,6 +1,5 @@
 package android.demo;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.demo.res.R;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.google.gwt.core.client.GWT;
 
-public class MainActivity extends Activity implements OnClickListener, DialogInterface.OnClickListener {
+public class MainActivity extends ActionBarActivity implements OnClickListener, DialogInterface.OnClickListener {
 	public final static String TAG = "IntroActivity";
 
 	// Android Widgets are mapped from HTML elements, we cannot create Android
@@ -44,6 +44,9 @@ public class MainActivity extends Activity implements OnClickListener, DialogInt
 		// We can use setContentView with HTMLPanels, textResources or widgets,
 		// we recomment to use the UiBinder
 		setContentView(R.layout.main);
+
+		getSupportActionBar().setTitle(R.string.activity1);
+
 
 		// ID (numeric or String) must match the id element in the HTML
 		alertButton = ((Button) findViewById(R.id.AlertButton));
