@@ -14,7 +14,7 @@
 	<!-- For the Super Dev Mode -->
 	<add-linker name="xsiframe"/>
 	<set-configuration-property name="devModeRedirectEnabled" value="true"/>
-	
-	<!-- Speed up compilation restricting to Webkit and Firefox -->
-	<set-property name="user.agent" value="safari,gecko1_8" />
+
+    <!-- Speed up compilation restricting to Webkit, Firefox and ie10 -->
+    <set-property name="user.agent" value="safari,gecko1_8,ie10"/>
 </module>
