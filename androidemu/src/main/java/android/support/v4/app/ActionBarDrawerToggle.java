@@ -25,28 +25,28 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	}
 
+	@Override
 	public void onDrawerClosed(View drawerView) {
+		activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbar-indicator-opened");
 	}
 
+	@Override
 	public void onDrawerOpened(View drawerView) {
+		activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbar-indicator-opened");
 	}
 
 	public void onDrawerSlide(View drawerView, float slideOffset) {
-
 	}
 
 	public void onDrawerStateChanged(int newState) {
-
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 			if (drawerLayout.isDrawerOpen(drawerLayout)) {
 				drawerLayout.closeDrawer(0);
-				activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbar-indicator-opened");
 			} else {
 				drawerLayout.openDrawer(0);
-				activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbar-indicator-opened");
 			}
 		}
 
@@ -62,6 +62,10 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 	}
 
 	public void syncState() {
-
+		if (drawerLayout.isDrawerOpen(drawerLayout)) {
+			activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbar-indicator-opened");
+		} else {
+			activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbar-indicator-opened");
+		}
 	}
 }
