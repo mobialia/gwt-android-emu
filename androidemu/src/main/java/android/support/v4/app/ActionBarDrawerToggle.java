@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
