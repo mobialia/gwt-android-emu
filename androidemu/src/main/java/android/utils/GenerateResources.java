@@ -51,9 +51,9 @@ public class GenerateResources {
 	public GenerateResources(String packageName) {
 		this.packageName = packageName;
 
-		menuClassSB.append(FILE_HEADER + "package " + packageName + ";\n\nimport android.view.Menu;\nimport android.view.MenuItem;\n\npublic class Menus {\n");
-		stringClassSB.append(FILE_HEADER + "package " + packageName + ";\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Strings extends Constants {\n");
-		arrayClassSB.append(FILE_HEADER + "package " + packageName + ";\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Arrays extends Constants {\n");
+		menuClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport " + packageName + ".R;\n\npublic class Menus {\n");
+		stringClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Strings extends Constants {\n");
+		arrayClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Arrays extends Constants {\n");
 	}
 
 	public void getIdsFromFile(String fileName) {
@@ -339,7 +339,7 @@ public class GenerateResources {
 		}
 
 		menuClassSB.append("}\n");
-		writeFile("Menus.java", menuClassSB);
+		writeFile("res/Menus.java", menuClassSB);
 
 		// STRING IDS
 		counter = 1;
@@ -359,16 +359,16 @@ public class GenerateResources {
 		stringClassSB.append("}\n");
 		arrayClassSB.append("}\n");
 
-		writeFile("Strings.java", stringClassSB);
-		writeFile("Arrays.java", arrayClassSB);
+		writeFile("res/Strings.java", stringClassSB);
+		writeFile("res/Arrays.java", arrayClassSB);
 
 		for (String lang : stringPropertiesSBMap.keySet()) {
 			if (lang == null) {
-				writeFile("Strings.properties", stringPropertiesSBMap.get(lang));
-				writeFile("Arrays.properties", arrayPropertiesSBMap.get(lang));
+				writeFile("res/Strings.properties", stringPropertiesSBMap.get(lang));
+				writeFile("res/Arrays.properties", arrayPropertiesSBMap.get(lang));
 			} else {
-				writeFile("Strings_" + lang + ".properties", stringPropertiesSBMap.get(lang));
-				writeFile("Arrays_" + lang + ".properties", arrayPropertiesSBMap.get(lang));
+				writeFile("res/Strings_" + lang + ".properties", stringPropertiesSBMap.get(lang));
+				writeFile("res/Arrays_" + lang + ".properties", arrayPropertiesSBMap.get(lang));
 			}
 		}
 
@@ -390,7 +390,6 @@ public class GenerateResources {
 		StringBuffer RSB = new StringBuffer();
 		RSB.append(FILE_HEADER);
 		RSB.append("package " + packageName + ";\n\n");
-		RSB.append("\n");
 		RSB.append("public class R {\n");
 
 		RSB.append("\tpublic static final class id {\n");
@@ -427,10 +426,11 @@ public class GenerateResources {
 
 		StringBuffer contentResolverSB = new StringBuffer();
 		contentResolverSB.append(FILE_HEADER);
-		contentResolverSB.append("package " + packageName + ";\n\n");
+		contentResolverSB.append("package " + packageName + ".res;\n\n");
 		contentResolverSB.append("import android.view.Menu;\n\n");
 		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
-		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n\n");
+		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n");
+		contentResolverSB.append("import " + packageName + ".R;\n\n");
 
 		contentResolverSB.append("public class Resources extends android.content.res.Resources {\n\n");
 		contentResolverSB.append("\tpublic static final Strings strings = GWT.create(Strings.class);\n");
@@ -487,7 +487,7 @@ public class GenerateResources {
 		contentResolverSB.append("\t}\n");
 		contentResolverSB.append("}\n");
 
-		writeFile("Resources.java", contentResolverSB);
+		writeFile("res/Resources.java", contentResolverSB);
 	}
 
 	public void crawl(String fileName) {
@@ -531,7 +531,7 @@ public class GenerateResources {
 		}
 
 		// Get layouts from Layouts.java
-		cs.getLayoutsFromJavaFile("Layouts.java");
+		cs.getLayoutsFromJavaFile("res/Layouts.java");
 
 		cs.output();
 	}

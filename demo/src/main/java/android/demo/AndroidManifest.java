@@ -3,7 +3,6 @@ package android.demo;
 import android.app.Activity;
 import android.app.Application;
 import android.content.res.Resources;
-import android.demo.res.R;
 
 public class AndroidManifest extends android.AndroidManifest {
 

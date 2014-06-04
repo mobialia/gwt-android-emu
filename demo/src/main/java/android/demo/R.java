@@ -1,6 +1,5 @@
 /** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
-package android.demo.res;
-
+package android.demo;
 
 public class R {
 	public static final class id {
