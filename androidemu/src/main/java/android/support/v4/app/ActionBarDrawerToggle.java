@@ -14,11 +14,15 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	DrawerLayout drawerLayout;
 	ActionBarActivity activity;
+	int drawerImageRes;
+
+	boolean drawerIndicatorEnabled = true;
 
 	public ActionBarDrawerToggle(Activity activity, final DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
 		this.drawerLayout = drawerLayout;
 		this.activity = (ActionBarActivity) activity;
 		this.activity.getSupportActionBar().setHomeAsUpIndicator(drawerImageRes);
+		this.drawerImageRes = drawerImageRes;
 	}
 
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -48,17 +52,22 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 			} else {
 				drawerLayout.openDrawer(0);
 			}
+			return true;
 		}
-
 		return false;
 	}
 
 	public void setDrawerIndicatorEnabled(boolean enable) {
-
+		this.drawerIndicatorEnabled = enable;
+		if (enable) {
+			activity.getSupportActionBar().setHomeAsUpIndicator(drawerImageRes);
+		} else {
+			activity.getSupportActionBar().setHomeAsUpIndicator(android.R.drawable.actionbar_indicator_back);
+		}
 	}
 
 	public boolean isDrawerIndicatorEnabled() {
-		return true;
+		return drawerIndicatorEnabled;
 	}
 
 	public void syncState() {
