@@ -105,6 +105,7 @@ public class ActivityManager {
 						activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 					}
 					activity.onResume();
+					activity.onPostResume();
 					activity.status = STATUS_RESUMED;
 					break;
 			}
