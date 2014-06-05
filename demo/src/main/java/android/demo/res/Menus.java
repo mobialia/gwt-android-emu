@@ -15,4 +15,10 @@ public class Menus {
 		MenuItem item2 = menu.add(0, R.id.menu2, 0, R.string.menu2);
 		return menu;
 	}
+
+	public static Menu fragment_menu() {
+		Menu menu = new Menu();
+		MenuItem item0 = menu.add(0, R.id.menu_launch_fragment, 0, R.string.menu_launch_fragment);
+		return menu;
+	}
 }

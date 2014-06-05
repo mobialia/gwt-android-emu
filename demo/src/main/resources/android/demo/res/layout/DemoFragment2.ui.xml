@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:with field="string" type="android.demo.res.Strings"></ui:with>
+
+    <g:HTMLPanel>
+        <!-- String Properties can be accessed with ui:text -->
+        <h1>
+            <ui:text from="{string.demo_fragment2}"/>
+        </h1>
+    </g:HTMLPanel>
+</ui:UiBinder> 

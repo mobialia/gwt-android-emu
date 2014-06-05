@@ -6,8 +6,6 @@ import com.google.gwt.i18n.client.Constants;
 public interface Strings extends Constants {
 	String activity1();
 
-	String activity2();
-
 	String hello();
 
 	String action1();
@@ -37,4 +35,8 @@ public interface Strings extends Constants {
 	String activity();
 
 	String demo_fragment();
+
+	String demo_fragment2();
+
+	String menu_launch_fragment();
 }

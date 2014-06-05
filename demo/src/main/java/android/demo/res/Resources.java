@@ -21,6 +21,8 @@ public class Resources extends android.content.res.Resources {
 				return "menu1";
 			case R.id.menu2:
 				return "menu2";
+			case R.id.menu_launch_fragment:
+				return "menu_launch_fragment";
 			case R.id.Fragment:
 				return "Fragment";
 			case R.id.AlertButton:
@@ -39,8 +41,6 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.string.activity1:
 				return strings.activity1();
-			case R.string.activity2:
-				return strings.activity2();
 			case R.string.hello:
 				return strings.hello();
 			case R.string.action1:
@@ -71,6 +71,10 @@ public class Resources extends android.content.res.Resources {
 				return strings.activity();
 			case R.string.demo_fragment:
 				return strings.demo_fragment();
+			case R.string.demo_fragment2:
+				return strings.demo_fragment2();
+			case R.string.menu_launch_fragment:
+				return strings.menu_launch_fragment();
 		}
 		return super.getString(id);
 	}
@@ -87,6 +91,8 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.menu.demo_menu:
 				return Menus.demo_menu();
+			case R.menu.fragment_menu:
+				return Menus.fragment_menu();
 		}
 		return super.getMenu(id);
 	}
@@ -115,6 +121,8 @@ public class Resources extends android.content.res.Resources {
 				return layouts.demo_fragment_activity();
 			case R.layout.demo_fragment:
 				return layouts.demo_fragment();
+			case R.layout.demo_fragment2:
+				return layouts.demo_fragment2();
 		}
 		return super.getLayout(id);
 	}

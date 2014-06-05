@@ -17,7 +17,6 @@ public class DemoFragmentActivity extends ActionBarActivity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.demo_fragment_activity);
-		getSupportActionBar().setTitle(R.string.activity2);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 

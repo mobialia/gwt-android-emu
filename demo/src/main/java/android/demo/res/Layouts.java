@@ -1,6 +1,7 @@
 package android.demo.res;
 
 import android.demo.res.layout.DemoFragment;
+import android.demo.res.layout.DemoFragment2;
 import android.demo.res.layout.DemoFragmentActivity;
 import android.demo.res.layout.Main;
 
@@ -20,6 +21,10 @@ public class Layouts {
 
 	public DemoFragment demo_fragment() {
 		return new DemoFragment();
+	}
+
+	public DemoFragment2 demo_fragment2() {
+		return new DemoFragment2();
 	}
 
 }
