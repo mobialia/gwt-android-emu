@@ -141,6 +141,15 @@ public class FragmentManager {
 		activity.invalidateOptionsMenu();
 	}
 
+	void onActivityPaused() {
+		for (Fragment fragment : fragments) {
+			if (fragment.targetStatus == STATUS_RESUMED && fragment.visible) {
+				fragment.targetStatus = STATUS_PAUSED;
+			}
+		}
+		checkFragmentsStatus();
+	}
+
 	void checkFragmentsStatus() {
 		for (Fragment fragment : fragments) {
 			checkFragmentStatus(fragment, false);

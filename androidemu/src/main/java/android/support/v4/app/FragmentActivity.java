@@ -37,6 +37,7 @@ public class FragmentActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		resumed = false;
+		fragmentManager.onActivityPaused();
 	}
 
 	@Override
