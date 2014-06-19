@@ -2,6 +2,7 @@ package android.widget;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Spanned;
 import android.view.View;
 
 import com.google.gwt.dom.client.Element;
@@ -25,8 +26,14 @@ public class TextView extends View {
 		setText(Context.resources.getString(stringId));
 	}
 
-	public void setText(String string) {
-		element.setInnerHTML(string != null ? string.replace("\n", "<br/>") : "");
+	public void setText(CharSequence text) {
+		if (text == null) {
+			element.setInnerHTML("");
+		} else if (text instanceof Spanned) {
+			element.setInnerHTML(text.toString());
+		} else {
+			element.setInnerHTML(text.toString().replace("\n", "<br/>"));
+		}
 	}
 
 	public void setTextColor(int color) {
