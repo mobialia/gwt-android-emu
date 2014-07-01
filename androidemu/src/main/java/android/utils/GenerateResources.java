@@ -151,11 +151,13 @@ public class GenerateResources {
 
 					NodeList stringArraysItems = stringArrays.item(i).getChildNodes();
 
+					boolean first = true;
 					for (int j = 0; j < stringArraysItems.getLength(); j++) {
 						if (stringArraysItems.item(j).getNodeType() == Node.ELEMENT_NODE) {
-							if (valueSb.length() != 0) {
+							if (!first) {
 								valueSb.append(", ");
 							}
+							first = false;
 							valueSb.append(stringArraysItems.item(j).getTextContent().replace(",", "\\\\,").replace("\n", ""));
 						}
 					}
