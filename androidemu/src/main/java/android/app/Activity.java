@@ -259,8 +259,12 @@ public class Activity extends Context {
 		return view.findViewById(id);
 	}
 
-	public Intent getIntent() {
-		return intent;
+    public View findViewById(String id) {
+        return view.findViewById(id);
+    }
+
+    public Intent getIntent() {
+        return intent;
 	}
 
 	public MenuInflater getMenuInflater() {
