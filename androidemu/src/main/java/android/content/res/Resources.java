@@ -42,6 +42,8 @@ public class Resources {
 				return "actionbar_menu";
 			case android.R.drawable.actionbar_indicator_back:
 				return "actionbar_indicator_back";
+			case android.R.drawable.ic_drawer:
+				return "ic_drawer";
 		}
 		return null;
 	}

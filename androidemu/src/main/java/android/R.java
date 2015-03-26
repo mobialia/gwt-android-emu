@@ -9,5 +9,6 @@ public class R {
 	public static final class drawable {
 		public static final int actionbar_menu = 0x100001;
 		public static final int actionbar_indicator_back = 0x100002;
+		public static final int ic_drawer = 0x100003;
 	}
 }
