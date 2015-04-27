@@ -3,11 +3,11 @@ package android.demo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-public class DemoFragmentActivity extends ActionBarActivity {
+public class DemoFragmentActivity extends AppCompatActivity {
 
 	public static final String TAG = "FragmentActivity";
 

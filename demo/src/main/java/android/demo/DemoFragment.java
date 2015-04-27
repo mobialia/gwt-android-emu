@@ -3,7 +3,7 @@ package android.demo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,7 +33,7 @@ public class DemoFragment extends Fragment {
 		super.onResume();
 		Log.d(TAG, "onResume");
 
-		((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment);
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment);
 	}
 
 	@Override

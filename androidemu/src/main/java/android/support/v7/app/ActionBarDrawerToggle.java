@@ -11,14 +11,14 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 	static final String TAG = "ActionBarDrawerToggle";
 
 	DrawerLayout drawerLayout;
-	ActionBarActivity activity;
+	AppCompatActivity activity;
 	int drawerImageRes = android.R.drawable.ic_drawer;
 
 	boolean drawerIndicatorEnabled = true;
 
 	public ActionBarDrawerToggle(Activity activity, final DrawerLayout drawerLayout, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
 		this.drawerLayout = drawerLayout;
-		this.activity = (ActionBarActivity) activity;
+		this.activity = (AppCompatActivity) activity;
 		this.activity.getSupportActionBar().setHomeAsUpIndicator(drawerImageRes);
 	}
 

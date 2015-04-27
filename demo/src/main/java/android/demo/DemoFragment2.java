@@ -2,7 +2,7 @@ package android.demo;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +28,7 @@ public class DemoFragment2 extends Fragment {
 	public void onResume() {
 		super.onResume();
 		Log.d(TAG, "onResume");
-		((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment2);
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment2);
 	}
 
 	@Override

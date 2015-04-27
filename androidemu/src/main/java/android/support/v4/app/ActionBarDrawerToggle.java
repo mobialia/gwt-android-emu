@@ -3,7 +3,7 @@ package android.support.v4.app;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -12,14 +12,14 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 	static final String TAG = "ActionBarDrawerToggle";
 
 	DrawerLayout drawerLayout;
-	ActionBarActivity activity;
+	AppCompatActivity activity;
 	int drawerImageRes;
 
 	boolean drawerIndicatorEnabled = true;
 
 	public ActionBarDrawerToggle(Activity activity, final DrawerLayout drawerLayout, int drawerImageRes, int openDrawerContentDescRes, int closeDrawerContentDescRes) {
 		this.drawerLayout = drawerLayout;
-		this.activity = (ActionBarActivity) activity;
+		this.activity = (AppCompatActivity) activity;
 		this.activity.getSupportActionBar().setHomeAsUpIndicator(drawerImageRes);
 		this.drawerImageRes = drawerImageRes;
 	}

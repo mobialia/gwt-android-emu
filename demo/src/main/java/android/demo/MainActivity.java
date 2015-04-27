@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.google.gwt.core.client.GWT;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener, DialogInterface.OnClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, DialogInterface.OnClickListener {
 	public final static String TAG = "IntroActivity";
 
 	// Android Widgets are mapped from HTML elements, we cannot create Android
