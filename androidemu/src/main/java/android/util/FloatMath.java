@@ -1,5 +1,6 @@
 package android.util;
 
+@Deprecated
 public class FloatMath {
 
 	public static float sin(float in) {
