@@ -16,8 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.gwt.core.client.GWT;
-
 public class MainActivity extends AppCompatActivity implements OnClickListener, DialogInterface.OnClickListener {
 	public final static String TAG = "IntroActivity";
 
@@ -116,9 +114,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		} else if (v == handlerButton) {
 			handler.sendEmptyMessage(0);
 		} else if (v == activityButton) {
-			// A small difference, as GWT does not has runtime reflection, we
-			// must pass a created class to the intent (we can use GWT.create())
-			Intent intent = new Intent(getApplicationContext(), GWT.create(DemoFragmentActivity.class));
+			Intent intent = new Intent(getApplicationContext(), DemoFragmentActivity.class);
 			startActivity(intent);
 		}
 	}
