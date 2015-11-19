@@ -179,6 +179,17 @@ public class GenerateResources {
 					colors.put(element.getAttribute("name"), element.getTextContent());
 				}
 			}
+
+			NodeList itemNodes = doc.getElementsByTagName("item");
+			for (int i = 0; i < itemNodes.getLength(); i++) {
+				Node node = itemNodes.item(i);
+				if (node.getNodeType() == Node.ELEMENT_NODE
+						&& "id".equals(((Element) node).getAttribute("type"))) {
+					Element element = (Element) node;
+					idsInClass.add(element.getAttribute("name"));
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
