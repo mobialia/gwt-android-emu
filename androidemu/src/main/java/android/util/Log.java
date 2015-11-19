@@ -14,7 +14,7 @@ public class Log {
 
 	public static native void i(String tag, String message)
 	/*-{
-        console.info(tag + ": " + message);
+		console.info(tag + ": " + message);
     }-*/;
 
 	public static native void v(String tag, String message)
