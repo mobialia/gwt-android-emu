@@ -1,10 +1,11 @@
 package android.content;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 
 public class Intent {
+
+	public static final int FLAG_ACTIVITY_NEW_TASK = 0x10000000;
 
 	public static final String ACTION_VIEW = "android.intent.action.VIEW";
 
@@ -12,23 +13,21 @@ public class Intent {
 	Uri uri;
 	Bundle extras;
 	Context ctx;
-	Class<?> intentClass;
-	public Activity activity;
+	int flags;
+	public Class intentClass;
 
 	public Intent(String action, Uri uri) {
 		this.action = action;
 		this.uri = uri;
 	}
 
-	// public Intent(Context ctx, final Class<?> intentClass) {
-	// this.ctx = ctx;
-	// this.intentClass = intentClass;
-	// this.activity = (Activity) GWT.create(intentClass);
-	// }
-
-	public Intent(Context ctx, Object activity) {
+	public Intent(Context ctx, Class intentClass) {
 		this.ctx = ctx;
-		this.activity = (Activity) activity;
+		this.intentClass = intentClass;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 	public String getAction() {
@@ -56,5 +55,15 @@ public class Intent {
 			extras = new Bundle();
 		}
 		extras.put(key, value);
+	}
+
+	public Intent addFlags(int flags) {
+		this.flags |= flags;
+		return this;
+	}
+
+	public Intent setFlags(int flags) {
+		this.flags = flags;
+		return this;
 	}
 }
