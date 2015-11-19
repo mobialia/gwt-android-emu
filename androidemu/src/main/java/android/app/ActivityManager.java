@@ -1,5 +1,6 @@
 package android.app;
 
+import android.AndroidManifest;
 import android.content.Intent;
 import android.util.Log;
 
@@ -51,10 +52,15 @@ public class ActivityManager {
 			// Open URL
 			Window.Location.assign(intent.getData().toString());
 		} else {
-			Log.d(TAG, "Start activity " + intent.activity.getClass().getName());
-			intent.activity.intent = intent;
-			activityStack.push(intent.activity);
-			intent.activity.requestCode = requestCode;
+			Activity activity = AndroidManifest.instance.getActivity(intent.intentClass);
+			if (activity == null) {
+				Log.e(TAG, "Activity class not defined in Manifest");
+				return;
+			}
+			Log.d(TAG, "Start activity " + activity.getClass().getName());
+			activity.intent = intent;
+			activityStack.push(activity);
+			activity.requestCode = requestCode;
 			checkActivityStackDeferred();
 		}
 	}
@@ -82,6 +88,7 @@ public class ActivityManager {
 					activity.status = STATUS_CREATED;
 					break;
 				case STATUS_CREATED:
+					activity.onStart();
 					activity.onResume();
 					activity.invalidateOptionsMenu();
 					activity.onPostResume();
@@ -90,6 +97,7 @@ public class ActivityManager {
 				case STATUS_RESUMED:
 					activity.closeOptionsMenu();
 					activity.onPause();
+					activity.onStop();
 					activity.status = STATUS_PAUSED;
 					break;
 				case STATUS_PAUSED:
@@ -104,6 +112,7 @@ public class ActivityManager {
 					if (activity.returnRequestCode != null) {
 						activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
 					}
+					activity.onStart();
 					activity.onResume();
 					activity.onPostResume();
 					activity.status = STATUS_RESUMED;

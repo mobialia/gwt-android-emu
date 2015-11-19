@@ -57,6 +57,9 @@ public class Activity extends Context {
 	protected void onPostCreate(Bundle savedInstanceState) {
 	}
 
+	protected void onStart() {
+	}
+
 	protected void onResume() {
 		if (view != null) {
 			view.setVisibility(View.VISIBLE);
@@ -70,6 +73,9 @@ public class Activity extends Context {
 		if (view != null) {
 			view.setVisibility(View.GONE);
 		}
+	}
+
+	protected void onStop() {
 	}
 
 	protected void onDestroy() {
@@ -145,6 +151,9 @@ public class Activity extends Context {
 						}
 						if (item.getTitle() != 0) {
 							b.setText(getString(item.getTitle()));
+						}
+						if (item.getTitleString() != null) {
+							b.setText(item.getTitleString());
 						}
 						b.setOnClickListener(new View.OnClickListener() {
 							@Override
@@ -259,12 +268,12 @@ public class Activity extends Context {
 		return view.findViewById(id);
 	}
 
-    public View findViewById(String id) {
-        return view.findViewById(id);
-    }
+	public View findViewById(String id) {
+		return view.findViewById(id);
+	}
 
-    public Intent getIntent() {
-        return intent;
+	public Intent getIntent() {
+		return intent;
 	}
 
 	public MenuInflater getMenuInflater() {

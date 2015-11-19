@@ -10,7 +10,8 @@ public class MenuItem {
 	int groupId;
 	int itemId;
 	int order;
-	int title;
+	int titleId;
+	String titleString;
 	int showAsAction;
 	int icon;
 
@@ -39,11 +40,19 @@ public class MenuItem {
 	}
 
 	public int getTitle() {
-		return title;
+		return titleId;
 	}
 
 	public void setTitle(int title) {
-		this.title = title;
+		this.titleId = title;
+	}
+
+	public String getTitleString() {
+		return titleString;
+	}
+
+	public void setTitleString(String titleString) {
+		this.titleString = titleString;
 	}
 
 	public int getShowAsAction() {
