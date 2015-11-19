@@ -1,5 +1,5 @@
 package android.app;
 
-public class Application {
+public class Application extends ContextWrapper {
 
 }
