@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='android'>
 	<source path="android"/>
-    <source path="com/viewpagerindicator"/>
+	<source path="com/viewpagerindicator"/>
 </module>
