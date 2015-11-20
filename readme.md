@@ -9,7 +9,7 @@ keeping a lot of Java code in common.
 This library emulates some Android APIs over GWT:
 
 * Activities with their life cycle
-* Intents: you can pass data in a Bundle, launch another activities, etc.
+* Intents: you can pass data in a Bundle, launch activities and services, etc.
 * Handlers and Messages
 * AlertDialogs, ProgressDialogs, Toasts...
 * Views: each HTML element is mapped to a View type, see table below
@@ -49,7 +49,7 @@ There is a usage sample in the demo project: the generate_resources.sh script co
 
 The emulated resources generated automatically are:
 
-* R.id (searching for @+id/ in the xml files)
+* R.id (searching for @+id/ in the xml layouts and for <item type="id"> in the resource xmls)
 * R.string supports multiple languages, generates multiple GWT properties file, one for each language  
 * R.array (also with i18n)
 * R.menu
