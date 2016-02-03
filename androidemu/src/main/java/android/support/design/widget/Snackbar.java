@@ -15,14 +15,14 @@ import com.google.gwt.user.client.ui.PopupPanel;
 
 import java.util.ArrayList;
 
-public class SnackBar {
+public class Snackbar {
 
 	public static final int LENGTH_INDEFINITE = 0xfffffffe;
 	public static final int LENGTH_LONG = 0x00000000;
 	public static final int LENGTH_SHORT = 0xffffffff;
 
-	public static SnackBar make(View view, CharSequence text, int duration) {
-		return new SnackBar(view, text, duration);
+	public static Snackbar make(View view, CharSequence text, int duration) {
+		return new Snackbar(view, text, duration);
 	}
 
 	String message;
@@ -33,12 +33,12 @@ public class SnackBar {
 	ArrayList<String> actions = new ArrayList<>();
 	ArrayList<View.OnClickListener> listeners = new ArrayList<>();
 
-	public SnackBar(View view, CharSequence text, int duration) {
+	public Snackbar(View view, CharSequence text, int duration) {
 		message = text.toString();
 		this.duration = duration;
 	}
 
-	public SnackBar setAction(int resId, View.OnClickListener listener) {
+	public Snackbar setAction(int resId, View.OnClickListener listener) {
 		actions.add(Context.resources.getString(resId));
 		listeners.add(listener);
 		return this;
@@ -59,7 +59,7 @@ public class SnackBar {
 				button.addClickHandler(new ClickHandler() {
 					@Override
 					public void onClick(ClickEvent event) {
-						SnackBar.this.dismiss();
+						Snackbar.this.dismiss();
 						listener.onClick(null); // TODO
 					}
 				});

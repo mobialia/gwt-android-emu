@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.SnackBar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			Intent intent = new Intent(getApplicationContext(), DemoFragmentActivity.class);
 			startActivity(intent);
 		} else if (v == snackBarButton) {
-			SnackBar snackBar = SnackBar.make(null, getString(R.string.snackbar_text), SnackBar.LENGTH_LONG);
+			Snackbar snackBar = Snackbar.make(null, getString(R.string.snackbar_text), Snackbar.LENGTH_LONG);
 			snackBar.setAction(R.string.snackbar_action, new OnClickListener() {
 				@Override
 				public void onClick(View v) {
