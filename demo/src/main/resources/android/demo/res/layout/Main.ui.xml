@@ -34,6 +34,10 @@
             <button id="ActivityButton">
                 <ui:text from="{string.activity}"/>
             </button>
+            <br/>
+            <button id="SnackBarButton">
+                <ui:text from="{string.snackbar}"/>
+            </button>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder> 

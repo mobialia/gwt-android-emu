@@ -1,4 +1,6 @@
-/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
+/**
+ * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
+ */
 package android.demo;
 
 public class R {
@@ -12,6 +14,7 @@ public class R {
 		public final static int ToastButton = 7;
 		public final static int HandlerButton = 8;
 		public final static int ActivityButton = 9;
+		public final static int SnackBarButton = 10;
 	}
 
 	public static final class color {
@@ -41,6 +44,9 @@ public class R {
 		public final static int demo_fragment = 16;
 		public final static int demo_fragment2 = 17;
 		public final static int menu_launch_fragment = 18;
+		public final static int snackbar = 19;
+		public final static int snackbar_text = 20;
+		public final static int snackbar_action = 21;
 	}
 
 	public static final class array {

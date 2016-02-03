@@ -1,4 +1,6 @@
-/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
+/**
+ * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
+ */
 package android.demo.res;
 
 import android.demo.R;
@@ -33,6 +35,8 @@ public class Resources extends android.content.res.Resources {
 				return "HandlerButton";
 			case R.id.ActivityButton:
 				return "ActivityButton";
+			case R.id.SnackBarButton:
+				return "SnackBarButton";
 		}
 		return super.getIdAsString(id);
 	}
@@ -75,6 +79,12 @@ public class Resources extends android.content.res.Resources {
 				return strings.demo_fragment2();
 			case R.string.menu_launch_fragment:
 				return strings.menu_launch_fragment();
+			case R.string.snackbar:
+				return strings.snackbar();
+			case R.string.snackbar_text:
+				return strings.snackbar_text();
+			case R.string.snackbar_action:
+				return strings.snackbar_action();
 		}
 		return super.getString(id);
 	}

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.SnackBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	// Android Widgets are mapped from HTML elements, we cannot create Android
 	// Widgets from code, but we can access them via findViewById
-	Button alertButton, toastButton, activityButton, handlerButton;
+	Button alertButton, toastButton, activityButton, handlerButton, snackBarButton;
 
 	// Handler works!
 	Handler handler = new Handler() {
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		activityButton = ((Button) findViewById(R.id.ActivityButton));
 		activityButton.setOnClickListener(this);
+
+		snackBarButton = ((Button) findViewById(R.id.SnackBarButton));
+		snackBarButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -116,6 +120,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		} else if (v == activityButton) {
 			Intent intent = new Intent(getApplicationContext(), DemoFragmentActivity.class);
 			startActivity(intent);
+		} else if (v == snackBarButton) {
+			SnackBar snackBar = SnackBar.make(null, getString(R.string.snackbar_text), SnackBar.LENGTH_LONG);
+			snackBar.setAction(R.string.snackbar_action, new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Toast toast = Toast.makeText(getApplicationContext(), R.string.toast_text, Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER, 0, 0);
+					toast.show();
+				}
+			});
+			snackBar.show();
 		}
 	}
 

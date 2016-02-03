@@ -18,6 +18,9 @@
     <string name="demo_fragment">This is a demo fragment</string>
     <string name="demo_fragment2">This is another fragment</string>
     <string name="menu_launch_fragment">Launch fragment</string>
+    <string name="snackbar">Snackbar</string>
+    <string name="snackbar_text">This is the Snackbar Text</string>
+    <string name="snackbar_action">Action</string>
 
     <string-array name="array1">
         <item>Option 1</item>

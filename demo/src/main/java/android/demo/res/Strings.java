@@ -1,4 +1,6 @@
-/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
+/**
+ * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
+ */
 package android.demo.res;
 
 import com.google.gwt.i18n.client.Constants;
@@ -39,4 +41,10 @@ public interface Strings extends Constants {
 	String demo_fragment2();
 
 	String menu_launch_fragment();
+
+	String snackbar();
+
+	String snackbar_text();
+
+	String snackbar_action();
 }

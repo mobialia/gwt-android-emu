@@ -186,7 +186,7 @@
 }
 
 .dialogButton {
-	color: white;
+	color: #33b5e5;
 	text-align: center;
 	font-size: 1.2rem;
 	margin: 0;
@@ -194,11 +194,35 @@
 	min-width: 9rem;
 	width: 100%;
 
-	border-top: 1px solid #474747;
-	border-right: 0;
-	border-bottom: 0;
-	border-left: 0;
-	border-radius: 0;
+	border: 0;
+
+	background: rgba(50, 50, 50, 1);
+}
+
+.dialogButton:focus,
+.dialogButton:hover {
+	background: rgba(50, 165, 207, 0.5);
+}
+
+.snackbar {
+	background: rgba(50, 50, 50, 1);
+	color: #FFF;
+	font-size: 1rem;
+	margin: 0 auto;
+	padding: 0.6rem;
+	text-align: center;
+}
+
+.snackbarButton {
+	color: #33b5e5;
+	text-align: center;
+	font-size: 1rem;
+	margin: 0;
+	padding: 0.3rem 0.3rem;
+    float: right;
+
+	border: 0;
+
 
 	background: rgba(50, 50, 50, 1);
 }
