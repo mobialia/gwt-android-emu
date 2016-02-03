@@ -45,7 +45,7 @@ Emulating Resources
 ===================
 
 We included a tool "GenerateResources" in the package "utils" to help with resource emulation generation.
-There is a usage sample in the demo project: the generate_resources.sh script convert the resources from the source android project /res/ folder.
+There is a usage sample in the demo project: the generate_resources.sh script converts the resources from the source android project /res/ folder.
 
 The emulated resources generated automatically are:
 
