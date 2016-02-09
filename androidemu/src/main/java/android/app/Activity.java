@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewFactory;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -36,7 +36,6 @@ public class Activity extends Context {
 
 	String title;
 	public ViewGroup view;
-	private LinearLayout menuLayout;
 
 	Intent intent;
 	Integer requestCode;
@@ -49,6 +48,7 @@ public class Activity extends Context {
 	Intent returnResultData;
 
 	Menu menu;
+	PopupMenu popupMenu;
 
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,8 +79,8 @@ public class Activity extends Context {
 	}
 
 	protected void onDestroy() {
-		if (menuLayout != null) {
-			menuLayout.getElement().removeFromParent();
+		if (popupMenu != null) {
+			popupMenu.destroy();
 		}
 		if (view != null) {
 			view.getElement().removeFromParent();
@@ -96,9 +96,8 @@ public class Activity extends Context {
 	}
 
 	public void invalidateOptionsMenu() {
-		if (menuLayout != null) {
-			menuLayout.getElement().removeFromParent();
-			menuLayout = null;
+		if (popupMenu != null) {
+			popupMenu.destroy();
 		}
 		menu = new Menu();
 		onCreateOptionsMenu(menu);
@@ -123,11 +122,7 @@ public class Activity extends Context {
 		actionBarRight.removeAllViews();
 
 		if (menu.menuItems.size() > 0) {
-			menuLayout = new LinearLayout(this);
-			menuLayout.getElement().addClassName(Res.R.style().dialog());
-			menuLayout.getElement().addClassName(Res.R.style().gone());
-
-			boolean hasMenuItems = false;
+			popupMenu = null;
 
 			for (final MenuItem item : menu.menuItems) {
 				if (item.getTitle() != 0 || item.getIcon() != 0) {
@@ -145,69 +140,46 @@ public class Activity extends Context {
 							actionBarRight.addView(b);
 						}
 					} else {
-						Button b = new Button(this);
-						if (item.getItemId() != 0) {
-							b.getElement().setId(getResources().getIdAsString(item.getItemId()));
+						if (popupMenu == null) {
+							// Add menu and button only if it has elements
+							final ImageButton menuButton = new ImageButton(this);
+							menuButton.getElement().setClassName(Res.R.style().actionbarButton());
+							menuButton.setImageResource(android.R.drawable.actionbar_menu);
+
+							actionBarRight.addView(menuButton);
+
+							popupMenu = new PopupMenu(this, view);
+							popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+								@Override
+								public boolean onMenuItemClick(MenuItem item) {
+									return onMenuItemSelected(0, item);
+								}
+							});
+
+							menuButton.setOnClickListener(new View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+									popupMenu.toggle();
+								}
+							});
 						}
-						if (item.getTitle() != 0) {
-							b.setText(getString(item.getTitle()));
-						}
-						if (item.getTitleString() != null) {
-							b.setText(item.getTitleString());
-						}
-						b.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								closeOptionsMenu();
-								onMenuItemSelected(0, item);
-							}
-						});
-						b.getElement().addClassName(Res.R.style().menuItem());
-						menuLayout.addView(b);
-						hasMenuItems = true;
+
+						popupMenu.getMenu().add(item.getGroupId(), item.getItemId(), item.getOrder(), item.getTitleString());
 					}
 				}
 			}
-			// Add menu and button only if it has elements
-			if (hasMenuItems) {
-				final ImageButton menuButton = new ImageButton(this);
-				menuButton.getElement().setClassName(Res.R.style().actionbarButton());
-				menuButton.setImageResource(android.R.drawable.actionbar_menu);
-				menuButton.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						toggleOptionsMenu(menuButton);
-					}
-				});
-				actionBarRight.addView(menuButton);
-				view.getElement().appendChild(menuLayout.getElement());
-			}
-		}
-	}
-
-	/**
-	 * Used only by the system menu button
-	 */
-	void toggleOptionsMenu(View view) {
-		if (menuLayout.getElement().hasClassName(Res.R.style().gone())) {
-			openOptionsMenu();
-			menuLayout.getElement().getStyle().setProperty("position", "fixed");
-			menuLayout.getElement().getStyle().setPropertyPx("left", view.getLeft() + view.getWidth() - menuLayout.getWidth());
-			menuLayout.getElement().getStyle().setPropertyPx("top", view.getTop() + view.getHeight());
-		} else {
-			closeOptionsMenu();
 		}
 	}
 
 	public void openOptionsMenu() {
-		if (menuLayout != null && menuLayout.getElement().hasClassName(Res.R.style().gone())) {
-			menuLayout.getElement().removeClassName(Res.R.style().gone());
+		if (popupMenu != null) {
+			popupMenu.show();
 		}
 	}
 
 	public void closeOptionsMenu() {
-		if (menuLayout != null && !menuLayout.getElement().hasClassName(Res.R.style().gone())) {
-			menuLayout.getElement().addClassName(Res.R.style().gone());
+		if (popupMenu != null) {
+			popupMenu.dismiss();
 		}
 	}
 
