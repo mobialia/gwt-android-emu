@@ -123,6 +123,7 @@ public class Activity extends Context {
 
 		if (menu.menuItems.size() > 0) {
 			popupMenu = null;
+			ImageButton menuButton = null;
 
 			for (final MenuItem item : menu.menuItems) {
 				if (item.getTitle() != 0 || item.getIcon() != 0) {
@@ -141,8 +142,8 @@ public class Activity extends Context {
 						}
 					} else {
 						if (popupMenu == null) {
-							// Add menu and button
-							ImageButton menuButton = new ImageButton(this);
+							// Create popupMenu and menuButton
+							menuButton = new ImageButton(this);
 							menuButton.getElement().setClassName(Res.R.style().actionbarButton());
 							menuButton.setImageResource(android.R.drawable.actionbar_menu);
 							menuButton.setOnClickListener(new View.OnClickListener() {
@@ -159,8 +160,6 @@ public class Activity extends Context {
 									return onMenuItemSelected(0, item);
 								}
 							});
-
-							actionBarRight.addView(menuButton);
 						}
 
 						if (item.getTitleString() != null) {
@@ -170,6 +169,9 @@ public class Activity extends Context {
 						}
 					}
 				}
+			}
+			if (menuButton != null) {
+				actionBarRight.addView(menuButton);
 			}
 		}
 	}
