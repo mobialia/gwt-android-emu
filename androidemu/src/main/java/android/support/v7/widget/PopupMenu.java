@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.google.gwt.user.client.ui.RootPanel;
+
 public class PopupMenu {
 
 	Context context;
@@ -71,16 +73,16 @@ public class PopupMenu {
 				b.getElement().addClassName(Res.R.style().menuItem());
 				menuLayout.addView(b);
 			}
-			anchor.getElement().getParentElement().appendChild(menuLayout.getElement());
+			RootPanel.getBodyElement().appendChild(menuLayout.getElement());
+		}
+
+		if (menuLayout.getElement().hasClassName(Res.R.style().gone())) {
+			menuLayout.getElement().removeClassName(Res.R.style().gone());
 		}
 
 		menuLayout.getElement().getStyle().setProperty("position", "fixed");
 		menuLayout.getElement().getStyle().setPropertyPx("left", anchor.getLeft() + anchor.getWidth() - menuLayout.getWidth());
 		menuLayout.getElement().getStyle().setPropertyPx("top", anchor.getTop() + anchor.getHeight());
-
-		if (menuLayout.getElement().hasClassName(Res.R.style().gone())) {
-			menuLayout.getElement().removeClassName(Res.R.style().gone());
-		}
 
 		isShowing = true;
 	}
