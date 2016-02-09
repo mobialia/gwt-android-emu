@@ -141,14 +141,18 @@ public class Activity extends Context {
 						}
 					} else {
 						if (popupMenu == null) {
-							// Add menu and button only if it has elements
-							final ImageButton menuButton = new ImageButton(this);
+							// Add menu and button
+							ImageButton menuButton = new ImageButton(this);
 							menuButton.getElement().setClassName(Res.R.style().actionbarButton());
 							menuButton.setImageResource(android.R.drawable.actionbar_menu);
+							menuButton.setOnClickListener(new View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+									popupMenu.toggle();
+								}
+							});
 
-							actionBarRight.addView(menuButton);
-
-							popupMenu = new PopupMenu(this, view);
+							popupMenu = new PopupMenu(this, menuButton);
 							popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 								@Override
 								public boolean onMenuItemClick(MenuItem item) {
@@ -156,15 +160,14 @@ public class Activity extends Context {
 								}
 							});
 
-							menuButton.setOnClickListener(new View.OnClickListener() {
-								@Override
-								public void onClick(View v) {
-									popupMenu.toggle();
-								}
-							});
+							actionBarRight.addView(menuButton);
 						}
 
-						popupMenu.getMenu().add(item.getGroupId(), item.getItemId(), item.getOrder(), item.getTitleString());
+						if (item.getTitleString() != null) {
+							popupMenu.getMenu().add(item.getGroupId(), item.getItemId(), item.getOrder(), item.getTitleString());
+						} else if (item.getTitle() != 0) {
+							popupMenu.getMenu().add(item.getGroupId(), item.getItemId(), item.getOrder(), item.getTitle());
+						}
 					}
 				}
 			}
