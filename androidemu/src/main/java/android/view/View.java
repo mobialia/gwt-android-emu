@@ -39,19 +39,19 @@ public class View {
 	}
 
 	public int getTop() {
-		return element.getOffsetTop();
+		return element.getAbsoluteTop();
 	}
 
 	public int getLeft() {
-		return element.getOffsetLeft();
+		return element.getAbsoluteLeft();
 	}
 
 	public int getRight() {
-		return element.getOffsetLeft() + element.getClientWidth();
+		return element.getAbsoluteLeft() + element.getClientWidth();
 	}
 
 	public int getBottom() {
-		return element.getOffsetTop() + element.getClientHeight();
+		return element.getAbsoluteTop() + element.getClientHeight();
 	}
 
 	public int getHeight() {
