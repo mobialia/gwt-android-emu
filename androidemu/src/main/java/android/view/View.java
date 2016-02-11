@@ -8,6 +8,7 @@ import android.graphics.Color;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
 public class View {
@@ -63,8 +64,8 @@ public class View {
 	}
 
 	public void getLocationOnScreen(int[] location) {
-		location[0] = element.getAbsoluteLeft();
-		location[1] = element.getAbsoluteTop();
+		location[0] = element.getAbsoluteLeft() - Window.getScrollLeft();
+		location[1] = element.getAbsoluteTop() - Window.getScrollTop();
 	}
 
 	public View findViewById(int id) {
