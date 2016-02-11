@@ -80,9 +80,11 @@ public class PopupMenu {
 			menuLayout.getElement().removeClassName(Res.R.style().gone());
 		}
 
+		int anchorlocation[] = {0, 0};
+		anchor.getLocationOnScreen(anchorlocation);
 		menuLayout.getElement().getStyle().setProperty("position", "fixed");
-		menuLayout.getElement().getStyle().setPropertyPx("left", anchor.getLeft() + anchor.getWidth() - menuLayout.getWidth());
-		menuLayout.getElement().getStyle().setPropertyPx("top", anchor.getTop() + anchor.getHeight());
+		menuLayout.getElement().getStyle().setPropertyPx("left", anchorlocation[0] + anchor.getWidth() - menuLayout.getWidth());
+		menuLayout.getElement().getStyle().setPropertyPx("top", anchorlocation[1] + anchor.getHeight());
 
 		isShowing = true;
 	}
