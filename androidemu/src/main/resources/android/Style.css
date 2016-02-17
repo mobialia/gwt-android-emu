@@ -75,11 +75,7 @@
 	min-width: 20rem;
 	text-align: center;
 
-	border-top: 1px solid rgba(255, 255, 255, 0.34);
-	border-right: 0;
-	border-bottom: 0;
-	border-left: 0;
-	border-radius: 0;
+	border: 0;
 }
 
 .menuItem:active,
