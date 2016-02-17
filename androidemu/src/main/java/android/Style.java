@@ -40,6 +40,8 @@ public interface Style extends CssResource {
 
 	String snackbar();
 
+	String snackbarMessage();
+
 	String snackbarButton();
 
 	String preferencesFragment();

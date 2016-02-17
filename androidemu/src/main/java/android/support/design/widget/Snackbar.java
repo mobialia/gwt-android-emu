@@ -49,6 +49,7 @@ public class Snackbar {
 
 		FlowPanel fp = new FlowPanel();
 		HTML label = new HTML(message.replace("\n", "<br/>"));
+		label.setStyleName(Res.R.style().snackbarMessage());
 		fp.add(label);
 		for (int i = 0; i < actions.size(); i++) {
 			Button button = new Button(actions.get(i));
