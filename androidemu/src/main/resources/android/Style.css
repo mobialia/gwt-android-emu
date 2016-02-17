@@ -193,9 +193,7 @@
 	padding: 0.8rem 1.5rem;
 	min-width: 9rem;
 	width: 100%;
-
 	border: 0;
-
 	background: rgba(50, 50, 50, 1);
 }
 
@@ -209,7 +207,7 @@
 	color: #FFF;
 	font-size: 1rem;
 	margin: 0 auto;
-	padding: 0.6rem;
+	padding: 1rem;
 	text-align: center;
 }
 
@@ -217,13 +215,13 @@
 	color: #33b5e5;
 	text-align: center;
 	font-size: 1rem;
-	margin: 0;
-	padding: 0.3rem 0.3rem;
+	margin-top: 1rem;
+	margin-right: 0rem;
+	margin-bottom: 0rem;
+	margin-left: 0rem;
+	padding: 0.5rem 0.5rem;
     float: right;
-
 	border: 0;
-
-
 	background: rgba(50, 50, 50, 1);
 }
 
