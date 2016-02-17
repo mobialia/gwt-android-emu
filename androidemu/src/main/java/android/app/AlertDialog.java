@@ -200,22 +200,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			FlowPanel buttonsPanel = new FlowPanel();
 			buttonsPanel.setStyleName(Res.R.style().dialogButtons());
 			if (cancelButton != null) {
-				SimplePanel panel = new SimplePanel();
-				panel.setStyleName(Res.R.style().dialogButtonContainer());
-				panel.add(cancelButton);
-				buttonsPanel.add(panel);
+				buttonsPanel.add(cancelButton);
 			}
 			if (neutralButton != null) {
-				SimplePanel panel = new SimplePanel();
-				panel.setStyleName(Res.R.style().dialogButtonContainer());
-				panel.add(neutralButton);
-				buttonsPanel.add(panel);
+				buttonsPanel.add(neutralButton);
 			}
 			if (okButton != null) {
-				SimplePanel panel = new SimplePanel();
-				panel.setStyleName(Res.R.style().dialogButtonContainer());
-				panel.add(okButton);
-				buttonsPanel.add(panel);
+				buttonsPanel.add(okButton);
 			}
 			fp.add(buttonsPanel);
 		}

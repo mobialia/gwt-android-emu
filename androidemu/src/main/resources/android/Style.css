@@ -117,6 +117,8 @@
 .dialog {
 	color: #ffffff;
 
+	min-width: 20rem;
+
 	border: none;
 	border-radius: 0;
 	box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
@@ -128,13 +130,9 @@
 
 .dialogTitle {
 	color: #33b5e5;
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	margin: 0 auto;
-	padding: 0.7rem;
-
-	border-bottom-color: #33b5e5;
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
+	padding: 0.8rem;
 }
 
 .dialogMessage {
@@ -169,28 +167,19 @@
 }
 
 .dialogButtons {
-	display: table;
-	width: 100%;
-}
-
-.dialogButtonContainer {
-	display: table-cell;
-}
-
-.dialogButtonContainer + .dialogButtonContainer {
-	border-left: 1px #474747 solid;
+    text-align: right;
 }
 
 .dialogButton {
 	color: #33b5e5;
+	text-transform: uppercase;
 	text-align: center;
-	font-size: 1.2rem;
-	margin: 0;
-	padding: 0.8rem 1.5rem;
-	min-width: 9rem;
-	width: 100%;
+	font-size: 1rem;
+	margin: 0.4rem 0.4rem 0.4rem 0rem;
+	padding: 0.4rem 0.8rem;
+	min-width: 4rem;
 	border: 0;
-	background: rgba(50, 50, 50, 1);
+	background: rgba(40, 40, 40, 1);
 }
 
 .dialogButton:focus,

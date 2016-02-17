@@ -36,8 +36,6 @@ public interface Style extends CssResource {
 
 	String dialogButtons();
 
-	String dialogButtonContainer();
-
 	String dialogButton();
 
 	String snackbar();
