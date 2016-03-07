@@ -92,6 +92,16 @@ public class View {
 		}
 	}
 
+	public int getVisibility() {
+		if (element.hasClassName(Res.R.style().invisible())) {
+			return View.INVISIBLE;
+		}
+		if (element.hasClassName(Res.R.style().gone())) {
+			return View.GONE;
+		}
+		return View.VISIBLE;
+	}
+
 	public void setEnabled(boolean enabled) {
 		if (enabled) {
 			element.removeAttribute("disabled");
