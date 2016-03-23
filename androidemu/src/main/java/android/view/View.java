@@ -70,7 +70,9 @@ public class View {
 
 	public View findViewById(int id) {
 		View view = ViewFactory.findViewById(getElement(), Context.resources.getIdAsString(id));
-		view.setId(id);
+		if (view != null) {
+			view.setId(id);
+		}
 		return view;
 	}
 
