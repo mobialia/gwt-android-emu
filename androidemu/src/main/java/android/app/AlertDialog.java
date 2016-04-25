@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -17,7 +18,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 	private SimplePanel titleLabelContainer;
 	private FlowPanel contentPanel;
-	private Label titleLabel, messageLabel;
+	private Label titleLabel;
+	private HTML messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
@@ -238,12 +240,12 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 	public void setMessage(String message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
-			messageLabel = new Label();
+			messageLabel = new HTML();
 			messageLabel.setStyleName(Res.R.style().dialogMessage());
 			contentPanel.add(messageLabel);
 		}
 		if (messageLabel != null) {
-			messageLabel.setText(message);
+			messageLabel.setHTML(message.replace("\n", "<br/>"));
 		}
 		if (popupPanel.isShowing()) {
 			popupPanel.center();
