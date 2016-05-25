@@ -14,10 +14,10 @@ public class JSONObject {
 	}
 
 	public String getString(String name) {
-		return jsonObject.get(name).toString();
+		return jsonObject.get(name).toString().replaceAll("^\"|\"$", "");
 	}
 
 	public int getInt(String name) {
-		return Integer.valueOf(jsonObject.get(name).toString());
+		return Integer.valueOf(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
 	}
 }
