@@ -1,14 +1,23 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+buildscript {
+    repositories {
+        jcenter()
+    }
 
-archivesBaseName = 'androidemu'
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 dependencies {
     compile 'com.google.gwt:gwt-user:2.8.0-beta1'
     compile 'com.google.gwt:gwt-dev:2.8.0-beta1'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
+ask sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
@@ -16,3 +25,30 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 artifacts {
     archives sourcesJar
 }
+
+publishing {
+    publications {
+        jmini3dGwt(MavenPublication) {
+            from components.java
+            artifactId = 'gwt-android-emu'
+            artifact sourcesJar
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['jmini3dGwt']
+    pkg {
+        repo = 'maven'
+        name = 'com.mobialia.gwt-android-emu'
+        desc = 'This library emulates some Android APIs over GWT'
+        userOrg = 'mobialia'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/mobialia/gwt-android-emu.git'
+        githubRepo = 'mobialia/gwt-android-emu'
+        publish = true
+    }
+}
+
