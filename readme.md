@@ -92,3 +92,20 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 | `<img>`                     | ImageView      |
 
 
+Using GWT Android Emu in other projects
+=======================================
+This library's JARs are distributed via Mobialia's bintray repo (https://bintray.com/mobialia/maven).
+To use them, first include this repository in your gradle file:
+```
+repositories {
+    maven { url 'https://dl.bintray.com/mobialia/maven' }
+}
+```
+and then reference the gwt-android-emu libraries:
+```
+dependencies {
+    compile 'com.mobialia:gwt-android-emu:0.3'
+    compile 'com.mobialia:gwt-android-emu:0.3:sources'
+}
+```
+
