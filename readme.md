@@ -33,7 +33,7 @@ Demo Project
 
 We include a demo project to see some usage examples. You can view this demo at:
 
-http://mobialia.com/gwt_android_emu/
+http://mobialia.com/gwt-android-emu/
 
 It's a GWT app coded like an Android App, you can see the MainActivity class and find the differences:
 
