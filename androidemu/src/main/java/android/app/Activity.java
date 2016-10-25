@@ -1,5 +1,6 @@
 package android.app;
 
+import android.AndroidManifest;
 import android.Res;
 import android.content.Context;
 import android.content.Intent;
@@ -197,9 +198,7 @@ public class Activity extends Context {
 	}
 
 	public Context getApplicationContext() {
-		// not very correct, but it's a context and at the moment we do not
-		// differentiate among contexts
-		return this;
+		return AndroidManifest.applicatonContext;
 	}
 
 	public void finish() {

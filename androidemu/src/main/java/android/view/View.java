@@ -1,5 +1,6 @@
 package android.view;
 
+import android.AndroidManifest;
 import android.Res;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -29,6 +30,10 @@ public class View {
 
 	public View(Widget widget) {
 		this.element = widget.getElement();
+	}
+
+	public final Context getContext() {
+		return AndroidManifest.applicatonContext;
 	}
 
 	public int getId() {

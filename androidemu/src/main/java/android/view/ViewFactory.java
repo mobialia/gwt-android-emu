@@ -2,6 +2,7 @@ package android.view;
 
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,6 +37,8 @@ public class ViewFactory {
 			if (className != null) {
 				if (className.contains("LISTVIEW")) {
 					return new ListView(element);
+				} else if (className.contains("RECYCLERVIEW")) {
+					return new RecyclerView(element);
 				} else if (className.contains("SCROLLVIEW")) {
 					return new ScrollView(element);
 				} else if (className.contains("LINEARLAYOUT")) {

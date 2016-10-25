@@ -15,6 +15,7 @@ public abstract class AndroidManifest implements EntryPoint {
 	static final String TAG = "BaseAndroidManifest";
 
 	public static AndroidManifest instance;
+	public static Context applicatonContext;
 
 	public void onModuleLoad() {
 		Res.R.style().ensureInjected();
@@ -23,6 +24,7 @@ public abstract class AndroidManifest implements EntryPoint {
 
 		Context.icon = getIcon();
 		Context.application = getApplication();
+		applicatonContext = new Context();
 
 		Resources resources = getResources();
 		if (resources != null) {
