@@ -76,6 +76,7 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 | HTML Element                | Android Widget |
 | ----------------------------|----------------|
 | `<div class="ListView">`    | ListView       |
+| `<div class="RecyclerView">`| RecyclerView   |
 | `<div class="ScrollView">`  | ScrollView     |
 | `<div class="LinearLayout">`| LinearLayout   |
 | `<div class="ViewPager">`   | ViewPager      |
