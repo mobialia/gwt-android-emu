@@ -50,11 +50,46 @@ public class Intent {
 		return extras;
 	}
 
+	public String getStringExtra(String key) {
+		if (extras == null) {
+			return null;
+		}
+		return extras.getString(key);
+	}
+
+	public String getStringExtra(String key, String defaultValue) {
+		if (extras == null) {
+			return defaultValue;
+		}
+		return extras.getString(key, defaultValue);
+	}
+
+	public long getLongExtra(String key) {
+		if (extras == null) {
+			return 0;
+		}
+		return extras.getLong(key);
+	}
+
+	public long getLongExtra(String key, long defaultValue) {
+		if (extras == null) {
+			return defaultValue;
+		}
+		return extras.getLong(key, defaultValue);
+	}
+
 	public void putExtra(String key, String value) {
 		if (extras == null) {
 			extras = new Bundle();
 		}
 		extras.put(key, value);
+	}
+
+	public void putExtra(String key, Long value) {
+		if (extras == null) {
+			extras = new Bundle();
+		}
+		extras.put(key, String.valueOf(value));
 	}
 
 	public Intent addFlags(int flags) {

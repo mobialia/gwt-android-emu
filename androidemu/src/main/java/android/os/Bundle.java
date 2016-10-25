@@ -1,5 +1,7 @@
 package android.os;
 
+import android.content.Intent;
+
 import java.util.HashMap;
 
 public class Bundle {
@@ -34,16 +36,32 @@ public class Bundle {
 		return values.get(key);
 	}
 
+	public String getString(String key, String defaultValue) {
+		return values.containsKey(key) ? values.get(key) : defaultValue;
+	}
+
 	public boolean getBoolean(String key) {
 		return Boolean.valueOf(values.get(key));
+	}
+
+	public boolean getBoolean(String key, boolean defaultValue) {
+		return values.containsKey(key) ? Boolean.valueOf(values.get(key)) : defaultValue;
 	}
 
 	public int getInt(String key) {
 		return Integer.valueOf(values.get(key));
 	}
 
+	public int getInt(String key, int defaultValue) {
+		return values.containsKey(key) ? Integer.valueOf(values.get(key)) : defaultValue;
+	}
+
 	public long getLong(String key) {
 		return Long.valueOf(values.get(key));
+	}
+
+	public long getLong(String key, long defaultValue) {
+		return values.containsKey(key) ? Long.valueOf(values.get(key)) : defaultValue;
 	}
 
 	public boolean containsKey(String key) {

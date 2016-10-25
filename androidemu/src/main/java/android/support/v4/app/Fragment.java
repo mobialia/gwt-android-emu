@@ -71,6 +71,10 @@ public class Fragment {
 		return false;
 	}
 
+	public boolean isVisible() {
+		return visible;
+	}
+
 	/**
 	 * Call {@link Activity#startActivity(Intent)} on the fragment's
 	 * containing Activity.
