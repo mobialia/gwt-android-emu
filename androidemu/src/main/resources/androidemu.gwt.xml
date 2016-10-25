@@ -2,4 +2,5 @@
 <module rename-to='android'>
 	<source path="android"/>
 	<source path="com/viewpagerindicator"/>
+	<source path="org/json"/>
 </module>
