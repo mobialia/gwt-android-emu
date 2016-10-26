@@ -28,7 +28,7 @@ artifacts {
 
 publishing {
     publications {
-        jmini3dGwt(MavenPublication) {
+        gwtAndroidEmu(MavenPublication) {
             from components.java
             artifactId = 'gwt-android-emu'
             artifact sourcesJar
@@ -39,7 +39,7 @@ publishing {
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    publications = ['jmini3dGwt']
+    publications = ['gwtAndroidEmu']
     pkg {
         repo = 'maven'
         name = 'com.mobialia.gwt-android-emu'
