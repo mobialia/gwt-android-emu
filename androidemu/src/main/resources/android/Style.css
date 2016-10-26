@@ -259,10 +259,12 @@
 	font-size: 1.3rem;
 }
 
+@external invisible;
 .invisible {
 	visibility: hidden;
 }
 
+@external gone;
 .gone {
 	display: none;
 }
