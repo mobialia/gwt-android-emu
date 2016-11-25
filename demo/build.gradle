@@ -44,9 +44,9 @@ task compileGwt (dependsOn: classes, type: JavaExec) {
                 '-XdisableCastChecking',   // Disables runtime checking of cast operations. This can reduce compiled file sizes.
                 '-XdisableClassMetadata',  // Disables some java.lang.Class methods. This can reduce compiled file sizes.
                 //'-XenableClosureCompiler', // This should create smaller JavaScript output. Not compatible with the compile report
-                '-compileReport',
-                '-XsoycDetailed',
-                '-XcompilerMetrics',
+                //'-compileReport',
+                //'-XsoycDetailed',
+                //'-XcompilerMetrics',
         ]
 
     maxHeapSize = '512M'
