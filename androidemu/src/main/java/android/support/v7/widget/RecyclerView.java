@@ -9,6 +9,7 @@ public class RecyclerView extends ViewGroup {
 
 	ViewGroup mViewGroup;
 	Adapter mAdapter;
+	LayoutManager layoutManager;
 
 	public RecyclerView(Element element) {
 		super(element);
@@ -16,6 +17,14 @@ public class RecyclerView extends ViewGroup {
 	}
 
 	public void setLayoutManager(LayoutManager layoutManager) {
+		this.layoutManager = layoutManager;
+	}
+
+	public LayoutManager getLayoutManager() {
+		return layoutManager;
+	}
+
+	public void addOnScrollListener(RecyclerView.OnScrollListener listener) {
 
 	}
 
@@ -53,6 +62,13 @@ public class RecyclerView extends ViewGroup {
 	public static abstract class LayoutManager {
 
 	}
+
+	public static abstract class OnScrollListener {
+		abstract void onScrollStateChanged(RecyclerView recyclerView, int newState);
+
+		abstract void onScrolled(RecyclerView recyclerView, int dx, int dy);
+	}
+
 
 	private void draw() {
 		while (element.getFirstChild() != null) {

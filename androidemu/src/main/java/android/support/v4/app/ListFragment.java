@@ -29,4 +29,7 @@ public class ListFragment extends Fragment {
 		adapter.notifyDataSetChanged();
 	}
 
+	public Adapter getListAdapter() {
+		return adapter;
+	}
 }
