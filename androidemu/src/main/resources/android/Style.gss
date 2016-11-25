@@ -1,5 +1,13 @@
+@def COLOR_FOREGROUND eval("android.Theme.getColorForeground()");
+@def COLOR_BACKGROUND eval("android.Theme.getColorBackground()");
+@def COLOR_PRIMARY eval("android.Theme.getColorPrimary()");
+@def COLOR_ACCENT eval("android.Theme.getColorAccent()");
+@def COLOR_CONTROL_HIGHLIGHT eval("android.Theme.getColorControlHighlight()");
 
 .actionbar {
+    color: white;
+    background: COLOR_PRIMARY;
+
     position: fixed;
     top: 0px;
     width: 100%;
@@ -7,9 +15,6 @@
     line-height: 3rem;
 
     font-size: 1.5rem;
-
-    color: white;
-    background: rgba(40,40,40,0.9);
 }
 
 .actionbarHome {
@@ -19,7 +24,7 @@
 .actionbarHome:active,
 .actionbarHome:hover
 {
-    background: rgba(50,165,207,0.5);
+    background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .actionbarIcon {
@@ -61,14 +66,14 @@
 .actionbarButton:active,
 .actionbarButton:hover
 {
-    background: rgba(50,165,207,0.5);
+    background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .menuItem {
-	display: block;
-	background: rgba(40, 40, 40, 1);
+	color: COLOR_FOREGROUND;
+	background: COLOR_BACKGROUND;
 
-	color: #FFF;
+	display: block;
 	font-size: 1.2rem;
 	margin: 0 auto;
 	padding: 0.6rem;
@@ -80,7 +85,7 @@
 
 .menuItem:active,
 .menuItem:hover {
-	background: rgba(50, 165, 207, 0.5);
+	background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .titlePager {
@@ -94,15 +99,16 @@
    text-align: center;
    vertical-align: middle;
    cursor: pointer;
-   background: rgba(255, 255, 255, 0.7);
+   background: COLOR_PRIMARY;
 }
 
 .titlePagerElementSelected {
-   border-bottom: thick solid rgb(50, 165, 207);
+   border-bottom: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .toast {
-	color: #ffffff;
+	color: COLOR_FOREGROUND;
+	background: COLOR_BACKGROUND;
 	font-size: 1.2rem;
 
 	border: none;
@@ -111,11 +117,11 @@
 
 	margin: 0;
 	padding: 1rem;
-	background: rgba(40, 40, 40, 1);
 }
 
 .dialog {
-	color: #ffffff;
+	color: COLOR_FOREGROUND;
+	background: COLOR_BACKGROUND;
 
 	min-width: 20rem;
 
@@ -125,28 +131,27 @@
 
 	margin: 0;
 	padding: 0;
-	background: rgba(40, 40, 40, 1);
 }
 
 .dialogTitle {
-	color: #33b5e5;
+	color: COLOR_ACCENT;
 	font-size: 1.4rem;
 	margin: 0 auto;
 	padding: 0.8rem;
 }
 
 .dialogMessage {
-	color: #ffffff;
+	color: COLOR_FOREGROUND;
 	font-size: 1.2rem;
 	padding: 1rem;
 	text-align: left;
 }
 
 .dialogItem {
-	display: block;
-	background: rgba(40, 40, 40, 1);
+	color: COLOR_FOREGROUND;
+	background: COLOR_BACKGROUND;
 
-	color: #FFF;
+	display: block;
 	font-size: 1.1rem;
 	margin: 0 auto;
 	padding: 0.6rem;
@@ -163,7 +168,7 @@
 
 .dialogItem:focus,
 .dialogItem:hover {
-	background: rgba(50, 165, 207, 0.5);
+	background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .dialogButtons {
@@ -171,7 +176,9 @@
 }
 
 .dialogButton {
-	color: #33b5e5;
+	color: COLOR_ACCENT;
+	background: COLOR_BACKGROUND;
+
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 0.9rem;
@@ -179,27 +186,28 @@
 	padding: 0.4rem 0.8rem;
 	min-width: 4rem;
 	border: 0;
-	background: rgba(40, 40, 40, 1);
 }
 
 .dialogButton:focus,
 .dialogButton:hover {
-	background: rgba(50, 165, 207, 0.5);
+	background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .snackbar {
-	background: rgba(50, 50, 50, 1);
+	background: COLOR_BACKGROUND;
 	text-align: center;
 }
 
 .snackbarMessage {
-	color: #FFF;
+	color: COLOR_FOREGROUND;
 	font-size: 1rem;
 	margin: 1rem;
 }
 
 .snackbarButton {
-	color: #33b5e5;
+	color: COLOR_ACCENT;
+	background: COLOR_BACKGROUND;
+
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 1rem;
@@ -207,24 +215,23 @@
 	padding: 0.4rem 0.8rem;
     float: right;
 	border: 0;
-	background: rgba(50, 50, 50, 1);
 }
 
 .snackbarButton:focus,
 .snackbarButton:hover {
-	background: rgba(50, 165, 207, 0.5);
+	background: COLOR_CONTROL_HIGHLIGHT;
 }
 
 .preferencesFragment {
-	overflow: auto;
+	color: COLOR_FOREGROUND;
 
-	color: #ffffff;
+	overflow: auto;
+	background: COLOR_BACKGROUND;
 
 	border: none;
 	border-radius: 0;
 	margin: 0;
 	padding: 1rem;
-	background: rgba(0, 0, 0, 0.8);
 	text-align: center;
 }
 

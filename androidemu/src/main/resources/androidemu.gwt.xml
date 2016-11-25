@@ -3,4 +3,6 @@
 	<source path="android"/>
 	<source path="com/viewpagerindicator"/>
 	<source path="org/json"/>
+
+	<set-configuration-property name="CssResource.enableGss" value="true"/>
 </module>
