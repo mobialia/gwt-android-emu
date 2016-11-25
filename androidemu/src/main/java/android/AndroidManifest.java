@@ -12,7 +12,7 @@ import android.util.Log;
 import com.google.gwt.core.client.EntryPoint;
 
 public abstract class AndroidManifest implements EntryPoint {
-	static final String TAG = "BaseAndroidManifest";
+	static final String TAG = AndroidManifest.class.getSimpleName();
 
 	public static AndroidManifest instance;
 	public static Context applicatonContext;
