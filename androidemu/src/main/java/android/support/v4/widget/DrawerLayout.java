@@ -47,7 +47,7 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void openDrawer(int gravity) {
-		drawer.getElement().addClassName("drawer-opened");
+		drawer.getElement().addClassName("drawerOpened");
 		if (listener != null) {
 			listener.onDrawerOpened(drawer);
 		}
@@ -55,7 +55,7 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void closeDrawer(int gravity) {
-		drawer.getElement().removeClassName("drawer-opened");
+		drawer.getElement().removeClassName("drawerOpened");
 		if (listener != null) {
 			listener.onDrawerClosed(drawer);
 		}
