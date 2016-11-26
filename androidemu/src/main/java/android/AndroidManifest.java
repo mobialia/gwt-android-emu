@@ -17,6 +17,7 @@ public abstract class AndroidManifest implements EntryPoint {
 	public static AndroidManifest instance;
 	public static Context applicatonContext;
 
+	@Override
 	public void onModuleLoad() {
 		Res.R.style().ensureInjected();
 
