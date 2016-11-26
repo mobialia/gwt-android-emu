@@ -131,16 +131,22 @@
 }
 
 .titlePagerElement {
+    color: COLOR_FOREGROUND;
     background: COLOR_PRIMARY;
     display: table-cell;
-    height: 2.4rem;
+    height: sub(ACTIONBAR_HEIGHT, 0.3rem);
     text-align: center;
     vertical-align: middle;
+
+    border-bottom: 0.3rem solid COLOR_PRIMARY;
+
     cursor: pointer;
+    user-select: none;
+
     transition: background 0.5s ease;
 }
 .titlePagerElementSelected {
-   border-bottom: COLOR_CONTROL_HIGHLIGHT;
+   border-bottom: 0.3rem solid COLOR_ACCENT;
 }
 
 .toast {
