@@ -15,12 +15,14 @@
     line-height: 3rem;
 
     font-size: 1.5rem;
+    user-select: none;
 }
 
 .actionbarHome {
     float: left;
+    cursor: pointer;
+   	transition: background 0.5s ease;
 }
-
 .actionbarHome:active,
 .actionbarHome:hover
 {
@@ -54,6 +56,7 @@
     height: 1.4rem;
     pointer-events: none;
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 .actionbarButton {
@@ -61,8 +64,9 @@
     padding: 0.3rem;
     width: 2.4rem;
     height: 2.4rem;
+    cursor: pointer;
+   	transition: background 0.5s ease;
 }
-
 .actionbarButton:active,
 .actionbarButton:hover
 {
@@ -76,13 +80,14 @@
 	display: block;
 	font-size: 1.2rem;
 	margin: 0 auto;
-	padding: 0.6rem;
+	padding: 0.9rem;
 	min-width: 20rem;
-	text-align: center;
+	text-align: left;
 
 	border: 0;
+    cursor: pointer;
+   	transition: background 0.5s ease;
 }
-
 .menuItem:active,
 .menuItem:hover {
 	background: COLOR_CONTROL_HIGHLIGHT;
@@ -94,14 +99,14 @@
 }
 
 .titlePagerElement {
-   display: table-cell;
-   height: 2.4rem;
-   text-align: center;
-   vertical-align: middle;
-   cursor: pointer;
-   background: COLOR_PRIMARY;
+    background: COLOR_PRIMARY;
+    display: table-cell;
+    height: 2.4rem;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background 0.5s ease;
 }
-
 .titlePagerElementSelected {
    border-bottom: COLOR_CONTROL_HIGHLIGHT;
 }
