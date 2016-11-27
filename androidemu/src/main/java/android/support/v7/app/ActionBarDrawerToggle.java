@@ -28,12 +28,12 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	@Override
 	public void onDrawerClosed(View drawerView) {
-		activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbar-indicator-opened");
+		activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbarIndicatorOpened");
 	}
 
 	@Override
 	public void onDrawerOpened(View drawerView) {
-		activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbar-indicator-opened");
+		activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbarIndicatorOpened");
 	}
 
 	public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -69,9 +69,9 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	public void syncState() {
 		if (drawerLayout.isDrawerOpen(drawerLayout)) {
-			activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbar-indicator-opened");
+			activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbarIndicatorOpened");
 		} else {
-			activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbar-indicator-opened");
+			activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbarIndicatorOpened");
 		}
 	}
 }

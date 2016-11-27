@@ -20,7 +20,8 @@ public class DrawerLayout extends ViewGroup {
 		abstract void onDrawerStateChanged(int newState);
 	}
 
-	View drawer;
+	º View
+	drawerOverlay,drawer;
 	DrawerListener listener;
 	boolean isOpen;
 
@@ -29,12 +30,22 @@ public class DrawerLayout extends ViewGroup {
 		int counter = 0;
 		for (int i = 0; i < element.getChildCount(); i++) {
 			if (element.getChild(i).getNodeName().equals("DIV")) {
-				if (++counter == 2) {
-					drawer = new View((Element) element.getChild(i));
-					break;
+				switch (++counter) {
+					case 2:
+						drawerOverlay = new View((Element) element.getChild(i));
+						break;
+					case 3:
+						drawer = new View((Element) element.getChild(i));
+						break;
 				}
 			}
 		}
+		drawerOverlay.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				closeDrawer(0);
+			}
+		});
 		closeDrawer(0);
 	}
 
@@ -47,6 +58,7 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void openDrawer(int gravity) {
+		drawerOverlay.getElement().addClassName("drawerOverlayOpened");
 		drawer.getElement().addClassName("drawerOpened");
 		if (listener != null) {
 			listener.onDrawerOpened(drawer);
@@ -55,6 +67,7 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void closeDrawer(int gravity) {
+		drawerOverlay.getElement().removeClassName("drawerOverlayOpened");
 		drawer.getElement().removeClassName("drawerOpened");
 		if (listener != null) {
 			listener.onDrawerClosed(drawer);
