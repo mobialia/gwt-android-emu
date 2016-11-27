@@ -20,8 +20,7 @@ public class DrawerLayout extends ViewGroup {
 		abstract void onDrawerStateChanged(int newState);
 	}
 
-	º View
-	drawerOverlay,drawer;
+	View drawerOverlay, drawer;
 	DrawerListener listener;
 	boolean isOpen;
 
