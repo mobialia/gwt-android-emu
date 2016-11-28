@@ -1,5 +1,6 @@
 package android.support.v4.widget;
 
+import android.Res;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -57,8 +58,8 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void openDrawer(int gravity) {
-		drawerOverlay.getElement().addClassName("drawerOverlayOpened");
-		drawer.getElement().addClassName("drawerOpened");
+		drawerOverlay.getElement().addClassName(Res.R.style().drawerOverlayOpened());
+		drawer.getElement().addClassName(Res.R.style().drawerOpened());
 		if (listener != null) {
 			listener.onDrawerOpened(drawer);
 		}
@@ -66,8 +67,8 @@ public class DrawerLayout extends ViewGroup {
 	}
 
 	public void closeDrawer(int gravity) {
-		drawerOverlay.getElement().removeClassName("drawerOverlayOpened");
-		drawer.getElement().removeClassName("drawerOpened");
+		drawerOverlay.getElement().removeClassName(Res.R.style().drawerOverlayOpened());
+		drawer.getElement().removeClassName(Res.R.style().drawerOpened());
 		if (listener != null) {
 			listener.onDrawerClosed(drawer);
 		}

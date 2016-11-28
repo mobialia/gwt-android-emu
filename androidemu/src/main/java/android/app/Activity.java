@@ -139,13 +139,15 @@ public class Activity extends Context {
 								}
 							});
 							b.getElement().addClassName(Res.R.style().actionbarButton());
+							b.getElement().addClassName(Res.R.style().controlHighlight());
 							actionBarRight.addView(b);
 						}
 					} else {
 						if (popupMenu == null) {
 							// Create popupMenu and menuButton
 							menuButton = new ImageButton(this);
-							menuButton.getElement().setClassName(Res.R.style().actionbarButton());
+							menuButton.getElement().addClassName(Res.R.style().actionbarButton());
+							menuButton.getElement().addClassName(Res.R.style().controlHighlight());
 							menuButton.setImageResource(android.R.drawable.actionbar_menu);
 							menuButton.setOnClickListener(new View.OnClickListener() {
 								@Override

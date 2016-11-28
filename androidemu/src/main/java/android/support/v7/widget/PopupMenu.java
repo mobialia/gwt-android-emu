@@ -71,6 +71,7 @@ public class PopupMenu {
 					}
 				});
 				b.getElement().addClassName(Res.R.style().menuItem());
+				b.getElement().addClassName(Res.R.style().controlHighlight());
 				menuLayout.addView(b);
 			}
 			RootPanel.getBodyElement().appendChild(menuLayout.getElement());

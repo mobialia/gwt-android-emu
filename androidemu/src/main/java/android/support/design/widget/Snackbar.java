@@ -53,7 +53,8 @@ public class Snackbar {
 		fp.add(label);
 		for (int i = 0; i < actions.size(); i++) {
 			Button button = new Button(actions.get(i));
-			button.setStyleName(Res.R.style().snackbarButton());
+			button.addStyleName(Res.R.style().snackbarButton());
+			button.addStyleName(Res.R.style().controlHighlight());
 
 			final View.OnClickListener listener = listeners.get(i);
 			if (listener != null) {

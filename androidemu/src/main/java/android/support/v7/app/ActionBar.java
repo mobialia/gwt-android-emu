@@ -47,6 +47,7 @@ public class ActionBar {
 		homeItem.setItemId(android.R.id.home);
 
 		actionBarHome.getElement().addClassName(Res.R.style().actionbarHome());
+		actionBarHome.getElement().addClassName(Res.R.style().controlHighlight());
 		actionBarHome.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -86,6 +87,7 @@ public class ActionBar {
 			indicatorImageView = new ImageView(activity);
 			indicatorImageView.setImageResource(indicatorImageRes);
 			indicatorImageView.element.addClassName(Res.R.style().actionbarHomeAsUp());
+			indicatorImageView.element.addClassName(Res.R.style().controlHighlight());
 			view.addView(indicatorImageView);
 		} else {
 			if (indicatorImageView != null) {

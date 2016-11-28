@@ -1,5 +1,6 @@
 package android.support.v7.app;
 
+import android.Res;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
@@ -28,12 +29,12 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	@Override
 	public void onDrawerClosed(View drawerView) {
-		activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbarIndicatorOpened");
+		activity.getSupportActionBar().indicatorImageView.getElement().removeClassName(Res.R.style().actionbarIndicatorOpened());
 	}
 
 	@Override
 	public void onDrawerOpened(View drawerView) {
-		activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbarIndicatorOpened");
+		activity.getSupportActionBar().indicatorImageView.getElement().addClassName(Res.R.style().actionbarIndicatorOpened());
 	}
 
 	public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -69,9 +70,9 @@ public class ActionBarDrawerToggle implements DrawerLayout.DrawerListener {
 
 	public void syncState() {
 		if (drawerLayout.isDrawerOpen(drawerLayout)) {
-			activity.getSupportActionBar().indicatorImageView.getElement().addClassName("actionbarIndicatorOpened");
+			activity.getSupportActionBar().indicatorImageView.getElement().addClassName(Res.R.style().actionbarIndicatorOpened());
 		} else {
-			activity.getSupportActionBar().indicatorImageView.getElement().removeClassName("actionbarIndicatorOpened");
+			activity.getSupportActionBar().indicatorImageView.getElement().removeClassName(Res.R.style().actionbarIndicatorOpened());
 		}
 	}
 }

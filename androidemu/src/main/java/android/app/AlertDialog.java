@@ -129,7 +129,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				count++;
 
 				Button button = new Button(item.toString());
-				button.setStyleName(Res.R.style().dialogItem());
+				button.addStyleName(Res.R.style().dialogItem());
+				button.addStyleName(Res.R.style().controlHighlight());
 				button.addClickHandler(new ClickHandler() {
 
 					@Override
@@ -158,7 +159,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.positiveLabel != null) {
 			okButton = new Button(builder.positiveLabel);
-			okButton.setStyleName(Res.R.style().dialogButton());
+			okButton.addStyleName(Res.R.style().dialogButton());
+			okButton.addStyleName(Res.R.style().controlHighlight());
 			okButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -172,7 +174,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.negativeLabel != null) {
 			cancelButton = new Button(builder.negativeLabel);
-			cancelButton.setStyleName(Res.R.style().dialogButton());
+			cancelButton.addStyleName(Res.R.style().dialogButton());
+			cancelButton.addStyleName(Res.R.style().controlHighlight());
 			cancelButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -186,7 +189,8 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 		if (builder.neutralLabel != null) {
 			neutralButton = new Button(builder.neutralLabel);
-			neutralButton.setStyleName(Res.R.style().dialogButton());
+			neutralButton.addStyleName(Res.R.style().dialogButton());
+			neutralButton.addStyleName(Res.R.style().controlHighlight());
 			neutralButton.addClickHandler(new ClickHandler() {
 				@Override
 				public void onClick(ClickEvent event) {

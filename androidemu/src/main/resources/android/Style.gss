@@ -5,11 +5,42 @@
 @def COLOR_BACKGROUND eval("android.Theme.getColorBackground()");
 @def COLOR_PRIMARY eval("android.Theme.getColorPrimary()");
 @def COLOR_ACCENT eval("android.Theme.getColorAccent()");
-@def COLOR_CONTROL_HIGHLIGHT eval("android.Theme.getColorControlHighlight()");
+@def COLOR_CONTROL_HIGHLIGHT_75 eval("android.Theme.getColorControlHighlight75()");
+@def COLOR_CONTROL_HIGHLIGHT_50 eval("android.Theme.getColorControlHighlight50()");
 
+@external controlHighlight;
 @external actionbarButton;
+@external drawer;
+@external drawerOverlay;
 @external gone;
 @external invisible;
+
+@defmixin pointer() {
+    cursor: pointer;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.controlHighlight {
+   	transition: background 0.5s ease;
+    background: transparent;
+}
+.controlHighlight:hover {
+    background: COLOR_CONTROL_HIGHLIGHT_50;
+}
+@media (hover:on-demand) {
+    .controlHighlight:hover {
+         background: transparent;
+     }
+}
+.controlHighlight:active {
+    background: COLOR_CONTROL_HIGHLIGHT_75;
+   	transition: background 0s ease;
+}
 
 .actionbar {
     color: COLOR_FOREGROUND;
@@ -27,15 +58,7 @@
 .actionbarHome {
     float: left;
 
-    cursor: pointer;
-    user-select: none;
-
-   	transition: background 0.5s ease;
-}
-.actionbarHome:active,
-.actionbarHome:hover
-{
-    background: COLOR_CONTROL_HIGHLIGHT;
+    @mixin pointer();
 }
 
 .actionbarIcon {
@@ -48,13 +71,7 @@
     padding-top: divide(sub(ACTIONBAR_HEIGHT, ACTIONBAR_ICON_SIZE), 2);
     padding-bottom: divide(sub(ACTIONBAR_HEIGHT, ACTIONBAR_ICON_SIZE), 2);
 
-    cursor: pointer;
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    @mixin pointer();
 }
 
 .actionbarTitle {
@@ -73,10 +90,7 @@
     height: 1.4rem;
     pointer-events: none;
 
-    cursor: pointer;
-    user-select: none;
-
-    transition: all 0.5s ease-in-out;
+    @mixin pointer();
 }
 
 .actionbarButton {
@@ -86,20 +100,7 @@
     height: ACTIONBAR_ICON_SIZE;
    	outline: none;
 
-    cursor: pointer;
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-   	transition: background 0.5s ease;
-}
-.actionbarButton:active,
-.actionbarButton:hover
-{
-    background: COLOR_CONTROL_HIGHLIGHT;
+    @mixin pointer();
 }
 
 .menuItem {
@@ -115,14 +116,7 @@
 	border: 0;
    	outline: none;
 
-    cursor: pointer;
-    user-select: none;
-
-   	transition: background 0.5s ease;
-}
-.menuItem:active,
-.menuItem:hover {
-	background: COLOR_CONTROL_HIGHLIGHT;
+    @mixin pointer();
 }
 
 .titlePager {
@@ -140,10 +134,7 @@
 
     border-bottom: 0.3rem solid COLOR_PRIMARY;
 
-    cursor: pointer;
-    user-select: none;
-
-    transition: background 0.5s ease;
+    @mixin pointer();
 }
 .titlePagerElementSelected {
    border-bottom: 0.3rem solid COLOR_ACCENT;
@@ -192,7 +183,6 @@
 
 .dialogItem {
 	color: COLOR_FOREGROUND;
-	background: COLOR_BACKGROUND;
 
 	display: block;
 	font-size: 1.1rem;
@@ -207,11 +197,8 @@
 	border-bottom: 0;
 	border-left: 0;
 	border-radius: 0;
-}
 
-.dialogItem:focus,
-.dialogItem:hover {
-	background: COLOR_CONTROL_HIGHLIGHT;
+	@mixin pointer();
 }
 
 .dialogButtons {
@@ -220,7 +207,6 @@
 
 .dialogButton {
 	color: COLOR_ACCENT;
-	background: COLOR_BACKGROUND;
 
 	text-transform: uppercase;
 	text-align: center;
@@ -229,11 +215,9 @@
 	padding: 0.4rem 0.8rem;
 	min-width: 4rem;
 	border: 0;
-}
+	outline: none;
 
-.dialogButton:focus,
-.dialogButton:hover {
-	background: COLOR_CONTROL_HIGHLIGHT;
+    @mixin pointer();
 }
 
 .snackbar {
@@ -249,7 +233,6 @@
 
 .snackbarButton {
 	color: COLOR_ACCENT;
-	background: COLOR_BACKGROUND;
 
 	text-transform: uppercase;
 	text-align: center;
@@ -258,11 +241,9 @@
 	padding: 0.4rem 0.8rem;
     float: right;
 	border: 0;
-}
+	outline: none;
 
-.snackbarButton:focus,
-.snackbarButton:hover {
-	background: COLOR_CONTROL_HIGHLIGHT;
+    @mixin pointer();
 }
 
 .preferencesFragment {
@@ -314,4 +295,37 @@
 
 .gone {
 	display: none;
+}
+
+.drawerOverlay {
+    display: none;
+    position: fixed;
+    top: ACTIONBAR_HEIGHT;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    background: black;
+}
+.drawerOverlayOpened {
+    opacity: 0.5;
+    display: block;
+}
+
+.drawer {
+    position: fixed;
+    top: ACTIONBAR_HEIGHT;
+    left: -20rem;
+    overflow: auto;
+    width: 20rem;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 1);
+}
+.drawerOpened {
+    left: 0rem;
+}
+
+.actionbarIndicatorOpened {
+    margin-left: -0.5rem;
 }

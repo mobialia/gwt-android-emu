@@ -4,6 +4,8 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface Style extends CssResource {
 
+	String controlHighlight();
+
 	String actionbar();
 
 	String actionbarHome();
@@ -15,6 +17,8 @@ public interface Style extends CssResource {
 	String actionbarHomeAsUp();
 
 	String actionbarButton();
+
+	String actionbarIndicatorOpened();
 
 	String menuItem();
 
@@ -61,4 +65,12 @@ public interface Style extends CssResource {
 	String invisible();
 
 	String gone();
+
+	String drawer();
+
+	String drawerOpened();
+
+	String drawerOverlay();
+
+	String drawerOverlayOpened();
 }
