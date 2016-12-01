@@ -86,7 +86,7 @@ public class ActionBar {
 		if (displayHomeAsUpEnabled) {
 			indicatorImageView = new ImageView(activity);
 			indicatorImageView.setImageResource(indicatorImageRes);
-			indicatorImageView.element.addClassName(Res.R.style().actionbarHomeAsUp());
+			indicatorImageView.element.addClassName(Res.R.style().actionbarIndicator());
 			indicatorImageView.element.addClassName(Res.R.style().controlHighlight());
 			view.addView(indicatorImageView);
 		} else {

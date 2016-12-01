@@ -79,7 +79,17 @@
     padding-right: divide(sub(ACTIONBAR_HEIGHT, ACTIONBAR_ICON_SIZE), 2);
 }
 
-.actionbarHomeAsUp {
+.actionbarButton {
+    margin: 0;
+    padding: divide(sub(ACTIONBAR_HEIGHT, ACTIONBAR_ICON_SIZE), 2);
+    width: ACTIONBAR_ICON_SIZE;
+    height: ACTIONBAR_ICON_SIZE;
+   	outline: none;
+
+    @mixin pointer();
+}
+
+.actionbarIndicator {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -90,17 +100,12 @@
     height: 1.4rem;
     pointer-events: none;
 
+    transition: all 0.3s ease-in-out;
     @mixin pointer();
 }
 
-.actionbarButton {
-    margin: 0;
-    padding: divide(sub(ACTIONBAR_HEIGHT, ACTIONBAR_ICON_SIZE), 2);
-    width: ACTIONBAR_ICON_SIZE;
-    height: ACTIONBAR_ICON_SIZE;
-   	outline: none;
-
-    @mixin pointer();
+.actionbarIndicatorOpened {
+    margin-left: -0.5rem;
 }
 
 .menuItem {
@@ -313,6 +318,7 @@
 }
 
 .drawer {
+    background: rgba(255, 255, 255, 1);
     position: fixed;
     top: ACTIONBAR_HEIGHT;
     left: -20rem;
@@ -320,12 +326,7 @@
     width: 20rem;
     height: 100%;
     transition: all 0.3s ease-in-out;
-    background: rgba(255, 255, 255, 1);
 }
 .drawerOpened {
     left: 0rem;
-}
-
-.actionbarIndicatorOpened {
-    margin-left: -0.5rem;
 }

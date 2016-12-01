@@ -14,9 +14,9 @@ public interface Style extends CssResource {
 
 	String actionbarTitle();
 
-	String actionbarHomeAsUp();
-
 	String actionbarButton();
+
+	String actionbarIndicator();
 
 	String actionbarIndicatorOpened();
 
