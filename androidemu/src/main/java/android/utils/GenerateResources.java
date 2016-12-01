@@ -21,7 +21,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GenerateResources {
-	private static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
+	private final static String NS_ANDROID = "http://schemas.android.com/apk/res/android";
+	private final static String NS_APP = "http://schemas.android.com/apk/res-auto";
+
+	private final static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
 	private Pattern idsPattern = Pattern.compile(".*@" + Pattern.quote("+") + "id/([a-zA-Z0-9_]+).*");
 	private Pattern langPattern = Pattern.compile(".*/values-([a-zA-Z]{2})/.*");
 
@@ -218,6 +221,7 @@ public class GenerateResources {
 			menuClassSB.append("\t\tMenu menu = new Menu();\n");
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			dbFactory.setNamespaceAware(true);
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(xmlFile);
 
@@ -235,23 +239,22 @@ public class GenerateResources {
 					int order = 0;
 					String title = "0";
 
-					if (eElement.hasAttribute("android:id")) {
-						itemId = "R.id." + eElement.getAttribute("android:id").replace("@id/", "").replace("@+id/", "");
+					if (eElement.hasAttributeNS(NS_ANDROID, "id")) {
+						itemId = "R.id." + eElement.getAttributeNS(NS_ANDROID, "id").replace("@id/", "").replace("@+id/", "");
 					}
-					if (eElement.hasAttribute("android:title")) {
-						title = "R.string." + eElement.getAttribute("android:title").replace("@string/", "");
+					if (eElement.hasAttributeNS(NS_ANDROID, "title")) {
+						title = "R.string." + eElement.getAttributeNS(NS_ANDROID, "title").replace("@string/", "");
 					}
 					menuClassSB.append("\t\tMenuItem item" + temp + " = menu.add(" + groupId + ", " + itemId + ", " + order + ", " + title + ");\n");
 
-					if (eElement.hasAttribute("android:icon")) {
-						String icon = eElement.getAttribute("android:icon").replace("@drawable/", "");
+					if (eElement.hasAttributeNS(NS_ANDROID, "icon")) {
+						String icon = eElement.getAttributeNS(NS_ANDROID, "icon").replace("@drawable/", "");
 						menuClassSB.append("\t\titem" + temp + ".setIcon(R.drawable." + icon + ");\n");
 					}
 
-					// TODO NS PREFIX
-					if (eElement.hasAttribute("mobialia:showAsAction")) {
+					if (eElement.hasAttributeNS(NS_APP, "showAsAction")) {
 						int showAsAction = 0;
-						String showAsActionString = eElement.getAttribute("mobialia:showAsAction");
+						String showAsActionString = eElement.getAttributeNS(NS_APP, "showAsAction");
 						if ("always".equals(showAsActionString)) {
 							showAsAction = MenuItem.SHOW_AS_ACTION_ALWAYS;
 						} else if ("never".equals(showAsActionString)) {
