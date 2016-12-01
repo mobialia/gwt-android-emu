@@ -302,10 +302,24 @@
 	display: none;
 }
 
+.drawer {
+    background: rgba(255, 255, 255, 1);
+    position: fixed;
+    top: 0;
+    left: -20rem;
+    overflow: auto;
+    width: 20rem;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.drawerOpened {
+    left: 0rem;
+}
+
 .drawerOverlay {
     display: none;
     position: fixed;
-    top: ACTIONBAR_HEIGHT;
+    top: 0;
     left: 0;
     bottom: 0;
     right: 0;
@@ -315,18 +329,4 @@
 .drawerOverlayOpened {
     opacity: 0.5;
     display: block;
-}
-
-.drawer {
-    background: rgba(255, 255, 255, 1);
-    position: fixed;
-    top: ACTIONBAR_HEIGHT;
-    left: -20rem;
-    overflow: auto;
-    width: 20rem;
-    height: 100%;
-    transition: all 0.3s ease-in-out;
-}
-.drawerOpened {
-    left: 0rem;
 }

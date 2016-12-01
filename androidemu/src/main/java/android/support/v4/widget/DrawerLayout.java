@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 public class DrawerLayout extends ViewGroup {
 
@@ -40,12 +42,14 @@ public class DrawerLayout extends ViewGroup {
 				}
 			}
 		}
-		drawerOverlay.setOnClickListener(new OnClickListener() {
+
+		Event.setEventListener(element, new EventListener() {
 			@Override
-			public void onClick(View v) {
+			public void onBrowserEvent(Event event) {
 				closeDrawer(0);
 			}
 		});
+		Event.sinkEvents(element, Event.ONMOUSEDOWN | Event.ONCLICK | Event.ONTOUCHSTART);
 		closeDrawer(0);
 	}
 
