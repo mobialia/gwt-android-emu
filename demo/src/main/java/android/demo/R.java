@@ -16,15 +16,12 @@ public class R {
 		public final static int ActivityButton = 9;
 		public final static int SnackBarButton = 10;
 	}
-
 	public static final class color {
 	}
-
 	public static final class drawable {
-		public final static int actionbar_add = 1;
+		public final static int ic_add = 1;
 		public final static int icon = 2;
 	}
-
 	public static final class string {
 		public final static int activity1 = 1;
 		public final static int hello = 2;
@@ -48,16 +45,13 @@ public class R {
 		public final static int snackbar_text = 20;
 		public final static int snackbar_action = 21;
 	}
-
 	public static final class array {
 		public final static int array1 = 1;
 	}
-
 	public static final class menu {
 		public final static int demo_menu = 1;
 		public final static int fragment_menu = 2;
 	}
-
 	public static final class layout {
 		public final static int main = 1;
 		public final static int demo_fragment_activity = 2;

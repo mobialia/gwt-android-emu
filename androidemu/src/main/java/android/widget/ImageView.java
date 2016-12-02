@@ -17,7 +17,7 @@ public class ImageView extends View {
 	}
 
 	public void setImageResource(int imageId) {
-		element.setAttribute("src", "img/" + Context.resources.getDrawable(imageId) + ".png");
+		element.setAttribute("src", "img/" + Context.resources.getDrawable(imageId));
 	}
 
 }

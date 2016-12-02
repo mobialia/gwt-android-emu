@@ -3,11 +3,12 @@
  */
 package android.demo.res;
 
-import android.demo.R;
 import android.view.Menu;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
+
+import android.demo.R;
 
 public class Resources extends android.content.res.Resources {
 
@@ -40,7 +41,6 @@ public class Resources extends android.content.res.Resources {
 		}
 		return super.getIdAsString(id);
 	}
-
 	public String getString(int id) {
 		switch (id) {
 			case R.string.activity1:
@@ -88,7 +88,6 @@ public class Resources extends android.content.res.Resources {
 		}
 		return super.getString(id);
 	}
-
 	public String[] getStringArray(int id) {
 		switch (id) {
 			case R.array.array1:
@@ -96,7 +95,6 @@ public class Resources extends android.content.res.Resources {
 		}
 		return super.getStringArray(id);
 	}
-
 	public Menu getMenu(int id) {
 		switch (id) {
 			case R.menu.demo_menu:
@@ -106,23 +104,20 @@ public class Resources extends android.content.res.Resources {
 		}
 		return super.getMenu(id);
 	}
-
 	public int getColor(int id) {
 		switch (id) {
 		}
 		return super.getColor(id);
 	}
-
 	public String getDrawable(int id) {
 		switch (id) {
-			case R.drawable.actionbar_add:
-				return "actionbar_add";
+			case R.drawable.ic_add:
+				return "ic_add.svg";
 			case R.drawable.icon:
-				return "icon";
+				return "icon.png";
 		}
 		return super.getDrawable(id);
 	}
-
 	public Widget getLayout(int id) {
 		switch (id) {
 			case R.layout.main:

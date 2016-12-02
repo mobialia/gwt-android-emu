@@ -15,12 +15,11 @@ public class ActionBar {
 	static final String TAG = "ActionBar";
 
 	Activity activity;
-	public ImageView indicatorImageView;
-	int indicatorImageRes = android.R.drawable.actionbar_indicator_back;
+	int homeImageRes = android.R.drawable.actionbar_indicator_back;
 	boolean displayHomeAsUpEnabled = false;
 
 	LinearLayout view;
-	LinearLayout actionBarHome;
+	public ImageView actionBarHome;
 	LinearLayout menuItems;
 
 	TextView titleView;
@@ -34,7 +33,7 @@ public class ActionBar {
 		view.getElement().setId("ActionBar");
 		view.getElement().addClassName(Res.R.style().actionbar());
 
-		actionBarHome = new LinearLayout(activity);
+		actionBarHome = new ImageView(activity);
 		view.addView(actionBarHome);
 
 		menuItems = new LinearLayout(activity);
@@ -54,15 +53,11 @@ public class ActionBar {
 				onHomeAction();
 			}
 		});
-
-		ImageView img = new ImageView(activity);
-		img.getElement().addClassName(Res.R.style().actionbarIcon());
-		img.setImageResource(homeItem.getIcon());
-		actionBarHome.addView(img);
+		actionBarHome.setVisibility(View.GONE);
 
 		titleView = new TextView(activity);
 		titleView.getElement().addClassName(Res.R.style().actionbarTitle());
-		actionBarHome.addView(titleView);
+		view.addView(titleView);
 	}
 
 	private void onHomeAction() {
@@ -84,15 +79,11 @@ public class ActionBar {
 		this.displayHomeAsUpEnabled = displayHomeAsUpEnabled;
 
 		if (displayHomeAsUpEnabled) {
-			indicatorImageView = new ImageView(activity);
-			indicatorImageView.setImageResource(indicatorImageRes);
-			indicatorImageView.element.addClassName(Res.R.style().actionbarIndicator());
-			indicatorImageView.element.addClassName(Res.R.style().controlHighlight());
-			view.addView(indicatorImageView);
+			actionBarHome.setImageResource(homeImageRes);
+			actionBarHome.setVisibility(View.VISIBLE);
 		} else {
-			if (indicatorImageView != null) {
-				indicatorImageView.getElement().removeFromParent();
-				indicatorImageView = null;
+			if (actionBarHome != null) {
+				actionBarHome.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -102,9 +93,7 @@ public class ActionBar {
 	}
 
 	public void setHomeAsUpIndicator(int resId) {
-		this.indicatorImageRes = resId;
-		if (indicatorImageView != null) {
-			indicatorImageView.setImageResource(indicatorImageRes);
-		}
+		this.homeImageRes = resId;
+		actionBarHome.setImageResource(homeImageRes);
 	}
 }

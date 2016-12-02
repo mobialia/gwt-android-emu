@@ -39,11 +39,11 @@ public class Resources {
 	public String getDrawable(int id) {
 		switch (id) {
 			case android.R.drawable.actionbar_menu:
-				return "actionbar_menu";
+				return "ic_menu.svg";
 			case android.R.drawable.actionbar_indicator_back:
-				return "actionbar_indicator_back";
+				return "ic_indicator_back.svg";
 			case android.R.drawable.ic_drawer:
-				return "ic_drawer";
+				return "ic_drawer.svg";
 		}
 		return null;
 	}

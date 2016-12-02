@@ -10,15 +10,11 @@ public interface Style extends CssResource {
 
 	String actionbarHome();
 
-	String actionbarIcon();
+	String actionbarHomeOpened();
 
 	String actionbarTitle();
 
 	String actionbarButton();
-
-	String actionbarIndicator();
-
-	String actionbarIndicatorOpened();
 
 	String menuItem();
 

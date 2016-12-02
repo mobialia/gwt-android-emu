@@ -32,24 +32,24 @@ public class GenerateResources {
 
 	String packageName;
 
-	ArrayList<String> idsInClass = new ArrayList<String>();
+	ArrayList<String> idsInClass = new ArrayList<>();
 
-	ArrayList<String> drawableIdsInClass = new ArrayList<String>();
+	HashMap<String, String> drawableIdsInClass = new HashMap<>();
 
 	StringBuffer menuClassSB = new StringBuffer();
-	ArrayList<String> menuIdsInClass = new ArrayList<String>();
+	ArrayList<String> menuIdsInClass = new ArrayList<>();
 
-	HashMap<String, StringBuffer> stringPropertiesSBMap = new HashMap<String, StringBuffer>();
-	ArrayList<String> stringIdsInClass = new ArrayList<String>();
+	HashMap<String, StringBuffer> stringPropertiesSBMap = new HashMap<>();
+	ArrayList<String> stringIdsInClass = new ArrayList<>();
 	StringBuffer stringClassSB = new StringBuffer();
 
-	HashMap<String, StringBuffer> arrayPropertiesSBMap = new HashMap<String, StringBuffer>();
-	ArrayList<String> arrayIdsInClass = new ArrayList<String>();
+	HashMap<String, StringBuffer> arrayPropertiesSBMap = new HashMap<>();
+	ArrayList<String> arrayIdsInClass = new ArrayList<>();
 	StringBuffer arrayClassSB = new StringBuffer();
 
-	ArrayList<String> layouts = new ArrayList<String>();
+	ArrayList<String> layouts = new ArrayList<>();
 
-	HashMap<String, String> colors = new HashMap<String, String>();
+	HashMap<String, String> colors = new HashMap<>();
 
 	public GenerateResources(String packageName) {
 		this.packageName = packageName;
@@ -199,10 +199,39 @@ public class GenerateResources {
 	}
 
 	public void processDrawable(String fileName) {
+		String id = null;
+		String fileNameSort = null;
+
 		File file = new File(fileName);
-		String str = file.getName().replace(".png", "");
-		if (!drawableIdsInClass.contains(str)) {
-			drawableIdsInClass.add(str);
+		if (file.getName().contains(".png")) {
+			id = file.getName().replace(".png", "");
+			fileNameSort = file.getName();
+
+		} else if (file.getName().contains(".xml")) {
+
+			// Process only vector images
+			boolean isVector = false;
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = br.readLine()) != null) {
+					if (line.contains("<vector")) {
+						isVector = true;
+					}
+				}
+				br.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (!isVector) {
+				return;
+			}
+			// HTML undestands SVG
+			id = file.getName().replace(".xml", "");
+			fileNameSort = id + ".svg";
+		}
+		if (!drawableIdsInClass.keySet().contains(id)) {
+			drawableIdsInClass.put(id, fileNameSort);
 		}
 	}
 
@@ -342,8 +371,8 @@ public class GenerateResources {
 
 		// DRAWABLES
 		counter = 1;
-		for (String str : drawableIdsInClass) {
-			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + str + "\";\n");
+		for (String str : drawableIdsInClass.keySet()) {
+			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + drawableIdsInClass.get(str) + "\";\n");
 			drawableIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
@@ -516,7 +545,9 @@ public class GenerateResources {
 			if (fileName.endsWith(".png")) {
 				processDrawable(fileName);
 			} else if (fileName.endsWith(".xml")) {
-				if (fileName.contains("/menu/")) {
+				if (fileName.contains("/drawable")) {
+					processDrawable(fileName);
+				} else if (fileName.contains("/menu/")) {
 					processMenuFile(fileName);
 				} else {
 					processLangFile(fileName);
