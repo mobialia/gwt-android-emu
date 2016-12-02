@@ -42,14 +42,12 @@ public class DrawerLayout extends ViewGroup {
 				}
 			}
 		}
-
-		Event.setEventListener(element, new EventListener() {
+		drawerOverlay.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onBrowserEvent(Event event) {
+			public void onClick(View v) {
 				closeDrawer(0);
 			}
 		});
-		Event.sinkEvents(element, Event.ONMOUSEDOWN | Event.ONCLICK | Event.ONTOUCHSTART);
 		closeDrawer(0);
 	}
 
