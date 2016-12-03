@@ -1,6 +1,7 @@
 package android.support.v4.widget;
 
 import android.Res;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,8 +10,7 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 
 public class DrawerLayout extends ViewGroup {
-
-	static final String TAG = "DrawerLayout";
+	static final String TAG = DrawerLayout.class.getSimpleName();
 
 	public static interface DrawerListener {
 
@@ -29,16 +29,13 @@ public class DrawerLayout extends ViewGroup {
 
 	public DrawerLayout(Element element) {
 		super(element);
-		int counter = 0;
 		for (int i = 0; i < element.getChildCount(); i++) {
-			if (element.getChild(i).getNodeName().equals("DIV")) {
-				switch (++counter) {
-					case 2:
-						drawerOverlay = new View((Element) element.getChild(i));
-						break;
-					case 3:
-						drawer = new View((Element) element.getChild(i));
-						break;
+			if (element.getChild(i) instanceof Element) {
+				Element child = (Element) element.getChild(i);
+				if ("DrawerOverLay".equals(child.getId())) {
+					drawerOverlay = new View(child);
+				} else if ("Drawer".equals(child.getId())) {
+					drawer = new View(child);
 				}
 			}
 		}
