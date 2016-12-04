@@ -1,4 +1,4 @@
-@def ACTIONBAR_HEIGHT 3.2rem;
+@def ACTIONBAR_HEIGHT 3.4rem;
 @def ACTIONBAR_ICON_SIZE 2.2rem;
 
 @def COLOR_FOREGROUND eval("android.Theme.getColorForeground()");
