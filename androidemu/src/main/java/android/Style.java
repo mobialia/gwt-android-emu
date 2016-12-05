@@ -18,17 +18,19 @@ public interface Style extends CssResource {
 
 	String menuItem();
 
-	String titlePager();
+	String pagerTitle();
 
-	String titlePagerElement();
+	String pagerTitleElement();
 
-	String titlePagerElementSelected();
+	String pagerTitleElementSelected();
 
 	String dialog();
 
 	String toast();
 
 	String dialogTitle();
+
+	String dialogContent();
 
 	String dialogMessage();
 

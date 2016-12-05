@@ -12,6 +12,9 @@
 @external actionbarButton;
 @external drawer;
 @external drawerOverlay;
+@external pagerTitle;
+@external pagerTitleElement;
+@external pagerTitleElementSelected;
 @external gone;
 @external invisible;
 
@@ -101,12 +104,12 @@
     @mixin pointer();
 }
 
-.titlePager {
+.pagerTitle {
     display: table;
     width: 100%;
 }
 
-.titlePagerElement {
+.pagerTitleElement {
     color: COLOR_FOREGROUND;
     background: COLOR_PRIMARY;
     display: table-cell;
@@ -118,8 +121,17 @@
 
     @mixin pointer();
 }
-.titlePagerElementSelected {
-   border-bottom: 0.3rem solid COLOR_ACCENT;
+.pagerTitleElementSelected {
+    color: COLOR_FOREGROUND;
+    background: COLOR_PRIMARY;
+    display: table-cell;
+    height: sub(ACTIONBAR_HEIGHT, 0.3rem);
+    text-align: center;
+    vertical-align: middle;
+
+    border-bottom: 0.3rem solid COLOR_ACCENT;
+
+    @mixin pointer();
 }
 
 .toast {
@@ -140,6 +152,8 @@
 	background: COLOR_BACKGROUND;
 
 	min-width: 20rem;
+	max-width: 95%;
+	overflow: auto;
 
 	border: none;
 	border-radius: 0;
@@ -154,6 +168,10 @@
 	font-size: 1.4rem;
 	margin: 0 auto;
 	padding: 0.8rem;
+}
+
+.dialogContent {
+    overflow: auto;
 }
 
 .dialogMessage {

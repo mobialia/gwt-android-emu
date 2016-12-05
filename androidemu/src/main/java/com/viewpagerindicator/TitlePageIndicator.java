@@ -53,9 +53,9 @@ public class TitlePageIndicator extends ViewGroup implements PageIndicator {
 	public void onPageSelected(int position) {
 		for (int i = 0; i < getChildCount(); i++) {
 			if (i == position) {
-				getChildAt(i).element.addClassName(Res.R.style().titlePagerElementSelected());
+				getChildAt(i).element.setClassName(Res.R.style().pagerTitleElementSelected());
 			} else {
-				getChildAt(i).element.removeClassName(Res.R.style().titlePagerElementSelected());
+				getChildAt(i).element.setClassName(Res.R.style().pagerTitleElement());
 			}
 		}
 	}
@@ -78,13 +78,14 @@ public class TitlePageIndicator extends ViewGroup implements PageIndicator {
 
 	@Override
 	protected void onDraw(Canvas c) {
-		element.addClassName(Res.R.style().titlePager());
+		element.addClassName(Res.R.style().pagerTitle());
 		element.removeAllChildren();
 		for (int i = 0; i < mViewPager.getAdapter().getCount(); i++) {
 			TextView b = new TextView((Context) null);
-			b.element.addClassName(Res.R.style().titlePagerElement());
 			if (i == mViewPager.getCurrentItem()) {
-				b.element.addClassName(Res.R.style().titlePagerElementSelected());
+				b.element.setClassName(Res.R.style().pagerTitleElementSelected());
+			} else {
+				b.element.setClassName(Res.R.style().pagerTitleElement());
 			}
 			b.setText(mViewPager.getAdapter().getPageTitle(i).toString());
 			addView(b);

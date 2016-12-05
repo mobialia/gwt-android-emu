@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -117,6 +118,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		fp.add(titleLabelContainer);
 
 		contentPanel = new FlowPanel();
+		contentPanel.addStyleName(Res.R.style().dialogContent());
 		fp.add(contentPanel);
 
 		setTitle(builder.title);
@@ -254,5 +256,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		if (popupPanel.isShowing()) {
 			popupPanel.center();
 		}
+	}
+
+	public void show() {
+		// TODO Couldn't achieve the vertical scroll in the AlertDialog with CSS
+		contentPanel.getElement().getStyle().setProperty("max-height", ((int) (Window.getClientHeight() * 0.75)) + "px");
+		super.show();
 	}
 }
