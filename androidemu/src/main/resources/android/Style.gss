@@ -17,6 +17,10 @@
 @external pagerTitleElementSelected;
 @external gone;
 @external invisible;
+@external materialLabel;
+@external materialInput;
+@external materialSelect;
+@external materialCheckbox;
 
 @defmixin pointer() {
     cursor: pointer;
@@ -264,11 +268,9 @@
 }
 
 .preferencesElement {
-	border-top: 0;
-	border-right: 0;
+    display: block;
+    padding: 0.3rem;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.34);
-	border-left: 0;
-	border-radius: 0;
 }
 
 .preferencesLabel {
@@ -286,7 +288,6 @@
 
 .preferencesCheckBox {
 	float: right;
-	font-size: 1.3rem;
 }
 
 .invisible {
@@ -324,4 +325,82 @@
 .drawerOverlayOpened {
     opacity: 0.5;
     display: block;
+}
+
+.materialLabel {
+	@mixin pointer();
+}
+
+.materialInput {
+    font-size: 1.3rem;
+    margin: 0.2rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.2rem;
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 0.2rem solid #757575;
+    box-shadow: none;
+}
+.materialInput:focus {
+    outline:none;
+    border-bottom: 0.2rem solid COLOR_ACCENT;
+}
+.materialInput:disabled {
+    color: #bbbbbb;
+    outline:none;
+    border-bottom: 0.2rem solid #757575;
+}
+.materialSelect {
+	-webkit-appearance: none;
+    -moz-appearance:none;
+    font-size: 1.1rem;
+    background: transparent url("img/ic_spinner_vector.svg") no-repeat center right;
+    margin: 0.2rem;
+    padding: 0.5rem 1.5rem 0.5rem 0.25rem;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #757575;
+    box-shadow: none;
+}
+.materialSelect:focus {
+    outline:none;
+    border-bottom: 2px solid COLOR_ACCENT;
+}
+.materialSelect:disabled {
+    color: #bbbbbb;
+}
+.materialSelect option {
+	background-color: #444444;
+}
+
+.materialLabel input[type="checkbox"] {
+	display: none;
+}
+.materialLabel .materialCheckbox {
+    position: relative;
+    top: 0.5rem;
+	height: 1.1rem;
+	width: 1.1rem;
+	margin: 0.2rem;
+    border: 0.2rem solid COLOR_ACCENT;
+    border-radius: 0.3rem;
+    display: inline-block;
+    transition: 240ms;
+}
+.materialLabel :checked + .materialCheckbox {
+    background-color: COLOR_ACCENT;
+}
+.materialLabel :checked + .materialCheckbox:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: relative;
+    left: 0.25rem;
+    top: -0.2rem;
+    display: table;
+    width: 0.5rem;
+    height: 1rem;
+    border: 0.2rem solid #111111;
+    border-top: 0;
+    border-left: 0;
+    content: '';
 }

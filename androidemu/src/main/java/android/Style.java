@@ -71,4 +71,12 @@ public interface Style extends CssResource {
 	String drawerOverlay();
 
 	String drawerOverlayOpened();
+
+	String materialLabel();
+
+	String materialInput();
+
+	String materialSelect();
+
+	String materialCheckbox();
 }

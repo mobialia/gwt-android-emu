@@ -35,11 +35,12 @@ public class PreferencesBuilder {
 										 final String[] values, String[] labels, String defaultValue) {
 		String value = sharedPrefs.getString(key, defaultValue);
 
-		Element fpE = DOM.createDiv();
-		fpE.addClassName(Res.R.style().preferencesElement());
+		Element inputLabel = DOM.createLabel();
+		inputLabel.addClassName(Res.R.style().preferencesElement());
 
 		final Element listBoxE = DOM.createSelect();
 		listBoxE.addClassName(Res.R.style().preferencesListBox());
+		listBoxE.addClassName(Res.R.style().materialSelect());
 		int selectedPosition = MobialiaUtil.arrayPosition(values, value);
 		int i = 0;
 		for (String text : labels) {
@@ -59,19 +60,19 @@ public class PreferencesBuilder {
 			}
 		});
 		Event.sinkEvents(listBoxE, Event.ONCHANGE);
-		fpE.appendChild(listBoxE);
+		inputLabel.appendChild(listBoxE);
 
 		Element labelG = DOM.createDiv();
 		labelG.addClassName(Res.R.style().preferencesLabel());
 		labelG.setInnerHTML(label);
-		fpE.appendChild(labelG);
+		inputLabel.appendChild(labelG);
 
 		Element summaryG = DOM.createDiv();
 		summaryG.addClassName(Res.R.style().preferencesSummary());
 		summaryG.setInnerHTML(summary);
-		fpE.appendChild(summaryG);
+		inputLabel.appendChild(summaryG);
 
-		panel.appendChild(fpE);
+		panel.appendChild(inputLabel);
 	}
 
 	public static void addBooleanPreference(Element panel, final SharedPreferences sharedPrefs, final String key, int label, int summary,
@@ -84,15 +85,31 @@ public class PreferencesBuilder {
 											boolean defaultValue) {
 		Boolean value = sharedPrefs.getBoolean(key, defaultValue);
 
-		Element fpE = DOM.createDiv();
-		fpE.addClassName(Res.R.style().preferencesElement());
+		Element inputLabel = DOM.createLabel();
+		inputLabel.addClassName(Res.R.style().materialLabel());
+		inputLabel.addClassName(Res.R.style().preferencesElement());
 
 		final Element checkBox = DOM.createInputCheck();
-		checkBox.addClassName(Res.R.style().preferencesCheckBox());
 		if (value) {
 			checkBox.setPropertyString("checked", "true");
 		}
-		Event.setEventListener(checkBox, new EventListener() {
+		inputLabel.appendChild(checkBox);
+		final Element checkboxSymbol = DOM.createDiv();
+		checkboxSymbol.addClassName(Res.R.style().materialCheckbox());
+		checkboxSymbol.addClassName(Res.R.style().preferencesCheckBox());
+		inputLabel.appendChild(checkboxSymbol);
+
+		Element labelG = DOM.createDiv();
+		labelG.addClassName(Res.R.style().preferencesLabel());
+		labelG.setInnerHTML(label);
+		inputLabel.appendChild(labelG);
+
+		Element summaryG = DOM.createDiv();
+		summaryG.addClassName(Res.R.style().preferencesSummary());
+		summaryG.setInnerHTML(summary);
+		inputLabel.appendChild(summaryG);
+
+		Event.setEventListener(inputLabel, new EventListener() {
 			@Override
 			public void onBrowserEvent(Event event) {
 				SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -100,19 +117,8 @@ public class PreferencesBuilder {
 				editor.commit();
 			}
 		});
-		Event.sinkEvents(checkBox, Event.ONCLICK | Event.ONTOUCHEND);
-		fpE.appendChild(checkBox);
+		Event.sinkEvents(inputLabel, Event.ONCLICK | Event.ONTOUCHEND);
 
-		Element labelG = DOM.createDiv();
-		labelG.addClassName(Res.R.style().preferencesLabel());
-		labelG.setInnerHTML(label);
-		fpE.appendChild(labelG);
-
-		Element summaryG = DOM.createDiv();
-		summaryG.addClassName(Res.R.style().preferencesSummary());
-		summaryG.setInnerHTML(summary);
-		fpE.appendChild(summaryG);
-
-		panel.appendChild(fpE);
+		panel.appendChild(inputLabel);
 	}
 }
