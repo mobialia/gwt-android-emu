@@ -79,4 +79,6 @@ public interface Style extends CssResource {
 	String materialSelect();
 
 	String materialCheckbox();
+
+	String materialRadio();
 }

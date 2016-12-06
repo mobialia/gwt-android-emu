@@ -21,6 +21,7 @@
 @external materialInput;
 @external materialSelect;
 @external materialCheckbox;
+@external materialRadio;
 
 @defmixin pointer() {
     cursor: pointer;
@@ -328,6 +329,7 @@
 }
 
 .materialLabel {
+    padding: 0.3rem;
 	@mixin pointer();
 }
 
@@ -385,10 +387,10 @@
     border: 0.2rem solid COLOR_ACCENT;
     border-radius: 0.3rem;
     display: inline-block;
-    transition: 240ms;
+   	transition: background 0.3s ease;
 }
 .materialLabel :checked + .materialCheckbox {
-    background-color: COLOR_ACCENT;
+    background: COLOR_ACCENT;
 }
 .materialLabel :checked + .materialCheckbox:after {
     -webkit-transform: rotate(45deg);
@@ -403,4 +405,32 @@
     border-top: 0;
     border-left: 0;
     content: '';
+}
+
+.materialLabel input[type="radio"] {
+	display: none;
+}
+.materialLabel .materialRadio {
+    position: relative;
+    top: 0.5rem;
+	height: 1.1rem;
+	width: 1.1rem;
+	margin: 0.2rem;
+    border: 0.2rem solid COLOR_ACCENT;
+    border-radius: 5.5rem;
+    display: inline-block;
+}
+.materialLabel .materialRadio:after {
+    position: relative;
+    left: 0.25rem;
+    top: 0.25rem;
+    display: table;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 0.3rem;
+   	transition: background 0.3s ease;
+    content: '';
+}
+.materialLabel :checked + .materialRadio:after {
+    background: COLOR_ACCENT;
 }
