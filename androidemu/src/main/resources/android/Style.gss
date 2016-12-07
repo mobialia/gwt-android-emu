@@ -8,6 +8,10 @@
 @def COLOR_CONTROL_HIGHLIGHT_75 eval("android.Theme.getColorControlHighlight75()");
 @def COLOR_CONTROL_HIGHLIGHT_50 eval("android.Theme.getColorControlHighlight50()");
 
+@def COLOR_INPUT_TEXT #fff;
+@def COLOR_INPUT_DISABLED #bbbbbb;
+@def COLOR_INPUT_BASELINE #757575;
+
 @external controlHighlight;
 @external actionbarButton;
 @external drawer;
@@ -334,13 +338,13 @@
 }
 
 .materialInput {
+    color: COLOR_INPUT_TEXT;
     font-size: 1.3rem;
     margin: 0.2rem;
     padding: 0.25rem 0.25rem 0.25rem 0.2rem;
     background: transparent;
-    color: white;
     border: none;
-    border-bottom: 0.2rem solid #757575;
+    border-bottom: 0.2rem solid COLOR_INPUT_BASELINE;
     box-shadow: none;
 }
 .materialInput:focus {
@@ -348,20 +352,18 @@
     border-bottom: 0.2rem solid COLOR_ACCENT;
 }
 .materialInput:disabled {
-    color: #bbbbbb;
-    outline:none;
-    border-bottom: 0.2rem solid #757575;
+    color: COLOR_INPUT_DISABLED;
 }
 .materialSelect {
+    color: COLOR_INPUT_TEXT;
 	-webkit-appearance: none;
     -moz-appearance:none;
     font-size: 1.1rem;
     background: transparent url("img/ic_spinner_vector.svg") no-repeat center right;
     margin: 0.2rem;
     padding: 0.5rem 1.5rem 0.5rem 0.25rem;
-    color: white;
     border: none;
-    border-bottom: 2px solid #757575;
+    border-bottom: 2px solid COLOR_INPUT_BASELINE;
     box-shadow: none;
 }
 .materialSelect:focus {
@@ -369,7 +371,7 @@
     border-bottom: 2px solid COLOR_ACCENT;
 }
 .materialSelect:disabled {
-    color: #bbbbbb;
+    color: COLOR_INPUT_DISABLED;
 }
 .materialSelect option {
 	background-color: #444444;
@@ -391,6 +393,12 @@
 }
 .materialLabel :checked + .materialCheckbox {
     background: COLOR_ACCENT;
+}
+.materialLabel :disabled + .materialCheckbox {
+    border: 0.2rem solid COLOR_INPUT_DISABLED;
+}
+.materialLabel :checked:disabled + .materialCheckbox {
+    background: COLOR_INPUT_DISABLED;
 }
 .materialLabel :checked + .materialCheckbox:after {
     -webkit-transform: rotate(45deg);
@@ -420,6 +428,9 @@
     border-radius: 5.5rem;
     display: inline-block;
 }
+.materialLabel :disabled + .materialRadio {
+    border: 0.2rem solid COLOR_INPUT_DISABLED;
+}
 .materialLabel .materialRadio:after {
     position: relative;
     left: 0.25rem;
@@ -433,4 +444,7 @@
 }
 .materialLabel :checked + .materialRadio:after {
     background: COLOR_ACCENT;
+}
+.materialLabel :checked:disabled + .materialRadio:after {
+    background: COLOR_INPUT_DISABLED;
 }
