@@ -9,8 +9,8 @@
 @def COLOR_CONTROL_HIGHLIGHT_50 eval("android.Theme.getColorControlHighlight50()");
 
 @def COLOR_INPUT_TEXT #fff;
-@def COLOR_INPUT_DISABLED #bbbbbb;
-@def COLOR_INPUT_BASELINE #757575;
+@def COLOR_INPUT_DISABLED #ccc;
+@def COLOR_INPUT_BASELINE #888;
 
 @external controlHighlight;
 @external actionbarButton;
