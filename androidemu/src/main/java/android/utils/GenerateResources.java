@@ -25,26 +25,24 @@ public class GenerateResources {
 	private final static String NS_APP = "http://schemas.android.com/apk/res-auto";
 
 	private final static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
-	private Pattern idsPattern = Pattern.compile(".*@" + Pattern.quote("+") + "id/([a-zA-Z0-9_]+).*");
+	private Pattern idsPattern = Pattern.compile("\\s*(?i)id\\s*=\\s*(\\\"([^\"]*\\\")|'[^']*'|([^'\">\\s]+))");
 	private Pattern langPattern = Pattern.compile(".*/values-([a-zA-Z]{2})/.*");
-
 	private Pattern layoutPattern = Pattern.compile(".*public [a-zA-Z0-9_]+ ([a-zA-Z0-9_]+)" + Pattern.quote("(") + Pattern.quote(")") + ".*");
 
 	String packageName;
 
-	ArrayList<String> idsInClass = new ArrayList<>();
-
-	HashMap<String, String> drawableIdsInClass = new HashMap<>();
+	ArrayList<String> ids = new ArrayList<>();
+	HashMap<String, String> drawableIds = new HashMap<>();
 
 	StringBuffer menuClassSB = new StringBuffer();
-	ArrayList<String> menuIdsInClass = new ArrayList<>();
+	ArrayList<String> menuIds = new ArrayList<>();
 
 	HashMap<String, StringBuffer> stringPropertiesSBMap = new HashMap<>();
-	ArrayList<String> stringIdsInClass = new ArrayList<>();
+	ArrayList<String> stringIds = new ArrayList<>();
 	StringBuffer stringClassSB = new StringBuffer();
 
 	HashMap<String, StringBuffer> arrayPropertiesSBMap = new HashMap<>();
-	ArrayList<String> arrayIdsInClass = new ArrayList<>();
+	ArrayList<String> arrayIds = new ArrayList<>();
 	StringBuffer arrayClassSB = new StringBuffer();
 
 	ArrayList<String> layouts = new ArrayList<>();
@@ -57,44 +55,6 @@ public class GenerateResources {
 		menuClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport " + packageName + ".R;\n\npublic class Menus {\n");
 		stringClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Strings extends Constants {\n");
 		arrayClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Arrays extends Constants {\n");
-	}
-
-	public void getIdsFromFile(String fileName) {
-
-		System.out.println("Getting Ids from file " + fileName + "...");
-
-		try {
-			File file = new File(fileName);
-
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			String line;
-			while ((line = br.readLine()) != null) {
-				Matcher matcher = idsPattern.matcher(line);
-
-				String id;
-
-				while (matcher.find()) {
-					id = matcher.group(1);
-
-					boolean found = false;
-					for (String s : idsInClass) {
-						if (s.equals(id)) {
-							found = true;
-							break;
-						}
-					}
-
-					if (!found) {
-						System.out.println("Adding id " + id);
-						idsInClass.add(id);
-					}
-				}
-			}
-			br.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void processLangFile(String fileName) {
@@ -137,9 +97,9 @@ public class GenerateResources {
 					String value = eElement.getTextContent().replace("\n", "");
 					stringPropertiesSB.append(key).append(" = ").append(value).append("\n");
 					// Avoids duplicated class methods in multi-language
-					if (!stringIdsInClass.contains(key)) {
+					if (!stringIds.contains(key)) {
 						stringClassSB.append("\tString ").append(key).append("();\n");
-						stringIdsInClass.add(key);
+						stringIds.add(key);
 					}
 				}
 			}
@@ -167,9 +127,9 @@ public class GenerateResources {
 
 					arrayPropertiesSB.append(key).append(" = ").append(valueSb.toString()).append("\n");
 					// Avoids duplicated class methods in multi-language
-					if (!arrayIdsInClass.contains(key)) {
+					if (!arrayIds.contains(key)) {
 						arrayClassSB.append("\tString[] ").append(key).append("();\n");
-						arrayIdsInClass.add(key);
+						arrayIds.add(key);
 					}
 				}
 			}
@@ -189,49 +149,12 @@ public class GenerateResources {
 				if (node.getNodeType() == Node.ELEMENT_NODE
 						&& "id".equals(((Element) node).getAttribute("type"))) {
 					Element element = (Element) node;
-					idsInClass.add(element.getAttribute("name"));
+					ids.add(element.getAttribute("name"));
 				}
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-
-	public void processDrawable(String fileName) {
-		String id = null;
-		String fileNameSort = null;
-
-		File file = new File(fileName);
-		if (file.getName().contains(".png")) {
-			id = file.getName().replace(".png", "");
-			fileNameSort = file.getName();
-
-		} else if (file.getName().contains(".xml")) {
-
-			// Process only vector images
-			boolean isVector = false;
-			try {
-				BufferedReader br = new BufferedReader(new FileReader(file));
-				String line;
-				while ((line = br.readLine()) != null) {
-					if (line.contains("<vector")) {
-						isVector = true;
-					}
-				}
-				br.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if (!isVector) {
-				return;
-			}
-			// HTML undestands SVG
-			id = file.getName().replace(".xml", "");
-			fileNameSort = id + ".svg";
-		}
-		if (!drawableIdsInClass.keySet().contains(id)) {
-			drawableIdsInClass.put(id, fileNameSort);
 		}
 	}
 
@@ -244,7 +167,7 @@ public class GenerateResources {
 
 			String menuName = xmlFile.getName().replace(".xml", "");
 
-			menuIdsInClass.add(menuName);
+			menuIds.add(menuName);
 
 			menuClassSB.append("\tpublic static Menu " + menuName + "() {\n");
 			menuClassSB.append("\t\tMenu menu = new Menu();\n");
@@ -269,7 +192,11 @@ public class GenerateResources {
 					String title = "0";
 
 					if (eElement.hasAttributeNS(NS_ANDROID, "id")) {
-						itemId = "R.id." + eElement.getAttributeNS(NS_ANDROID, "id").replace("@id/", "").replace("@+id/", "");
+						String idName = eElement.getAttributeNS(NS_ANDROID, "id").replace("@id/", "").replace("@+id/", "");
+						itemId = "R.id." + idName;
+						if (!ids.contains(idName)) {
+							ids.add(idName);
+						}
 					}
 					if (eElement.hasAttributeNS(NS_ANDROID, "title")) {
 						title = "R.string." + eElement.getAttributeNS(NS_ANDROID, "title").replace("@string/", "");
@@ -338,11 +265,12 @@ public class GenerateResources {
 			fos.append(sb.toString());
 			fos.close();
 		} catch (IOException e) {
+			System.out.println("Error writing " + fileName);
 			e.printStackTrace();
 		}
 	}
 
-	public void output() {
+	public void writeFiles(String classesDir, String propertiesDir) {
 		StringBuffer idsSB = new StringBuffer();
 		StringBuffer drawableIdsSB = new StringBuffer();
 		StringBuffer menuIdsSB = new StringBuffer();
@@ -364,38 +292,38 @@ public class GenerateResources {
 
 		// IDS
 		counter = 1;
-		for (String str : idsInClass) {
+		for (String str : ids) {
 			idResolverSB.append("\t\t\tcase R.id." + str + ":\n\t\t\t\treturn \"" + str + "\";\n");
 			idsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
 		// DRAWABLES
 		counter = 1;
-		for (String str : drawableIdsInClass.keySet()) {
-			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + drawableIdsInClass.get(str) + "\";\n");
+		for (String str : drawableIds.keySet()) {
+			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + drawableIds.get(str) + "\";\n");
 			drawableIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
 		// MENUS
 		counter = 1;
-		for (String str : menuIdsInClass) {
+		for (String str : menuIds) {
 			menuIdResolverSB.append("\t\t\tcase R.menu." + str + ":\n\t\t\t\t\treturn Menus." + str + "();\n");
 			menuIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
 		menuClassSB.append("}\n");
-		writeFile("res/Menus.java", menuClassSB);
+		writeFile(classesDir + "/res/Menus.java", menuClassSB);
 
 		// STRING IDS
 		counter = 1;
-		for (String str : stringIdsInClass) {
+		for (String str : stringIds) {
 			stringIdResolverSB.append("\t\t\tcase R.string." + str + ":\n\t\t\t\treturn strings." + str + "();\n");
 			stringIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
 
 		// ARRAY IDS
 		counter = 1;
-		for (String str : arrayIdsInClass) {
+		for (String str : arrayIds) {
 			arrayIdResolverSB.append("\t\t\tcase R.array." + str + ":\n\t\t\t\treturn arrays." + str + "();\n");
 			arrayIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
 		}
@@ -404,16 +332,16 @@ public class GenerateResources {
 		stringClassSB.append("}\n");
 		arrayClassSB.append("}\n");
 
-		writeFile("res/Strings.java", stringClassSB);
-		writeFile("res/Arrays.java", arrayClassSB);
+		writeFile(classesDir + "res/Strings.java", stringClassSB);
+		writeFile(classesDir + "res/Arrays.java", arrayClassSB);
 
 		for (String lang : stringPropertiesSBMap.keySet()) {
 			if (lang == null) {
-				writeFile("res/Strings.properties", stringPropertiesSBMap.get(lang));
-				writeFile("res/Arrays.properties", arrayPropertiesSBMap.get(lang));
+				writeFile(propertiesDir + "res/Strings.properties", stringPropertiesSBMap.get(lang));
+				writeFile(propertiesDir + "res/Arrays.properties", arrayPropertiesSBMap.get(lang));
 			} else {
-				writeFile("res/Strings_" + lang + ".properties", stringPropertiesSBMap.get(lang));
-				writeFile("res/Arrays_" + lang + ".properties", arrayPropertiesSBMap.get(lang));
+				writeFile(propertiesDir + "res/Strings_" + lang + ".properties", stringPropertiesSBMap.get(lang));
+				writeFile(propertiesDir + "res/Arrays_" + lang + ".properties", arrayPropertiesSBMap.get(lang));
 			}
 		}
 
@@ -467,7 +395,7 @@ public class GenerateResources {
 
 		RSB.append("}\n");
 
-		writeFile("R.java", RSB);
+		writeFile(classesDir + "R.java", RSB);
 
 		StringBuffer contentResolverSB = new StringBuffer();
 		contentResolverSB.append(FILE_HEADER);
@@ -532,27 +460,74 @@ public class GenerateResources {
 		contentResolverSB.append("\t}\n");
 		contentResolverSB.append("}\n");
 
-		writeFile("res/Resources.java", contentResolverSB);
+		writeFile(classesDir + "res/Resources.java", contentResolverSB);
 	}
 
-	public void crawl(String fileName) {
+	public void crawlAndroidResources(String fileName) {
 		File file = new File(fileName);
 		if (file.isDirectory()) {
 			for (String f : file.list()) {
-				crawl(fileName + "/" + f);
+				crawlAndroidResources(fileName + "/" + f);
 			}
 		} else {
-			if (fileName.endsWith(".png")) {
-				processDrawable(fileName);
-			} else if (fileName.endsWith(".xml")) {
+			if (fileName.endsWith(".xml")) {
 				if (fileName.contains("/drawable")) {
-					processDrawable(fileName);
 				} else if (fileName.contains("/menu/")) {
 					processMenuFile(fileName);
 				} else {
 					processLangFile(fileName);
 				}
-				getIdsFromFile(fileName);
+			}
+		}
+	}
+
+	/**
+	 * Generates layouts for uibinder files
+	 */
+	public void generateIds(String dirname) {
+		File dirFile = new File(dirname);
+		if (dirFile.isDirectory()) {
+			for (String f : dirFile.list()) {
+				if (f.endsWith(".ui.xml")) {
+					System.out.println("Generate ids from " + f);
+					File file = new File(dirname + f);
+
+					try {
+						BufferedReader br = new BufferedReader(new FileReader(file));
+						String line;
+						while ((line = br.readLine()) != null) {
+							Matcher matcher = idsPattern.matcher(line);
+
+							String id;
+							while (matcher.find()) {
+								String aux = matcher.group(1); // maybe with leading/trailing " or '
+								id = aux.substring(1, aux.length() - 1);
+								System.out.println("FOUND ID: " + id);
+
+								if (!ids.contains(id)) {
+									ids.add(id);
+								}
+							}
+						}
+						br.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+
+	public void generateDrawableIds(String dirname) {
+		File file = new File(dirname);
+		if (file.isDirectory()) {
+			for (String f : file.list()) {
+				if (f.endsWith(".png") || f.endsWith(".jpg") || f.endsWith(".jpeg") || f.endsWith(".svg")) {
+					String id = f.substring(0, f.lastIndexOf("."));
+					if (!drawableIds.keySet().contains(id)) {
+						drawableIds.put(id, f);
+					}
+				}
 			}
 		}
 	}
@@ -560,26 +535,38 @@ public class GenerateResources {
 	public static void main(String args[]) {
 		if (args.length < 2) {
 			System.out.println("GWT Resource generation crawling Android resource directories.");
-			System.out.println("Converts resources from and Android project to a GWT format used by the GWT_android_emu library.");
-			System.out.println("Generates:");
-			System.out.println(" - R.java: with resource IDs");
-			System.out.println(" - ContentResolverImpl.java: maps IDs to resources");
-			System.out.println(" - Strings.java and Strings.properties with language variants");
-			System.out.println(" - Arrays.java and Arrays.properties");
-			System.out.println(" - Menus.java");
+			System.out.println("Converts resources from and Android project to a GWT format used by the gwt-android-emu library.");
+			System.out.println("Generated files:");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/R.java: with the resource IDs");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Resources.java: maps IDs to resources");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.java and Arrays.java with language variants");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.properties and Arrays.properties");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Menus.java");
+			System.out.println("It generates R.id.* for each id= in the uibinder xml layouts at <gwt_project_dir>/src/main/resources/<package_folder>/res/layout/");
+			System.out.println("It generates R.drawable.* for the images in <gwt_project_dir>/src/main/webapp/img/");
+			System.out.println("It generates R.layout.* for each method in <gwt_project_dir>/src/main/java/<package_folder>/res/Layouts.java");
 			System.out.println("");
-			System.out.println("Usage: GenerateResources package_name resource_dir_1 [resource_dir_2] [resource_dir_3] ...");
+			System.out.println("Usage: GenerateResources package_name <gwt_project_dir> <resource_dir_1> [<resource_dir_2>] [<resource_dir_3>] ...");
 			return;
 		}
 
-		GenerateResources cs = new GenerateResources(args[0]);
-		for (int i = 1; i < args.length; i++) {
-			cs.crawl(args[i]);
+		String packageName = args[0];
+		String packageAsFolders = packageName.replace(".", "/");
+		String rootFolder = args[1];
+
+		GenerateResources cs = new GenerateResources(packageName);
+		// Get ids from uibinder xmls
+		cs.generateIds(rootFolder + "/src/main/resources/" + packageAsFolders + "/res/layout/");
+		// Get images from directory
+		cs.generateDrawableIds(rootFolder + "/src/main/webapp/img/");
+		// Get layouts from Layouts.java
+		cs.getLayoutsFromJavaFile(rootFolder + "/src/main/java/" + packageAsFolders + "/res/Layouts.java");
+
+		for (int i = 2; i < args.length; i++) {
+			cs.crawlAndroidResources(args[i]);
 		}
 
-		// Get layouts from Layouts.java
-		cs.getLayoutsFromJavaFile("res/Layouts.java");
-
-		cs.output();
+		cs.writeFiles(rootFolder + "/src/main/java/" + packageAsFolders + "/",
+				rootFolder + "/src/main/resources/" + packageAsFolders + "/");
 	}
 }
