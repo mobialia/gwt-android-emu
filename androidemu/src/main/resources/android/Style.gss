@@ -270,6 +270,7 @@
 .preferencesFragmentContent {
 	display: inline-block;
 	text-align: left;
+	min-width: 50%;
 }
 
 .preferencesElement {
@@ -280,6 +281,8 @@
 
 .preferencesLabel {
 	font-size: 1.3rem;
+    margin-top: .6rem;
+    margin-bottom: 0.6rem;
 }
 
 .preferencesSummary {
