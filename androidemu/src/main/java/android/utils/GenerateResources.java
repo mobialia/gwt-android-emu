@@ -161,7 +161,7 @@ public class GenerateResources {
 	public void processMenuFile(String fileName) {
 		try {
 			File xmlFile = new File(fileName);
-			System.out.println("Processing MENU file " + fileName + "...");
+			System.out.println("Processing menu file " + fileName + "...");
 
 			System.out.println("File name: " + xmlFile.getName());
 
@@ -489,7 +489,7 @@ public class GenerateResources {
 		if (dirFile.isDirectory()) {
 			for (String f : dirFile.list()) {
 				if (f.endsWith(".ui.xml")) {
-					System.out.println("Generate ids from " + f);
+					System.out.println("Generating ids from " + f);
 					File file = new File(dirname + f);
 
 					try {
@@ -502,8 +502,6 @@ public class GenerateResources {
 							while (matcher.find()) {
 								String aux = matcher.group(1); // maybe with leading/trailing " or '
 								id = aux.substring(1, aux.length() - 1);
-								System.out.println("FOUND ID: " + id);
-
 								if (!ids.contains(id)) {
 									ids.add(id);
 								}
@@ -537,10 +535,13 @@ public class GenerateResources {
 			System.out.println("GWT Resource generation crawling Android resource directories.");
 			System.out.println("Converts resources from and Android project to a GWT format used by the gwt-android-emu library.");
 			System.out.println("Generated files:");
+			System.out.println("Generated files:");
 			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/R.java: with the resource IDs");
-			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Resources.java: maps IDs to resources");
-			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.java and Arrays.java with language variants");
-			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.properties and Arrays.properties");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Resources.java: mapping IDs to resources");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.java");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Arrays.java");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.properties with language variants");
+			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Arrays.properties with language variants");
 			System.out.println(" - <gwt_project_dir>/src/main/java/<package_folder>/res/Menus.java");
 			System.out.println("It generates R.id.* for each id= in the uibinder xml layouts at <gwt_project_dir>/src/main/resources/<package_folder>/res/layout/");
 			System.out.println("It generates R.drawable.* for the images in <gwt_project_dir>/src/main/webapp/img/");

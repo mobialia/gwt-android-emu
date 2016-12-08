@@ -5,12 +5,14 @@ buildscript {
 
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 dependencies {
     compile 'com.google.gwt:gwt-user:2.8.0'
@@ -52,3 +54,12 @@ bintray {
     }
 }
 
+shadowJar {
+    baseName = 'generate-resources'
+    classifier = null
+    version = null
+}
+
+jar {
+    manifest.attributes("Main-Class": "android.utils.GenerateResources")
+}

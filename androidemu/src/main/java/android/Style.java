@@ -72,6 +72,8 @@ public interface Style extends CssResource {
 
 	String drawerOverlayOpened();
 
+	String materialButton();
+
 	String materialLabel();
 
 	String materialInput();

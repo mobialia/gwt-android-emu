@@ -21,6 +21,8 @@
 @external pagerTitleElementSelected;
 @external gone;
 @external invisible;
+
+@external materialButton;
 @external materialLabel;
 @external materialInput;
 @external materialSelect;
@@ -63,6 +65,7 @@
     position: fixed;
     top: 0px;
     width: 100%;
+    overflow: hidden;
 
     font-size: 1.4rem;
 }
@@ -83,8 +86,10 @@
 }
 
 .actionbarTitle {
-    float: left;
     padding-left: divide(ACTIONBAR_HEIGHT, 4);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .actionbarButton {
@@ -333,6 +338,20 @@
 .drawerOverlayOpened {
     opacity: 0.5;
     display: block;
+}
+
+.materialButton {
+	color: COLOR_ACCENT;
+
+    font-size: 1rem;
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	min-width: 10rem;
+	margin: 0;
+	border: 0;
+	outline: none;
+
+	@mixin pointer();
 }
 
 .materialLabel {
