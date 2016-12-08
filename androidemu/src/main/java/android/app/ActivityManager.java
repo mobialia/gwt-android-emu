@@ -30,8 +30,8 @@ public class ActivityManager {
 
 	public static void setup() {
 		Log.d(TAG, "setup()");
-		if (DOM.getElementById("show-while-loading") != null) {
-			DOM.getElementById("show-while-loading").setAttribute("style", "display: none");
+		if (DOM.getElementById("ShowWhileLoading") != null) {
+			DOM.getElementById("ShowWhileLoading").setAttribute("style", "display: none");
 		}
 
 		History.newItem(id1);
