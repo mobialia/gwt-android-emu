@@ -35,6 +35,7 @@
     <string name="inputs">It emulates inputs with material styles. Checkboxes and radiobuttons need
         to be wrapped in a materialLabel div and other dummy div just after the input itself.
     </string>
+    <string name="inputs_edittext">EditText demo</string>
     <string name="inputs_checkbox">Checkbox demo</string>
     <string name="inputs_radiobutton1">Radiobutton 1</string>
     <string name="inputs_radiobutton2">Radiobutton 2</string>
@@ -46,6 +47,11 @@
     <string name="handler">Send message via handler</string>
     <string name="handler_message_received">Handler message received!</string>
 
+    <string name="preferences_group">Preferences group</string>
+    <string name="preference_boolean">Boolean preference</string>
+    <string name="preference_boolean_summary">This is a true/false preference</string>
+    <string name="preference_list">List preference</string>
+    <string name="preference_list_summary">This is a list preference</string>
 
     <string name="action1">Menu Action 1</string>
     <string name="menu1">Menu Option 1</string>

@@ -7,27 +7,16 @@ import com.google.gwt.i18n.client.Constants;
 
 public interface Strings extends Constants {
 	String intro_title();
-
 	String intro_header();
-
 	String intro_text();
-
 	String intro_text_2();
-
 	String drawer_open();
-
 	String drawer_close();
-
 	String sidebar_intro();
-
 	String sidebar_notifications();
-
 	String sidebar_inputs();
-
 	String sidebar_other();
-
 	String sidebar_preferences();
-
 	String notifications();
 	String alert_dialog();
 	String dialog_title();
@@ -36,32 +25,32 @@ public interface Strings extends Constants {
 	String dialog_no();
 	String toast();
 	String toast_text();
-
 	String snackbar();
-
 	String snackbar_text();
-
 	String snackbar_action();
-
 	String inputs();
 
+	String inputs_edittext();
 	String inputs_checkbox();
-
 	String inputs_radiobutton1();
-
 	String inputs_radiobutton2();
-
 	String other();
 	String handler();
 	String handler_message_received();
 
+	String preferences_group();
+
+	String preference_boolean();
+
+	String preference_boolean_summary();
+
+	String preference_list();
+
+	String preference_list_summary();
 	String action1();
-
 	String menu1();
-
 	String menu2();
 	String activity();
-
 	String simple_activity();
 	String menu_launch_fragment();
 }

@@ -6,13 +6,40 @@
     <g:HTMLPanel>
         <center>
             <ui:text from="{string.inputs}"/>
+
             <br/>
+
+            <input type="text" name="Text" id="EditText1" class="materialInput"
+                   placeholder="{string.inputs_edittext}"/>
+
+            <br/>
+
+            <select id="Spinner" class="materialSelect">
+            </select>
+
+            <br/>
+
             <label class="materialLabel">
                 <input type="checkbox" id="SeekSortAscending"/>
                 <div class="materialCheckbox"/>
                 <ui:text from="{string.inputs_checkbox}"/>
             </label>
 
+            <br/>
+
+            <label class="materialLabel">
+                <input type="radio" name="Action" id="RadioButton1" value="one" checked="checked"/>
+                <div class="materialRadio"/>
+                <ui:text from="{string.inputs_radiobutton1}"/>
+            </label>
+
+            <br/>
+
+            <label class="materialLabel">
+                <input type="radio" name="Action" id="RadioButton2" value="two" checked="checked"/>
+                <div class="materialRadio"/>
+                <ui:text from="{string.inputs_radiobutton2}"/>
+            </label>
         </center>
     </g:HTMLPanel>
 </ui:UiBinder> 

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class InputsFragment extends Fragment {
 	static final String TAG = InputsFragment.class.getSimpleName();
@@ -21,6 +23,11 @@ public class InputsFragment extends Fragment {
 		}
 
 		view = inflater.inflate(R.layout.inputs_fragment, container, false);
+
+		Spinner spinner = (Spinner) view.findViewById(R.id.Spinner);
+		ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), 0, getResources().getStringArray(R.array.array1));
+		spinner.setAdapter(spinnerArrayAdapter);
+
 		return view;
 	}
 

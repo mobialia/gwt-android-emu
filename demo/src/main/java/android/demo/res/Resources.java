@@ -31,8 +31,16 @@ public class Resources extends android.content.res.Resources {
 				return "DrawerOverLay";
 			case R.id.Drawer:
 				return "Drawer";
+			case R.id.EditText1:
+				return "EditText1";
+			case R.id.Spinner:
+				return "Spinner";
 			case R.id.SeekSortAscending:
 				return "SeekSortAscending";
+			case R.id.RadioButton1:
+				return "RadioButton1";
+			case R.id.RadioButton2:
+				return "RadioButton2";
 			case R.id.AlertButton:
 				return "AlertButton";
 			case R.id.ToastButton:
@@ -102,6 +110,8 @@ public class Resources extends android.content.res.Resources {
 				return strings.snackbar_action();
 			case R.string.inputs:
 				return strings.inputs();
+			case R.string.inputs_edittext:
+				return strings.inputs_edittext();
 			case R.string.inputs_checkbox:
 				return strings.inputs_checkbox();
 			case R.string.inputs_radiobutton1:
@@ -114,6 +124,16 @@ public class Resources extends android.content.res.Resources {
 				return strings.handler();
 			case R.string.handler_message_received:
 				return strings.handler_message_received();
+			case R.string.preferences_group:
+				return strings.preferences_group();
+			case R.string.preference_boolean:
+				return strings.preference_boolean();
+			case R.string.preference_boolean_summary:
+				return strings.preference_boolean_summary();
+			case R.string.preference_list:
+				return strings.preference_list();
+			case R.string.preference_list_summary:
+				return strings.preference_list_summary();
 			case R.string.action1:
 				return strings.action1();
 			case R.string.menu1:
@@ -170,6 +190,8 @@ public class Resources extends android.content.res.Resources {
 				return "ic_inputs.svg";
 			case R.drawable.ic_intro:
 				return "ic_intro.svg";
+			case R.drawable.ic_spinner_vector:
+				return "ic_spinner_vector.svg";
 			case R.drawable.ic_menu:
 				return "ic_menu.svg";
 		}
@@ -179,7 +201,7 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.layout.activity_drawer:
 				return layouts.activity_drawer();
-			case R.layout.main:
+			case R.layout.simple_activity:
 				return layouts.simple_activity();
 			case R.layout.sidebar:
 				return layouts.sidebar();

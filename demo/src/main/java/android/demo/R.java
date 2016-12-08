@@ -12,16 +12,20 @@ public class R {
 		public final static int Fragment = 5;
 		public final static int DrawerOverLay = 6;
 		public final static int Drawer = 7;
-		public final static int SeekSortAscending = 8;
-		public final static int AlertButton = 9;
-		public final static int ToastButton = 10;
-		public final static int ActivityButton = 11;
-		public final static int SnackBarButton = 12;
-		public final static int list = 13;
-		public final static int action1 = 14;
-		public final static int menu1 = 15;
-		public final static int menu2 = 16;
-		public final static int menu_launch_fragment = 17;
+		public final static int EditText1 = 8;
+		public final static int Spinner = 9;
+		public final static int SeekSortAscending = 10;
+		public final static int RadioButton1 = 11;
+		public final static int RadioButton2 = 12;
+		public final static int AlertButton = 13;
+		public final static int ToastButton = 14;
+		public final static int ActivityButton = 15;
+		public final static int SnackBarButton = 16;
+		public final static int list = 17;
+		public final static int action1 = 18;
+		public final static int menu1 = 19;
+		public final static int menu2 = 20;
+		public final static int menu_launch_fragment = 21;
 	}
 	public static final class color {
 	}
@@ -35,7 +39,8 @@ public class R {
 		public final static int ic_preferences = 7;
 		public final static int ic_inputs = 8;
 		public final static int ic_intro = 9;
-		public final static int ic_menu = 10;
+		public final static int ic_spinner_vector = 10;
+		public final static int ic_menu = 11;
 	}
 	public static final class string {
 		public final static int intro_title = 1;
@@ -61,18 +66,24 @@ public class R {
 		public final static int snackbar_text = 21;
 		public final static int snackbar_action = 22;
 		public final static int inputs = 23;
-		public final static int inputs_checkbox = 24;
-		public final static int inputs_radiobutton1 = 25;
-		public final static int inputs_radiobutton2 = 26;
-		public final static int other = 27;
-		public final static int handler = 28;
-		public final static int handler_message_received = 29;
-		public final static int action1 = 30;
-		public final static int menu1 = 31;
-		public final static int menu2 = 32;
-		public final static int activity = 33;
-		public final static int simple_activity = 34;
-		public final static int menu_launch_fragment = 35;
+		public final static int inputs_edittext = 24;
+		public final static int inputs_checkbox = 25;
+		public final static int inputs_radiobutton1 = 26;
+		public final static int inputs_radiobutton2 = 27;
+		public final static int other = 28;
+		public final static int handler = 29;
+		public final static int handler_message_received = 30;
+		public final static int preferences_group = 31;
+		public final static int preference_boolean = 32;
+		public final static int preference_boolean_summary = 33;
+		public final static int preference_list = 34;
+		public final static int preference_list_summary = 35;
+		public final static int action1 = 36;
+		public final static int menu1 = 37;
+		public final static int menu2 = 38;
+		public final static int activity = 39;
+		public final static int simple_activity = 40;
+		public final static int menu_launch_fragment = 41;
 	}
 	public static final class array {
 		public final static int array1 = 1;
@@ -83,7 +94,7 @@ public class R {
 	}
 	public static final class layout {
 		public final static int activity_drawer = 1;
-		public final static int main = 2;
+		public final static int simple_activity = 2;
 		public final static int sidebar = 3;
 		public final static int sidebar_adapter = 4;
 		public final static int sidebar_adapter_separator = 5;

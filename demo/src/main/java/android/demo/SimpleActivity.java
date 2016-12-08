@@ -30,7 +30,7 @@ public class SimpleActivity extends AppCompatActivity {
 
 		// We can use setContentView with HTMLPanels, textResources or widgets,
 		// we recomment to use the UiBinder
-		setContentView(R.layout.main);
+		setContentView(R.layout.simple_activity);
 
 		getSupportActionBar().setTitle(R.string.simple_activity);
 	}

@@ -411,6 +411,7 @@
     border: 0.2rem solid COLOR_ACCENT;
     border-radius: 0.3rem;
     display: inline-block;
+    text-align: left;
    	transition: background 0.3s ease;
 }
 .materialLabel :checked + .materialCheckbox {
@@ -449,6 +450,7 @@
     border: 0.2rem solid COLOR_ACCENT;
     border-radius: 5.5rem;
     display: inline-block;
+    text-align: left;
 }
 .materialLabel :disabled + .materialRadio {
     border: 0.2rem solid COLOR_INPUT_DISABLED;
