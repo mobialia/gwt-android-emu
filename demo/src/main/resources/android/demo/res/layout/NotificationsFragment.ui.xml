@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:with field="string" type="android.demo.res.Strings"></ui:with>
+
+    <g:HTMLPanel>
+        <center>
+            <ui:text from="{string.notifications}"/>
+
+            <br/>
+            <br/>
+            <button id="AlertButton" class="materialButton controlHighlight">
+                <ui:text from="{string.alert_dialog}"/>
+            </button>
+            <br/>
+            <button id="ToastButton" class="materialButton controlHighlight">
+                <ui:text from="{string.toast}"/>
+            </button>
+            <br/>
+            <button id="SnackBarButton" class="materialButton controlHighlight">
+                <ui:text from="{string.snackbar}"/>
+            </button>
+        </center>
+    </g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <g:HTMLPanel>
+        <div class="content DrawerLayout" id="root">
+            <div id="Fragment" class="LinearLayout">
+            </div>
+            <div id="DrawerOverLay" class="drawerOverlay">
+            </div>
+            <div id="Drawer" class="LinearLayout drawer">
+            </div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

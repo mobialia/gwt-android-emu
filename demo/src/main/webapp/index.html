@@ -8,19 +8,18 @@
     <script type="text/javascript" language="javascript"
             src="demo/demo.nocache.js"></script>
     <style>
-        body {
-        background: black;
-        color: white;
-        margin: 0;
-        }
-
-        .content {
-        padding-top: 3rem;
+        .centerInScreen {
+            position: absolute;
+            top:50%;
+            margin-top:-32px;
+            left: 50%;
+            margin-left: -32px;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
 <div id="activity"></div>
-<div id="show-while-loading">Loading...</div>
+<div id="ShowWhileLoading" class="centerInScreen">Loading...</div>
 </body>
 </html>

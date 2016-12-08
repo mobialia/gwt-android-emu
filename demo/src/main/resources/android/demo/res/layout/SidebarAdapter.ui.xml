@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <g:HTMLPanel>
+        <div class="listItemSidebar controlHighlight">
+            <img id="SidebarIcon"/>
+            <div id="SidebarText">
+            </div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder> 

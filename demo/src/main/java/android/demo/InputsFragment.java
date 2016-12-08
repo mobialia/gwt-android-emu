@@ -8,32 +8,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DemoFragment2 extends Fragment {
-	static final String TAG = "DemoFragment2";
+public class InputsFragment extends Fragment {
+	static final String TAG = InputsFragment.class.getSimpleName();
 
 	View view;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+			Bundle savedInstanceState) {
 		if (container == null) {
 			return null;
 		}
 
-		view = inflater.inflate(R.layout.demo_fragment2, container, false);
+		view = inflater.inflate(R.layout.inputs_fragment, container, false);
 		return view;
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		Log.d(TAG, "onResume");
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment2);
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		Log.d(TAG, "onPause");
+		((CommonActivity) getActivity()).onFragmentResumed(getString(R.string.sidebar_inputs), false);
 	}
 }
+

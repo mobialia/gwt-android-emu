@@ -6,14 +6,14 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public class Main extends Composite {
+public class InputsFragment extends Composite {
 
-	private static IntroUiBinder uiBinder = GWT.create(IntroUiBinder.class);
+	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
-	interface IntroUiBinder extends UiBinder<Widget, Main> {
+	interface MyUiBinder extends UiBinder<Widget, InputsFragment> {
 	}
 
-	public Main() {
+	public InputsFragment() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 }

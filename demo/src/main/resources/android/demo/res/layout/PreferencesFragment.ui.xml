@@ -4,9 +4,6 @@
     <ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
     <g:HTMLPanel>
-        <!-- We must convert our Android layouts to HTML5 layouts using any valid XHTML syntax -->
-        <div class="content">
-            <div class="LinearLayout" id="Fragment"/>
-        </div>
+
     </g:HTMLPanel>
 </ui:UiBinder> 

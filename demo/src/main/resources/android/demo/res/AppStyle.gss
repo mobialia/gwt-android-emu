@@ -1,0 +1,40 @@
+@def ACTIONBAR_HEIGHT 3.4rem;
+
+body {
+	margin: 0;
+    font-size:16px;
+}
+
+.content {
+	overflow: auto;
+	position: absolute;
+	top: ACTIONBAR_HEIGHT;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	padding: 1rem;
+	background: #222222;
+	color: #eeeeee;
+}
+
+.listItemSidebar {
+	padding: 0.9rem 0.2rem 0.9rem 1.2rem;
+	font-size: 1.2rem;
+	color: black;
+	overflow: auto;
+}
+.listItemSidebar #SidebarIcon {
+	width: 1.2rem;
+	height: 1.2rem;
+	vertical-align: middle;
+}
+.listItemSidebar #SidebarText {
+    display: inline-block;
+	vertical-align: middle;
+	padding-left: 1rem;
+}
+.listItemSidebarSeparator {
+	height: 1px;
+	background: #bbbbbb;
+}

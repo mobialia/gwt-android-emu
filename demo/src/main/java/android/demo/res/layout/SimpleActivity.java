@@ -6,14 +6,14 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public class DemoFragment extends Composite {
+public class SimpleActivity extends Composite {
 
-	private static DemoFragmentUiBinder uiBinder = GWT.create(DemoFragmentUiBinder.class);
+	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
-	interface DemoFragmentUiBinder extends UiBinder<Widget, DemoFragment> {
+	interface MyUiBinder extends UiBinder<Widget, SimpleActivity> {
 	}
 
-	public DemoFragment() {
+	public SimpleActivity() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 }

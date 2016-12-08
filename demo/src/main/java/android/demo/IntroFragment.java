@@ -3,7 +3,6 @@ package android.demo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,8 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DemoFragment extends Fragment {
-	static final String TAG = "DemoFragment";
+public class IntroFragment extends Fragment {
+	static final String TAG = IntroFragment.class.getSimpleName();
 
 	View view;
 
@@ -24,7 +23,7 @@ public class DemoFragment extends Fragment {
 			return null;
 		}
 
-		view = inflater.inflate(R.layout.demo_fragment, container, false);
+		view = inflater.inflate(R.layout.intro_fragment, container, false);
 		return view;
 	}
 
@@ -33,7 +32,7 @@ public class DemoFragment extends Fragment {
 		super.onResume();
 		Log.d(TAG, "onResume");
 
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.demo_fragment);
+		((CommonActivity) getActivity()).onFragmentResumed(getString(R.string.intro_title), false);
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class DemoFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.menu_launch_fragment) {
 			FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-			Fragment fragment = new DemoFragment2();
+			Fragment fragment = new InputsFragment();
 			fragmentTransaction.replace(R.id.Fragment, fragment);
 			fragmentTransaction.addToBackStack("demo2");
 			fragmentTransaction.commit();

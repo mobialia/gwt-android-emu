@@ -4,9 +4,17 @@
 	<ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
 	<g:HTMLPanel>
-			<!-- String Properties can be accessed with ui:text -->
+        <center>
         <h1>
-            <ui:text from="{string.demo_fragment}"/>
+            <ui:text from="{string.intro_header}"/>
         </h1>
+
+            <ui:text from="{string.intro_text}"/>
+
+            <a href="http://github.com/mobialia/gwt-android-emu">
+                http://github.com/mobialia/gwt-android-emu
+            </a>
+
+        </center>
     </g:HTMLPanel>
 </ui:UiBinder> 
