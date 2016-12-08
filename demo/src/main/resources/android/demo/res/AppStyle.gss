@@ -14,7 +14,7 @@ body {
 	right: 0;
 	bottom: 0;
 
-	background: #222222;
+    background: rgb(50, 50, 50);
 	color: #eeeeee;
 }
 
