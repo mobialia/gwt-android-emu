@@ -1,72 +1,69 @@
 GWT Android Emu
 ===============
 
+GWT Android Emu helps porting Android Apps to HTML5 to make them work in any web browser keeping a lot of code in common.
+
+It's also a framework to build web apps using Java an Android APIs.
+
+Here is a running demo of the library:
+
+http://mobialia.com/gwt-android-emu/
+
 GWT is the perfect framework to migrate your Android Apps to the web because it compiles Java into Javascript.
 
-GWT Android Emu helps you porting your Android Apps to HTML5 and run them in Chrome, Firefox OS, PhoneGAP, etc.
-keeping a lot of Java code in common.
-
-This library emulates some Android APIs over GWT:
+The emulated Android APIs:
 
 * Activities with their life cycle
+* Services
 * Intents: you can pass data in a Bundle, launch activities and services, etc.
 * Handlers and Messages
 * AlertDialogs, ProgressDialogs, Toasts...
 * Views: each HTML element is mapped to a View type, see table below
 * ListViews with custom adapters
+* RecyclerViews
 * Menu and MenuItems (inflating menus from xml or from code)
 * Fragments with transactions, ViewPager, DrawerLayout, etc. (emulating the v4 support library)
-* ActionBar, ActionBarActivity (emulating the v7 support library)
+* AppCompatActivity (emulating the v7 support library)
 * SharedPreferences: implemented using HTML5's LocalStorage
 * Other utility classes: Log, FloatMath, SystemClock
 
-The GWT entry point is an "AndroidManifest" class extending android.AndroidManifest.
+The GWT entry point is a non-standard AndroidManifest class extending android.AndroidManifest.
 This class specifies the default Activity and creates the Resources and the Application objects.
 
-This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT (mainly http://chess.mobialia.com).
+This is a work in progress in continuous evolution. At Mobialia we used this library to port some of our Android apps to GWT (like http://chess.mobialia.com).
 It's far from complete and very fitted to our needs, but we make it public in the hope that it will be useful for other developers.
 
 It's released under the MIT License, so feel free to use it anywhere.
-
-Demo Project
-============
-
-We include a demo project to see some usage examples. You can view this demo at:
-
-http://mobialia.com/gwt-android-emu/
-
-It's a GWT app coded like an Android App, you can see the MainActivity class and find the differences:
-
-https://github.com/albertoruibal/gwt_android_emu/blob/master/demo/src/main/java/androidemu/demo/MainActivity.java
-
-It includes two Activities with Strings and Layouts as resources and shows the usage of Menus, Toasts, AlertDialogs, etc.
 
 Emulating Resources
 ===================
 
 We included a tool "GenerateResources" in the package "utils" to help with resource emulation generation.
-There is a usage sample in the demo project: the generate_resources.sh script converts the resources from the source android project /res/ folder.
 
-The emulated resources generated automatically are:
+There is a usage sample in the demo project: the generate-resources.sh script converts the resources from the source android project in the /demo/source_android_project/ folder.
 
-* R.id (searching for @+id/ in the xml layouts and for <item type="id"> in the resource xmls)
-* R.string supports multiple languages, generates multiple GWT properties file, one for each language  
-* R.array (also with i18n)
-* R.menu
-* R.color
-* R.drawable from the pgn files found in the /res/ directory
-* R.layout from the "Layouts" class, see next section
+Generated files:
 
-This tools also generates the Resources class to convert from numeric ids to strings, layouts, etc.
+* <gwt_project_dir>/src/main/java/<package_folder>/R.java: with the resource IDs for menus, drawable, colors....
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Resources.java: mapping IDs to resources
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.java
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Arrays.java
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Strings.properties with language variants
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Arrays.properties with language variants
+* <gwt_project_dir>/src/main/java/<package_folder>/res/Menus.java
+
+Generated from the GWT code:
+
+* R.id.* for each id="xxxx" in the uibinder xml layouts at <gwt_project_dir>/src/main/resources/<package_folder>/res/layout/
+* R.drawable.* for the images in <gwt_project_dir>/src/main/webapp/img/. Vector drawables can be used in SVG format.
+* R.layout.* for each method in the <gwt_project_dir>/src/main/java/<package_folder>/res/Layouts.java class
 
 Migrating Layouts
 =================
 
-Layouts must be redesigned in HTML with the GWT UiBinder (or HTML).
+Layouts must be redesigned in HTML with the GWT UiBinder.
 You must create a "Layouts.java" class in the resource directory with a method to get each one of the GWT widgets.
-The GenerateResources tool creates a R.layout.xxx entry for each one of the methods in the Layouts class.
-
-There is a Layouts.java demo file in the demo project.
+There is a sample Layouts.java file in the demo project.
 
 HTML Elements to Android Widgets
 ================================
@@ -105,8 +102,24 @@ repositories {
 and then reference the gwt-android-emu libraries:
 ```
 dependencies {
-    compile 'com.mobialia:gwt-android-emu:0.3'
-    compile 'com.mobialia:gwt-android-emu:0.3:sources'
+    compile 'com.mobialia:gwt-android-emu:0.4'
+    compile 'com.mobialia:gwt-android-emu:0.4:sources'
 }
 ```
 
+Demo project
+============
+
+The demo project is a GWT app coded like an Android App, you can inspect the code at:
+
+https://github.com/albertoruibal/gwt_android_emu/blob/master/demo/src/main/java/androidemu/demo/
+
+It includes Activities with Fragments, a Drawer, emulated Strings, Layouts as resources, Menus, Toasts, AlertDialogs, etc.
+
+Building the demo project
+=========================
+```
+cd demo
+./generate-resources.sh
+gradle clean compileGwt
+```
