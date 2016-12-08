@@ -3,13 +3,14 @@ package android.demo.res;
 import android.demo.res.layout.ActivityDrawer;
 import android.demo.res.layout.InputsFragment;
 import android.demo.res.layout.IntroFragment;
+import android.demo.res.layout.MenusFragment;
 import android.demo.res.layout.NotificationsFragment;
 import android.demo.res.layout.OtherFragment;
 import android.demo.res.layout.PreferencesFragment;
-import android.demo.res.layout.SimpleActivity;
 import android.demo.res.layout.Sidebar;
 import android.demo.res.layout.SidebarAdapter;
 import android.demo.res.layout.SidebarAdapterSeparator;
+import android.demo.res.layout.SimpleActivity;
 
 import com.google.gwt.user.client.ui.Widget;
 
@@ -45,6 +46,10 @@ public class Layouts {
 
 	public Widget notifications_fragment() {
 		return new NotificationsFragment();
+	}
+
+	public Widget menus_fragment() {
+		return new MenusFragment();
 	}
 
 	public Widget inputs_fragment() {

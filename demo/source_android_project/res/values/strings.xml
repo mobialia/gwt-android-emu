@@ -13,6 +13,7 @@
 
     <string name="sidebar_intro">Intro</string>
     <string name="sidebar_notifications">Notifications</string>
+    <string name="sidebar_menus">Menus</string>
     <string name="sidebar_inputs">Inputs</string>
     <string name="sidebar_other">Other android features</string>
     <string name="sidebar_preferences">Preferences</string>
@@ -32,6 +33,14 @@
     <string name="snackbar_text">This is the Snackbar Text</string>
     <string name="snackbar_action">Action</string>
 
+    <string name="menus">It emulates menus for Fragments and Activities, try it in the top right
+        corner
+    </string>
+
+    <string name="menu_add">Menu add</string>
+    <string name="menu_option1">Menu Option 1</string>
+    <string name="menu_option2">Menu Option 2</string>
+
     <string name="inputs">It emulates inputs with material styles. Checkboxes and radiobuttons need
         to be wrapped in a materialLabel div and other dummy div just after the input itself.
     </string>
@@ -47,20 +56,17 @@
     <string name="handler">Send message via handler</string>
     <string name="handler_message_received">Handler message received!</string>
 
+    <string name="open_activity">Open a simple activity</string>
+
     <string name="preferences_group">Preferences group</string>
     <string name="preference_boolean">Boolean preference</string>
     <string name="preference_boolean_summary">This is a true/false preference</string>
     <string name="preference_list">List preference</string>
     <string name="preference_list_summary">This is a list preference</string>
 
-    <string name="action1">Menu Action 1</string>
-    <string name="menu1">Menu Option 1</string>
-    <string name="menu2">Menu Option 2</string>
-    <string name="activity">Launch another Activity</string>
 
-    <string name="simple_activity">Simple Activity</string>
-
-    <string name="menu_launch_fragment">Launch fragment</string>
+    <string name="simple_activity">Simple activity</string>
+    <string name="simple_activity_content">Simple activity content</string>
 
     <string-array name="array1">
         <item>Option 1</item>

@@ -112,7 +112,7 @@ Demo project
 
 The demo project is a GWT app coded like an Android App, you can inspect the code at:
 
-https://github.com/albertoruibal/gwt_android_emu/blob/master/demo/src/main/java/androidemu/demo/
+https://github.com/mobialia/gwt-android-emu/blob/master/demo/src/main/java/android/demo/
 
 It includes Activities with Fragments, a Drawer, emulated Strings, Layouts as resources, Menus, Toasts, AlertDialogs, etc.
 

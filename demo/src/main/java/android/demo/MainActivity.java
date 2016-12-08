@@ -36,6 +36,12 @@ public class MainActivity extends CommonActivity {
 		}
 	}
 
+	public void onMenusAction() {
+		if (!"menus".equals(getActiveFragmentTag())) {
+			openFragment(new MenusFragment(), "menus");
+		}
+	}
+
 	public void onInputsAction() {
 		if (!"inputs".equals(getActiveFragmentTag())) {
 			openFragment(new InputsFragment(), "inputs");

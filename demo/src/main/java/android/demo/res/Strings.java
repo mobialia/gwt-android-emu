@@ -14,6 +14,8 @@ public interface Strings extends Constants {
 	String drawer_close();
 	String sidebar_intro();
 	String sidebar_notifications();
+
+	String sidebar_menus();
 	String sidebar_inputs();
 	String sidebar_other();
 	String sidebar_preferences();
@@ -28,8 +30,15 @@ public interface Strings extends Constants {
 	String snackbar();
 	String snackbar_text();
 	String snackbar_action();
-	String inputs();
 
+	String menus();
+
+	String menu_add();
+
+	String menu_option1();
+
+	String menu_option2();
+	String inputs();
 	String inputs_edittext();
 	String inputs_checkbox();
 	String inputs_radiobutton1();
@@ -38,19 +47,13 @@ public interface Strings extends Constants {
 	String handler();
 	String handler_message_received();
 
+	String open_activity();
 	String preferences_group();
-
 	String preference_boolean();
-
 	String preference_boolean_summary();
-
 	String preference_list();
-
 	String preference_list_summary();
-	String action1();
-	String menu1();
-	String menu2();
-	String activity();
 	String simple_activity();
-	String menu_launch_fragment();
+
+	String simple_activity_content();
 }

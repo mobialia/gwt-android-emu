@@ -1,21 +1,9 @@
 package android.demo;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class SimpleActivity extends AppCompatActivity {
 	public final static String TAG = SimpleActivity.class.getSimpleName();
@@ -33,6 +21,8 @@ public class SimpleActivity extends AppCompatActivity {
 		setContentView(R.layout.simple_activity);
 
 		getSupportActionBar().setTitle(R.string.simple_activity);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 	}
 
 	@Override
@@ -46,6 +36,17 @@ public class SimpleActivity extends AppCompatActivity {
 	protected void onPause() {
 		Log.d(TAG, "onPause");
 		super.onPause();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// The action bar home/up action should open or close the drawer.
+		// ActionBarDrawerToggle will take care of this.
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 }

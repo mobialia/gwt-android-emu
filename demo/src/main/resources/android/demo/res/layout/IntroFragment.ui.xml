@@ -1,19 +1,20 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:with field="string" type="android.demo.res.Strings"></ui:with>
+<ui:UiBinder xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:ui="urn:ui:com.google.gwt.uibinder">
+    <ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
-	<g:HTMLPanel>
+    <g:HTMLPanel>
         <center>
-        <h1>
-            <ui:text from="{string.intro_header}"/>
-        </h1>
+            <h1>
+                <ui:text from="{string.intro_header}"/>
+            </h1>
 
-            <ui:text from="{string.intro_text}"/>
-
-            <a href="http://github.com/mobialia/gwt-android-emu">
-                http://github.com/mobialia/gwt-android-emu
-            </a>
+            <div class="demoMessage">
+                <ui:text from="{string.intro_text}"/>
+                <a href="http://github.com/mobialia/gwt-android-emu">
+                    http://github.com/mobialia/gwt-android-emu
+                </a>
+            </div>
 
         </center>
     </g:HTMLPanel>

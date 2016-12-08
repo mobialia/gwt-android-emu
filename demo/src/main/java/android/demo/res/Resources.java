@@ -3,11 +3,11 @@
  */
 package android.demo.res;
 
+import android.demo.R;
 import android.view.Menu;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
-import android.demo.R;
 
 public class Resources extends android.content.res.Resources {
 
@@ -19,6 +19,8 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.id.HandlerButton:
 				return "HandlerButton";
+			case R.id.LaunchActivityButton:
+				return "LaunchActivityButton";
 			case R.id.SidebarIcon:
 				return "SidebarIcon";
 			case R.id.SidebarText:
@@ -41,24 +43,20 @@ public class Resources extends android.content.res.Resources {
 				return "RadioButton1";
 			case R.id.RadioButton2:
 				return "RadioButton2";
+			case R.id.list:
+				return "list";
 			case R.id.AlertButton:
 				return "AlertButton";
 			case R.id.ToastButton:
 				return "ToastButton";
-			case R.id.ActivityButton:
-				return "ActivityButton";
 			case R.id.SnackBarButton:
 				return "SnackBarButton";
-			case R.id.list:
-				return "list";
-			case R.id.action1:
-				return "action1";
-			case R.id.menu1:
-				return "menu1";
-			case R.id.menu2:
-				return "menu2";
-			case R.id.menu_launch_fragment:
-				return "menu_launch_fragment";
+			case R.id.menu_add:
+				return "menu_add";
+			case R.id.menu_action1:
+				return "menu_action1";
+			case R.id.menu_action2:
+				return "menu_action2";
 		}
 		return super.getIdAsString(id);
 	}
@@ -80,6 +78,8 @@ public class Resources extends android.content.res.Resources {
 				return strings.sidebar_intro();
 			case R.string.sidebar_notifications:
 				return strings.sidebar_notifications();
+			case R.string.sidebar_menus:
+				return strings.sidebar_menus();
 			case R.string.sidebar_inputs:
 				return strings.sidebar_inputs();
 			case R.string.sidebar_other:
@@ -108,6 +108,14 @@ public class Resources extends android.content.res.Resources {
 				return strings.snackbar_text();
 			case R.string.snackbar_action:
 				return strings.snackbar_action();
+			case R.string.menus:
+				return strings.menus();
+			case R.string.menu_add:
+				return strings.menu_add();
+			case R.string.menu_option1:
+				return strings.menu_option1();
+			case R.string.menu_option2:
+				return strings.menu_option2();
 			case R.string.inputs:
 				return strings.inputs();
 			case R.string.inputs_edittext:
@@ -124,6 +132,8 @@ public class Resources extends android.content.res.Resources {
 				return strings.handler();
 			case R.string.handler_message_received:
 				return strings.handler_message_received();
+			case R.string.open_activity:
+				return strings.open_activity();
 			case R.string.preferences_group:
 				return strings.preferences_group();
 			case R.string.preference_boolean:
@@ -134,18 +144,10 @@ public class Resources extends android.content.res.Resources {
 				return strings.preference_list();
 			case R.string.preference_list_summary:
 				return strings.preference_list_summary();
-			case R.string.action1:
-				return strings.action1();
-			case R.string.menu1:
-				return strings.menu1();
-			case R.string.menu2:
-				return strings.menu2();
-			case R.string.activity:
-				return strings.activity();
 			case R.string.simple_activity:
 				return strings.simple_activity();
-			case R.string.menu_launch_fragment:
-				return strings.menu_launch_fragment();
+			case R.string.simple_activity_content:
+				return strings.simple_activity_content();
 		}
 		return super.getString(id);
 	}
@@ -160,8 +162,6 @@ public class Resources extends android.content.res.Resources {
 		switch (id) {
 			case R.menu.demo_menu:
 				return Menus.demo_menu();
-			case R.menu.fragment_menu:
-				return Menus.fragment_menu();
 		}
 		return super.getMenu(id);
 	}
@@ -176,6 +176,8 @@ public class Resources extends android.content.res.Resources {
 				return "ic_add.svg";
 			case R.drawable.ic_notifications:
 				return "ic_notifications.svg";
+			case R.drawable.ic_sidebar_menu:
+				return "ic_sidebar_menu.svg";
 			case R.drawable.ic_indicator_back:
 				return "ic_indicator_back.svg";
 			case R.drawable.ic_drawer:
@@ -213,6 +215,8 @@ public class Resources extends android.content.res.Resources {
 				return layouts.intro_fragment();
 			case R.layout.notifications_fragment:
 				return layouts.notifications_fragment();
+			case R.layout.menus_fragment:
+				return layouts.menus_fragment();
 			case R.layout.inputs_fragment:
 				return layouts.inputs_fragment();
 			case R.layout.other_fragment:

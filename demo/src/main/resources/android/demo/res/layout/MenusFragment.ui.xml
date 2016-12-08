@@ -4,10 +4,10 @@
     <ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
     <g:HTMLPanel>
-        <div class="content">
+        <center>
             <div class="demoMessage">
-                <ui:text from="{string.simple_activity_content}"/>
+                <ui:text from="{string.menus}"/>
             </div>
-        </div>
+        </center>
     </g:HTMLPanel>
 </ui:UiBinder> 

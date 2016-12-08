@@ -1,15 +1,14 @@
 package android.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class OtherFragment extends Fragment {
@@ -38,6 +37,14 @@ public class OtherFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				handler.sendEmptyMessage(0);
+			}
+		});
+
+		view.findViewById(R.id.LaunchActivityButton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), SimpleActivity.class);
+				getActivity().startActivity(intent);
 			}
 		});
 

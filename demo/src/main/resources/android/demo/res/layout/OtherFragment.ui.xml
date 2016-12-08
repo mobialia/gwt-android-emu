@@ -5,11 +5,16 @@
 
     <g:HTMLPanel>
         <center>
-            <ui:text from="{string.other}"/>
-            <br/>
+            <div class="demoMessage">
+                <ui:text from="{string.other}"/>
+            </div>
             <br/>
             <button class="materialButton controlHighlight" id="HandlerButton">
                 <ui:text from="{string.handler}"/>
+            </button>
+            <br/>
+            <button class="materialButton controlHighlight" id="LaunchActivityButton">
+                <ui:text from="{string.open_activity}"/>
             </button>
         </center>
     </g:HTMLPanel>

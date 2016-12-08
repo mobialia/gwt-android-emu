@@ -17,11 +17,11 @@ public class SidebarFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 
 		setListAdapter(new SidebarAdapter(getActivity(),
-				new int[]{SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM,
+				new int[]{SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM, SidebarAdapter.VIEW_TYPE_ITEM,
 						SidebarAdapter.VIEW_TYPE_SEPARATOR, SidebarAdapter.VIEW_TYPE_ITEM},
-				new int[]{R.string.sidebar_intro, R.string.sidebar_notifications, R.string.sidebar_inputs, R.string.sidebar_other,
+				new int[]{R.string.sidebar_intro, R.string.sidebar_notifications, R.string.sidebar_menus, R.string.sidebar_inputs, R.string.sidebar_other,
 						0, R.string.sidebar_preferences},
-				new int[]{R.drawable.ic_intro, R.drawable.ic_notifications, R.drawable.ic_inputs, R.drawable.ic_other,
+				new int[]{R.drawable.ic_intro, R.drawable.ic_notifications, R.drawable.ic_sidebar_menu, R.drawable.ic_inputs, R.drawable.ic_other,
 						0, R.drawable.ic_preferences}));
 	}
 
@@ -44,12 +44,15 @@ public class SidebarFragment extends ListFragment {
 				((MainActivity) getActivity()).onNotificationsAction();
 				break;
 			case 2:
-				((MainActivity) getActivity()).onInputsAction();
+				((MainActivity) getActivity()).onMenusAction();
 				break;
 			case 3:
+				((MainActivity) getActivity()).onInputsAction();
+				break;
+			case 4:
 				((MainActivity) getActivity()).onOtherAction();
 				break;
-			case 5:
+			case 6:
 				((MainActivity) getActivity()).onPreferencesAction();
 				break;
 		}

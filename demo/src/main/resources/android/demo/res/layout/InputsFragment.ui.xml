@@ -5,7 +5,9 @@
 
     <g:HTMLPanel>
         <center>
-            <ui:text from="{string.inputs}"/>
+            <div class="demoMessage">
+                <ui:text from="{string.inputs}"/>
+            </div>
 
             <br/>
 

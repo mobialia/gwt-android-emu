@@ -18,6 +18,12 @@ body {
 	color: #eeeeee;
 }
 
+.demoMessage {
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+}
+
 .listItemSidebar {
 	padding: 0.9rem 0.2rem 0.9rem 1.2rem;
 	font-size: 1.2rem;

@@ -1,23 +1,24 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+<ui:UiBinder xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:ui="urn:ui:com.google.gwt.uibinder">
     <ui:with field="string" type="android.demo.res.Strings"></ui:with>
 
     <g:HTMLPanel>
         <center>
-            <ui:text from="{string.notifications}"/>
+            <div class="demoMessage">
+                <ui:text from="{string.notifications}"/>
+            </div>
 
             <br/>
-            <br/>
-            <button id="AlertButton" class="materialButton controlHighlight">
+            <button class="materialButton controlHighlight" id="AlertButton">
                 <ui:text from="{string.alert_dialog}"/>
             </button>
             <br/>
-            <button id="ToastButton" class="materialButton controlHighlight">
+            <button class="materialButton controlHighlight" id="ToastButton">
                 <ui:text from="{string.toast}"/>
             </button>
             <br/>
-            <button id="SnackBarButton" class="materialButton controlHighlight">
+            <button class="materialButton controlHighlight" id="SnackBarButton">
                 <ui:text from="{string.snackbar}"/>
             </button>
         </center>
