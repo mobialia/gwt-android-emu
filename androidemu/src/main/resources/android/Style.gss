@@ -39,6 +39,10 @@
     -ms-user-select: none;
 }
 
+@defmixin shadow() {
+    box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
+}
+
 .controlHighlight {
    	transition: background 0.5s ease;
     background: transparent;
@@ -155,10 +159,10 @@
 	font-size: 1.2rem;
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
-
 	margin: 0;
 	padding: 1rem;
+
+	@mixin shadow();
 }
 
 .dialog {
@@ -171,10 +175,10 @@
 
 	border: none;
 	border-radius: 0;
-	box-shadow: 0 1rem 5rem rgba(0, 0, 0, 1);
-
 	margin: 0;
 	padding: 0;
+
+	@mixin shadow();
 }
 
 .dialogTitle {
@@ -237,6 +241,8 @@
 .snackbar {
 	background: COLOR_BACKGROUND;
 	text-align: center;
+
+	@mixin shadow();
 }
 
 .snackbarMessage {
