@@ -292,8 +292,11 @@
 
 .preferencesLabel {
 	font-size: 1.3rem;
-    margin-top: .6rem;
-    margin-bottom: 0.6rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .preferencesSummary {
@@ -435,7 +438,7 @@
     position: relative;
     left: 0.25rem;
     top: -0.2rem;
-    display: table;
+    display: block;
     width: 0.5rem;
     height: 1rem;
     border: 0.2rem solid #111111;
@@ -454,7 +457,7 @@
 	width: 1.1rem;
 	margin: 0.2rem;
     border: 0.2rem solid COLOR_ACCENT;
-    border-radius: 5.5rem;
+    border-radius: 50%;
     display: inline-block;
     text-align: left;
 }
@@ -463,12 +466,12 @@
 }
 .materialLabel .materialRadio:after {
     position: relative;
-    left: 0.25rem;
-    top: 0.25rem;
-    display: table;
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 0.3rem;
+    margin-top: 15%;
+    margin-left: 15%;
+    display: block;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
    	transition: background 0.3s ease;
     content: '';
 }
