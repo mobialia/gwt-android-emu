@@ -22,6 +22,10 @@ public class Snackbar {
 		return new Snackbar(view, text, duration);
 	}
 
+	public static Snackbar make(View view, int resId, int duration) {
+		return new Snackbar(view, view.getContext().getString(resId), duration);
+	}
+
 	Context ctx;
 	String message;
 	int duration;
