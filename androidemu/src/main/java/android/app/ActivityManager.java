@@ -15,7 +15,7 @@ import com.google.gwt.user.client.Window;
 import java.util.Stack;
 
 public class ActivityManager {
-	public final static String TAG = "ActivityManager";
+	public final static String TAG = ActivityManager.class.getName();
 
 	public final static int STATUS_NEW = 0;
 	public final static int STATUS_CREATED = 1;
@@ -28,6 +28,8 @@ public class ActivityManager {
 	final static String id1 = "start";
 	final static String id2 = "run";
 
+	static boolean exitApp = false;
+
 	public static void setup() {
 		Log.d(TAG, "setup()");
 		if (DOM.getElementById("ShowWhileLoading") != null) {
@@ -39,7 +41,7 @@ public class ActivityManager {
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
 			@Override
 			public void onValueChange(ValueChangeEvent<String> stringValueChangeEvent) {
-				if (id1.equals(stringValueChangeEvent.getValue())) {
+				if (!exitApp && id1.equals(stringValueChangeEvent.getValue())) {
 					History.newItem(id2);
 					ActivityManager.back();
 				}
@@ -67,7 +69,11 @@ public class ActivityManager {
 
 	public static void finish(final Activity activity) {
 		if (activityStack.size() <= 1) {
-			Log.d(TAG, "Not finishing activity " + activity.getClass().getName() + " because it's the last one");
+			//Log.d(TAG, "Not finishing activity " + activity.getClass().getName() + " because it's the last one");
+			exitApp = true;
+			History.back();
+			History.back();
+			History.back();
 			return;
 		}
 		Log.d(TAG, "Finish activity " + activity.getClass().getName());
