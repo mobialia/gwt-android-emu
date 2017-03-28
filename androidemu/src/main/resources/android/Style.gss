@@ -240,14 +240,13 @@
 
 .snackbar {
 	background: COLOR_BACKGROUND;
-	text-align: center;
 
 	@mixin shadow();
 }
 
 .snackbarMessage {
 	color: COLOR_FOREGROUND;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	margin: 1rem;
 }
 
