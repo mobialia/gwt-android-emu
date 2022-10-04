@@ -99,6 +99,10 @@ public class SharedPreferences {
 		public void commit() {
 
 		}
+
+		public void apply() {
+
+		}
 	}
 
 }
