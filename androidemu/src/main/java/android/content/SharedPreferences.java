@@ -90,7 +90,17 @@ public class SharedPreferences {
 			}
 		}
 
+		public void remove(String key) {
+			if (prefs.storage != null) {
+				prefs.storage.removeItem(key);
+			}
+		}
+
 		public void commit() {
+
+		}
+
+		public void apply() {
 
 		}
 	}

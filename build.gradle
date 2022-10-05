@@ -1,8 +1,8 @@
 allprojects {
-    group = 'com.mobialia'
-    version = '0.4'
+    group = 'com.github.mobialia'
+    version = '0.6.0'
 
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }

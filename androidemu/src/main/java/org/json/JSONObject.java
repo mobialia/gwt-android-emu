@@ -28,4 +28,8 @@ public class JSONObject {
 	public long getLong(String name) {
 		return Long.valueOf(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
 	}
+
+	public boolean has(String name) {
+		return jsonObject.containsKey(name);
+	}
 }

@@ -4,23 +4,18 @@ import android.Res;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.SimplePanel;
 
 public class AlertDialog extends Dialog implements DialogInterface {
-
-	private SimplePanel titleLabelContainer;
-	private FlowPanel contentPanel;
-	private Label titleLabel;
-	private HTML messageLabel;
+	private Context ctx;
+	private LinearLayout titleLabelContainer;
+	private LinearLayout contentPanel;
+	private TextView titleLabel;
+	private TextView messageLabel;
 	DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
 	public static class Builder {
@@ -107,19 +102,20 @@ public class AlertDialog extends Dialog implements DialogInterface {
 	public AlertDialog(Builder builder) {
 		super(builder.cancelable);
 
+		this.ctx = builder.ctx;
 		this.itemsListener = builder.itemsListener;
 		this.positiveListener = builder.positiveListener;
 		this.negativeListener = builder.negativeListener;
 		this.neutralListener = builder.neutralListener;
 
-		FlowPanel fp = new FlowPanel();
+		LinearLayout dialogLayout = new LinearLayout(ctx);
 
-		titleLabelContainer = new SimplePanel();
-		fp.add(titleLabelContainer);
+		titleLabelContainer = new LinearLayout(ctx);
+		dialogLayout.addView(titleLabelContainer);
 
-		contentPanel = new FlowPanel();
-		contentPanel.addStyleName(Res.R.style().dialogContent());
-		fp.add(contentPanel);
+		contentPanel = new LinearLayout(ctx);
+		contentPanel.getElement().addClassName(Res.R.style().dialogContent());
+		dialogLayout.addView(contentPanel);
 
 		setTitle(builder.title);
 		setMessage(builder.message);
@@ -130,28 +126,26 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				final int countFinal = count;
 				count++;
 
-				Button button = new Button(item.toString());
-				button.addStyleName(Res.R.style().dialogItem());
-				button.addStyleName(Res.R.style().controlHighlight());
-				button.addClickHandler(new ClickHandler() {
-
+				Button button = new Button(ctx);
+				button.setText(item.toString());
+				button.getElement().addClassName(Res.R.style().dialogItem());
+				button.getElement().addClassName(Res.R.style().controlHighlight());
+				button.setOnClickListener(new View.OnClickListener() {
 					@Override
-					public void onClick(ClickEvent event) {
+					public void onClick(View v) {
 						AlertDialog.this.dismiss();
 						if (itemsListener != null) {
 							itemsListener.onClick(AlertDialog.this, countFinal);
 						}
 					}
 				});
-				contentPanel.add(button);
+				contentPanel.addView(button);
 			}
 		}
 
 		if (builder.view != null) {
 			if (builder.view.getElement() != null) {
-				HTMLPanel htmlPanel = new HTMLPanel("");
-				htmlPanel.getElement().appendChild(builder.view.getElement());
-				contentPanel.add(htmlPanel);
+				contentPanel.addView(builder.view);
 			}
 		}
 
@@ -160,12 +154,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		Button neutralButton = null;
 
 		if (builder.positiveLabel != null) {
-			okButton = new Button(builder.positiveLabel);
-			okButton.addStyleName(Res.R.style().dialogButton());
-			okButton.addStyleName(Res.R.style().controlHighlight());
-			okButton.addClickHandler(new ClickHandler() {
+			okButton = new Button(ctx);
+			okButton.setText(builder.positiveLabel);
+			okButton.getElement().addClassName(Res.R.style().dialogButton());
+			okButton.getElement().addClassName(Res.R.style().controlHighlight());
+			okButton.setOnClickListener(new View.OnClickListener() {
 				@Override
-				public void onClick(ClickEvent event) {
+				public void onClick(View v) {
 					AlertDialog.this.dismiss();
 					if (positiveListener != null) {
 						positiveListener.onClick(AlertDialog.this, BUTTON_POSITIVE);
@@ -175,12 +170,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		if (builder.negativeLabel != null) {
-			cancelButton = new Button(builder.negativeLabel);
-			cancelButton.addStyleName(Res.R.style().dialogButton());
-			cancelButton.addStyleName(Res.R.style().controlHighlight());
-			cancelButton.addClickHandler(new ClickHandler() {
+			cancelButton = new Button(ctx);
+			cancelButton.setText(builder.negativeLabel);
+			cancelButton.getElement().addClassName(Res.R.style().dialogButton());
+			cancelButton.getElement().addClassName(Res.R.style().controlHighlight());
+			cancelButton.setOnClickListener(new View.OnClickListener() {
 				@Override
-				public void onClick(ClickEvent event) {
+				public void onClick(View v) {
 					AlertDialog.this.dismiss();
 					if (negativeListener != null) {
 						negativeListener.onClick(AlertDialog.this, BUTTON_NEGATIVE);
@@ -190,12 +186,13 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		if (builder.neutralLabel != null) {
-			neutralButton = new Button(builder.neutralLabel);
-			neutralButton.addStyleName(Res.R.style().dialogButton());
-			neutralButton.addStyleName(Res.R.style().controlHighlight());
-			neutralButton.addClickHandler(new ClickHandler() {
+			neutralButton = new Button(ctx);
+			neutralButton.setText(builder.neutralLabel);
+			neutralButton.getElement().addClassName(Res.R.style().dialogButton());
+			neutralButton.getElement().addClassName(Res.R.style().controlHighlight());
+			neutralButton.setOnClickListener(new View.OnClickListener() {
 				@Override
-				public void onClick(ClickEvent event) {
+				public void onClick(View v) {
 					AlertDialog.this.dismiss();
 					if (neutralListener != null) {
 						neutralListener.onClick(AlertDialog.this, BUTTON_NEUTRAL);
@@ -205,21 +202,21 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		}
 
 		if (okButton != null || cancelButton != null || neutralButton != null) {
-			FlowPanel buttonsPanel = new FlowPanel();
-			buttonsPanel.setStyleName(Res.R.style().dialogButtons());
+			LinearLayout buttonsLayout = new LinearLayout(ctx);
+			buttonsLayout.getElement().addClassName(Res.R.style().dialogButtons());
 			if (cancelButton != null) {
-				buttonsPanel.add(cancelButton);
+				buttonsLayout.addView(cancelButton);
 			}
 			if (neutralButton != null) {
-				buttonsPanel.add(neutralButton);
+				buttonsLayout.addView(neutralButton);
 			}
 			if (okButton != null) {
-				buttonsPanel.add(okButton);
+				buttonsLayout.addView(okButton);
 			}
-			fp.add(buttonsPanel);
+			dialogLayout.addView(buttonsLayout);
 		}
 
-		popupPanel.add(fp);
+		popupPanel.getElement().appendChild(dialogLayout.getElement());
 	}
 
 	public void setTitle(int title) {
@@ -228,9 +225,9 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 	public void setTitle(String title) {
 		if (titleLabel == null && title != null && !"".equals(title)) {
-			titleLabel = new Label();
-			titleLabel.setStyleName(Res.R.style().dialogTitle());
-			titleLabelContainer.add(titleLabel);
+			titleLabel = new TextView(ctx);
+			titleLabel.getElement().addClassName(Res.R.style().dialogTitle());
+			titleLabelContainer.addView(titleLabel);
 		}
 		if (titleLabel != null) {
 			titleLabel.setText(title);
@@ -246,12 +243,12 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
 	public void setMessage(String message) {
 		if (messageLabel == null && message != null && !"".equals(message)) {
-			messageLabel = new HTML();
-			messageLabel.setStyleName(Res.R.style().dialogMessage());
-			contentPanel.add(messageLabel);
+			messageLabel = new TextView(ctx);
+			messageLabel.getElement().addClassName(Res.R.style().dialogMessage());
+			contentPanel.addView(messageLabel);
 		}
 		if (messageLabel != null) {
-			messageLabel.setHTML(message.replace("\n", "<br/>"));
+			messageLabel.setText(message.replace("\n", "<br/>"));
 		}
 		if (popupPanel.isShowing()) {
 			popupPanel.center();

@@ -3,8 +3,8 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
     <g:HTMLPanel>
-        <div class="content DrawerLayout" id="root">
-            <div id="Fragment" class="LinearLayout">
+        <div class="DrawerLayout" id="root">
+            <div id="Fragment" class="LinearLayout content">
             </div>
             <div id="DrawerOverLay" class="drawerOverlay">
             </div>
