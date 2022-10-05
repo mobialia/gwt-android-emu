@@ -1,7 +1,8 @@
 GWT Android Emu
 ===============
+[![Release](https://jitpack.io/v/mobialia/gwt-android-emu.svg)](https://jitpack.io/#mobialia/gwt-android-emu)
 
-GWT Android Emu helps porting Android Apps to HTML5 to make them work in any web browser keeping a lot of code in common.
+GWT Android Emu helps to port Android Apps to HTML5 to make them work in any web browser keeping a lot of code in common.
 
 It's also a framework to build web apps using Java an Android APIs.
 
@@ -18,7 +19,7 @@ The emulated Android APIs:
 * Intents: you can pass data in a Bundle, launch activities and services, etc.
 * Handlers and Messages
 * AlertDialogs, ProgressDialogs, Toasts...
-* Views: each HTML element is mapped to a View type, see table below
+* Views: It maps each HTML element to a View type, see table below
 * ListViews with custom adapters
 * RecyclerViews
 * Menu and MenuItems (inflating menus from xml or from code)
@@ -96,21 +97,21 @@ This library's JARs are distributed via Mobialia's bintray repo (https://bintray
 To use them, first include this repository in your gradle file:
 ```
 repositories {
-    maven { url 'https://dl.bintray.com/mobialia/maven' }
+    maven { url 'https://jitpack.io' }
 }
 ```
-and then reference the gwt-android-emu libraries:
+Then reference the gwt-android-emu libraries:
 ```
 dependencies {
-    compile 'com.mobialia:gwt-android-emu:0.4'
-    compile 'com.mobialia:gwt-android-emu:0.4:sources'
+    implementation 'com.github.mobialia:gwt-android-emu:0.6.0'
+    implementation 'com.github.mobialia:gwt-android-emu:0.6.0:sources'
 }
 ```
 
 Demo project
 ============
 
-The demo project is a GWT app coded like an Android App, you can inspect the code at:
+The demo project is a GWT app coded like an Android App, you can inspect the code at:k
 
 https://github.com/mobialia/gwt-android-emu/blob/master/demo/src/main/java/android/demo/
 
@@ -121,5 +122,11 @@ Building the demo project
 ```
 cd demo
 ./generate-resources.sh
-gradle clean compileGwt
+../gradlew clean compileGwt
 ```
+
+You can start a local webserver:
+```
+../gradlew appRun
+```
+and access with your web browser to http://localhost:8080/gwt-android-emu/

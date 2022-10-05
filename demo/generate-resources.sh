@@ -9,8 +9,8 @@ if [ ! -f $SCRIPTPATH/generate-resources.jar ]; then
     cd $SCRIPTPATH/../androidemu
     gradle clean shadow
     cd $SCRIPTPATH
-    cp $SCRIPTPATH/../androidemu/build/libs/generate-resources.jar .
+    cp $SCRIPTPATH/../androidemu/build/libs/generate-resources-fat.jar .
 fi
 
 # Then generate files
-java -jar generate-resources.jar android.demo $SCRIPTPATH $SCRIPTPATH/source_android_project
+java -jar generate-resources-fat.jar android.demo $SCRIPTPATH $SCRIPTPATH/source_android_project
