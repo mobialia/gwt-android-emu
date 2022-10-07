@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -63,12 +62,9 @@ public class Snackbar {
 
 			final View.OnClickListener listener = listeners.get(i);
 			if (listener != null) {
-				button.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Snackbar.this.dismiss();
-						listener.onClick(null); // TODO
-					}
+				button.setOnClickListener(v -> {
+					Snackbar.this.dismiss();
+					listener.onClick(null); // TODO
 				});
 			}
 			snackbarLayout.addView(button);
@@ -76,12 +72,10 @@ public class Snackbar {
 
 		popupPanel.getElement().appendChild(snackbarLayout.getElement());
 
-		popupPanel.setPopupPositionAndShow(new PopupPanel.PositionCallback() {
-			public void setPosition(int offsetWidth, int offsetHeight) {
-				int left = (Window.getClientWidth() - offsetWidth) / 2;
-				int top = Window.getClientHeight() - offsetHeight;
-				popupPanel.setPopupPosition(left, top);
-			}
+		popupPanel.setPopupPositionAndShow((offsetWidth, offsetHeight) -> {
+			int left = (Window.getClientWidth() - offsetWidth) / 2;
+			int top = Window.getClientHeight() - offsetHeight;
+			popupPanel.setPopupPosition(left, top);
 		});
 
 		if (duration != LENGTH_INDEFINITE) {

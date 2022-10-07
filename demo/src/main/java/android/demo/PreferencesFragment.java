@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.preference.PreferencesBuilder;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 

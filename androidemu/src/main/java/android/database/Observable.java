@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Observable<T> {
 
-	protected final ArrayList<T> mObservers = new ArrayList<T>();
+	protected final ArrayList<T> mObservers = new ArrayList<>();
 
 	public void registerObserver(T observer) {
 		if (observer == null) {

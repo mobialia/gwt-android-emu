@@ -2,11 +2,7 @@ package android.support.v4.app;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -22,13 +18,13 @@ public class FragmentManager {
 	static final int STATUS_DESTROYED = 5;
 
 	FragmentActivity activity;
-	LinkedList<Fragment> fragments = new LinkedList<Fragment>();
+	LinkedList<Fragment> fragments = new LinkedList<>();
 
-	Stack<BackStackEntry> backStack = new Stack<BackStackEntry>();
+	Stack<BackStackEntry> backStack = new Stack<>();
 
 	Fragment creatingViewForFragment;
 
-	public class BackStackEntry {
+	public static class BackStackEntry {
 		String id;
 		String name;
 

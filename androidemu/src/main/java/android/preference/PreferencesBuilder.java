@@ -4,13 +4,11 @@ import android.MobialiaUtil;
 import android.Res;
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.SelectElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 
 public class PreferencesBuilder {
 
@@ -51,13 +49,10 @@ public class PreferencesBuilder {
 			}
 			listBoxE.appendChild(optionE);
 		}
-		Event.setEventListener(listBoxE, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				SharedPreferences.Editor editor = sharedPrefs.edit();
-				editor.putString(key, values[((SelectElement) listBoxE).getSelectedIndex()]);
-				editor.commit();
-			}
+		Event.setEventListener(listBoxE, event -> {
+			SharedPreferences.Editor editor = sharedPrefs.edit();
+			editor.putString(key, values[((SelectElement) listBoxE).getSelectedIndex()]);
+			editor.commit();
 		});
 		Event.sinkEvents(listBoxE, Event.ONCHANGE);
 		inputLabel.appendChild(listBoxE);
@@ -83,7 +78,7 @@ public class PreferencesBuilder {
 
 	public static void addBooleanPreference(Element panel, final SharedPreferences sharedPrefs, final String key, String label, String summary,
 											boolean defaultValue) {
-		Boolean value = sharedPrefs.getBoolean(key, defaultValue);
+		boolean value = sharedPrefs.getBoolean(key, defaultValue);
 
 		Element inputLabel = DOM.createLabel();
 		inputLabel.addClassName(Res.R.style().materialLabel());
@@ -109,13 +104,10 @@ public class PreferencesBuilder {
 		summaryG.setInnerHTML(summary);
 		inputLabel.appendChild(summaryG);
 
-		Event.setEventListener(inputLabel, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				SharedPreferences.Editor editor = sharedPrefs.edit();
-				editor.putBoolean(key, ((InputElement) checkBox).isChecked());
-				editor.commit();
-			}
+		Event.setEventListener(inputLabel, event -> {
+			SharedPreferences.Editor editor = sharedPrefs.edit();
+			editor.putBoolean(key, ((InputElement) checkBox).isChecked());
+			editor.commit();
 		});
 		Event.sinkEvents(inputLabel, Event.ONCLICK | Event.ONTOUCHEND);
 

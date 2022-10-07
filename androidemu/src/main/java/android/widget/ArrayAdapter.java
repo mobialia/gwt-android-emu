@@ -10,10 +10,10 @@ import java.util.List;
 
 public class ArrayAdapter<T> extends BaseAdapter {
 
-	List<T> array = new ArrayList<T>();
+	List<T> array;
 
 	public ArrayAdapter(Context context, int resource, T[] objects) {
-		this.array = new ArrayList<T>(Arrays.asList(objects));
+		this.array = new ArrayList<>(Arrays.asList(objects));
 	}
 
 	public ArrayAdapter(Context context, int resource, List<T> objects) {

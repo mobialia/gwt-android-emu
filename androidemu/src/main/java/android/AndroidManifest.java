@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.util.Log;
-
 import com.google.gwt.core.client.EntryPoint;
 
 public abstract class AndroidManifest implements EntryPoint {

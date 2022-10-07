@@ -2,7 +2,6 @@ package android.widget;
 
 import android.content.Context;
 import android.view.View;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 

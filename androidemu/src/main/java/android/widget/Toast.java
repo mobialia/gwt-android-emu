@@ -3,7 +3,6 @@ package android.widget;
 import android.Res;
 import android.content.Context;
 import android.view.Gravity;
-
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
@@ -35,23 +34,21 @@ public class Toast {
 
 		HTML label = new HTML(message.replace("\n", "<br/>"));
 		panel.setWidget(label);
-		panel.setPopupPositionAndShow(new PopupPanel.PositionCallback() {
-			public void setPosition(int offsetWidth, int offsetHeight) {
-				int left = (Window.getClientWidth() - offsetWidth) / 2;
-				int top = 0;
-				switch (gravity) {
-					case Gravity.TOP:
-						top = (Window.getClientHeight() - offsetHeight) / 10;
-						break;
-					case Gravity.CENTER:
-						top = (Window.getClientHeight() - offsetHeight) / 2;
-						break;
-					case Gravity.BOTTOM:
-						top = 9 * (Window.getClientHeight() - offsetHeight) / 10;
-						break;
-				}
-				panel.setPopupPosition(left, top);
+		panel.setPopupPositionAndShow((offsetWidth, offsetHeight) -> {
+			int left = (Window.getClientWidth() - offsetWidth) / 2;
+			int top = 0;
+			switch (gravity) {
+				case Gravity.TOP:
+					top = (Window.getClientHeight() - offsetHeight) / 10;
+					break;
+				case Gravity.CENTER:
+					top = (Window.getClientHeight() - offsetHeight) / 2;
+					break;
+				case Gravity.BOTTOM:
+					top = 9 * (Window.getClientHeight() - offsetHeight) / 10;
+					break;
 			}
+			panel.setPopupPosition(left, top);
 		});
 
 		// Create a new timer that calls hide().

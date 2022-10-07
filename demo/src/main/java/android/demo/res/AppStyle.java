@@ -9,5 +9,5 @@ public interface AppStyle extends ClientBundle {
 
 	@CssResource.NotStrict
 	@Source("AppStyle.gss")
-	public Style style();
+	Style style();
 }

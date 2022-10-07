@@ -2,7 +2,7 @@ package android;
 
 public class MobialiaUtil {
 
-	public static int arrayPosition(String array[], String value) {
+	public static int arrayPosition(String[] array, String value) {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i].equals(value)) {
 				return i;

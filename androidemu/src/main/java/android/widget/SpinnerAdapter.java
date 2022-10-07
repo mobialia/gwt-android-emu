@@ -42,5 +42,5 @@ public interface SpinnerAdapter extends Adapter {
 	 * @return a {@link android.view.View} corresponding to the data at the
 	 * specified position.
 	 */
-	public View getDropDownView(int position, View convertView, ViewGroup parent);
+	View getDropDownView(int position, View convertView, ViewGroup parent);
 }

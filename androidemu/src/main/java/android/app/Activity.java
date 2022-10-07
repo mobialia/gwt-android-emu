@@ -8,15 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewFactory;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -132,12 +126,7 @@ public class Activity extends Context {
 						ImageButton b = new ImageButton(this);
 						if (item.getIcon() != 0) {
 							b.setImageResource(item.getIcon());
-							b.setOnClickListener(new View.OnClickListener() {
-								@Override
-								public void onClick(View v) {
-									onMenuItemSelected(0, item);
-								}
-							});
+							b.setOnClickListener(v -> onMenuItemSelected(0, item));
 							b.getElement().addClassName(Res.R.style().actionbarButton());
 							b.getElement().addClassName(Res.R.style().controlHighlight());
 							actionBarRight.addView(b);
@@ -149,20 +138,10 @@ public class Activity extends Context {
 							menuButton.getElement().addClassName(Res.R.style().actionbarButton());
 							menuButton.getElement().addClassName(Res.R.style().controlHighlight());
 							menuButton.setImageResource(android.R.drawable.actionbar_menu);
-							menuButton.setOnClickListener(new View.OnClickListener() {
-								@Override
-								public void onClick(View v) {
-									popupMenu.toggle();
-								}
-							});
+							menuButton.setOnClickListener(v -> popupMenu.toggle());
 
 							popupMenu = new PopupMenu(this, menuButton);
-							popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-								@Override
-								public boolean onMenuItemClick(MenuItem item) {
-									return onMenuItemSelected(0, item);
-								}
-							});
+							popupMenu.setOnMenuItemClickListener(item1 -> onMenuItemSelected(0, item1));
 						}
 
 						if (item.getTitleString() != null) {

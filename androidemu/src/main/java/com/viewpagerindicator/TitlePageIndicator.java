@@ -4,10 +4,8 @@ import android.Res;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.gwt.dom.client.Element;
 
 public class TitlePageIndicator extends ViewGroup implements PageIndicator {
@@ -91,12 +89,7 @@ public class TitlePageIndicator extends ViewGroup implements PageIndicator {
 			addView(b);
 
 			final int position = i;
-			b.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					mViewPager.setCurrentItem(position, true);
-				}
-			});
+			b.setOnClickListener(v -> mViewPager.setCurrentItem(position, true));
 		}
 	}
 

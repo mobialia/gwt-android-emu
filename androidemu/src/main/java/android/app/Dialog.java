@@ -2,7 +2,6 @@ package android.app;
 
 import android.Res;
 import android.content.DialogInterface;
-
 import com.google.gwt.user.client.ui.PopupPanel;
 
 public class Dialog implements DialogInterface {

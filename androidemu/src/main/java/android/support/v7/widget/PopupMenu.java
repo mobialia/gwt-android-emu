@@ -2,14 +2,9 @@ package android.support.v7.widget;
 
 import android.Res;
 import android.content.Context;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class PopupMenu {
@@ -61,13 +56,10 @@ public class PopupMenu {
 				if (item.getTitleString() != null) {
 					b.setText(item.getTitleString());
 				}
-				b.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						dismiss();
-						if (mMenuItemClickListener != null) {
-							mMenuItemClickListener.onMenuItemClick(item);
-						}
+				b.setOnClickListener(v -> {
+					dismiss();
+					if (mMenuItemClickListener != null) {
+						mMenuItemClickListener.onMenuItemClick(item);
 					}
 				});
 				b.getElement().addClassName(Res.R.style().menuItem());
@@ -81,7 +73,7 @@ public class PopupMenu {
 			menuLayout.getElement().removeClassName(Res.R.style().gone());
 		}
 
-		int anchorlocation[] = {0, 0};
+		int[] anchorlocation = {0, 0};
 		anchor.getLocationOnScreen(anchorlocation);
 		menuLayout.getElement().getStyle().setProperty("position", "fixed");
 		menuLayout.getElement().getStyle().setPropertyPx("left", anchorlocation[0] + anchor.getWidth() - menuLayout.getWidth());

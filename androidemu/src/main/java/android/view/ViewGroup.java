@@ -8,7 +8,7 @@ public class ViewGroup extends View {
 
 	static final String TAG = "ViewGroup";
 
-	ArrayList<View> childViews = new ArrayList<View>();
+	ArrayList<View> childViews = new ArrayList<>();
 
 	public ViewGroup(Element element) {
 		super(element);

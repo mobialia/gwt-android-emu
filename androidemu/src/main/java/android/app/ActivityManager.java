@@ -3,11 +3,7 @@ package android.app;
 import android.AndroidManifest;
 import android.content.Intent;
 import android.util.Log;
-
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -23,7 +19,7 @@ public class ActivityManager {
 	public final static int STATUS_PAUSED = 3;
 	public final static int STATUS_DESTROYED = 4;
 
-	public static Stack<Activity> activityStack = new Stack<Activity>();
+	public static Stack<Activity> activityStack = new Stack<>();
 
 	final static String id1 = "start";
 	final static String id2 = "run";
@@ -38,13 +34,10 @@ public class ActivityManager {
 
 		History.newItem(id1);
 		History.newItem(id2);
-		History.addValueChangeHandler(new ValueChangeHandler<String>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<String> stringValueChangeEvent) {
-				if (!exitApp && id1.equals(stringValueChangeEvent.getValue())) {
-					History.newItem(id2);
-					ActivityManager.back();
-				}
+		History.addValueChangeHandler(stringValueChangeEvent -> {
+			if (!exitApp && id1.equals(stringValueChangeEvent.getValue())) {
+				History.newItem(id2);
+				ActivityManager.back();
 			}
 		});
 	}
@@ -113,36 +106,31 @@ public class ActivityManager {
 			}
 		}
 		while (activity.status > activity.targetStatus) {
-			switch (activity.status) {
-				case STATUS_PAUSED:
-					if (activity.returnRequestCode != null) {
-						activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
-					}
-					activity.onStart();
-					activity.onResume();
-					activity.onPostResume();
-					activity.status = STATUS_RESUMED;
-					break;
+			if (activity.status == STATUS_PAUSED) {
+				if (activity.returnRequestCode != null) {
+					activity.onActivityResult(activity.returnRequestCode, activity.returnResultCode, activity.returnResultData);
+				}
+				activity.onStart();
+				activity.onResume();
+				activity.onPostResume();
+				activity.status = STATUS_RESUMED;
 			}
 		}
 	}
 
 	private static void checkActivityStackDeferred() {
-		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-			@Override
-			public void execute() {
-				try {
-					checkActivityStack();
-				} catch (Throwable e) {
-					Log.e(TAG, e.getMessage());
+		Scheduler.get().scheduleDeferred(() -> {
+			try {
+				checkActivityStack();
+			} catch (Throwable e) {
+				Log.e(TAG, e.getMessage());
 
-					StringBuffer stb = new StringBuffer();
-					stb.append(e.getMessage()).append("\n\nStack trace:\n");
-					for (int i = 0; i < e.getStackTrace().length; i++) {
-						stb.append(e.getStackTrace()[i].toString()).append("\n");
-					}
-					Log.e(TAG, stb.toString());
+				StringBuilder stb = new StringBuilder();
+				stb.append(e.getMessage()).append("\n\nStack trace:\n");
+				for (int i = 0; i < e.getStackTrace().length; i++) {
+					stb.append(e.getStackTrace()[i].toString()).append("\n");
 				}
+				Log.e(TAG, stb.toString());
 			}
 		});
 	}

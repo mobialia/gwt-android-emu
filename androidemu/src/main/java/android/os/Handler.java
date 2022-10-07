@@ -1,7 +1,6 @@
 package android.os;
 
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.Timer;
 
 public class Handler {
@@ -15,13 +14,7 @@ public class Handler {
 	}
 
 	public void sendMessage(final Message msg) {
-		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
-			@Override
-			public void execute() {
-				handleMessage(msg);
-			}
-		});
+		Scheduler.get().scheduleDeferred(() -> handleMessage(msg));
 	}
 
 	public void sendMessageAtTime(final Message msg, long uptimeMillis) {

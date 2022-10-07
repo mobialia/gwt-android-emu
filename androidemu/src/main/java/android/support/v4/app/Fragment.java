@@ -3,12 +3,7 @@ package android.support.v4.app;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 
 import java.util.ArrayList;
 
@@ -25,7 +20,7 @@ public class Fragment {
 	boolean visible = true;
 	boolean hasMenu = true;
 
-	ArrayList<Fragment> childFragments = new ArrayList<Fragment>();
+	ArrayList<Fragment> childFragments = new ArrayList<>();
 
 	public void setArguments(Bundle args) {
 		this.args = args;

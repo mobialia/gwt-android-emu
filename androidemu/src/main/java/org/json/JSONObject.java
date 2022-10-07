@@ -22,11 +22,11 @@ public class JSONObject {
 	}
 
 	public int getInt(String name) {
-		return Integer.valueOf(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
+		return Integer.parseInt(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
 	}
 
 	public long getLong(String name) {
-		return Long.valueOf(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
+		return Long.parseLong(jsonObject.get(name).toString().replaceAll("^\"|\"$", ""));
 	}
 
 	public boolean has(String name) {

@@ -19,7 +19,7 @@ public class SidebarAdapter extends BaseAdapter {
 	int[] images;
 	String userName;
 
-	public SidebarAdapter(Context c, int[] types, int[] texts, int images[]) {
+	public SidebarAdapter(Context c, int[] types, int[] texts, int[] images) {
 		mContext = c;
 		this.types = types;
 		this.texts = texts;

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.gwt.user.client.Window;
 
 public class AlertDialog extends Dialog implements DialogInterface {
@@ -25,7 +24,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 		boolean cancelable = true;
 		String title;
 		String message;
-		CharSequence items[];
+		CharSequence[] items;
 		String positiveLabel, negativeLabel, neutralLabel;
 		DialogInterface.OnClickListener itemsListener, positiveListener, negativeListener, neutralListener;
 
@@ -85,7 +84,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			this.itemsListener = listener;
 		}
 
-		public void setItems(CharSequence items[], DialogInterface.OnClickListener listener) {
+		public void setItems(CharSequence[] items, DialogInterface.OnClickListener listener) {
 			this.items = items;
 			this.itemsListener = listener;
 		}
@@ -130,13 +129,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 				button.setText(item.toString());
 				button.getElement().addClassName(Res.R.style().dialogItem());
 				button.getElement().addClassName(Res.R.style().controlHighlight());
-				button.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						AlertDialog.this.dismiss();
-						if (itemsListener != null) {
-							itemsListener.onClick(AlertDialog.this, countFinal);
-						}
+				button.setOnClickListener(v -> {
+					AlertDialog.this.dismiss();
+					if (itemsListener != null) {
+						itemsListener.onClick(AlertDialog.this, countFinal);
 					}
 				});
 				contentPanel.addView(button);
@@ -158,13 +154,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			okButton.setText(builder.positiveLabel);
 			okButton.getElement().addClassName(Res.R.style().dialogButton());
 			okButton.getElement().addClassName(Res.R.style().controlHighlight());
-			okButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					AlertDialog.this.dismiss();
-					if (positiveListener != null) {
-						positiveListener.onClick(AlertDialog.this, BUTTON_POSITIVE);
-					}
+			okButton.setOnClickListener(v -> {
+				AlertDialog.this.dismiss();
+				if (positiveListener != null) {
+					positiveListener.onClick(AlertDialog.this, BUTTON_POSITIVE);
 				}
 			});
 		}
@@ -174,13 +167,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			cancelButton.setText(builder.negativeLabel);
 			cancelButton.getElement().addClassName(Res.R.style().dialogButton());
 			cancelButton.getElement().addClassName(Res.R.style().controlHighlight());
-			cancelButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					AlertDialog.this.dismiss();
-					if (negativeListener != null) {
-						negativeListener.onClick(AlertDialog.this, BUTTON_NEGATIVE);
-					}
+			cancelButton.setOnClickListener(v -> {
+				AlertDialog.this.dismiss();
+				if (negativeListener != null) {
+					negativeListener.onClick(AlertDialog.this, BUTTON_NEGATIVE);
 				}
 			});
 		}
@@ -190,13 +180,10 @@ public class AlertDialog extends Dialog implements DialogInterface {
 			neutralButton.setText(builder.neutralLabel);
 			neutralButton.getElement().addClassName(Res.R.style().dialogButton());
 			neutralButton.getElement().addClassName(Res.R.style().controlHighlight());
-			neutralButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					AlertDialog.this.dismiss();
-					if (neutralListener != null) {
-						neutralListener.onClick(AlertDialog.this, BUTTON_NEUTRAL);
-					}
+			neutralButton.setOnClickListener(v -> {
+				AlertDialog.this.dismiss();
+				if (neutralListener != null) {
+					neutralListener.onClick(AlertDialog.this, BUTTON_NEUTRAL);
 				}
 			});
 		}

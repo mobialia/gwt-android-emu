@@ -11,23 +11,23 @@ public interface IBinder {
 	int SYSPROPS_TRANSACTION = ('_' << 24) | ('S' << 16) | ('P' << 8) | 'R';
 	int FLAG_ONEWAY = 0x00000001;
 
-	public String getInterfaceDescriptor() throws RemoteException;
+	String getInterfaceDescriptor() throws RemoteException;
 
-	public boolean pingBinder();
+	boolean pingBinder();
 
-	public boolean isBinderAlive();
+	boolean isBinderAlive();
 
-	public IInterface queryLocalInterface(String descriptor);
+	IInterface queryLocalInterface(String descriptor);
 
-	public boolean transact(int code, Parcel data, Parcel reply, int flags)
+	boolean transact(int code, Parcel data, Parcel reply, int flags)
 			throws RemoteException;
 
-	public interface DeathRecipient {
-		public void binderDied();
+	interface DeathRecipient {
+		void binderDied();
 	}
 
-	public void linkToDeath(DeathRecipient recipient, int flags)
+	void linkToDeath(DeathRecipient recipient, int flags)
 			throws RemoteException;
 
-	public boolean unlinkToDeath(DeathRecipient recipient, int flags);
+	boolean unlinkToDeath(DeathRecipient recipient, int flags);
 }

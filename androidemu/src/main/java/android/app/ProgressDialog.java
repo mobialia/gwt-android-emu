@@ -3,7 +3,6 @@ package android.app;
 import android.Res;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -39,7 +38,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 	}
 
 	public void setTitle(CharSequence title) {
-		if (titleLabel == null && title != null && !"".equals(title)) {
+		if (titleLabel == null && title != null && !"".contentEquals(title)) {
 			titleLabel = new Label();
 			titleLabel.setStyleName(Res.R.style().dialogTitle());
 			titleLabelContainer.add(titleLabel);
@@ -53,7 +52,7 @@ public class ProgressDialog extends Dialog implements DialogInterface {
 	}
 
 	public void setMessage(CharSequence message) {
-		if (messageLabel == null && message != null && !"".equals(message)) {
+		if (messageLabel == null && message != null && !"".contentEquals(message)) {
 			messageLabel = new Label();
 			messageLabel.setStyleName(Res.R.style().dialogMessage());
 			messageLabelContainer.add(messageLabel);

@@ -1,7 +1,6 @@
 package android.view;
 
 import android.content.Context;
-
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;

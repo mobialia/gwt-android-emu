@@ -2,16 +2,14 @@ package android.content.res;
 
 
 import android.view.Menu;
-
 import com.google.gwt.user.client.ui.Widget;
 
 public class Resources {
 	static final String TAG = "Resources";
 
 	public String getIdAsString(int id) {
-		switch (id) {
-			case android.R.id.list:
-				return "list";
+		if (id == android.R.id.list) {
+			return "list";
 		}
 		return null;
 	}

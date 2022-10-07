@@ -23,9 +23,9 @@ public class Color {
 	 * Not part of Android, used for internal purposes
 	 */
 	public static String getHtmlColor(int color) {
-		String hex = Integer.toHexString(color);
+		StringBuilder hex = new StringBuilder(Integer.toHexString(color));
 		while (hex.length() < 6) {
-			hex = "0" + hex;
+			hex.insert(0, "0");
 		}
 		return "#" + hex;
 	}

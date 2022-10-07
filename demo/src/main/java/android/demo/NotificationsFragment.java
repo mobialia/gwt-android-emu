@@ -24,43 +24,31 @@ public class NotificationsFragment extends Fragment {
 
 		view = inflater.inflate(R.layout.notifications_fragment, container, false);
 
-		view.findViewById(R.id.AlertButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// AlertDialog usage sample
-				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setTitle(R.string.dialog_title);
-				builder.setMessage(R.string.dialog_message);
-				builder.setPositiveButton(R.string.dialog_yes, null);
-				builder.setNegativeButton(R.string.dialog_no, null);
-				builder.create().show();
-			}
+		view.findViewById(R.id.AlertButton).setOnClickListener(v -> {
+			// AlertDialog usage sample
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setTitle(R.string.dialog_title);
+			builder.setMessage(R.string.dialog_message);
+			builder.setPositiveButton(R.string.dialog_yes, null);
+			builder.setNegativeButton(R.string.dialog_no, null);
+			builder.create().show();
 		});
 
-		view.findViewById(R.id.ToastButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// Toast usage sample, gravities and durations work!
+		view.findViewById(R.id.ToastButton).setOnClickListener(v -> {
+			// Toast usage sample, gravities and durations work!
+			Toast toast = Toast.makeText(getActivity(), R.string.toast_text, Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
+		});
+
+		view.findViewById(R.id.SnackBarButton).setOnClickListener(v -> {
+			Snackbar snackBar = Snackbar.make(view, getString(R.string.snackbar_text), Snackbar.LENGTH_LONG);
+			snackBar.setAction(R.string.snackbar_action, v1 -> {
 				Toast toast = Toast.makeText(getActivity(), R.string.toast_text, Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.CENTER, 0, 0);
 				toast.show();
-			}
-		});
-
-		view.findViewById(R.id.SnackBarButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Snackbar snackBar = Snackbar.make(view, getString(R.string.snackbar_text), Snackbar.LENGTH_LONG);
-				snackBar.setAction(R.string.snackbar_action, new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Toast toast = Toast.makeText(getActivity(), R.string.toast_text, Toast.LENGTH_SHORT);
-						toast.setGravity(Gravity.CENTER, 0, 0);
-						toast.show();
-					}
-				});
-				snackBar.show();
-			}
+			});
+			snackBar.show();
 		});
 
 		return view;

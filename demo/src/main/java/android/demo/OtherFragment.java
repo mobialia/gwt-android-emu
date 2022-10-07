@@ -33,19 +33,11 @@ public class OtherFragment extends Fragment {
 		view = inflater.inflate(R.layout.other_fragment, container, false);
 
 
-		view.findViewById(R.id.HandlerButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				handler.sendEmptyMessage(0);
-			}
-		});
+		view.findViewById(R.id.HandlerButton).setOnClickListener(v -> handler.sendEmptyMessage(0));
 
-		view.findViewById(R.id.LaunchActivityButton).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(), SimpleActivity.class);
-				getActivity().startActivity(intent);
-			}
+		view.findViewById(R.id.LaunchActivityButton).setOnClickListener(v -> {
+			Intent intent = new Intent(getActivity(), SimpleActivity.class);
+			getActivity().startActivity(intent);
 		});
 
 		return view;

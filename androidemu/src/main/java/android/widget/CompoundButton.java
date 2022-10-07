@@ -3,7 +3,6 @@ package android.widget;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 
 public class CompoundButton extends Button {
 
@@ -11,9 +10,9 @@ public class CompoundButton extends Button {
 		super(element);
 	}
 
-	public static interface OnCheckedChangeListener {
+	public interface OnCheckedChangeListener {
 
-		abstract void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
+		void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
 
 	}
 
@@ -26,12 +25,7 @@ public class CompoundButton extends Button {
 	}
 
 	public void setOnCheckedChangeListener(final CompoundButton.OnCheckedChangeListener listener) {
-		Event.setEventListener(element, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				listener.onCheckedChanged(CompoundButton.this, isChecked());
-			}
-		});
+		Event.setEventListener(element, event -> listener.onCheckedChanged(CompoundButton.this, isChecked()));
 		Event.sinkEvents(element, Event.ONCHANGE);
 	}
 

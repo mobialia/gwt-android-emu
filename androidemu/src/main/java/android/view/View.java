@@ -5,10 +5,8 @@ import android.Res;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -21,7 +19,7 @@ public class View {
 	public static final int FOCUS_DOWN = 130;
 	public static final int FOCUS_UP = 33;
 
-	public Element element = null;
+	public Element element;
 	int id;
 
 	public View(Element element) {
@@ -118,17 +116,12 @@ public class View {
 	}
 
 	public void setOnClickListener(final OnClickListener listener) {
-		Event.setEventListener(element, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				listener.onClick(View.this);
-			}
-		});
+		Event.setEventListener(element, event -> listener.onClick(View.this));
 		Event.sinkEvents(element, Event.ONCLICK);
 	}
 
-	public static interface OnClickListener {
-		abstract void onClick(View v);
+	public interface OnClickListener {
+		void onClick(View v);
 	}
 
 	public Element getElement() {

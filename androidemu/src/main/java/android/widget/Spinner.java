@@ -2,12 +2,10 @@ package android.widget;
 
 import android.content.Context;
 import android.view.View;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SelectElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 
 public class Spinner extends View {
 
@@ -27,16 +25,13 @@ public class Spinner extends View {
 
 	public int getSelectedItemPosition() {
 		int i = SelectElement.as(element).getSelectedIndex();
-		return (i < 0 ? 0 : i);
+		return (Math.max(i, 0));
 	}
 
 	public void setOnItemSelectedListener(final AdapterView.OnItemSelectedListener listener) {
-		Event.setEventListener(element, new EventListener() {
-			@Override
-			public void onBrowserEvent(Event event) {
-				int i = getSelectedItemPosition();
-				listener.onItemSelected(null, Spinner.this, i, i);
-			}
+		Event.setEventListener(element, event -> {
+			int i = getSelectedItemPosition();
+			listener.onItemSelected(null, Spinner.this, i, i);
 		});
 		Event.sinkEvents(element, Event.ONCHANGE);
 	}

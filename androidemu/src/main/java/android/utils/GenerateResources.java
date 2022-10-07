@@ -1,31 +1,25 @@
 package android.utils;
 
 import android.view.MenuItem;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GenerateResources {
 	private final static String NS_ANDROID = "http://schemas.android.com/apk/res/android";
 	private final static String NS_APP = "http://schemas.android.com/apk/res-auto";
 
 	private final static String FILE_HEADER = "/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */\n";
-	private Pattern idsPattern = Pattern.compile("\\s*(?i)id\\s*=\\s*(\\\"([^\"]*\\\")|'[^']*'|([^'\">\\s]+))");
+	private Pattern idsPattern = Pattern.compile("\\s*(?i)id\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))");
 	private Pattern langPattern = Pattern.compile(".*/values-([a-zA-Z]{2})/.*");
 	private Pattern layoutPattern = Pattern.compile(".*public [a-zA-Z0-9_]+ ([a-zA-Z0-9_]+)" + Pattern.quote("(") + Pattern.quote(")") + ".*");
 
@@ -52,9 +46,9 @@ public class GenerateResources {
 	public GenerateResources(String packageName) {
 		this.packageName = packageName;
 
-		menuClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport " + packageName + ".R;\n\npublic class Menus {\n");
-		stringClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Strings extends Constants {\n");
-		arrayClassSB.append(FILE_HEADER + "package " + packageName + ".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Arrays extends Constants {\n");
+		menuClassSB.append(FILE_HEADER + "package ").append(packageName).append(".res;\n\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport ").append(packageName).append(".R;\n\npublic class Menus {\n");
+		stringClassSB.append(FILE_HEADER + "package ").append(packageName).append(".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Strings extends Constants {\n");
+		arrayClassSB.append(FILE_HEADER + "package ").append(packageName).append(".res;\n\nimport com.google.gwt.i18n.client.Constants;\n\npublic interface Arrays extends Constants {\n");
 	}
 
 	public void processLangFile(String fileName) {
@@ -110,7 +104,7 @@ public class GenerateResources {
 
 				if (stringArrays.item(i).getNodeType() == Node.ELEMENT_NODE) {
 					String key = ((Element) stringArrays.item(i)).getAttribute("name");
-					StringBuffer valueSb = new StringBuffer();
+					StringBuilder valueSb = new StringBuilder();
 
 					NodeList stringArraysItems = stringArrays.item(i).getChildNodes();
 
@@ -169,7 +163,7 @@ public class GenerateResources {
 
 			menuIds.add(menuName);
 
-			menuClassSB.append("\tpublic static Menu " + menuName + "() {\n");
+			menuClassSB.append("\tpublic static Menu ").append(menuName).append("() {\n");
 			menuClassSB.append("\t\tMenu menu = new Menu();\n");
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -201,11 +195,11 @@ public class GenerateResources {
 					if (eElement.hasAttributeNS(NS_ANDROID, "title")) {
 						title = "R.string." + eElement.getAttributeNS(NS_ANDROID, "title").replace("@string/", "");
 					}
-					menuClassSB.append("\t\tMenuItem item" + temp + " = menu.add(" + groupId + ", " + itemId + ", " + order + ", " + title + ");\n");
+					menuClassSB.append("\t\tMenuItem item").append(temp).append(" = menu.add(").append(groupId).append(", ").append(itemId).append(", ").append(order).append(", ").append(title).append(");\n");
 
 					if (eElement.hasAttributeNS(NS_ANDROID, "icon")) {
 						String icon = eElement.getAttributeNS(NS_ANDROID, "icon").replace("@drawable/", "");
-						menuClassSB.append("\t\titem" + temp + ".setIcon(R.drawable." + icon + ");\n");
+						menuClassSB.append("\t\titem").append(temp).append(".setIcon(R.drawable.").append(icon).append(");\n");
 					}
 
 					if (eElement.hasAttributeNS(NS_APP, "showAsAction")) {
@@ -219,7 +213,7 @@ public class GenerateResources {
 							showAsAction = MenuItem.SHOW_AS_ACTION_IF_ROOM;
 						}
 
-						menuClassSB.append("\t\titem" + temp + ".setShowAsAction(" + showAsAction + ");\n");
+						menuClassSB.append("\t\titem").append(temp).append(".setShowAsAction(").append(showAsAction).append(");\n");
 					}
 				}
 			}
@@ -271,44 +265,44 @@ public class GenerateResources {
 	}
 
 	public void writeFiles(String classesDir, String propertiesDir) {
-		StringBuffer idsSB = new StringBuffer();
-		StringBuffer drawableIdsSB = new StringBuffer();
-		StringBuffer menuIdsSB = new StringBuffer();
-		StringBuffer stringIdsSB = new StringBuffer();
-		StringBuffer arrayIdsSB = new StringBuffer();
-		StringBuffer layoutIdsSB = new StringBuffer();
+		StringBuilder idsSB = new StringBuilder();
+		StringBuilder drawableIdsSB = new StringBuilder();
+		StringBuilder menuIdsSB = new StringBuilder();
+		StringBuilder stringIdsSB = new StringBuilder();
+		StringBuilder arrayIdsSB = new StringBuilder();
+		StringBuilder layoutIdsSB = new StringBuilder();
 
-		StringBuffer idResolverSB = new StringBuffer();
-		StringBuffer drawableIdResolverSB = new StringBuffer();
-		StringBuffer menuIdResolverSB = new StringBuffer();
-		StringBuffer stringIdResolverSB = new StringBuffer();
-		StringBuffer arrayIdResolverSB = new StringBuffer();
-		StringBuffer layoutIdResolverSB = new StringBuffer();
+		StringBuilder idResolverSB = new StringBuilder();
+		StringBuilder drawableIdResolverSB = new StringBuilder();
+		StringBuilder menuIdResolverSB = new StringBuilder();
+		StringBuilder stringIdResolverSB = new StringBuilder();
+		StringBuilder arrayIdResolverSB = new StringBuilder();
+		StringBuilder layoutIdResolverSB = new StringBuilder();
 
-		StringBuffer colorIdsSB = new StringBuffer();
-		StringBuffer colorIdResolverSB = new StringBuffer();
+		StringBuilder colorIdsSB = new StringBuilder();
+		StringBuilder colorIdResolverSB = new StringBuilder();
 
 		int counter;
 
 		// IDS
 		counter = 1;
 		for (String str : ids) {
-			idResolverSB.append("\t\t\tcase R.id." + str + ":\n\t\t\t\treturn \"" + str + "\";\n");
-			idsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			idResolverSB.append("\t\t\tcase R.id.").append(str).append(":\n\t\t\t\treturn \"").append(str).append("\";\n");
+			idsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		// DRAWABLES
 		counter = 1;
 		for (String str : drawableIds.keySet()) {
-			drawableIdResolverSB.append("\t\t\tcase R.drawable." + str + ":\n\t\t\t\t\treturn \"" + drawableIds.get(str) + "\";\n");
-			drawableIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			drawableIdResolverSB.append("\t\t\tcase R.drawable.").append(str).append(":\n\t\t\t\t\treturn \"").append(drawableIds.get(str)).append("\";\n");
+			drawableIdsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		// MENUS
 		counter = 1;
 		for (String str : menuIds) {
-			menuIdResolverSB.append("\t\t\tcase R.menu." + str + ":\n\t\t\t\t\treturn Menus." + str + "();\n");
-			menuIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			menuIdResolverSB.append("\t\t\tcase R.menu.").append(str).append(":\n\t\t\t\t\treturn Menus.").append(str).append("();\n");
+			menuIdsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		menuClassSB.append("}\n");
@@ -317,15 +311,15 @@ public class GenerateResources {
 		// STRING IDS
 		counter = 1;
 		for (String str : stringIds) {
-			stringIdResolverSB.append("\t\t\tcase R.string." + str + ":\n\t\t\t\treturn strings." + str + "();\n");
-			stringIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			stringIdResolverSB.append("\t\t\tcase R.string.").append(str).append(":\n\t\t\t\treturn strings.").append(str).append("();\n");
+			stringIdsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		// ARRAY IDS
 		counter = 1;
 		for (String str : arrayIds) {
-			arrayIdResolverSB.append("\t\t\tcase R.array." + str + ":\n\t\t\t\treturn arrays." + str + "();\n");
-			arrayIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			arrayIdResolverSB.append("\t\t\tcase R.array.").append(str).append(":\n\t\t\t\treturn arrays.").append(str).append("();\n");
+			arrayIdsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		// STRINGS & ARRAYS
@@ -348,21 +342,21 @@ public class GenerateResources {
 		// COLORS
 		counter = 1;
 		for (String colorName : colors.keySet()) {
-			colorIdResolverSB.append("\t\t\tcase R.color." + colorName + ":\n\t\t\t\t\treturn " + colors.get(colorName).replace("#", "0x") + ";\n");
-			colorIdsSB.append("\t\tpublic final static int " + colorName + " = " + counter++ + ";\n");
+			colorIdResolverSB.append("\t\t\tcase R.color.").append(colorName).append(":\n\t\t\t\t\treturn ").append(colors.get(colorName).replace("#", "0x")).append(";\n");
+			colorIdsSB.append("\t\tpublic final static int ").append(colorName).append(" = ").append(counter++).append(";\n");
 		}
 
 		// LAYOUT IDS
 		counter = 1;
 		for (String str : layouts) {
-			layoutIdResolverSB.append("\t\t\tcase R.layout." + str + ":\n\t\t\t\treturn layouts." + str + "();\n");
-			layoutIdsSB.append("\t\tpublic final static int " + str + " = " + counter++ + ";\n");
+			layoutIdResolverSB.append("\t\t\tcase R.layout.").append(str).append(":\n\t\t\t\treturn layouts.").append(str).append("();\n");
+			layoutIdsSB.append("\t\tpublic final static int ").append(str).append(" = ").append(counter++).append(";\n");
 		}
 
 		// Finally write the "R" class
 		StringBuffer RSB = new StringBuffer();
 		RSB.append(FILE_HEADER);
-		RSB.append("package " + packageName + ";\n\n");
+		RSB.append("package ").append(packageName).append(";\n\n");
 		RSB.append("public class R {\n");
 
 		RSB.append("\tpublic static final class id {\n");
@@ -399,11 +393,11 @@ public class GenerateResources {
 
 		StringBuffer contentResolverSB = new StringBuffer();
 		contentResolverSB.append(FILE_HEADER);
-		contentResolverSB.append("package " + packageName + ".res;\n\n");
+		contentResolverSB.append("package ").append(packageName).append(".res;\n\n");
 		contentResolverSB.append("import android.view.Menu;\n\n");
 		contentResolverSB.append("import com.google.gwt.core.client.GWT;\n");
 		contentResolverSB.append("import com.google.gwt.user.client.ui.Widget;\n");
-		contentResolverSB.append("import " + packageName + ".R;\n\n");
+		contentResolverSB.append("import ").append(packageName).append(".R;\n\n");
 
 		contentResolverSB.append("public class Resources extends android.content.res.Resources {\n\n");
 		contentResolverSB.append("\tpublic static final Strings strings = GWT.create(Strings.class);\n");
@@ -522,7 +516,7 @@ public class GenerateResources {
 			for (String f : file.list()) {
 				if (f.endsWith(".png") || f.endsWith(".jpg") || f.endsWith(".jpeg") || f.endsWith(".svg")) {
 					String id = f.substring(0, f.lastIndexOf("."));
-					if (!drawableIds.keySet().contains(id)) {
+					if (!drawableIds.containsKey(id)) {
 						drawableIds.put(id, f);
 					}
 				}
@@ -530,7 +524,7 @@ public class GenerateResources {
 		}
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		if (args.length < 2) {
 			System.out.println("GWT Resource generation crawling Android resource directories.");
 			System.out.println("Converts resources from and Android project to a GWT format used by the gwt-android-emu library.");
@@ -546,7 +540,7 @@ public class GenerateResources {
 			System.out.println("It generates R.id.* for each id= in the uibinder xml layouts at <gwt_project_dir>/src/main/resources/<package_folder>/res/layout/");
 			System.out.println("It generates R.drawable.* for the images in <gwt_project_dir>/src/main/webapp/img/");
 			System.out.println("It generates R.layout.* for each method in <gwt_project_dir>/src/main/java/<package_folder>/res/Layouts.java");
-			System.out.println("");
+			System.out.println();
 			System.out.println("Usage: GenerateResources package_name <gwt_project_dir> <resource_dir_1> [<resource_dir_2>] [<resource_dir_3>] ...");
 			return;
 		}

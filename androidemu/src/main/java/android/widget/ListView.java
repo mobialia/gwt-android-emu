@@ -3,10 +3,8 @@ package android.widget;
 import android.database.DataSetObserver;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
-
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 
 public class ListView extends View {
 
@@ -62,12 +60,9 @@ public class ListView extends View {
 			final int index = i;
 			final long id = mAdapter.getItemId(i);
 
-			Event.setEventListener(v.getElement(), new EventListener() {
-				@Override
-				public void onBrowserEvent(Event event) {
-					if (listener != null) {
-						listener.onItemClick(null, v, index, id);
-					}
+			Event.setEventListener(v.getElement(), event -> {
+				if (listener != null) {
+					listener.onItemClick(null, v, index, id);
 				}
 			});
 			Event.sinkEvents(v.getElement(), Event.ONCLICK);

@@ -1,26 +1,22 @@
 package android.support.v4.widget;
 
 import android.Res;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 
 public class DrawerLayout extends ViewGroup {
 	static final String TAG = DrawerLayout.class.getSimpleName();
 
-	public static interface DrawerListener {
+	public interface DrawerListener {
 
-		abstract void onDrawerClosed(View drawerView);
+		void onDrawerClosed(View drawerView);
 
-		abstract void onDrawerOpened(View drawerView);
+		void onDrawerOpened(View drawerView);
 
-		abstract void onDrawerSlide(View drawerView, float slideOffset);
+		void onDrawerSlide(View drawerView, float slideOffset);
 
-		abstract void onDrawerStateChanged(int newState);
+		void onDrawerStateChanged(int newState);
 	}
 
 	View drawerOverlay, drawer;
@@ -39,12 +35,7 @@ public class DrawerLayout extends ViewGroup {
 				}
 			}
 		}
-		drawerOverlay.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				closeDrawer(0);
-			}
-		});
+		drawerOverlay.setOnClickListener(v -> closeDrawer(0));
 		closeDrawer(0);
 	}
 

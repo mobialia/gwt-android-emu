@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.gwt.dom.client.Style;
 
 public class ActionBar {
@@ -47,12 +46,7 @@ public class ActionBar {
 
 		actionBarHome.getElement().addClassName(Res.R.style().actionbarHome());
 		actionBarHome.getElement().addClassName(Res.R.style().controlHighlight());
-		actionBarHome.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				onHomeAction();
-			}
-		});
+		actionBarHome.setOnClickListener(v -> onHomeAction());
 		actionBarHome.setVisibility(View.GONE);
 
 		titleView = new TextView(activity);

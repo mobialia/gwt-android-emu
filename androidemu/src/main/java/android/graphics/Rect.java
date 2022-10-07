@@ -81,17 +81,16 @@ public final class Rect {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder(32);
-		sb.append("Rect(");
-		sb.append(left);
-		sb.append(", ");
-		sb.append(top);
-		sb.append(" - ");
-		sb.append(right);
-		sb.append(", ");
-		sb.append(bottom);
-		sb.append(")");
-		return sb.toString();
+		String sb = "Rect(" +
+				left +
+				", " +
+				top +
+				" - " +
+				right +
+				", " +
+				bottom +
+				")";
+		return sb;
 	}
 
 	/**
@@ -130,17 +129,16 @@ public final class Rect {
 	 * @return Returns a new String of the form "left top right bottom"
 	 */
 	public String flattenToString() {
-		StringBuilder sb = new StringBuilder(32);
 		// WARNING: Do not change the format of this string, it must be
 		// preserved because Rects are saved in this flattened format.
-		sb.append(left);
-		sb.append(' ');
-		sb.append(top);
-		sb.append(' ');
-		sb.append(right);
-		sb.append(' ');
-		sb.append(bottom);
-		return sb.toString();
+		String sb = String.valueOf(left) +
+				' ' +
+				top +
+				' ' +
+				right +
+				' ' +
+				bottom;
+		return sb;
 	}
 
 	/**

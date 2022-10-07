@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.gwt.dom.client.Element;
 
 public class RecyclerView extends ViewGroup {

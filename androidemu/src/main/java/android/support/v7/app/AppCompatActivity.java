@@ -2,7 +2,6 @@ package android.support.v7.app;
 
 import android.support.v4.app.FragmentActivity;
 import android.widget.LinearLayout;
-
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;

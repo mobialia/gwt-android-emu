@@ -108,7 +108,7 @@ public interface Adapter {
 	 * @see #getItemViewType(int)
 	 * @see #getViewTypeCount()
 	 */
-	static final int IGNORE_ITEM_VIEW_TYPE = AdapterView.ITEM_VIEW_TYPE_IGNORE;
+	int IGNORE_ITEM_VIEW_TYPE = AdapterView.ITEM_VIEW_TYPE_IGNORE;
 
 	/**
 	 * Get the type of View that will be created by {@link #getView} for the
@@ -141,7 +141,7 @@ public interface Adapter {
 	 */
 	int getViewTypeCount();
 
-	static final int NO_SELECTION = Integer.MIN_VALUE;
+	int NO_SELECTION = Integer.MIN_VALUE;
 
 	/**
 	 * @return true if this adapter doesn't contain any data. This is used to

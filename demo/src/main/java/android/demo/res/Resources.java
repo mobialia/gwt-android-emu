@@ -5,7 +5,6 @@ package android.demo.res;
 
 import android.demo.R;
 import android.view.Menu;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -152,16 +151,14 @@ public class Resources extends android.content.res.Resources {
 		return super.getString(id);
 	}
 	public String[] getStringArray(int id) {
-		switch (id) {
-			case R.array.array1:
-				return arrays.array1();
+		if (id == R.array.array1) {
+			return arrays.array1();
 		}
 		return super.getStringArray(id);
 	}
 	public Menu getMenu(int id) {
-		switch (id) {
-			case R.menu.demo_menu:
-				return Menus.demo_menu();
+		if (id == R.menu.demo_menu) {
+			return Menus.demo_menu();
 		}
 		return super.getMenu(id);
 	}

@@ -29,7 +29,7 @@ public class SharedPreferences {
 		if (out == null) {
 			return defaultValue;
 		}
-		return Integer.valueOf(out);
+		return Integer.parseInt(out);
 	}
 
 	public long getLong(String key, long defaultValue) {
@@ -40,7 +40,7 @@ public class SharedPreferences {
 		if (out == null) {
 			return defaultValue;
 		}
-		return Long.valueOf(out);
+		return Long.parseLong(out);
 	}
 
 	public boolean getBoolean(String key, boolean defaultValue) {
@@ -51,14 +51,14 @@ public class SharedPreferences {
 		if (out == null) {
 			return defaultValue;
 		}
-		return Boolean.valueOf(out);
+		return Boolean.parseBoolean(out);
 	}
 
 	public Editor edit() {
 		return new Editor(this);
 	}
 
-	public class Editor {
+	public static class Editor {
 
 		SharedPreferences prefs;
 

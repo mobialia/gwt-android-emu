@@ -3,7 +3,6 @@ package android.support.v4.app;
 
 import android.view.View;
 import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -20,12 +19,7 @@ public class ListFragment extends Fragment {
 		this.adapter = adapter;
 		listView = ((ListView) view.findViewById(android.R.id.list));
 		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				onListItemClick(listView, view, position, id);
-			}
-		});
+		listView.setOnItemClickListener((parent, view, position, id) -> onListItemClick(listView, view, position, id));
 		adapter.notifyDataSetChanged();
 	}
 

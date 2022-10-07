@@ -4,20 +4,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.*;
 import com.google.gwt.dom.client.Element;
 import com.viewpagerindicator.TitlePageIndicator;
+
+import java.util.Objects;
 
 public class ViewFactory {
 
@@ -30,9 +21,9 @@ public class ViewFactory {
 	 * @return
 	 */
 	public static View createViewFromElement(Element element) {
-		if (element.getNodeName() == "LABEL") {
+		if (Objects.equals(element.getNodeName(), "LABEL")) {
 			return new TextView(element);
-		} else if (element.getNodeName() == "DIV") {
+		} else if (Objects.equals(element.getNodeName(), "DIV")) {
 			String className = element.getAttribute("class").toUpperCase();
 			if (className != null) {
 				if (className.contains("LISTVIEW")) {
@@ -53,32 +44,34 @@ public class ViewFactory {
 				// DIV fallbacks to TextView
 				return new TextView(element);
 			}
-		} else if (element.getNodeName() == "BUTTON") {
+		} else if (Objects.equals(element.getNodeName(), "BUTTON")) {
 			return new Button(element);
-		} else if (element.getNodeName() == "TEXTAREA") {
+		} else if (Objects.equals(element.getNodeName(), "TEXTAREA")) {
 			return new EditText(element, true);
-		} else if (element.getNodeName() == "INPUT") {
+		} else if (Objects.equals(element.getNodeName(), "INPUT")) {
 			String type = element.getAttribute("type").toUpperCase();
-			if (type.equals("TEXT")) {
-				return new EditText(element, false);
-			} else if (type.equals("NUMBER")) {
-				return new EditText(element, false);
-			} else if (type.equals("PASSWORD")) {
-				return new EditText(element, false);
-			} else if (type.equals("BUTTON")) {
-				return new Button(element);
-			} else if (type.equals("RADIO")) {
-				return new RadioButton(element);
-			} else if (type.equals("CHECKBOX")) {
-				return new CheckBox(element);
-			} else if (type.equals("IMAGE")) {
-				return new ImageButton(element);
-			} else {
-				Log.d(TAG, "Not found an specific view for input type " + type);
+			switch (type) {
+				case "TEXT":
+					return new EditText(element, false);
+				case "NUMBER":
+					return new EditText(element, false);
+				case "PASSWORD":
+					return new EditText(element, false);
+				case "BUTTON":
+					return new Button(element);
+				case "RADIO":
+					return new RadioButton(element);
+				case "CHECKBOX":
+					return new CheckBox(element);
+				case "IMAGE":
+					return new ImageButton(element);
+				default:
+					Log.d(TAG, "Not found an specific view for input type " + type);
+					break;
 			}
-		} else if (element.getNodeName() == "SELECT") {
+		} else if (Objects.equals(element.getNodeName(), "SELECT")) {
 			return new Spinner(element);
-		} else if (element.getNodeName() == "IMG") {
+		} else if (Objects.equals(element.getNodeName(), "IMG")) {
 			return new ImageView(element);
 		} else {
 			Log.d(TAG, "Not found an specific view: " + element.getNodeName());
@@ -100,10 +93,7 @@ public class ViewFactory {
 		}
 		Element next = element.getNextSiblingElement();
 		if (next != null) {
-			Element out = getElementById(next, id);
-			if (out != null) {
-				return out;
-			}
+			return getElementById(next, id);
 		}
 		return null;
 	}
