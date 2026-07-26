@@ -1,26 +1,12 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-
-    dependencies {
-        classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
-    }
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.gradleup.shadow' version '9.6.1'
 }
-
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-apply plugin: 'com.github.johnrengelman.shadow'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-
-dependencies {
-    implementation 'org.gwtproject:gwt-user:2.10.0'
-    implementation 'org.gwtproject:gwt-dev:2.10.0'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -32,11 +18,26 @@ artifacts {
     archives sourcesJar
 }
 
+dependencies {
+    implementation 'org.gwtproject:gwt-user:2.13.1'
+    implementation 'org.gwtproject:gwt-dev:2.13.1'
+}
+
 publishing {
     publications {
         gwtAndroidEmu(MavenPublication) {
             from components.java
             artifactId = 'gwt-android-emu'
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/mobialia/gwt-android-emu')
+            credentials {
+                username = System.getenv('GITHUB_ACTOR') ?: project.findProperty('gpr.user')
+                password = System.getenv('GITHUB_TOKEN') ?: project.findProperty('gpr.key')
+            }
         }
     }
 }
@@ -48,5 +49,5 @@ shadowJar {
 }
 
 jar {
-    manifest.attributes("Main-Class": "android.utils.GenerateResources")
+    manifest.attributes('Main-Class': 'android.utils.GenerateResources')
 }

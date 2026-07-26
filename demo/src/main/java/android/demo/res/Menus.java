@@ -1,11 +1,9 @@
-/**
- * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
- */
+/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo.res;
 
-import android.demo.R;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.demo.R;
 
 public class Menus {
 	public static Menu demo_menu() {

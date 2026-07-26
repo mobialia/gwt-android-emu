@@ -1,12 +1,11 @@
-/**
- * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
- */
+/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo.res;
 
-import android.demo.R;
 import android.view.Menu;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
+import android.demo.R;
 
 public class Resources extends android.content.res.Resources {
 
@@ -15,23 +14,23 @@ public class Resources extends android.content.res.Resources {
 	public static final Layouts layouts = new Layouts();
 
 	public String getIdAsString(int id) {
-		switch (id) {
-			case R.id.HandlerButton:
-				return "HandlerButton";
-			case R.id.LaunchActivityButton:
-				return "LaunchActivityButton";
+		switch(id) {
+			case R.id.AlertButton:
+				return "AlertButton";
+			case R.id.ToastButton:
+				return "ToastButton";
+			case R.id.SnackBarButton:
+				return "SnackBarButton";
 			case R.id.SidebarIcon:
 				return "SidebarIcon";
 			case R.id.SidebarText:
 				return "SidebarText";
-			case R.id.root:
-				return "root";
-			case R.id.Fragment:
-				return "Fragment";
-			case R.id.DrawerOverLay:
-				return "DrawerOverLay";
-			case R.id.Drawer:
-				return "Drawer";
+			case R.id.HandlerButton:
+				return "HandlerButton";
+			case R.id.LaunchActivityButton:
+				return "LaunchActivityButton";
+			case R.id.list:
+				return "list";
 			case R.id.EditText1:
 				return "EditText1";
 			case R.id.Spinner:
@@ -42,14 +41,14 @@ public class Resources extends android.content.res.Resources {
 				return "RadioButton1";
 			case R.id.RadioButton2:
 				return "RadioButton2";
-			case R.id.list:
-				return "list";
-			case R.id.AlertButton:
-				return "AlertButton";
-			case R.id.ToastButton:
-				return "ToastButton";
-			case R.id.SnackBarButton:
-				return "SnackBarButton";
+			case R.id.root:
+				return "root";
+			case R.id.Fragment:
+				return "Fragment";
+			case R.id.DrawerOverLay:
+				return "DrawerOverLay";
+			case R.id.Drawer:
+				return "Drawer";
 			case R.id.menu_add:
 				return "menu_add";
 			case R.id.menu_action1:
@@ -60,7 +59,7 @@ public class Resources extends android.content.res.Resources {
 		return super.getIdAsString(id);
 	}
 	public String getString(int id) {
-		switch (id) {
+		switch(id) {
 			case R.string.intro_title:
 				return strings.intro_title();
 			case R.string.intro_header:
@@ -151,53 +150,55 @@ public class Resources extends android.content.res.Resources {
 		return super.getString(id);
 	}
 	public String[] getStringArray(int id) {
-		if (id == R.array.array1) {
-			return arrays.array1();
+		switch(id) {
+			case R.array.array1:
+				return arrays.array1();
 		}
 		return super.getStringArray(id);
 	}
 	public Menu getMenu(int id) {
-		if (id == R.menu.demo_menu) {
-			return Menus.demo_menu();
+		switch(id) {
+			case R.menu.demo_menu:
+					return Menus.demo_menu();
 		}
 		return super.getMenu(id);
 	}
 	public int getColor(int id) {
-		switch (id) {
+		switch(id) {
 		}
 		return super.getColor(id);
 	}
 	public String getDrawable(int id) {
-		switch (id) {
+		switch(id) {
 			case R.drawable.ic_add:
-				return "ic_add.svg";
+					return "ic_add.svg";
 			case R.drawable.ic_notifications:
-				return "ic_notifications.svg";
+					return "ic_notifications.svg";
 			case R.drawable.ic_sidebar_menu:
-				return "ic_sidebar_menu.svg";
+					return "ic_sidebar_menu.svg";
 			case R.drawable.ic_indicator_back:
-				return "ic_indicator_back.svg";
+					return "ic_indicator_back.svg";
 			case R.drawable.ic_drawer:
-				return "ic_drawer.svg";
-			case R.drawable.icon:
-				return "icon.png";
+					return "ic_drawer.svg";
 			case R.drawable.ic_other:
-				return "ic_other.svg";
+					return "ic_other.svg";
+			case R.drawable.icon:
+					return "icon.png";
 			case R.drawable.ic_preferences:
-				return "ic_preferences.svg";
-			case R.drawable.ic_inputs:
-				return "ic_inputs.svg";
+					return "ic_preferences.svg";
 			case R.drawable.ic_intro:
-				return "ic_intro.svg";
+					return "ic_intro.svg";
+			case R.drawable.ic_inputs:
+					return "ic_inputs.svg";
 			case R.drawable.ic_spinner_vector:
-				return "ic_spinner_vector.svg";
+					return "ic_spinner_vector.svg";
 			case R.drawable.ic_menu:
-				return "ic_menu.svg";
+					return "ic_menu.svg";
 		}
 		return super.getDrawable(id);
 	}
 	public Widget getLayout(int id) {
-		switch (id) {
+		switch(id) {
 			case R.layout.activity_drawer:
 				return layouts.activity_drawer();
 			case R.layout.simple_activity:

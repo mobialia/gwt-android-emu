@@ -1,6 +1,6 @@
 GWT Android Emu
 ===============
-[![Release](https://jitpack.io/v/mobialia/gwt-android-emu.svg)](https://jitpack.io/#mobialia/gwt-android-emu)
+[![Release](https://img.shields.io/github/v/release/mobialia/gwt-android-emu.svg)](https://github.com/mobialia/gwt-android-emu/releases)
 
 GWT Android Emu helps to port Android Apps to HTML5 to make them work in any web browser keeping a lot of code in common.
 
@@ -93,18 +93,26 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 
 Using GWT Android Emu in other projects
 =======================================
-This library's JARs are distributed via Mobialia's bintray repo (https://bintray.com/mobialia/maven).
-To use them, first include this repository in your gradle file:
+This library is distributed via [GitHub Packages](https://github.com/mobialia/gwt-android-emu/packages).
+It is also available through [JitPack](https://jitpack.io/#mobialia/gwt-android-emu).
+
+To use them, first include the GitHub Packages repository in your gradle file:
 ```
 repositories {
-    maven { url 'https://jitpack.io' }
+    maven {
+        url = uri('https://maven.pkg.github.com/mobialia/gwt-android-emu')
+        credentials {
+            username = System.getenv('GITHUB_ACTOR')
+            password = System.getenv('GITHUB_TOKEN')
+        }
+    }
 }
 ```
 Then reference the gwt-android-emu libraries:
 ```
 dependencies {
-    implementation 'com.github.mobialia:gwt-android-emu:0.6.0'
-    implementation 'com.github.mobialia:gwt-android-emu:0.6.0:sources'
+    implementation 'com.github.mobialia:gwt-android-emu:0.7.0'
+    implementation 'com.github.mobialia:gwt-android-emu:0.7.0:sources'
 }
 ```
 

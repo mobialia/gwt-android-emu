@@ -1,27 +1,25 @@
-/**
- * FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY
- */
+/** FILE GENERATED AUTOMATICALLY BY GWT_ANDROID_EMU'S GenerateResources: DO NOT EDIT MANUALLY */
 package android.demo;
 
 public class R {
 	public static final class id {
-		public final static int HandlerButton = 1;
-		public final static int LaunchActivityButton = 2;
-		public final static int SidebarIcon = 3;
-		public final static int SidebarText = 4;
-		public final static int root = 5;
-		public final static int Fragment = 6;
-		public final static int DrawerOverLay = 7;
-		public final static int Drawer = 8;
+		public final static int AlertButton = 1;
+		public final static int ToastButton = 2;
+		public final static int SnackBarButton = 3;
+		public final static int SidebarIcon = 4;
+		public final static int SidebarText = 5;
+		public final static int HandlerButton = 6;
+		public final static int LaunchActivityButton = 7;
+		public final static int list = 8;
 		public final static int EditText1 = 9;
 		public final static int Spinner = 10;
 		public final static int SeekSortAscending = 11;
 		public final static int RadioButton1 = 12;
 		public final static int RadioButton2 = 13;
-		public final static int list = 14;
-		public final static int AlertButton = 15;
-		public final static int ToastButton = 16;
-		public final static int SnackBarButton = 17;
+		public final static int root = 14;
+		public final static int Fragment = 15;
+		public final static int DrawerOverLay = 16;
+		public final static int Drawer = 17;
 		public final static int menu_add = 18;
 		public final static int menu_action1 = 19;
 		public final static int menu_action2 = 20;
@@ -34,11 +32,11 @@ public class R {
 		public final static int ic_sidebar_menu = 3;
 		public final static int ic_indicator_back = 4;
 		public final static int ic_drawer = 5;
-		public final static int icon = 6;
-		public final static int ic_other = 7;
+		public final static int ic_other = 6;
+		public final static int icon = 7;
 		public final static int ic_preferences = 8;
-		public final static int ic_inputs = 9;
-		public final static int ic_intro = 10;
+		public final static int ic_intro = 9;
+		public final static int ic_inputs = 10;
 		public final static int ic_spinner_vector = 11;
 		public final static int ic_menu = 12;
 	}
