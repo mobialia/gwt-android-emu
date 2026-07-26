@@ -4,7 +4,7 @@ GWT Android Emu
 
 GWT Android Emu helps to port Android Apps to HTML5 to make them work in any web browser keeping a lot of code in common.
 
-It's also a framework to build web apps using Java an Android APIs.
+It's also a framework to build web apps using Java and Android APIs.
 
 Here is a running demo of the library:
 
@@ -94,9 +94,8 @@ This is how this library maps the HTML elements to Android widgets: (see also th
 Using GWT Android Emu in other projects
 =======================================
 This library is distributed via [GitHub Packages](https://github.com/mobialia/gwt-android-emu/packages).
-It is also available through [JitPack](https://jitpack.io/#mobialia/gwt-android-emu).
 
-To use them, first include the GitHub Packages repository in your gradle file:
+To use it, first include the GitHub Packages repository in your gradle file:
 ```
 repositories {
     maven {
@@ -119,7 +118,7 @@ dependencies {
 Demo project
 ============
 
-The demo project is a GWT app coded like an Android App, you can inspect the code at:k
+The demo project is a GWT app coded like an Android App, you can inspect the code at:
 
 https://github.com/mobialia/gwt-android-emu/blob/master/demo/src/main/java/android/demo/
 
