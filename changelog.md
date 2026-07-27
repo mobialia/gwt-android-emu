@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-07-27
+
+### Fixed
+
+- Attach the `sourcesJar` artifact to the `gwtAndroidEmu` Maven publication so sources are published to GitHub Packages.
+
 ## [0.7.0] - 2026-07-26
 
 ### Added
@@ -49,7 +55,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Bintray distribution, replaced by JitPack.
 
-[Unreleased]: https://github.com/mobialia/gwt-android-emu/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/mobialia/gwt-android-emu/compare/v0.7.1...HEAD
+
+[0.7.1]: https://github.com/mobialia/gwt-android-emu/compare/v0.7.0...v0.7.1
 
 [0.7.0]: https://github.com/mobialia/gwt-android-emu/compare/v0.6.0...v0.7.0
 

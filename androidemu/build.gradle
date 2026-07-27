@@ -28,6 +28,7 @@ publishing {
         gwtAndroidEmu(MavenPublication) {
             from components.java
             artifactId = 'gwt-android-emu'
+            artifact sourcesJar
         }
     }
     repositories {
